@@ -4,110 +4,68 @@ Public study repository and marks-first command centre for **NEUR3301 Advanced N
 
 ## Launch
 
-- **GitHub Pages hub:** https://kg-97.github.io/NEUR3301/
-- **Synapse X Exam Lab:** https://kg-97.github.io/NEUR3301/app/
-- **Hardened MDMA Seminar Studio:** https://kg-97.github.io/NEUR3301/seminar/
-- **Extended Synapse suite:** https://neur3301-synapse.pplx.app
-- **Repository:** https://github.com/KG-97/NEUR3301
+- **Course hub:** https://kg-97.github.io/NEUR3301/
+- **Synapse Exam Lab:** https://kg-97.github.io/NEUR3301/app/
+- **Synapse Study Lab:** https://kg-97.github.io/NEUR3301/study-lab/
+- **MDMA Seminar Studio:** https://kg-97.github.io/NEUR3301/seminar/
+- **Full external Synapse X:** https://neur3301-synapse.pplx.app
 
-The two repository-hosted apps are deliberately static: no account, server, Firebase project or API key is required. Study progress is browser-local and can be exported as JSON.
+The GitHub tools are static and require no account, backend, Firebase project or API key. Progress stays in the browser and can be exported.
 
 ## What is included
 
-### Synapse X Exam Lab
-
-- Exact 2026 sequence of 30 content lectures
-- Test 1 and Test 2 boundaries and dates
-- Browser-local lecture progress
-- Mechanism-heavy MCQs with explanations
-- Corrected Glia I active-recall deck
-- Misconception/error ledger
-- Progress export, import and reset
-
-### MDMA Seminar Studio
-
-- Evidence-hardened 15-minute seminar workspace
-- Timed slide map and speaker handoffs
-- Rehearsal timer and production checklist
-- Evidence-boundary prompts and hostile Q&A bank
-- Full seminar script and source track
-
-### Engineering
-
-- GitHub Pages deployment from `docs/`
-- Automated validation of required files, app registry, HTML closures, flashcard size and broken localhost/backend dependencies
-- Source-consolidation tracks under `apps/`
+- exact 2026 assessment dates, weights and lecture numbering;
+- a fast Exam Lab with 10 mechanism-heavy MCQs, corrected Glia I recall and an error ledger;
+- a deeper recovered Study Lab with 29 taught topics, 174 flashcards, 97 concepts and 93 experiment prompts;
+- fixed browser-local progress plus JSON import/export/reset;
+- an evidence-hardened 12-slide MDMA seminar studio and exact 15:00 rehearsal timer;
+- the complete timed seminar script and marks-first weekly study playbook;
+- deterministic link, registry, course-fact and broken-backend checks;
+- GitHub Actions validation and Pages deployment.
 
 ## Repository structure
 
 ```text
 .
 ├── apps/
-│   ├── synapse/                # Maintainable source consolidation track
-│   └── mdma-seminar/           # Seminar source notes
-├── docs/                       # Deployed GitHub Pages site
-│   ├── app/index.html          # Repository-hosted Exam Lab
-│   ├── seminar/index.html      # Repository-hosted Seminar Studio
-│   ├── resources/
-│   │   ├── NEUR3301_Study_Playbook_2026.md
-│   │   ├── NEUR3301_Glia1_Flashcards.csv
-│   │   └── MDMA_Seminar_Full_Script_15min.md
-│   ├── apps.json
+│   ├── synapse/                # Alignment, provenance and source-consolidation track
+│   └── mdma-seminar/           # Seminar evidence/source notes
+├── docs/                       # GitHub Pages artifact
+│   ├── app/                    # Hand-maintainable Exam Lab
+│   ├── study-lab/              # Recovered compiled deep Study Lab
+│   ├── seminar/                # MDMA Seminar Studio
+│   ├── resources/              # Playbook, script and flashcards
 │   ├── index.html
-│   ├── styles.css
-│   └── app.js
-├── tests/validate.mjs
-├── .github/workflows/pages.yml
-├── CONTRIBUTING.md
-└── README.md
+│   └── apps.json
+├── scripts/check-site.mjs      # Deep static/course-fact validator
+├── tests/validate.mjs          # Required-file smoke tests
+└── .github/workflows/
+    ├── pages.yml
+    └── quality.yml
 ```
 
-## Local preview
-
-```bash
-python -m http.server 8000 --directory docs
-```
-
-Open `http://localhost:8000`.
-
-Run validation with:
+## Local verification
 
 ```bash
 node tests/validate.mjs
+node scripts/check-site.mjs
+python -m http.server 8000 --directory docs
 ```
 
-## Assessment map
+Open `http://localhost:8000`, then test both `/app/` and `/study-lab/`. Mark progress, reload, export it, and verify the state survives.
 
-- **Test 1:** 10%, lectures 1–7, 24 August 2026
-- **Test 2:** 10%, lectures 8–13, 7 September 2026
-- **Seminar:** 30%; video due 18 September 2026 at 11:59 pm
-- **Final:** 50%; four long-answer questions in two hours
+## Deployment
+
+A push to `main` that changes the site runs validation before publishing `docs/` to GitHub Pages.
+
+If deployment says Pages is not configured, make the one-time change: **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+
+## Source status
+
+`docs/app/` is intentionally small, readable and directly maintainable. `docs/study-lab/` is a clean portable compiled build recovered from Drive—not a saved Perplexity shell—but it is not a substitute for the original React/TypeScript project. The full maintainable source, package manifest and build configuration still need to be recovered before the minified bundle should be treated as editable source.
 
 ## Content standard
 
-Use causal explanation, intervention prediction and explicit evidence boundaries. Distinguish:
+Use causal explanation, intervention prediction and explicit evidence boundaries. Distinguish controlled MDMA from uncontrolled products, animal mechanisms from demonstrated human mediation, treatment-package effects from isolated drug effects, and “no reports received” from proof that no events occurred.
 
-- endothelial BBB seal from astrocytic/pericytic regulation;
-- calcium cooperativity from literal binding stoichiometry;
-- canonical STDP from a universal rule;
-- rodent adult-neurogenesis findings from settled human facts;
-- controlled MDMA from uncontrolled “ecstasy” products;
-- animal mechanisms from demonstrated human mediation;
-- treatment-package effects from isolated drug effects;
-- zero adverse-event reports from proof of zero adverse events.
-
-## Status
-
-- [x] Repository foundation
-- [x] Public launch hub
-- [x] Repository-hosted Synapse X Exam Lab
-- [x] Repository-hosted MDMA Seminar Studio
-- [x] Exact lecture and assessment map
-- [x] Corrected Glia I deck
-- [x] Study playbook and seminar script
-- [x] GitHub Pages workflow
-- [x] Automated static-site integrity checks
-- [ ] Refactor the larger React/TypeScript suite into the canonical maintainable production source
-- [ ] Add diagram-question datasets and timed long-answer scoring to the repository-hosted app
-
-> Independent educational project. Verify assessment requirements against current UWA unit materials and consequential scientific claims against primary or official sources.
+> Independent educational project. Verify announcements against the LMS and consequential scientific claims against primary or official sources.
