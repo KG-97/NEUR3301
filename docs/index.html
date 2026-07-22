@@ -3,59 +3,94 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="NEUR3301 Advanced Neuroscience 1 study hub and app directory.">
-  <title>NEUR3301 Study Hub</title>
+  <meta name="description" content="Marks-first NEUR3301 Advanced Neuroscience 1 study system: Synapse, exam practice, diagrams and MDMA seminar preparation.">
+  <meta name="theme-color" content="#07110f">
+  <title>Synapse · NEUR3301 Study Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="hero">
+  <header class="hero" id="top">
     <nav class="nav wrap">
-      <a class="brand" href="#top" aria-label="NEUR3301 home"><span class="brand-mark">N</span> NEUR3301</a>
-      <a class="nav-link" href="https://github.com/KG-97/NEUR3301">GitHub</a>
-    </nav>
-    <div id="top" class="hero-content wrap">
-      <p class="eyebrow">UWA · Advanced Neuroscience 1 · 2026</p>
-      <h1>Learn the mechanisms.<br><span>Earn the marks.</span></h1>
-      <p class="lede">A central launchpad for Kaleb Gates’s NEUR3301 study apps, exam practice, seminar tools and high-yield neuroscience resources.</p>
-      <div class="actions">
-        <a class="button primary" href="https://neur3301-synapse.pplx.app">Launch Synapse</a>
-        <a class="button secondary" href="#apps">Explore tools</a>
+      <a class="brand" href="#top"><span class="brand-mark">S</span><span><b>SYNAPSE</b><small>NEUR3301 · UWA · 2026</small></span></a>
+      <div class="nav-actions">
+        <a class="nav-link" href="#system">Study system</a>
+        <a class="nav-link" href="https://github.com/KG-97/NEUR3301">GitHub</a>
       </div>
+    </nav>
+
+    <div class="hero-content wrap">
+      <p class="eyebrow">Advanced Neuroscience 1 · Marks-first command centre</p>
+      <h1>Learn the mechanism.<br><span>Then earn the mark.</span></h1>
+      <p class="lede">One public launchpad for the NEUR3301 course map, active recall, MCQ pressure-testing, long-answer structure, diagrams and the evidence-hardened MDMA seminar.</p>
+      <div class="actions">
+        <a class="button primary" href="https://neur3301-synapse.pplx.app">Launch full Synapse</a>
+        <a class="button secondary" href="seminar/">Open MDMA Seminar Studio</a>
+        <a class="button ghost" href="#resources">Study resources</a>
+      </div>
+      <p class="launch-note">Public static tools require no account, server or API key. Progress in the full app remains browser-local.</p>
     </div>
   </header>
 
   <main>
-    <section class="stats wrap" aria-label="Study system features">
-      <article><strong>Mechanisms</strong><span>From molecule to behaviour</span></article>
-      <article><strong>Active recall</strong><span>MCQs, diagrams and answer maps</span></article>
-      <article><strong>Assessment-first</strong><span>Built around marks, not passive notes</span></article>
+    <section class="assessment wrap" aria-label="Assessment map">
+      <article><span>30%</span><strong>Seminar</strong><small>Argument, evidence, timing and Q&amp;A</small></article>
+      <article><span>10%</span><strong>Test 1</strong><small>Lectures 1–7 · development</small></article>
+      <article><span>10%</span><strong>Test 2</strong><small>Lectures 8–13 · synapses</small></article>
+      <article><span>50%</span><strong>Final</strong><small>Four mechanism-heavy long answers</small></article>
     </section>
 
-    <section id="apps" class="section wrap">
+    <section id="system" class="section wrap">
       <div class="section-heading">
-        <div><p class="eyebrow">App directory</p><h2>NEUR3301 tools</h2></div>
-        <p>One repository. One study system. Every tool aimed at recall, explanation and exam performance.</p>
+        <div><p class="eyebrow">App directory</p><h2>The working system</h2></div>
+        <p>Recognition is not readiness. Each tool is built to force retrieval, prediction, explanation and repair.</p>
       </div>
-      <div id="app-grid" class="app-grid" aria-live="polite"><p class="loading">Loading apps…</p></div>
+      <div id="app-grid" class="app-grid" aria-live="polite"><p class="loading">Loading tools…</p></div>
     </section>
 
     <section class="section wrap">
       <div class="study-path">
-        <div><p class="eyebrow">Recommended loop</p><h2>Understand → retrieve → apply → repair</h2></div>
+        <div>
+          <p class="eyebrow">Default study loop</p>
+          <h2>Compress → retrieve → interrogate → repair</h2>
+          <p class="path-copy">For each lecture: reduce the mechanism to a causal chain, reproduce it closed-book, predict an intervention, then encode only the errors.</p>
+        </div>
         <ol>
-          <li><span>01</span><div><strong>Understand</strong><p>Build a causal model of the mechanism.</p></div></li>
-          <li><span>02</span><div><strong>Retrieve</strong><p>Answer cold before seeing the explanation.</p></div></li>
-          <li><span>03</span><div><strong>Apply</strong><p>Use unfamiliar diagrams, experiments and clinical cases.</p></div></li>
-          <li><span>04</span><div><strong>Repair</strong><p>Convert every error into a targeted recall prompt.</p></div></li>
+          <li><span>01</span><div><strong>Compress</strong><p>Write the lecture’s causal chain in six arrows or fewer.</p></div></li>
+          <li><span>02</span><div><strong>Retrieve</strong><p>Redraw and explain it without notes.</p></div></li>
+          <li><span>03</span><div><strong>Interrogate</strong><p>Predict a blocker, knockout, lesion or dose effect.</p></div></li>
+          <li><span>04</span><div><strong>Repair</strong><p>Turn each miss into a targeted prompt and retest it.</p></div></li>
         </ol>
+      </div>
+    </section>
+
+    <section id="resources" class="section wrap">
+      <div class="section-heading">
+        <div><p class="eyebrow">Source-controlled resources</p><h2>Use the material, not the folder</h2></div>
+        <p>The canonical seminar package keeps species boundaries, uncertainty and regulatory caveats explicit.</p>
+      </div>
+      <div class="resource-grid">
+        <a class="resource" href="resources/NEUR3301_Study_Playbook_2026.md"><span>PLAYBOOK</span><h3>Marks-first study plan</h3><p>Weekly operating system, test pressure, long-answer grammar and seminar thesis.</p></a>
+        <a class="resource" href="resources/MDMA_Seminar_Full_Script_15min.md"><span>15:00 SCRIPT</span><h3>Full seminar script</h3><p>Twelve timed slides, speaker handoffs, exact pacing and calibrated scientific claims.</p></a>
+        <a class="resource" href="seminar/"><span>INTERACTIVE</span><h3>Hardened Seminar Studio</h3><p>Slide map, scripts, evidence boundaries, rehearsal timer and hostile Q&amp;A prompts.</p></a>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <div class="answer-grammar">
+        <p class="eyebrow">Non-negotiable answer grammar</p>
+        <h2>Manipulation → cellular change → circuit consequence → measured outcome → alternative interpretation.</h2>
+        <p>This prevents descriptive answers from pretending to be mechanistic ones.</p>
       </div>
     </section>
   </main>
 
-  <footer class="wrap"><p>Independent educational project · NEUR3301 Advanced Neuroscience 1</p><a href="https://github.com/KG-97/NEUR3301">View source</a></footer>
+  <footer class="wrap">
+    <p>Independent educational project · NEUR3301 Advanced Neuroscience 1 · University of Western Australia</p>
+    <a href="https://github.com/KG-97/NEUR3301">View source</a>
+  </footer>
   <script src="app.js" defer></script>
 </body>
 </html>
