@@ -1,18 +1,26 @@
 [
   {
-    "name": "Synapse",
-    "subtitle": "NEUR3301 Study Lab",
-    "description": "The main marks-first study system for Advanced Neuroscience 1: mechanism revision, diagram questions, MCQs, exam answer maps, spaced repetition and seminar preparation.",
+    "name": "Synapse X",
+    "subtitle": "NEUR3301 marks-first command centre",
+    "description": "The full browser study system: exact 2026 lecture map, mechanism revision, diagram questions, MCQs, long-answer maps, spaced repetition and progress tracking.",
     "url": "https://neur3301-synapse.pplx.app",
-    "status": "Live",
-    "tags": ["MCQs", "Exam practice", "Diagrams", "Seminar"]
+    "status": "Live external app",
+    "tags": ["Course map", "MCQs", "Long answers", "Diagrams"]
   },
   {
     "name": "MDMA Seminar Studio",
-    "subtitle": "15-minute seminar workspace",
-    "description": "An evidence-audited presentation workspace covering MDMA pharmacology, systems neuroscience, therapeutic mechanisms, limitations and hostile Q&A preparation.",
-    "url": "https://neur3301-synapse.pplx.app",
-    "status": "Inside Synapse",
-    "tags": ["MDMA", "Presentation", "Evidence audit"]
+    "subtitle": "Evidence-hardened 15-minute workspace",
+    "description": "Twelve timed slides with exact speaker handoffs, full scripts, species boundaries, regulatory caveats, rehearsal controls and hostile Q&A prompts.",
+    "url": "seminar/",
+    "status": "Live in this repository",
+    "tags": ["MDMA", "15:00", "Evidence audit", "Q&A"]
+  },
+  {
+    "name": "Study Playbook",
+    "subtitle": "Weekly operating system",
+    "description": "A marks-first plan for lecture compression, closed-book retrieval, intervention prediction, MCQ error logging and final-exam answer construction.",
+    "url": "resources/NEUR3301_Study_Playbook_2026.md",
+    "status": "Source controlled",
+    "tags": ["Study plan", "Active recall", "Exam strategy"]
   }
 ]
