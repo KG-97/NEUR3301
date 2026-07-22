@@ -1,26 +1,34 @@
 [
   {
-    "name": "Synapse X",
-    "subtitle": "NEUR3301 marks-first command centre",
-    "description": "The full browser study system: exact 2026 lecture map, mechanism revision, diagram questions, MCQs, long-answer maps, spaced repetition and progress tracking.",
+    "name": "Synapse X Exam Lab",
+    "subtitle": "Repository-hosted NEUR3301 command centre",
+    "description": "Exact 2026 lecture sequence, browser-local progress, mechanism-heavy MCQs, corrected Glia I recall, JSON backup and a misconception ledger. No account or API key.",
+    "url": "app/",
+    "status": "Live in this repository",
+    "tags": ["30 lectures", "MCQs", "Flashcards", "Error ledger"]
+  },
+  {
+    "name": "Full Synapse Suite",
+    "subtitle": "Extended browser study system",
+    "description": "The larger hosted system with diagrams, broader question banks, long-answer maps and spaced-repetition support while its maintainable source is consolidated.",
     "url": "https://neur3301-synapse.pplx.app",
     "status": "Live external app",
-    "tags": ["Course map", "MCQs", "Long answers", "Diagrams"]
+    "tags": ["Diagrams", "Long answers", "Spaced repetition"]
   },
   {
     "name": "MDMA Seminar Studio",
     "subtitle": "Evidence-hardened 15-minute workspace",
-    "description": "Twelve timed slides with exact speaker handoffs, full scripts, species boundaries, regulatory caveats, rehearsal controls and hostile Q&A prompts.",
+    "description": "Timed slides, speaker handoffs, evidence boundaries, regulatory caveats, rehearsal controls and hostile Q&A prompts.",
     "url": "seminar/",
     "status": "Live in this repository",
     "tags": ["MDMA", "15:00", "Evidence audit", "Q&A"]
   },
   {
     "name": "Study Playbook",
-    "subtitle": "Weekly operating system",
-    "description": "A marks-first plan for lecture compression, closed-book retrieval, intervention prediction, MCQ error logging and final-exam answer construction.",
+    "subtitle": "Weekly marks-first operating system",
+    "description": "Lecture compression, closed-book retrieval, intervention prediction, MCQ error logging and final-exam answer construction.",
     "url": "resources/NEUR3301_Study_Playbook_2026.md",
     "status": "Source controlled",
-    "tags": ["Study plan", "Active recall", "Exam strategy"]
+    "tags": ["Active recall", "Exam strategy", "Seminar"]
   }
 ]
