@@ -1,34 +1,53 @@
 [
   {
-    "name": "Synapse X Exam Lab",
-    "subtitle": "Repository-hosted NEUR3301 command centre",
-    "description": "Exact 2026 lecture sequence, browser-local progress, mechanism-heavy MCQs, corrected Glia I recall, JSON backup and a misconception ledger. No account or API key.",
-    "url": "app/",
+    "name": "Synapse Study Lab",
+    "subtitle": "Repository-hosted 2026 curriculum scaffold",
+    "description": "All 29 content lectures, 174 flashcards, 97 core concepts, 93 experiment prompts, fixed browser-local progress, and JSON backup tools.",
+    "url": "study-lab/",
     "status": "Live in this repository",
-    "tags": ["30 lectures", "MCQs", "Flashcards", "Error ledger"]
+    "tags": [
+      "29 lectures",
+      "Flashcards",
+      "Experiment prompts",
+      "Local progress"
+    ]
   },
   {
-    "name": "Full Synapse Suite",
-    "subtitle": "Extended browser study system",
-    "description": "The larger hosted system with diagrams, broader question banks, long-answer maps and spaced-repetition support while its maintainable source is consolidated.",
+    "name": "Synapse X — Full Suite",
+    "subtitle": "Marks-first exam command centre",
+    "description": "The richer external build adds diagram questions, MCQ pressure-testing, long-answer maps, spaced repetition and broader exam workflows.",
     "url": "https://neur3301-synapse.pplx.app",
     "status": "Live external app",
-    "tags": ["Diagrams", "Long answers", "Spaced repetition"]
+    "tags": [
+      "MCQs",
+      "Long answers",
+      "Diagrams",
+      "Exam Forge"
+    ]
   },
   {
     "name": "MDMA Seminar Studio",
     "subtitle": "Evidence-hardened 15-minute workspace",
-    "description": "Timed slides, speaker handoffs, evidence boundaries, regulatory caveats, rehearsal controls and hostile Q&A prompts.",
+    "description": "Twelve timed slides with exact speaker handoffs, full scripts, species boundaries, regulatory caveats, rehearsal controls and hostile Q&A prompts.",
     "url": "seminar/",
     "status": "Live in this repository",
-    "tags": ["MDMA", "15:00", "Evidence audit", "Q&A"]
+    "tags": [
+      "MDMA",
+      "15:00",
+      "Evidence audit",
+      "Q&A"
+    ]
   },
   {
     "name": "Study Playbook",
-    "subtitle": "Weekly marks-first operating system",
-    "description": "Lecture compression, closed-book retrieval, intervention prediction, MCQ error logging and final-exam answer construction.",
+    "subtitle": "Weekly operating system",
+    "description": "A marks-first plan for lecture compression, closed-book retrieval, intervention prediction, MCQ error logging and final-exam answer construction.",
     "url": "resources/NEUR3301_Study_Playbook_2026.md",
     "status": "Source controlled",
-    "tags": ["Active recall", "Exam strategy", "Seminar"]
+    "tags": [
+      "Study plan",
+      "Active recall",
+      "Exam strategy"
+    ]
   }
 ]
