@@ -61,6 +61,66 @@ for (const [from, to, block] of [[1, 7, 'Test 1'], [8, 13, 'Test 2']]) {
   }
 }
 
+// Parse literal question data so malformed options, answer keys and duplicate stems fail CI.
+const questionsOpen = examLabScript.indexOf('const questions = [');
+if (questionsOpen === -1) throw new Error('Could not locate the questions array in app.js');
+const literalStart = examLabScript.indexOf('[', questionsOpen);
+const literalEnd = examLabScript.indexOf('\n];', questionsOpen);
+if (literalEnd === -1) throw new Error('Could not locate the end of the questions array');
+let parsedQuestions;
+try {
+  parsedQuestions = Function(`"use strict"; return (${examLabScript.slice(literalStart, literalEnd + 2)});`)();
+} catch (error) {
+  throw new Error(`Questions array is not valid literal data: ${error.message}`);
+}
+if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 36) {
+  throw new Error(`Expected 36 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
+}
+const seenStems = new Set();
+for (const question of parsedQuestions) {
+  const label = question && question.id ? question.id : '(missing id)';
+  for (const field of ['id', 'topic', 'stem', 'explanation', 'trap']) {
+    if (typeof question[field] !== 'string' || !question[field].trim()) throw new Error(`Question ${label} has an empty ${field}`);
+  }
+  if (!Array.isArray(question.options) || question.options.length !== 4) {
+    throw new Error(`Question ${label} must have exactly four options; keyboard shortcuts 1-4 depend on it`);
+  }
+  if (question.options.some(option => typeof option !== 'string' || !option.trim())) {
+    throw new Error(`Question ${label} has an empty option`);
+  }
+  if (new Set(question.options.map(option => option.trim())).size !== question.options.length) {
+    throw new Error(`Question ${label} has duplicate options`);
+  }
+  if (!Number.isInteger(question.answer) || question.answer < 0 || question.answer >= question.options.length) {
+    throw new Error(`Question ${label} has an out-of-range answer index (${question.answer})`);
+  }
+  const stemKey = question.stem.trim().toLowerCase();
+  if (seenStems.has(stemKey)) throw new Error(`Duplicate question stem detected: ${question.stem}`);
+  seenStems.add(stemKey);
+}
+
+const cardsOpen = examLabScript.indexOf('const cards = [');
+const cardsStart = examLabScript.indexOf('[', cardsOpen);
+const cardsEnd = examLabScript.indexOf('\n];', cardsOpen);
+if (cardsOpen === -1 || cardsEnd === -1) throw new Error('Could not locate the flashcard array in app.js');
+const parsedCards = Function(`"use strict"; return (${examLabScript.slice(cardsStart, cardsEnd + 2)});`)();
+if (!Array.isArray(parsedCards) || parsedCards.length !== 29) {
+  throw new Error(`Expected 29 mechanism cards; found ${Array.isArray(parsedCards) ? parsedCards.length : 'a non-array'}`);
+}
+const cardFronts = new Set();
+for (const [index, card] of parsedCards.entries()) {
+  if (!Array.isArray(card) || card.length !== 2 || card.some(side => typeof side !== 'string' || !side.trim())) {
+    throw new Error(`Flashcard ${index + 1} must contain a non-empty front and back`);
+  }
+  const frontKey = card[0].trim().toLowerCase();
+  if (cardFronts.has(frontKey)) throw new Error(`Duplicate flashcard front detected: ${card[0]}`);
+  cardFronts.add(frontKey);
+}
+if (!examLabScript.includes('button.dataset.index = String(originalIndex)') ||
+    !examLabScript.includes('const optionIndex = Number(button.dataset.index)')) {
+  throw new Error('Shuffled MCQ options no longer preserve their original answer-key mapping');
+}
+
 const deepBundle = readFileSync('docs/study-lab/assets/index-BR7I-zAT.js', 'utf8');
 if (!deepBundle.includes('synapse-neur3301-progress-v1') || deepBundle.includes('port/5000')) {
   throw new Error('Study Lab progress persistence is missing or regressed');

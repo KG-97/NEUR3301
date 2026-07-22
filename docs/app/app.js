@@ -72,7 +72,26 @@ const cards = [
   ['Dominant adult OPC fate?', 'Primarily oligodendrocytes; other fates are context-specific rather than the normal dominant output.'],
   ['Why is the glial scar dual-role?', 'It can inhibit regrowth through scar-associated signals while also containing inflammation and preserving tissue.'],
   ['Oligodendrocyte vs Schwann cell?', 'One oligodendrocyte can myelinate multiple CNS internodes; one myelinating Schwann cell normally forms one PNS internode.'],
-  ['Ependymal function?', 'Ependymal cells line ventricles and the central canal, contribute to ventricular-interface functions and use cilia to help move CSF.']
+  ['Ependymal function?', 'Ependymal cells line ventricles and the central canal, contribute to ventricular-interface functions and use cilia to help move CSF.'],
+  ['Ohmic current equation?', 'I = g(Vm − Eion). With conductance fixed, current shrinks as Vm approaches that ion’s equilibrium potential.'],
+  ['Chloride at Vm −65 mV, ECl −70 mV?', 'Driving force is +5 mV, so opening Cl⁻ channels lets Cl⁻ enter (outward conventional current), hyperpolarising Vm toward −70 mV.'],
+  ['Mini frequency vs amplitude?', 'Miniature frequency tracks presynaptic spontaneous-release rate; mean amplitude tracks postsynaptic quantal size. Both can be confounded by detection threshold.'],
+  ['Binomial release — mean response?', 'Mean ≈ n·p·q (release sites × release probability × quantal size), under independence and uniform-p assumptions.'],
+  ['Fourth-power calcium relationship?', 'A log–log slope near four is effective cooperativity over the tested range, not proof that exactly four Ca²⁺ ions bind.'],
+  ['Fast fusion — sensor vs machinery?', 'Synaptotagmin is the fast Ca²⁺ sensor; SNAREs are the fusion machinery. Endocytic proteins recycle membrane afterwards.'],
+  ['High paired-pulse ratio implies?', 'Usually low initial release probability: residual presynaptic calcium facilitates the second response. PPR is an index, not a direct p meter.'],
+  ['NMDA coincidence detection?', 'Postsynaptic depolarisation relieves the voltage-dependent Mg²⁺ block, so calcium enters only when glutamate binding and depolarisation coincide.'],
+  ['Why does the AIS initiate spikes?', 'High voltage-gated Na⁺ channel density plus specialised scaffolds give the lowest spike threshold; AIS position/length can remodel to tune excitability (direction is context-dependent).'],
+  ['Receptor potential vs action potential?', 'Receptor/generator potentials are graded with stimulus strength; action potentials are all-or-none and non-decrementing.'],
+  ['Centrifugal (efferent) sensory control?', 'Signals run from central/higher regions back toward earlier sensory stages, adjusting gain, selectivity and signal-to-noise.'],
+  ['What is the fMRI BOLD signal?', 'An indirect haemodynamic proxy shaped by neurovascular coupling — not a direct or cellular-resolution readout of neuronal firing.'],
+  ['Centre–surround receptive fields encode?', 'Local spatial contrast and edges. Antagonistic surrounds suppress uniform illumination rather than reporting absolute luminance.'],
+  ['Cochlear inner vs outer hair cells?', 'Inner hair cells carry most afferent signalling; outer hair cells are electromotile amplifiers that sharpen basilar-membrane responses.'],
+  ['HPA axis negative feedback?', 'Rising glucocorticoids act on pituitary, hypothalamus and higher circuits to restrain further CRH/ACTH drive. Chronic stress can reshape this loop.'],
+  ['Climbing vs mossy fibres?', 'Climbing fibres (inferior olive) give powerful direct Purkinje-cell input; mossy fibres drive granule cells whose parallel fibres contact Purkinje cells.'],
+  ['Leptin in the arcuate nucleus?', 'Signals energy sufficiency: activates anorexigenic POMC and inhibits orexigenic AgRP/NPY. Obesity often involves leptin resistance despite high leptin.'],
+  ['Why must GnRH be pulsatile?', 'Pulses sustain and pattern LH/FSH secretion; continuous agonist exposure desensitises gonadotrophs — the basis of GnRH-agonist therapy.'],
+  ['Engulfment vs causation in pruning?', 'Synaptic material inside microglia shows contact/engulfment; proving the pathway is necessary requires perturbing it and measuring synapse or circuit outcomes.']
 ];
 
 const STORAGE_KEY = 'neur3301-exam-lab-v2';
@@ -185,8 +204,9 @@ function weakQuestions() {
 function renderDashboard() {
   const openErrors = state.errors.filter(error => !error.resolved).length;
   const accuracy = state.quiz.attempts ? Math.round(state.quiz.correct / state.quiz.attempts * 100) : 0;
-  document.querySelector('#lecture-stat').textContent = `${state.done.length}/29`;
-  document.querySelector('#lecture-progress').style.width = `${state.done.length / 29 * 100}%`;
+  const taughtCount = validLectureIds.size;
+  document.querySelector('#lecture-stat').textContent = `${state.done.length}/${taughtCount}`;
+  document.querySelector('#lecture-progress').style.width = `${Math.min(100, state.done.length / taughtCount * 100)}%`;
   document.querySelector('#accuracy-stat').textContent = `${accuracy}%`;
   document.querySelector('#answered-stat').textContent = `${state.quiz.attempts} ${state.quiz.attempts === 1 ? 'attempt' : 'attempts'}`;
   document.querySelector('#weak-stat').textContent = String(weakQuestions().length);
@@ -247,6 +267,15 @@ function toggleLecture(id) {
   renderLectureMap();
 }
 
+function shuffle(array) {
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
 function currentPool() {
   const filter = document.querySelector('#quiz-block').value;
   if (filter === 'All') return questions;
@@ -275,17 +304,20 @@ function nextQuestion() {
 function renderQuestion() {
   const pool = currentPool();
   const item = state.quiz.items[activeQuestion.id];
+  const hasHistory = item && item.attempts > 0;
   document.querySelector('#question-number').textContent = `${pool.length}-item practice set`;
-  document.querySelector('#question-meta').textContent = `Lecture ${activeQuestion.lecture} · ${activeQuestion.topic} · ${activeQuestion.block}${item ? ` · personal accuracy ${Math.round(item.correct / item.attempts * 100)}%` : ''}`;
+  document.querySelector('#question-meta').textContent = `Lecture ${activeQuestion.lecture} · ${activeQuestion.topic} · ${activeQuestion.block}${hasHistory ? ` · personal accuracy ${Math.round(item.correct / item.attempts * 100)}%` : ''}`;
   document.querySelector('#question-stem').textContent = activeQuestion.stem;
   document.querySelector('#question-explanation').replaceChildren();
   const options = document.querySelector('#question-options');
-  options.replaceChildren(...activeQuestion.options.map((text, index) => {
+  const order = shuffle([...activeQuestion.options.keys()]);
+  options.replaceChildren(...order.map((originalIndex, displayIndex) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'option';
-    button.textContent = `${index + 1}. ${text}`;
-    button.addEventListener('click', () => answerQuestion(index));
+    button.dataset.index = String(originalIndex);
+    button.textContent = `${displayIndex + 1}. ${activeQuestion.options[originalIndex]}`;
+    button.addEventListener('click', () => answerQuestion(originalIndex));
     return button;
   }));
 }
@@ -301,10 +333,11 @@ function answerQuestion(index) {
   item.correct += correct ? 1 : 0;
   state.quiz.items[activeQuestion.id] = item;
 
-  document.querySelectorAll('.option').forEach((button, buttonIndex) => {
+  document.querySelectorAll('.option').forEach(button => {
     button.disabled = true;
-    if (buttonIndex === activeQuestion.answer) button.classList.add('correct');
-    else if (buttonIndex === index) button.classList.add('incorrect');
+    const optionIndex = Number(button.dataset.index);
+    if (optionIndex === activeQuestion.answer) button.classList.add('correct');
+    else if (optionIndex === index) button.classList.add('incorrect');
   });
 
   const explanation = document.createElement('div');
@@ -482,9 +515,18 @@ document.querySelector('#export-data').addEventListener('click', exportData);
 document.querySelector('#import-data').addEventListener('change', importData);
 document.querySelector('#reset-all').addEventListener('click', resetAll);
 document.addEventListener('keydown', event => {
-  if (!document.querySelector('#quiz').classList.contains('active') || /INPUT|SELECT|TEXTAREA/.test(event.target.tagName)) return;
-  if (/^[1-4]$/.test(event.key) && !questionAnswered) document.querySelectorAll('.option')[Number(event.key) - 1]?.click();
-  if (event.key.toLowerCase() === 'n') nextQuestion();
+  if (/INPUT|SELECT|TEXTAREA/.test(event.target.tagName)) return;
+  if (document.querySelector('#quiz').classList.contains('active')) {
+    if (/^[1-4]$/.test(event.key) && !questionAnswered) document.querySelectorAll('.option')[Number(event.key) - 1]?.click();
+    if (event.key.toLowerCase() === 'n') nextQuestion();
+  } else if (document.querySelector('#cards').classList.contains('active')) {
+    if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); revealCard(); }
+    else if (event.key === 'ArrowRight') moveCard(1);
+    else if (event.key === 'ArrowLeft') moveCard(-1);
+    else if (cardRevealed && event.key.toLowerCase() === 'k') rateCard('known');
+    else if (cardRevealed && event.key.toLowerCase() === 'a') rateCard('again');
+  }
 });
 
 renderAll();
+setInterval(renderCountdowns, 3600000);
