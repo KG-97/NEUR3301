@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Synapse",
+    "subtitle": "NEUR3301 Study Lab",
+    "description": "The main marks-first study system for Advanced Neuroscience 1: mechanism revision, diagram questions, MCQs, exam answer maps, spaced repetition and seminar preparation.",
+    "url": "https://neur3301-synapse.pplx.app",
+    "status": "Live",
+    "tags": ["MCQs", "Exam practice", "Diagrams", "Seminar"]
+  },
+  {
+    "name": "MDMA Seminar Studio",
+    "subtitle": "15-minute seminar workspace",
+    "description": "An evidence-audited presentation workspace covering MDMA pharmacology, systems neuroscience, therapeutic mechanisms, limitations and hostile Q&A preparation.",
+    "url": "https://neur3301-synapse.pplx.app",
+    "status": "Inside Synapse",
+    "tags": ["MDMA", "Presentation", "Evidence audit"]
+  }
+]
