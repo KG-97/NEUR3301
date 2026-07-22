@@ -1,21 +1,34 @@
 [
   {
+    "name": "Synapse Exam Lab",
+    "subtitle": "Fast marks-first practice",
+    "description": "Exact 2026 timetable numbering, 10 mechanism-heavy MCQs, corrected Glia I recall, lecture processing, an error ledger and portable browser-local progress.",
+    "url": "app/",
+    "status": "Live in this repository",
+    "tags": [
+      "MCQ Forge",
+      "Glia I",
+      "Error ledger",
+      "Local progress"
+    ]
+  },
+  {
     "name": "Synapse Study Lab",
-    "subtitle": "Repository-hosted 2026 curriculum scaffold",
-    "description": "All 29 content lectures, 174 flashcards, 97 core concepts, 93 experiment prompts, fixed browser-local progress, and JSON backup tools.",
+    "subtitle": "Deep curriculum retrieval scaffold",
+    "description": "All 29 taught topics, 174 flashcards, 97 core concepts, 93 experiment prompts, fixed browser-local progress, and JSON backup tools.",
     "url": "study-lab/",
     "status": "Live in this repository",
     "tags": [
-      "29 lectures",
-      "Flashcards",
-      "Experiment prompts",
+      "29 topics",
+      "174 cards",
+      "93 prompts",
       "Local progress"
     ]
   },
   {
     "name": "Synapse X — Full Suite",
-    "subtitle": "Marks-first exam command centre",
-    "description": "The richer external build adds diagram questions, MCQ pressure-testing, long-answer maps, spaced repetition and broader exam workflows.",
+    "subtitle": "Richer external exam command centre",
+    "description": "The external build adds diagram questions, larger MCQ pools, long-answer maps, spaced repetition and broader exam workflows.",
     "url": "https://neur3301-synapse.pplx.app",
     "status": "Live external app",
     "tags": [
