@@ -2,14 +2,14 @@
   {
     "name": "Synapse Exam Lab",
     "subtitle": "Fast marks-first practice",
-    "description": "Exact 2026 timetable numbering, 10 mechanism-heavy MCQs, corrected Glia I recall, lecture processing, an error ledger and portable browser-local progress.",
+    "description": "Exact 2026 timetable numbering, 36 mechanism-heavy MCQs, Test 1/Test 2 targeting, per-item diagnostics, confidence-rated recall and portable browser-local progress.",
     "url": "app/",
     "status": "Live in this repository",
     "tags": [
-      "MCQ Forge",
+      "36 MCQs",
+      "Weak-item queue",
       "Glia I",
-      "Error ledger",
-      "Local progress"
+      "Error ledger"
     ]
   },
   {

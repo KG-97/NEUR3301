@@ -15,7 +15,7 @@ The GitHub tools are static and require no account, backend, Firebase project or
 ## What is included
 
 - exact 2026 assessment dates, weights and lecture numbering;
-- a fast Exam Lab with 10 mechanism-heavy MCQs, corrected Glia I recall and an error ledger;
+- a maintainable Exam Lab with 36 mechanism-heavy MCQs, block targeting, per-item diagnostics, confidence-rated Glia I recall and a resolvable error ledger;
 - a deeper recovered Study Lab with 29 taught topics, 174 flashcards, 97 concepts and 93 experiment prompts;
 - fixed browser-local progress plus JSON import/export/reset;
 - an evidence-hardened 12-slide MDMA seminar studio and exact 15:00 rehearsal timer;
@@ -62,7 +62,7 @@ If deployment says Pages is not configured, make the one-time change: **Settings
 
 ## Source status
 
-`docs/app/` is intentionally small, readable and directly maintainable. `docs/study-lab/` is a clean portable compiled build recovered from Drive—not a saved Perplexity shell—but it is not a substitute for the original React/TypeScript project. The full maintainable source, package manifest and build configuration still need to be recovered before the minified bundle should be treated as editable source.
+`docs/app/` is intentionally dependency-free, readable and directly maintainable. Its HTML, CSS and JavaScript are separated and validated. `docs/study-lab/` is a clean portable compiled build recovered from Drive—not a saved Perplexity shell—but it is not a substitute for the original React/TypeScript project. The full maintainable source, package manifest and build configuration still need to be recovered before the minified bundle should be treated as editable source.
 
 ## Content standard
 

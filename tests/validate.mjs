@@ -3,6 +3,8 @@ import { existsSync, readFileSync } from 'node:fs';
 const required = [
   'docs/index.html',
   'docs/app/index.html',
+  'docs/app/app.js',
+  'docs/app/styles.css',
   'docs/study-lab/index.html',
   'docs/study-lab/assets/index-BR7I-zAT.js',
   'docs/study-lab/assets/index-C3XRwkWz.css',
@@ -38,11 +40,25 @@ for (const file of ['docs/index.html', 'docs/app/index.html', 'docs/study-lab/in
 }
 
 const examLab = readFileSync('docs/app/index.html', 'utf8');
-if (!examLab.includes('29 content lectures') || examLab.includes('S.done.length/30')) {
+const examLabScript = readFileSync('docs/app/app.js', 'utf8');
+if (!examLab.includes('29 taught topics') || !examLabScript.includes("[30, 'Spinal cord injury and regeneration'")) {
   throw new Error('Exam Lab lecture count/progress denominator regressed');
 }
-if (!examLab.includes('if(num===23)num++')) {
+if (examLabScript.includes("[23,") || !examLabScript.includes("[24, 'Motor cortex")) {
   throw new Error('Exam Lab no longer preserves the official no-class lecture 23 slot');
+}
+if (!examLab.includes('4 of 8–10 long answers') || !examLab.includes('2026-08-24T10:00:00+08:00')) {
+  throw new Error('Exam Lab official assessment facts regressed');
+}
+const questionRows = [...examLabScript.matchAll(/id: '([^']+)', lecture: (\d+), block: '([^']+)'/g)];
+if (questionRows.length !== 36 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
+  throw new Error(`Exam Lab must contain 36 uniquely identified questions; found ${questionRows.length}`);
+}
+for (const [from, to, block] of [[1, 7, 'Test 1'], [8, 13, 'Test 2']]) {
+  for (let lecture = from; lecture <= to; lecture += 1) {
+    const count = questionRows.filter(match => Number(match[2]) === lecture && match[3] === block).length;
+    if (count < 2) throw new Error(`Exam Lab needs at least two ${block} questions for Lecture ${lecture}`);
+  }
 }
 
 const deepBundle = readFileSync('docs/study-lab/assets/index-BR7I-zAT.js', 'utf8');

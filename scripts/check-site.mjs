@@ -67,6 +67,7 @@ async function checkCourseFacts() {
 await checkRegistry();
 await Promise.all([
   checkHtml("index.html"),
+  checkHtml("app/index.html"),
   checkHtml("seminar/index.html"),
   checkHtml("study-lab/index.html"),
 ]);

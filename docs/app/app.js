@@ -1,0 +1,490 @@
+const lectureGroups = [
+  { name: 'Development & Differentiation', block: 'Test 1', lectures: [
+    [1, 'Glia I', '21 Jul'], [2, 'Growth and trophic factors', '22 Jul'], [3, 'Axon outgrowth, target recognition and maps', '27 Jul'],
+    [4, 'Regressive events and cell death', '28 Jul'], [5, 'Cell lineage', '29 Jul'], [6, 'Adult neurogenesis / stem cells', '3 Aug'], [7, 'Glia II', '4 Aug']
+  ]},
+  { name: 'Synaptic Physiology & Plasticity', block: 'Test 2', lectures: [
+    [8, 'Membrane mechanisms', '5 Aug'], [9, 'Quantal transmission', '10 Aug'], [10, 'Neurotransmitter release', '11 Aug'],
+    [11, 'Synaptic plasticity, learning and memory', '18 Aug'], [12, 'Axon initial segment (AIS) and plasticity', '19 Aug'], [13, 'Synaptic development and pruning', '25 Aug']
+  ]},
+  { name: 'Sensory Systems', block: 'Final', lectures: [
+    [14, 'Biophysics of transduction', '26 Aug'], [15, 'Somatosensory processing', '8 Sep'], [16, 'Centrifugal control', '9 Sep'],
+    [17, 'Plasticity in adult sensory systems', '14 Sep'], [18, 'Cognition and measuring brain activity', '15 Sep'], [19, 'Vision', '16 Sep']
+  ]},
+  { name: 'Motor & Integrative Systems', block: 'Final', lectures: [
+    [20, 'Peripheral auditory processing', '21 Sep'], [21, 'Central auditory processing', '22 Sep'], [22, 'Early-life stress and the HPA axis in pregnancy', '23 Sep'],
+    [24, 'Motor cortex: neurophysiology and plasticity', '29 Sep'], [25, 'Cerebellar networks: neurophysiology and plasticity', '30 Sep'],
+    [26, 'Neuroendocrine control of energy balance', '5 Oct'], [27, 'Neuroendocrine control of fertility', '6 Oct']
+  ]},
+  { name: 'Ageing, Injury & Repair', block: 'Final', lectures: [
+    [28, 'Ageing, injury and degeneration', '7 Oct'], [29, 'Sensory deficits and prostheses', '12 Oct'], [30, 'Spinal cord injury and regeneration', '13 Oct']
+  ]}
+];
+
+const questions = [
+  { id: 'l1-origin', lecture: 1, block: 'Test 1', topic: 'Glia I', stem: 'Which developmental origin most clearly distinguishes microglia from CNS macroglia?', options: ['Neural crest', 'Early yolk-sac erythromyeloid progenitors', 'Adult bone marrow in the healthy brain', 'Radial glia'], answer: 1, explanation: 'Microglia colonise the embryonic CNS from early yolk-sac macrophage lineages and largely self-renew locally. Astrocytes and oligodendrocyte-lineage cells are neuroectodermal.', trap: 'Do not generalise the neural-crest origin of Schwann cells to CNS glia.' },
+  { id: 'l1-myelin', lecture: 1, block: 'Test 1', topic: 'Glia I', stem: 'Which comparison between myelinating cells is correct?', options: ['One Schwann cell myelinates many CNS axons', 'One oligodendrocyte can form internodes on multiple CNS axons', 'Oligodendrocytes are neural-crest derived', 'Microglia form peripheral myelin'], answer: 1, explanation: 'A single oligodendrocyte can myelinate segments on several CNS axons. A myelinating Schwann cell normally forms one internode on one PNS axon.', trap: 'Separate CNS/PNS location from the number of internodes formed per cell.' },
+  { id: 'l2-retrograde', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'Target-derived neurotrophin binds a Trk receptor at an axon terminal. What best supports a long-range survival response?', options: ['The ligand must diffuse through the nucleus', 'A signalling endosome can undergo retrograde axonal transport', 'The receptor is converted into a neurotransmitter', 'The soma passively detects extracellular calcium'], answer: 1, explanation: 'Ligand–Trk complexes can signal locally and from retrogradely transported endosomes, coupling target access to transcriptional survival programmes in the soma.', trap: '“Retrograde” here describes transport toward the soma, not retrograde synaptic transmission.' },
+  { id: 'l2-competition', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'In the classic neurotrophic-factor hypothesis, why do excess developing neurons die?', options: ['Every target releases an unlimited survival signal', 'Neurons compete for limiting target-derived support', 'All immature neurons are intrinsically programmed to die simultaneously', 'Myelin directly selects the surviving soma'], answer: 1, explanation: 'Targets provide limiting trophic support. Neurons that establish effective access activate survival pathways; others undergo programmed cell death.', trap: 'Cell death is regulated and competitive, not random cellular “wastage”.' },
+  { id: 'l3-netrin', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'Why is “netrin is an attractant” an incomplete rule?', options: ['Netrin has no receptors', 'The response depends on receptor state and intracellular context', 'All axons ignore diffusible cues', 'Attraction only occurs after myelination'], answer: 1, explanation: 'The same cue can promote attraction or repulsion depending on receptor combinations, co-receptors and intracellular signalling state.', trap: 'Guidance cues are not permanently assigned one behavioural sign.' },
+  { id: 'l3-ephrin', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'Graded Eph receptor and ephrin expression is especially useful for:', options: ['Generating action potentials', 'Building continuous topographic maps', 'Making cerebrospinal fluid', 'Triggering vesicle fusion'], answer: 1, explanation: 'Complementary molecular gradients provide positional information that helps map neighbouring source neurons onto neighbouring target locations.', trap: 'A map can arise from graded relative signalling, not a unique label for every axon.' },
+  { id: 'l4-apoptosis', lecture: 4, block: 'Test 1', topic: 'Regressive events and cell death', stem: 'Loss of trophic support most directly favours which regulated death pathway?', options: ['Mitochondrial outer-membrane permeabilisation and caspase activation', 'Immediate osmotic lysis without signalling', 'Action-potential broadening only', 'Constitutive synaptic potentiation'], answer: 0, explanation: 'Trophic withdrawal can shift BCL-2-family signalling toward mitochondrial permeabilisation, cytochrome-c release and the intrinsic caspase cascade.', trap: 'Programmed developmental death is not equivalent to acute necrotic rupture.' },
+  { id: 'l4-pruning', lecture: 4, block: 'Test 1', topic: 'Regressive events and cell death', stem: 'Which statement correctly separates axon pruning from neuronal apoptosis?', options: ['Pruning always kills the soma', 'Pruning can remove selected branches while preserving the neuron', 'Apoptosis only removes synapses', 'They are molecularly and anatomically identical'], answer: 1, explanation: 'Regressive development can be compartment-specific. Axons or synapses may be removed while the parent neuron survives.', trap: 'Do not infer whole-cell death from local structural elimination.' },
+  { id: 'l5-notch', lecture: 5, block: 'Test 1', topic: 'Cell lineage', stem: 'High Notch signalling in a neural progenitor most commonly tends to:', options: ['Maintain progenitor identity and suppress premature neuronal differentiation', 'Force immediate axon myelination', 'Convert the cell into microglia', 'Open voltage-gated sodium channels'], answer: 0, explanation: 'Notch–Hes programmes often maintain progenitor state and inhibit proneural differentiation, allowing neighbouring cells with lower Notch activity to differentiate.', trap: 'Notch effects are context-dependent, but “high Notch equals immediate neuron” reverses the usual developmental logic.' },
+  { id: 'l5-lineage', lecture: 5, block: 'Test 1', topic: 'Cell lineage', stem: 'A lineage-tracing experiment is designed primarily to determine:', options: ['The membrane potential of every descendant', 'Which cell types descend from a labelled progenitor over time', 'Whether a ligand binds its receptor in vitro', 'The exact number of synaptic vesicles released'], answer: 1, explanation: 'A heritable label marks a progenitor and its descendants, revealing fate relationships across development.', trap: 'Marker co-expression at one time point is not, by itself, proof of ancestry.' },
+  { id: 'l6-human', lecture: 6, block: 'Test 1', topic: 'Adult neurogenesis', stem: 'What is the safest claim about adult hippocampal neurogenesis in humans?', options: ['It is absent in every adult', 'It is abundant and methodologically settled', 'Evidence remains disputed and depends strongly on tissue and detection methods', 'The adult SVZ supplies most human olfactory neurons'], answer: 2, explanation: 'Rodent adult neurogenesis is well established, but the extent and persistence of the phenomenon in adult humans remain methodologically contested.', trap: 'Do not transfer the size and certainty of rodent effects directly to humans.' },
+  { id: 'l6-stemcell', lecture: 6, block: 'Test 1', topic: 'Adult neurogenesis', stem: 'Which result best demonstrates self-renewal rather than survival alone?', options: ['A labelled cell remains alive for one day', 'A progenitor generates differentiated descendants while preserving progenitor capacity across serial divisions', 'A neuron expresses NeuN once', 'A culture contains growth factor'], answer: 1, explanation: 'Stemness requires both production of differentiated progeny and maintenance of the stem/progenitor pool over repeated divisions.', trap: 'Long survival and marker expression do not establish self-renewal.' },
+  { id: 'l7-bbb', lecture: 7, block: 'Test 1', topic: 'Glia II', stem: 'Which cells form the physical paracellular seal of the blood–brain barrier?', options: ['Astrocyte endfeet', 'Brain endothelial cells with tight junctions', 'Microglia', 'Oligodendrocytes'], answer: 1, explanation: 'Specialised brain endothelial tight junctions form the seal. Astrocytes, pericytes and basement-membrane signals regulate barrier development and maintenance.', trap: 'Astrocyte endfeet support and regulate the BBB; they are not the tight-junction seal.' },
+  { id: 'l7-states', lecture: 7, block: 'Test 1', topic: 'Glia II', stem: 'Why should simple A1/A2 astrocyte and M1/M2 microglia labels be used cautiously?', options: ['Glia never change state', 'In-vivo states are multidimensional and vary with region, time, disease and method', 'Only neurons express genes', 'The labels describe fixed embryonic lineages'], answer: 1, explanation: 'Glial responses occupy diverse, overlapping state spaces. Binary labels can hide biologically important context and heterogeneity.', trap: 'Convenient shorthand is not a complete ontology.' },
+
+  { id: 'l8-chloride', lecture: 8, block: 'Test 2', topic: 'Membrane mechanisms', stem: 'Vm is −65 mV and ECl is −70 mV. Opening chloride channels initially drives:', options: ['Chloride out and inward conventional current', 'Chloride in and outward conventional current', 'Chloride in and inward conventional current', 'No ion flux'], answer: 1, explanation: 'Vm − ECl = +5 mV. Negative chloride enters, producing outward conventional current and driving Vm toward −70 mV.', trap: 'Ion movement and conventional-current direction are opposite for anions.' },
+  { id: 'l8-drivingforce', lecture: 8, block: 'Test 2', topic: 'Membrane mechanisms', stem: 'If a channel conductance is unchanged but Vm moves closer to that ion’s equilibrium potential, the current magnitude should generally:', options: ['Increase because conductance dominates', 'Decrease because electrochemical driving force shrinks', 'Reverse without crossing the equilibrium potential', 'Become independent of voltage'], answer: 1, explanation: 'For an approximately ohmic current, I = g(Vm − Eion). With fixed conductance, current falls as Vm approaches Eion.', trap: 'Open-channel number and driving force are separate determinants of current.' },
+  { id: 'l9-minis', lecture: 9, block: 'Test 2', topic: 'Quantal transmission', stem: 'Miniature event frequency rises while mean amplitude is unchanged. What is the best first inference?', options: ['Postsynaptic receptor gain increased', 'Presynaptic spontaneous release increased', 'Quantal size increased', 'The reversal potential shifted'], answer: 1, explanation: 'Frequency usually reflects presynaptic event rate; unchanged amplitude argues that postsynaptic quantal size is broadly intact.', trap: 'This is an inference, not a proof—detection thresholds and synapse number can confound it.' },
+  { id: 'l9-binomial', lecture: 9, block: 'Test 2', topic: 'Quantal transmission', stem: 'In a simple binomial release model, mean synaptic response is proportional to:', options: ['n × p × q', 'n + p − q', 'p/q only', 'Membrane resistance only'], answer: 0, explanation: 'The model separates number of release sites n, release probability p and quantal size q. Mean response is n·p·q under its simplifying assumptions.', trap: 'Real synapses may violate independence and uniform-p assumptions.' },
+  { id: 'l10-calcium', lecture: 10, block: 'Test 2', topic: 'Neurotransmitter release', stem: 'Halving presynaptic calcium influx reduces release about sixteen-fold over a measured range. What follows?', options: ['Exactly four calcium ions bind', 'The system shows roughly fourth-power effective cooperativity in that range', 'Four vesicles must fuse', 'Every calcium channel has four subunits'], answer: 1, explanation: 'A log–log slope near four describes effective system cooperativity over the tested range; it does not establish literal molecular stoichiometry.', trap: 'A phenomenological exponent is not automatically a count of binding sites.' },
+  { id: 'l10-sensor', lecture: 10, block: 'Test 2', topic: 'Neurotransmitter release', stem: 'Which pairing best describes fast synchronous vesicle fusion?', options: ['Synaptotagmin senses calcium; SNAREs provide the fusion machinery', 'AMPA receptors sense calcium; kinesin forms the pore', 'Clathrin triggers exocytosis; dynein cleaves SNAREs', 'PSD-95 transports vesicles down the axon'], answer: 0, explanation: 'Calcium binding to synaptotagmin rapidly promotes SNARE-mediated membrane fusion at release-ready vesicles.', trap: 'Endocytic proteins recycle membrane after release; they are not the fast calcium trigger.' },
+  { id: 'l11-ppr', lecture: 11, block: 'Test 2', topic: 'Synaptic plasticity', stem: 'A high paired-pulse ratio most often suggests:', options: ['High initial release probability', 'Low initial release probability with residual-calcium facilitation', 'More postsynaptic AMPA receptors with certainty', 'Long-term depression'], answer: 1, explanation: 'Paired-pulse facilitation often varies inversely with initial release probability because residual calcium boosts the second response.', trap: 'PPR is an index with confounds, not a direct release-probability meter.' },
+  { id: 'l11-ltp', lecture: 11, block: 'Test 2', topic: 'Synaptic plasticity', stem: 'In canonical CA1 LTP induction, coincident glutamate binding and postsynaptic depolarisation matter because depolarisation:', options: ['Removes the voltage-dependent Mg²⁺ block of NMDA receptors', 'Closes every AMPA receptor', 'Prevents calcium entry', 'Degrades CaMKII'], answer: 0, explanation: 'Depolarisation relieves NMDA-receptor Mg²⁺ block, allowing calcium entry that activates plasticity signalling when glutamate is present.', trap: 'The NMDA receptor acts as a coincidence detector; glutamate alone is often insufficient at resting voltage.' },
+  { id: 'l12-initiation', lecture: 12, block: 'Test 2', topic: 'AIS plasticity', stem: 'Why is the axon initial segment usually the action-potential initiation site?', options: ['It contains no potassium channels', 'Its geometry and high density of voltage-gated sodium channels favour spike initiation', 'It is electrically isolated from the soma', 'It releases trophic factors into blood'], answer: 1, explanation: 'The AIS has specialised scaffolds and high sodium-channel density, making it the lowest-threshold site for regenerative spike initiation in many neurons.', trap: '“Usually” matters: initiation site depends on cell type and state.' },
+  { id: 'l12-remodel', lecture: 12, block: 'Test 2', topic: 'AIS plasticity', stem: 'What is the most defensible general claim about structural AIS plasticity?', options: ['AIS movement always increases excitability', 'Changes in AIS position or length can alter excitability, but direction depends on cellular context', 'The AIS cannot remodel after development', 'AIS plasticity changes only neurotransmitter identity'], answer: 1, explanation: 'Activity-dependent changes in AIS geometry and channel organisation can tune excitability, but the functional sign depends on morphology, conductances and measurement conditions.', trap: 'Avoid turning one preparation’s directional effect into a universal rule.' },
+  { id: 'l13-complement', lecture: 13, block: 'Test 2', topic: 'Synaptic pruning', stem: 'Which is the most precise simplified complement-pruning sequence?', options: ['C1q/classical pathway → C3 deposition → CR3 recognition of complement-opsonised material', 'CR3 synthesises C1q inside neurons', 'C4 must always act after C3', 'Complement only affects adult peripheral nerves'], answer: 0, explanation: 'Complement tagging can lead to C3-fragment deposition on selected material and recognition by microglial CR3, supporting engulfment in defined developmental contexts.', trap: 'The pathway is context-specific; do not claim it explains every form of pruning.' },
+  { id: 'l13-causality', lecture: 13, block: 'Test 2', topic: 'Synaptic pruning', stem: 'Microglia contain synaptic material after a developmental manipulation. What does this observation alone establish?', options: ['Microglia caused all synapse loss', 'Microglia contacted or engulfed synaptic material, but causal necessity needs intervention', 'The material was never neuronal', 'Complement is certainly required'], answer: 1, explanation: 'Imaging supports association and engulfment. Causal necessity requires perturbing the proposed microglial pathway and measuring synapse or circuit outcomes.', trap: 'Presence inside a cell does not by itself prove that pathway caused the phenotype.' },
+
+  { id: 'l14-transduction', lecture: 14, block: 'Final', topic: 'Biophysics of transduction', stem: 'A sensory receptor potential differs from an action potential because it is typically:', options: ['Graded with stimulus strength', 'All-or-none and non-decrementing', 'Independent of ion channels', 'Restricted to myelinated axons'], answer: 0, explanation: 'Transduction channels usually generate graded receptor potentials; these are converted into spike timing or transmitter release downstream.', trap: 'Do not collapse stimulus transduction and action-potential generation into one event.' },
+  { id: 'l16-feedback', lecture: 16, block: 'Final', topic: 'Centrifugal control', stem: 'A centrifugal sensory pathway carries signals primarily:', options: ['From peripheral receptors toward the CNS', 'From higher or central regions back toward earlier sensory processing stages', 'Only between spinal motor neurons', 'From muscle to tendon'], answer: 1, explanation: 'Centrifugal or efferent feedback can alter gain, selectivity and signal-to-noise in earlier sensory circuits.', trap: 'The direction is central-to-earlier-stage, not the usual afferent feedforward direction.' },
+  { id: 'l18-bold', lecture: 18, block: 'Final', topic: 'Measuring brain activity', stem: 'The fMRI BOLD signal is best described as:', options: ['A direct recording of neuronal action potentials', 'An indirect haemodynamic proxy shaped by neurovascular coupling', 'A measure of one neurotransmitter only', 'A cellular-resolution voltage trace'], answer: 1, explanation: 'BOLD reflects changes in blood oxygenation and flow coupled to local activity. It is spatially and temporally indirect.', trap: 'Activation maps are not literal photographs of neurons firing.' },
+  { id: 'l19-contrast', lecture: 19, block: 'Final', topic: 'Vision', stem: 'Centre–surround receptive fields are especially suited to encode:', options: ['Absolute luminance regardless of context', 'Local spatial contrast and edges', 'Eye colour', 'Descending motor commands'], answer: 1, explanation: 'Antagonistic centre–surround organisation suppresses uniform input and emphasises local luminance differences.', trap: 'Early visual neurons prioritise contrast over a raw light-meter representation.' },
+  { id: 'l20-haircells', lecture: 20, block: 'Final', topic: 'Peripheral auditory processing', stem: 'Which division of labour in the mammalian cochlea is most accurate?', options: ['Inner hair cells provide most afferent signalling; outer hair cells provide active mechanical amplification', 'Outer hair cells alone carry all auditory afferents', 'Inner hair cells set middle-ear pressure', 'Both cell types are central neurons'], answer: 0, explanation: 'Inner hair cells are the main sensory output to auditory afferents; outer hair-cell electromotility sharpens and amplifies basilar-membrane responses.', trap: 'Amplification and primary afferent transmission are related but distinct jobs.' },
+  { id: 'l22-hpa', lecture: 22, block: 'Final', topic: 'HPA axis', stem: 'Under ordinary negative feedback, rising glucocorticoids tend to:', options: ['Increase CRH and ACTH without limit', 'Suppress upstream hypothalamic and pituitary drive', 'Directly open cochlear hair-cell channels', 'Eliminate circadian regulation'], answer: 1, explanation: 'Glucocorticoid receptor signalling feeds back across hypothalamic, pituitary and higher circuits to restrain further HPA activation.', trap: 'Feedback can be altered by context and chronic stress, but the canonical loop is inhibitory.' },
+  { id: 'l25-cerebellum', lecture: 25, block: 'Final', topic: 'Cerebellar networks', stem: 'Which statement best distinguishes climbing and mossy fibre input to the cerebellar cortex?', options: ['Climbing fibres strongly contact Purkinje cells; mossy fibres act through granule-cell parallel fibres', 'Mossy fibres arise only from Purkinje cells', 'Climbing fibres never influence plasticity', 'Both inputs bypass the cerebellar cortex'], answer: 0, explanation: 'Inferior-olive climbing fibres provide powerful Purkinje-cell input, while mossy fibres recruit granule cells whose parallel fibres contact Purkinje cells.', trap: 'The two pathways differ in source, convergence and teaching/context roles.' },
+  { id: 'l26-energy', lecture: 26, block: 'Final', topic: 'Energy balance', stem: 'Leptin signalling in the arcuate nucleus generally favours which acute pattern?', options: ['Activate AgRP/NPY and inhibit POMC', 'Activate POMC and inhibit AgRP/NPY', 'Silence every hypothalamic neuron', 'Trigger GnRH release only'], answer: 1, explanation: 'Leptin signals energy sufficiency, tending to promote anorexigenic POMC output and restrain orexigenic AgRP/NPY neurons.', trap: 'Obesity can involve leptin resistance despite high circulating leptin.' },
+  { id: 'l27-pulses', lecture: 27, block: 'Final', topic: 'Fertility', stem: 'Why does GnRH pulsatility matter?', options: ['Continuous and pulsatile GnRH are always equivalent', 'Pulse pattern regulates gonadotroph responsiveness; continuous exposure can desensitise the axis', 'GnRH acts only on the adrenal gland', 'GnRH is stored in ovarian follicles only'], answer: 1, explanation: 'Pulsatile GnRH sustains and patterns LH/FSH secretion, whereas continuous agonist exposure can downregulate pituitary responsiveness.', trap: 'Frequency is part of the signal, not background noise.' },
+  { id: 'l30-scar', lecture: 30, block: 'Final', topic: 'Spinal cord repair', stem: 'Why is “the glial scar only blocks repair” inaccurate?', options: ['CSPGs never inhibit axons', 'Reactive astrocyte borders can also contain inflammation and preserve tissue', 'Astrocytes disappear after injury', 'Only microglia respond to injury'], answer: 1, explanation: 'Scar-associated signals can inhibit axon growth, while reactive borders can limit inflammatory spread and protect surviving tissue. Function depends on time, state and intervention.', trap: 'A structure can have both protective and inhibitory effects.' }
+];
+
+const cards = [
+  ['Macroglia vs microglia origin?', 'Astrocytes and oligodendrocyte-lineage cells arise from neuroectoderm/radial glia; microglia derive predominantly from early yolk-sac erythromyeloid progenitors.'],
+  ['OLIG2/SOX10 vs PDGFRα?', 'OLIG1/2 and SOX10 are lineage transcription factors. PDGFRα is a receptor and common oligodendrocyte-progenitor marker.'],
+  ['Who forms the physical BBB seal?', 'Specialised endothelial tight junctions. Astrocytes, pericytes and basement membrane regulate barrier development and maintenance.'],
+  ['Why avoid simple A1/A2 and M1/M2 labels?', 'In-vivo glial states are heterogeneous and vary with region, disease stage, age, sex and method. Binary shorthand hides this state space.'],
+  ['Safest gliotransmission claim?', 'Astrocytes clearly modulate synapses through uptake, ion control, metabolism and ATP/adenosine signalling; routine physiological vesicular glutamate or D-serine release remains context-dependent.'],
+  ['Complement-pruning chain?', 'Altered activity → C1q/classical pathway → C3-fragment deposition → CR3 recognition of complement-opsonised material → engulfment, in defined contexts.'],
+  ['Dominant adult OPC fate?', 'Primarily oligodendrocytes; other fates are context-specific rather than the normal dominant output.'],
+  ['Why is the glial scar dual-role?', 'It can inhibit regrowth through scar-associated signals while also containing inflammation and preserving tissue.'],
+  ['Oligodendrocyte vs Schwann cell?', 'One oligodendrocyte can myelinate multiple CNS internodes; one myelinating Schwann cell normally forms one PNS internode.'],
+  ['Ependymal function?', 'Ependymal cells line ventricles and the central canal, contribute to ventricular-interface functions and use cilia to help move CSF.']
+];
+
+const STORAGE_KEY = 'neur3301-exam-lab-v2';
+const LEGACY_KEY = 'neur3301-exam-lab-v1';
+const validLectureIds = new Set(lectureGroups.flatMap(group => group.lectures.map(([id]) => id)));
+let state = loadState();
+let activeQuestion = null;
+let questionAnswered = false;
+let cardIndex = 0;
+let cardRevealed = false;
+let toastTimer;
+
+function defaultState() {
+  return { version: 2, done: [], quiz: { correct: 0, attempts: 0, items: {} }, cards: {}, errors: [] };
+}
+
+function normaliseState(input) {
+  if (!input || typeof input !== 'object' || Array.isArray(input)) throw new Error('Progress file must contain an object.');
+  const clean = defaultState();
+  clean.done = [...new Set((Array.isArray(input.done) ? input.done : []).map(Number).filter(id => validLectureIds.has(id)))];
+  const quiz = input.quiz && typeof input.quiz === 'object' ? input.quiz : {};
+  clean.quiz.correct = Math.max(0, Number(quiz.correct ?? quiz.r) || 0);
+  clean.quiz.attempts = Math.max(clean.quiz.correct, Number(quiz.attempts ?? quiz.n) || 0);
+  if (quiz.items && typeof quiz.items === 'object' && !Array.isArray(quiz.items)) {
+    for (const [id, value] of Object.entries(quiz.items)) {
+      if (!questions.some(question => question.id === id) || !value || typeof value !== 'object') continue;
+      const attempts = Math.max(0, Number(value.attempts) || 0);
+      clean.quiz.items[id] = { attempts, correct: Math.min(attempts, Math.max(0, Number(value.correct) || 0)) };
+    }
+  }
+  if (input.cards && typeof input.cards === 'object' && !Array.isArray(input.cards)) {
+    for (const [index, rating] of Object.entries(input.cards)) {
+      if (Number(index) >= 0 && Number(index) < cards.length && ['again', 'known'].includes(rating)) clean.cards[index] = rating;
+    }
+  }
+  clean.errors = (Array.isArray(input.errors) ? input.errors : []).slice(0, 500).map(item => ({
+    question: String(item.question ?? item.q ?? '').slice(0, 240),
+    type: String(item.type ?? item.t ?? 'Knowledge gap').slice(0, 80),
+    fix: String(item.fix ?? item.f ?? '').slice(0, 500),
+    date: validDate(item.date ?? item.d),
+    resolved: Boolean(item.resolved)
+  })).filter(item => item.question && item.fix);
+  return clean;
+}
+
+function validDate(value) {
+  const parsed = new Date(value || Date.now());
+  return Number.isNaN(parsed.getTime()) ? new Date().toISOString() : parsed.toISOString();
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_KEY);
+    return raw ? normaliseState(JSON.parse(raw)) : defaultState();
+  } catch (error) {
+    console.warn('Progress recovery failed; starting with a clean state.', error);
+    return defaultState();
+  }
+}
+
+function persist(message) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    localStorage.removeItem(LEGACY_KEY);
+  } catch (error) {
+    console.error('Unable to save progress.', error);
+    showToast('Progress could not be saved in this browser.');
+  }
+  renderDashboard();
+  if (message) showToast(message);
+}
+
+function showToast(message) {
+  const toast = document.querySelector('#toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+}
+
+function switchView(id) {
+  document.querySelectorAll('.view').forEach(view => view.classList.toggle('active', view.id === id));
+  document.querySelectorAll('.tab').forEach(tab => {
+    const active = tab.dataset.view === id;
+    tab.classList.toggle('active', active);
+    tab.setAttribute('aria-current', active ? 'page' : 'false');
+  });
+  if (id === 'quiz' && !activeQuestion) nextQuestion();
+  if (id === 'errors') renderLedger();
+  document.querySelector(`#${id}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderCountdowns() {
+  const now = Date.now();
+  document.querySelectorAll('[data-countdown]').forEach(element => {
+    const target = new Date(element.dataset.countdown).getTime();
+    const remaining = target - now;
+    const days = Math.ceil(remaining / 86400000);
+    element.textContent = remaining < 0 ? 'Date passed' : remaining < 86400000 ? 'Under 24 hours' : `${days} days remaining`;
+  });
+}
+
+function weakQuestions() {
+  return questions.filter(question => {
+    const item = state.quiz.items[question.id];
+    return item && item.attempts > 0 && item.correct / item.attempts < .8;
+  });
+}
+
+function renderDashboard() {
+  const openErrors = state.errors.filter(error => !error.resolved).length;
+  const accuracy = state.quiz.attempts ? Math.round(state.quiz.correct / state.quiz.attempts * 100) : 0;
+  document.querySelector('#lecture-stat').textContent = `${state.done.length}/29`;
+  document.querySelector('#lecture-progress').style.width = `${state.done.length / 29 * 100}%`;
+  document.querySelector('#accuracy-stat').textContent = `${accuracy}%`;
+  document.querySelector('#answered-stat').textContent = `${state.quiz.attempts} ${state.quiz.attempts === 1 ? 'attempt' : 'attempts'}`;
+  document.querySelector('#weak-stat').textContent = String(weakQuestions().length);
+  document.querySelector('#error-stat').textContent = String(openErrors);
+
+  const nextLecture = lectureGroups.flatMap(group => group.lectures).find(([id]) => !state.done.includes(id));
+  const title = document.querySelector('#next-action');
+  const detail = document.querySelector('#next-action-detail');
+  if (weakQuestions().length) {
+    title.textContent = `Retest ${weakQuestions().length} weak MCQ ${weakQuestions().length === 1 ? 'item' : 'items'}.`;
+    detail.textContent = 'Select “Weak items” in MCQ Forge and retrieve the mechanism before reading the options.';
+  } else if (openErrors) {
+    title.textContent = `Close ${openErrors} misconception ${openErrors === 1 ? 'loop' : 'loops'}.`;
+    detail.textContent = 'Re-answer each failed claim closed-book, then mark it resolved only after a clean retest.';
+  } else if (nextLecture) {
+    title.textContent = `Process Lecture ${nextLecture[0]}: ${nextLecture[1]}.`;
+    detail.textContent = 'Compress the causal chain, retrieve it closed-book, then predict one intervention.';
+  } else {
+    title.textContent = 'All lectures processed. Shift to cumulative retrieval.';
+    detail.textContent = 'Mix blocks, practise long-answer plans and keep repairing errors.';
+  }
+}
+
+function renderLectureMap() {
+  const root = document.querySelector('#lecture-groups');
+  root.replaceChildren(...lectureGroups.map(group => {
+    const section = document.createElement('section');
+    section.className = 'group';
+    const heading = document.createElement('h3');
+    heading.textContent = `${group.name} · ${group.block}`;
+    const list = document.createElement('div');
+    list.className = 'lectures';
+    group.lectures.forEach(([id, topic, date]) => {
+      const label = document.createElement('label');
+      label.className = `lecture${state.done.includes(id) ? ' complete' : ''}`;
+      const input = document.createElement('input');
+      input.type = 'checkbox';
+      input.checked = state.done.includes(id);
+      input.setAttribute('aria-label', `Mark Lecture ${id}, ${topic}, processed`);
+      input.addEventListener('change', () => toggleLecture(id));
+      const copy = document.createElement('span');
+      const strong = document.createElement('b');
+      strong.textContent = `${id}. ${topic}`;
+      const small = document.createElement('small');
+      small.textContent = `${date} · ${group.block}`;
+      copy.append(strong, small);
+      label.append(input, copy);
+      list.append(label);
+    });
+    section.append(heading, list);
+    return section;
+  }));
+}
+
+function toggleLecture(id) {
+  state.done = state.done.includes(id) ? state.done.filter(value => value !== id) : [...state.done, id].sort((a, b) => a - b);
+  persist();
+  renderLectureMap();
+}
+
+function currentPool() {
+  const filter = document.querySelector('#quiz-block').value;
+  if (filter === 'All') return questions;
+  if (filter === 'Weak') return weakQuestions();
+  return questions.filter(question => question.block === filter);
+}
+
+function nextQuestion() {
+  const pool = currentPool();
+  if (!pool.length) {
+    activeQuestion = null;
+    questionAnswered = false;
+    document.querySelector('#question-number').textContent = 'No weak items yet';
+    document.querySelector('#question-meta').textContent = '';
+    document.querySelector('#question-stem').textContent = 'Answer questions first, or choose another question set.';
+    document.querySelector('#question-options').replaceChildren();
+    document.querySelector('#question-explanation').replaceChildren();
+    return;
+  }
+  const candidates = pool.length > 1 && activeQuestion ? pool.filter(question => question.id !== activeQuestion.id) : pool;
+  activeQuestion = candidates[Math.floor(Math.random() * candidates.length)];
+  questionAnswered = false;
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const pool = currentPool();
+  const item = state.quiz.items[activeQuestion.id];
+  document.querySelector('#question-number').textContent = `${pool.length}-item practice set`;
+  document.querySelector('#question-meta').textContent = `Lecture ${activeQuestion.lecture} · ${activeQuestion.topic} · ${activeQuestion.block}${item ? ` · personal accuracy ${Math.round(item.correct / item.attempts * 100)}%` : ''}`;
+  document.querySelector('#question-stem').textContent = activeQuestion.stem;
+  document.querySelector('#question-explanation').replaceChildren();
+  const options = document.querySelector('#question-options');
+  options.replaceChildren(...activeQuestion.options.map((text, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'option';
+    button.textContent = `${index + 1}. ${text}`;
+    button.addEventListener('click', () => answerQuestion(index));
+    return button;
+  }));
+}
+
+function answerQuestion(index) {
+  if (questionAnswered || !activeQuestion) return;
+  questionAnswered = true;
+  const correct = index === activeQuestion.answer;
+  state.quiz.attempts += 1;
+  state.quiz.correct += correct ? 1 : 0;
+  const item = state.quiz.items[activeQuestion.id] || { attempts: 0, correct: 0 };
+  item.attempts += 1;
+  item.correct += correct ? 1 : 0;
+  state.quiz.items[activeQuestion.id] = item;
+
+  document.querySelectorAll('.option').forEach((button, buttonIndex) => {
+    button.disabled = true;
+    if (buttonIndex === activeQuestion.answer) button.classList.add('correct');
+    else if (buttonIndex === index) button.classList.add('incorrect');
+  });
+
+  const explanation = document.createElement('div');
+  explanation.className = 'explanation';
+  const result = document.createElement('b');
+  result.textContent = correct ? 'Correct.' : 'Not yet.';
+  const mechanism = document.createElement('p');
+  mechanism.textContent = activeQuestion.explanation;
+  const trap = document.createElement('p');
+  trap.innerHTML = '<strong>Examiner trap:</strong> ';
+  trap.append(document.createTextNode(activeQuestion.trap));
+  explanation.append(result, mechanism, trap);
+  if (!correct) {
+    const log = document.createElement('button');
+    log.type = 'button';
+    log.className = 'button';
+    log.textContent = 'Send miss to error ledger';
+    log.addEventListener('click', () => logQuestionError(log));
+    explanation.append(log);
+  }
+  document.querySelector('#question-explanation').append(explanation);
+  persist();
+}
+
+function logQuestionError(button) {
+  if (!activeQuestion) return;
+  state.errors.unshift({ question: activeQuestion.stem, type: 'Knowledge gap', fix: activeQuestion.explanation, date: new Date().toISOString(), resolved: false });
+  persist('Miss added to the error ledger.');
+  button.disabled = true;
+  button.textContent = 'Added to ledger';
+}
+
+function resetQuiz() {
+  if (!confirm('Reset all MCQ attempts and item diagnostics? Lecture, flashcard and error data will stay intact.')) return;
+  state.quiz = { correct: 0, attempts: 0, items: {} };
+  activeQuestion = null;
+  persist('MCQ history reset.');
+  nextQuestion();
+}
+
+function renderCard() {
+  const [front, back] = cards[cardIndex];
+  const rating = state.cards[cardIndex];
+  document.querySelector('#card-side').textContent = cardRevealed ? 'Answer' : 'Question';
+  document.querySelector('#card-front').textContent = front;
+  document.querySelector('#card-front').hidden = cardRevealed;
+  document.querySelector('#card-back').textContent = back;
+  document.querySelector('#card-back').hidden = !cardRevealed;
+  document.querySelector('#again-card').hidden = !cardRevealed;
+  document.querySelector('#know-card').hidden = !cardRevealed;
+  document.querySelector('#card-progress').textContent = `Card ${cardIndex + 1}/${cards.length} · ${Object.values(state.cards).filter(value => value === 'known').length} known${rating ? ` · this card: ${rating === 'known' ? 'known' : 'repeat'}` : ''}`;
+}
+
+function revealCard() { cardRevealed = !cardRevealed; renderCard(); }
+function moveCard(step) { cardIndex = (cardIndex + step + cards.length) % cards.length; cardRevealed = false; renderCard(); }
+function rateCard(rating) { state.cards[cardIndex] = rating; persist(rating === 'known' ? 'Card marked known.' : 'Card kept for review.'); moveCard(1); }
+
+function addError(event) {
+  event.preventDefault();
+  state.errors.unshift({
+    question: document.querySelector('#error-question').value.trim(),
+    type: document.querySelector('#error-type').value,
+    fix: document.querySelector('#error-fix').value.trim(),
+    date: new Date().toISOString(),
+    resolved: false
+  });
+  event.currentTarget.reset();
+  persist('Error added.');
+  renderLedger();
+}
+
+function renderLedger() {
+  const ledger = document.querySelector('#error-ledger');
+  if (!state.errors.length) {
+    const empty = document.createElement('p');
+    empty.className = 'muted';
+    empty.textContent = 'No errors logged. Either perfect, or not testing hard enough.';
+    ledger.replaceChildren(empty);
+    return;
+  }
+  ledger.replaceChildren(...state.errors.map((error, index) => {
+    const entry = document.createElement('article');
+    entry.className = `entry${error.resolved ? ' resolved' : ''}`;
+    const copy = document.createElement('div');
+    const title = document.createElement('b');
+    title.textContent = error.question;
+    const meta = document.createElement('small');
+    meta.textContent = `${error.type} · ${new Date(error.date).toLocaleDateString('en-AU')} · ${error.resolved ? 'resolved' : 'open'}`;
+    const fix = document.createElement('p');
+    fix.textContent = error.fix;
+    copy.append(title, meta, fix);
+    const actions = document.createElement('div');
+    actions.className = 'entry-actions';
+    const resolve = document.createElement('button');
+    resolve.type = 'button';
+    resolve.textContent = error.resolved ? 'Reopen' : 'Resolve';
+    resolve.addEventListener('click', () => toggleError(index));
+    const remove = document.createElement('button');
+    remove.type = 'button';
+    remove.className = 'delete';
+    remove.textContent = 'Delete';
+    remove.addEventListener('click', () => deleteError(index));
+    actions.append(resolve, remove);
+    entry.append(copy, actions);
+    return entry;
+  }));
+}
+
+function toggleError(index) { state.errors[index].resolved = !state.errors[index].resolved; persist(); renderLedger(); }
+function deleteError(index) { state.errors.splice(index, 1); persist('Ledger entry deleted.'); renderLedger(); }
+
+function exportData() {
+  const url = URL.createObjectURL(new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' }));
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = `NEUR3301-progress-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.append(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+  showToast('Progress exported.');
+}
+
+function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      state = normaliseState(JSON.parse(reader.result));
+      persist('Progress imported and validated.');
+      renderAll();
+    } catch (error) {
+      showToast(`Import rejected: ${error.message}`);
+    } finally {
+      event.target.value = '';
+    }
+  };
+  reader.onerror = () => showToast('The selected file could not be read.');
+  reader.readAsText(file);
+}
+
+function resetAll() {
+  if (!confirm('Reset lectures, MCQs, cards and the error ledger? Export first if you may want this data later.')) return;
+  state = defaultState();
+  activeQuestion = null;
+  cardIndex = 0;
+  cardRevealed = false;
+  persist('All local progress reset.');
+  renderAll();
+}
+
+function renderAll() {
+  renderCountdowns();
+  renderDashboard();
+  renderLectureMap();
+  renderCard();
+  renderLedger();
+  if (document.querySelector('#quiz').classList.contains('active')) nextQuestion();
+}
+
+document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', () => switchView(tab.dataset.view)));
+document.querySelectorAll('[data-go]').forEach(button => button.addEventListener('click', () => switchView(button.dataset.go)));
+document.querySelector('#quiz-block').addEventListener('change', () => { activeQuestion = null; nextQuestion(); });
+document.querySelector('#next-question').addEventListener('click', nextQuestion);
+document.querySelector('#reset-quiz').addEventListener('click', resetQuiz);
+document.querySelector('#flashcard').addEventListener('click', revealCard);
+document.querySelector('#reveal-card').addEventListener('click', revealCard);
+document.querySelector('#previous-card').addEventListener('click', () => moveCard(-1));
+document.querySelector('#next-card').addEventListener('click', () => moveCard(1));
+document.querySelector('#again-card').addEventListener('click', () => rateCard('again'));
+document.querySelector('#know-card').addEventListener('click', () => rateCard('known'));
+document.querySelector('#error-form').addEventListener('submit', addError);
+document.querySelector('#export-data').addEventListener('click', exportData);
+document.querySelector('#import-data').addEventListener('change', importData);
+document.querySelector('#reset-all').addEventListener('click', resetAll);
+document.addEventListener('keydown', event => {
+  if (!document.querySelector('#quiz').classList.contains('active') || /INPUT|SELECT|TEXTAREA/.test(event.target.tagName)) return;
+  if (/^[1-4]$/.test(event.key) && !questionAnswered) document.querySelectorAll('.option')[Number(event.key) - 1]?.click();
+  if (event.key.toLowerCase() === 'n') nextQuestion();
+});
+
+renderAll();
