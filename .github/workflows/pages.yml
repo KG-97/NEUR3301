@@ -6,6 +6,7 @@ on:
     paths:
       - "docs/**"
       - "tests/**"
+      - "scripts/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -28,8 +29,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Validate registry, HTML and resources
-        run: node tests/validate.mjs
+      - name: Validate registry, HTML and course facts
+        run: |
+          node tests/validate.mjs
+          node scripts/check-site.mjs
 
   deploy:
     needs: validate
