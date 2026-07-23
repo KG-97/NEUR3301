@@ -33,6 +33,15 @@
       }
       #synapse-boot.hide { opacity: 0; pointer-events: none; }
       #synapse-boot strong { color: #e2e8f0; }
+      .se-skip {
+        position: fixed; left: 12px; top: -64px; z-index: 60;
+        padding: .6rem .9rem; background: #22d3ee; color: #04121a;
+        border-radius: .5rem; font: 600 14px/1.2 var(--se-font-sans);
+        text-decoration: none; transition: top .15s ease;
+      }
+      .se-skip:focus { top: 12px; }
+      :focus-visible { outline: 3px solid #22d3ee; outline-offset: 3px; }
+      @media (prefers-reduced-motion: reduce) { .se-skip { transition: none; } }
     </style>
     <!-- Optional fonts: only if online; page works without them -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,13 +61,14 @@
     <link rel="stylesheet" crossorigin href="./assets/index-C3XRwkWz.css" />
   </head>
   <body>
+    <a class="se-skip" href="#root">Skip to main content</a>
     <div id="synapse-boot" aria-live="polite">
       <div>
         <strong>Synapse — NEUR3301 Study Lab</strong><br />
         Loading study content…
       </div>
     </div>
-    <div id="root"></div>
+    <div id="root" tabindex="-1"></div>
     <script type="module" crossorigin src="./assets/index-BR7I-zAT.js"></script>
     <script src="./assets/synapse-enhance.js" defer></script>
     <script>

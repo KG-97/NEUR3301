@@ -37,16 +37,16 @@
       <article class="box"><b>50%</b><span>Final</span><small>4 of 8–10 long answers · 2 hours</small><em>Exam date: check LMS</em></article>
     </section>
 
-    <nav class="tabs" aria-label="Study tools">
-      <button class="tab active" type="button" data-view="dashboard">Dashboard</button>
-      <button class="tab" type="button" data-view="map">Lecture map</button>
-      <button class="tab" type="button" data-view="quiz">MCQ Forge</button>
-      <button class="tab" type="button" data-view="answers">Long Answer Lab</button>
-      <button class="tab" type="button" data-view="cards">Flashcards</button>
-      <button class="tab" type="button" data-view="errors">Error ledger</button>
+    <nav class="tabs" role="tablist" aria-label="Study tools">
+      <button class="tab active" type="button" role="tab" id="tab-dashboard" aria-selected="true" aria-controls="dashboard" tabindex="0" data-view="dashboard">Dashboard</button>
+      <button class="tab" type="button" role="tab" id="tab-map" aria-selected="false" aria-controls="map" tabindex="-1" data-view="map">Lecture map</button>
+      <button class="tab" type="button" role="tab" id="tab-quiz" aria-selected="false" aria-controls="quiz" tabindex="-1" data-view="quiz">MCQ Forge</button>
+      <button class="tab" type="button" role="tab" id="tab-answers" aria-selected="false" aria-controls="answers" tabindex="-1" data-view="answers">Long Answer Lab</button>
+      <button class="tab" type="button" role="tab" id="tab-cards" aria-selected="false" aria-controls="cards" tabindex="-1" data-view="cards">Flashcards</button>
+      <button class="tab" type="button" role="tab" id="tab-errors" aria-selected="false" aria-controls="errors" tabindex="-1" data-view="errors">Error ledger</button>
     </nav>
 
-    <section id="dashboard" class="view active">
+    <section id="dashboard" class="view active" role="tabpanel" aria-labelledby="tab-dashboard" tabindex="0">
       <div class="panel">
         <div class="section-head">
           <div><p class="eyebrow">Course state</p><h2>Track output, not vibes</h2></div>
@@ -76,7 +76,7 @@
       </div>
     </section>
 
-    <section id="map" class="view">
+    <section id="map" class="view" role="tabpanel" aria-labelledby="tab-map" tabindex="0">
       <div class="panel">
         <div class="section-head">
           <div><p class="eyebrow">Official sequence</p><h2>29 taught topics</h2></div>
@@ -86,7 +86,7 @@
       </div>
     </section>
 
-    <section id="quiz" class="view">
+    <section id="quiz" class="view" role="tabpanel" aria-labelledby="tab-quiz" tabindex="0">
       <div class="panel">
         <div class="section-head quiz-heading">
           <div><p class="eyebrow">MCQ Forge</p><h2 id="question-number">Question</h2></div>
@@ -112,7 +112,7 @@
       </div>
     </section>
 
-    <section id="answers" class="view">
+    <section id="answers" class="view" role="tabpanel" aria-labelledby="tab-answers" tabindex="0">
       <div class="panel">
         <div class="section-head answer-heading">
           <div><p class="eyebrow">Final exam · 4 answers in 2 hours</p><h2>Long Answer Lab</h2></div>
@@ -153,7 +153,7 @@
       </div>
     </section>
 
-    <section id="cards" class="view">
+    <section id="cards" class="view" role="tabpanel" aria-labelledby="tab-cards" tabindex="0">
       <div class="panel">
         <div class="section-head">
           <div><p class="eyebrow">Spaced retrieval · 29 cards</p><h2>Due-first active recall</h2></div>
@@ -177,7 +177,7 @@
       </div>
     </section>
 
-    <section id="errors" class="view">
+    <section id="errors" class="view" role="tabpanel" aria-labelledby="tab-errors" tabindex="0">
       <div class="panel">
         <div class="section-head">
           <div><p class="eyebrow">Misconception ledger</p><h2>Turn misses into work orders</h2></div>

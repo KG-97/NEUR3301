@@ -325,7 +325,8 @@ function switchView(id) {
   document.querySelectorAll('.tab').forEach(tab => {
     const active = tab.dataset.view === id;
     tab.classList.toggle('active', active);
-    tab.setAttribute('aria-current', active ? 'page' : 'false');
+    tab.setAttribute('aria-selected', String(active));
+    tab.tabIndex = active ? 0 : -1;
   });
   if (id === 'quiz' && !activeQuestion) nextQuestion();
   if (id === 'answers') renderAnswer();
@@ -877,7 +878,21 @@ function renderAll() {
   if (document.querySelector('#quiz').classList.contains('active')) nextQuestion();
 }
 
-document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', () => switchView(tab.dataset.view)));
+const tabButtons = [...document.querySelectorAll('.tab')];
+tabButtons.forEach(tab => tab.addEventListener('click', () => switchView(tab.dataset.view)));
+document.querySelector('.tabs').addEventListener('keydown', event => {
+  const current = tabButtons.indexOf(document.activeElement);
+  if (current === -1) return;
+  let next = null;
+  if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (current + 1) % tabButtons.length;
+  else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (current - 1 + tabButtons.length) % tabButtons.length;
+  else if (event.key === 'Home') next = 0;
+  else if (event.key === 'End') next = tabButtons.length - 1;
+  if (next === null) return;
+  event.preventDefault();
+  switchView(tabButtons[next].dataset.view);
+  tabButtons[next].focus();
+});
 document.querySelectorAll('[data-go]').forEach(button => button.addEventListener('click', () => switchView(button.dataset.go)));
 document.querySelector('#quiz-block').addEventListener('change', () => { activeQuestion = null; nextQuestion(); });
 document.querySelector('#next-question').addEventListener('click', nextQuestion);
