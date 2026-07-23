@@ -75,7 +75,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .muted { color: var(--muted); }
 .center { text-align: center; }
 
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
 .stat { display: flex; flex-direction: column; min-height: 126px; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
 .stat b { display: block; font-size: 29px; }
 .stat span { color: var(--text); }

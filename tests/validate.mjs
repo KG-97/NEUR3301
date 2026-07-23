@@ -120,6 +120,18 @@ if (!examLabScript.includes('button.dataset.index = String(originalIndex)') ||
     !examLabScript.includes('const optionIndex = Number(button.dataset.index)')) {
   throw new Error('Shuffled MCQ options no longer preserve their original answer-key mapping');
 }
+for (const control of ['id="again-card"', 'id="hard-card"', 'id="good-card"', 'id="card-due-stat"']) {
+  if (!examLab.includes(control)) throw new Error(`Spaced-review control missing from Exam Lab: ${control}`);
+}
+for (const schedulerInvariant of [
+  "const STORAGE_KEY = 'neur3301-exam-lab-v3'",
+  "LEGACY_KEYS = ['neur3301-exam-lab-v2', 'neur3301-exam-lab-v1']",
+  "new Date(now + 10 * MINUTE_MS)",
+  "rateCard('hard')",
+  "rateCard('good')"
+]) {
+  if (!examLabScript.includes(schedulerInvariant)) throw new Error(`Spaced-review scheduler regressed: ${schedulerInvariant}`);
+}
 
 const deepBundle = readFileSync('docs/study-lab/assets/index-BR7I-zAT.js', 'utf8');
 if (!deepBundle.includes('synapse-neur3301-progress-v1') || deepBundle.includes('port/5000')) {

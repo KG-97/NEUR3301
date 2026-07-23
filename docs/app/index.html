@@ -27,7 +27,7 @@
     <section class="hero">
       <p class="eyebrow">UWA · NEUR3301 · Semester 2, 2026</p>
       <h1>Mechanisms first.<br>Marks follow.</h1>
-      <p>Official lecture sequence, targeted MCQ practice, confidence-rated retrieval and a misconception ledger. No account, backend or API key.</p>
+      <p>Official lecture sequence, targeted MCQ practice, due-first spaced retrieval and a misconception ledger. No account, backend or API key.</p>
     </section>
 
     <section class="marks" aria-label="Assessment overview">
@@ -55,6 +55,7 @@
           <article class="stat"><b id="lecture-stat">0/29</b><span>lectures processed</span><div class="bar" aria-hidden="true"><i id="lecture-progress"></i></div></article>
           <article class="stat"><b id="accuracy-stat">0%</b><span>MCQ accuracy</span><small id="answered-stat">0 attempts</small></article>
           <article class="stat"><b id="weak-stat">0</b><span>weak MCQ items</span><small>Below 80% after an attempt</small></article>
+          <article class="stat"><b id="card-due-stat">0</b><span>card reviews due</span><small>New cards excluded</small></article>
           <article class="stat"><b id="error-stat">0</b><span>open errors</span><small>Resolve after a clean retest</small></article>
         </div>
       </div>
@@ -63,7 +64,7 @@
           <p class="eyebrow">Next action</p>
           <h2 id="next-action">Start with Lecture 1: Glia I.</h2>
           <p class="muted" id="next-action-detail">Compress the mechanism, retrieve it closed-book, then test it.</p>
-          <button class="button primary" type="button" data-go="quiz">Start targeted practice</button>
+          <button id="next-action-button" class="button primary" type="button" data-go="quiz">Start targeted practice</button>
         </article>
         <article class="panel">
           <p class="eyebrow">Answer grammar</p>
@@ -112,8 +113,8 @@
     <section id="cards" class="view">
       <div class="panel">
         <div class="section-head">
-          <div><p class="eyebrow">Core mechanisms · 29 cards</p><h2>Active recall with confidence</h2></div>
-          <p>Glia plus high-yield mechanisms across both tests and the final. Reveal only after answering aloud; rate the answer, not familiarity.</p>
+          <div><p class="eyebrow">Spaced retrieval · 29 cards</p><h2>Due-first active recall</h2></div>
+          <p>Answer aloud before revealing, then grade the retrieval. Reviews return sooner when effort or accuracy is weak.</p>
         </div>
         <button id="flashcard" class="flashcard" type="button" aria-live="polite">
           <span class="eyebrow" id="card-side">Question</span>
@@ -124,10 +125,11 @@
           <button id="previous-card" class="button" type="button">Previous</button>
           <button id="reveal-card" class="button primary" type="button">Reveal</button>
           <button id="again-card" class="button danger" type="button" hidden>Again</button>
-          <button id="know-card" class="button success" type="button" hidden>Know it</button>
+          <button id="hard-card" class="button" type="button" hidden>Hard</button>
+          <button id="good-card" class="button success" type="button" hidden>Good</button>
           <button id="next-card" class="button" type="button">Next</button>
         </div>
-        <p class="center shortcut">Space/Enter reveal · ←/→ move · A again · K know it</p>
+        <p class="center shortcut">Space/Enter reveal · ←/→ browse · A again · H hard · G good</p>
         <p id="card-progress" class="center muted"></p>
       </div>
     </section>

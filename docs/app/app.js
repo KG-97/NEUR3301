@@ -94,8 +94,10 @@ const cards = [
   ['Engulfment vs causation in pruning?', 'Synaptic material inside microglia shows contact/engulfment; proving the pathway is necessary requires perturbing it and measuring synapse or circuit outcomes.']
 ];
 
-const STORAGE_KEY = 'neur3301-exam-lab-v2';
-const LEGACY_KEY = 'neur3301-exam-lab-v1';
+const DAY_MS = 86400000;
+const MINUTE_MS = 60000;
+const STORAGE_KEY = 'neur3301-exam-lab-v3';
+const LEGACY_KEYS = ['neur3301-exam-lab-v2', 'neur3301-exam-lab-v1'];
 const validLectureIds = new Set(lectureGroups.flatMap(group => group.lectures.map(([id]) => id)));
 let state = loadState();
 let activeQuestion = null;
@@ -105,7 +107,7 @@ let cardRevealed = false;
 let toastTimer;
 
 function defaultState() {
-  return { version: 2, done: [], quiz: { correct: 0, attempts: 0, items: {} }, cards: {}, errors: [] };
+  return { version: 3, done: [], quiz: { correct: 0, attempts: 0, items: {} }, cards: {}, errors: [] };
 }
 
 function normaliseState(input) {
@@ -123,8 +125,31 @@ function normaliseState(input) {
     }
   }
   if (input.cards && typeof input.cards === 'object' && !Array.isArray(input.cards)) {
-    for (const [index, rating] of Object.entries(input.cards)) {
-      if (Number(index) >= 0 && Number(index) < cards.length && ['again', 'known'].includes(rating)) clean.cards[index] = rating;
+    for (const [index, value] of Object.entries(input.cards)) {
+      const numericIndex = Number(index);
+      if (!Number.isInteger(numericIndex) || numericIndex < 0 || numericIndex >= cards.length) continue;
+      if (typeof value === 'string' && ['again', 'known'].includes(value)) {
+        const known = value === 'known';
+        clean.cards[index] = {
+          rating: known ? 'good' : 'again',
+          due: new Date(Date.now() + (known ? 3 * DAY_MS : 0)).toISOString(),
+          intervalDays: known ? 3 : 0,
+          ease: known ? 2.5 : 2.3,
+          reviews: 1,
+          lapses: known ? 0 : 1
+        };
+        continue;
+      }
+      if (!value || typeof value !== 'object' || Array.isArray(value)) continue;
+      const rating = ['again', 'hard', 'good'].includes(value.rating) ? value.rating : 'good';
+      clean.cards[index] = {
+        rating,
+        due: validDate(value.due),
+        intervalDays: Math.min(3650, Math.max(0, Number(value.intervalDays) || 0)),
+        ease: Math.min(3, Math.max(1.3, Number(value.ease) || 2.5)),
+        reviews: Math.min(100000, Math.max(0, Math.floor(Number(value.reviews) || 0))),
+        lapses: Math.min(100000, Math.max(0, Math.floor(Number(value.lapses) || 0)))
+      };
     }
   }
   clean.errors = (Array.isArray(input.errors) ? input.errors : []).slice(0, 500).map(item => ({
@@ -144,8 +169,14 @@ function validDate(value) {
 
 function loadState() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_KEY);
-    return raw ? normaliseState(JSON.parse(raw)) : defaultState();
+    const sourceKey = [STORAGE_KEY, ...LEGACY_KEYS].find(key => localStorage.getItem(key));
+    if (!sourceKey) return defaultState();
+    const clean = normaliseState(JSON.parse(localStorage.getItem(sourceKey)));
+    if (sourceKey !== STORAGE_KEY) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(clean));
+      LEGACY_KEYS.forEach(key => localStorage.removeItem(key));
+    }
+    return clean;
   } catch (error) {
     console.warn('Progress recovery failed; starting with a clean state.', error);
     return defaultState();
@@ -155,7 +186,7 @@ function loadState() {
 function persist(message) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    localStorage.removeItem(LEGACY_KEY);
+    LEGACY_KEYS.forEach(key => localStorage.removeItem(key));
   } catch (error) {
     console.error('Unable to save progress.', error);
     showToast('Progress could not be saved in this browser.');
@@ -180,6 +211,7 @@ function switchView(id) {
     tab.setAttribute('aria-current', active ? 'page' : 'false');
   });
   if (id === 'quiz' && !activeQuestion) nextQuestion();
+  if (id === 'cards') focusReadyCard();
   if (id === 'errors') renderLedger();
   document.querySelector(`#${id}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -201,6 +233,14 @@ function weakQuestions() {
   });
 }
 
+function reviewedDueCards(now = Date.now()) {
+  return Object.entries(state.cards).filter(([, record]) => new Date(record.due).getTime() <= now).map(([index]) => Number(index));
+}
+
+function readyCardIndexes(now = Date.now()) {
+  return cards.map((_, index) => index).filter(index => !state.cards[index] || new Date(state.cards[index].due).getTime() <= now);
+}
+
 function renderDashboard() {
   const openErrors = state.errors.filter(error => !error.resolved).length;
   const accuracy = state.quiz.attempts ? Math.round(state.quiz.correct / state.quiz.attempts * 100) : 0;
@@ -210,23 +250,38 @@ function renderDashboard() {
   document.querySelector('#accuracy-stat').textContent = `${accuracy}%`;
   document.querySelector('#answered-stat').textContent = `${state.quiz.attempts} ${state.quiz.attempts === 1 ? 'attempt' : 'attempts'}`;
   document.querySelector('#weak-stat').textContent = String(weakQuestions().length);
+  document.querySelector('#card-due-stat').textContent = String(reviewedDueCards().length);
   document.querySelector('#error-stat').textContent = String(openErrors);
 
   const nextLecture = lectureGroups.flatMap(group => group.lectures).find(([id]) => !state.done.includes(id));
   const title = document.querySelector('#next-action');
   const detail = document.querySelector('#next-action-detail');
+  const action = document.querySelector('#next-action-button');
   if (weakQuestions().length) {
     title.textContent = `Retest ${weakQuestions().length} weak MCQ ${weakQuestions().length === 1 ? 'item' : 'items'}.`;
     detail.textContent = 'Select “Weak items” in MCQ Forge and retrieve the mechanism before reading the options.';
+    action.dataset.go = 'quiz';
+    action.textContent = 'Retest weak items';
   } else if (openErrors) {
     title.textContent = `Close ${openErrors} misconception ${openErrors === 1 ? 'loop' : 'loops'}.`;
     detail.textContent = 'Re-answer each failed claim closed-book, then mark it resolved only after a clean retest.';
+    action.dataset.go = 'errors';
+    action.textContent = 'Open error ledger';
+  } else if (reviewedDueCards().length) {
+    title.textContent = `Retrieve ${reviewedDueCards().length} due mechanism ${reviewedDueCards().length === 1 ? 'card' : 'cards'}.`;
+    detail.textContent = 'Answer before revealing, then grade the retrieval honestly so the next interval is earned.';
+    action.dataset.go = 'cards';
+    action.textContent = 'Review due cards';
   } else if (nextLecture) {
     title.textContent = `Process Lecture ${nextLecture[0]}: ${nextLecture[1]}.`;
     detail.textContent = 'Compress the causal chain, retrieve it closed-book, then predict one intervention.';
+    action.dataset.go = 'map';
+    action.textContent = 'Open lecture map';
   } else {
     title.textContent = 'All lectures processed. Shift to cumulative retrieval.';
     detail.textContent = 'Mix blocks, practise long-answer plans and keep repairing errors.';
+    action.dataset.go = 'quiz';
+    action.textContent = 'Start cumulative practice';
   }
 }
 
@@ -378,22 +433,80 @@ function resetQuiz() {
   nextQuestion();
 }
 
+function formatCardDue(record) {
+  if (!record) return 'new';
+  const remaining = new Date(record.due).getTime() - Date.now();
+  if (remaining <= 0) return 'due now';
+  if (remaining < 60 * MINUTE_MS) return `due in ${Math.max(1, Math.ceil(remaining / MINUTE_MS))} min`;
+  if (remaining < DAY_MS) return `due in ${Math.ceil(remaining / (60 * MINUTE_MS))} h`;
+  if (remaining < 7 * DAY_MS) return `due in ${Math.ceil(remaining / DAY_MS)} d`;
+  return `due ${new Date(record.due).toLocaleDateString('en-AU', { day: 'numeric', month: 'short' })}`;
+}
+
+function nextReadyIndex(afterIndex = cardIndex) {
+  const ready = readyCardIndexes();
+  return ready.find(index => index > afterIndex) ?? ready[0] ?? -1;
+}
+
+function earliestScheduledIndex() {
+  return Object.entries(state.cards).sort(([, a], [, b]) => new Date(a.due) - new Date(b.due))[0]?.[0];
+}
+
+function focusReadyCard() {
+  const ready = readyCardIndexes();
+  if (ready.length && !ready.includes(cardIndex)) {
+    cardIndex = ready[0];
+    cardRevealed = false;
+  }
+  renderCard();
+}
+
 function renderCard() {
   const [front, back] = cards[cardIndex];
-  const rating = state.cards[cardIndex];
+  const record = state.cards[cardIndex];
+  const readyCount = readyCardIndexes().length;
+  const reviewedCount = Object.keys(state.cards).length;
   document.querySelector('#card-side').textContent = cardRevealed ? 'Answer' : 'Question';
   document.querySelector('#card-front').textContent = front;
   document.querySelector('#card-front').hidden = cardRevealed;
   document.querySelector('#card-back').textContent = back;
   document.querySelector('#card-back').hidden = !cardRevealed;
   document.querySelector('#again-card').hidden = !cardRevealed;
-  document.querySelector('#know-card').hidden = !cardRevealed;
-  document.querySelector('#card-progress').textContent = `Card ${cardIndex + 1}/${cards.length} · ${Object.values(state.cards).filter(value => value === 'known').length} known${rating ? ` · this card: ${rating === 'known' ? 'known' : 'repeat'}` : ''}`;
+  document.querySelector('#hard-card').hidden = !cardRevealed;
+  document.querySelector('#good-card').hidden = !cardRevealed;
+  document.querySelector('#card-progress').textContent = `Card ${cardIndex + 1}/${cards.length} · ${readyCount} ready · ${reviewedCount} reviewed · this card: ${formatCardDue(record)}`;
 }
 
 function revealCard() { cardRevealed = !cardRevealed; renderCard(); }
 function moveCard(step) { cardIndex = (cardIndex + step + cards.length) % cards.length; cardRevealed = false; renderCard(); }
-function rateCard(rating) { state.cards[cardIndex] = rating; persist(rating === 'known' ? 'Card marked known.' : 'Card kept for review.'); moveCard(1); }
+function rateCard(rating) {
+  const now = Date.now();
+  const prior = state.cards[cardIndex] || { intervalDays: 0, ease: 2.5, reviews: 0, lapses: 0 };
+  let intervalDays = prior.intervalDays;
+  let ease = prior.ease;
+  let lapses = prior.lapses;
+  let due;
+  if (rating === 'again') {
+    intervalDays = 0;
+    ease = Math.max(1.3, ease - .2);
+    lapses += 1;
+    due = new Date(now + 10 * MINUTE_MS);
+  } else if (rating === 'hard') {
+    intervalDays = prior.intervalDays < 1 ? 1 : Math.max(1, Math.round(prior.intervalDays * 1.2));
+    ease = Math.max(1.3, ease - .05);
+    due = new Date(now + intervalDays * DAY_MS);
+  } else {
+    intervalDays = prior.intervalDays < 1 ? 2 : prior.intervalDays < 3 ? 5 : Math.max(3, Math.round(prior.intervalDays * ease));
+    ease = Math.min(3, ease + .05);
+    due = new Date(now + intervalDays * DAY_MS);
+  }
+  state.cards[cardIndex] = { rating, due: due.toISOString(), intervalDays, ease, reviews: prior.reviews + 1, lapses };
+  persist(`Card scheduled: ${formatCardDue(state.cards[cardIndex])}.`);
+  const next = nextReadyIndex(cardIndex);
+  cardIndex = next >= 0 ? next : Number(earliestScheduledIndex() ?? cardIndex);
+  cardRevealed = false;
+  renderCard();
+}
 
 function addError(event) {
   event.preventDefault();
@@ -509,7 +622,8 @@ document.querySelector('#reveal-card').addEventListener('click', revealCard);
 document.querySelector('#previous-card').addEventListener('click', () => moveCard(-1));
 document.querySelector('#next-card').addEventListener('click', () => moveCard(1));
 document.querySelector('#again-card').addEventListener('click', () => rateCard('again'));
-document.querySelector('#know-card').addEventListener('click', () => rateCard('known'));
+document.querySelector('#hard-card').addEventListener('click', () => rateCard('hard'));
+document.querySelector('#good-card').addEventListener('click', () => rateCard('good'));
 document.querySelector('#error-form').addEventListener('submit', addError);
 document.querySelector('#export-data').addEventListener('click', exportData);
 document.querySelector('#import-data').addEventListener('change', importData);
@@ -523,8 +637,9 @@ document.addEventListener('keydown', event => {
     if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); revealCard(); }
     else if (event.key === 'ArrowRight') moveCard(1);
     else if (event.key === 'ArrowLeft') moveCard(-1);
-    else if (cardRevealed && event.key.toLowerCase() === 'k') rateCard('known');
     else if (cardRevealed && event.key.toLowerCase() === 'a') rateCard('again');
+    else if (cardRevealed && event.key.toLowerCase() === 'h') rateCard('hard');
+    else if (cardRevealed && event.key.toLowerCase() === 'g') rateCard('good');
   }
 });
 
