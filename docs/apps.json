@@ -16,13 +16,13 @@
   {
     "name": "Synapse Study Lab",
     "subtitle": "Deep curriculum retrieval scaffold",
-    "description": "All 29 taught topics, 174 flashcards, 97 core concepts, 93 experiment prompts, fixed browser-local progress, and JSON backup tools.",
+    "description": "All 29 taught topics, 176 keywords, 88 concepts, 92 experiment prompts, fixed browser-local progress, and JSON backup tools.",
     "url": "study-lab/",
     "status": "Live in this repository",
     "tags": [
       "29 topics",
-      "174 cards",
-      "93 prompts",
+      "176 keywords",
+      "92 prompts",
       "Local progress"
     ]
   },

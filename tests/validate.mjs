@@ -174,6 +174,69 @@ if (!deepBundle.includes('synapse-neur3301-progress-v1') || deepBundle.includes(
   throw new Error('Study Lab progress persistence is missing or regressed');
 }
 
+// Recover the compiled Study Lab's literal lecture dataset and keep public
+// content totals aligned with what the live dashboard actually computes.
+const deepDataMarker = deepBundle.match(/\b\w+=\[\{id:1,lecture:1,moduleId:/);
+if (!deepDataMarker || deepDataMarker.index === undefined) {
+  throw new Error('Could not locate the Study Lab lecture dataset');
+}
+const deepDataStart = deepBundle.indexOf('[', deepDataMarker.index);
+let deepDataEnd = -1;
+let bracketDepth = 0;
+let quote = null;
+let escaped = false;
+for (let index = deepDataStart; index < deepBundle.length; index += 1) {
+  const character = deepBundle[index];
+  if (quote) {
+    if (escaped) escaped = false;
+    else if (character === '\\') escaped = true;
+    else if (character === quote) quote = null;
+    continue;
+  }
+  if (character === '"' || character === "'" || character === '`') {
+    quote = character;
+  } else if (character === '[') {
+    bracketDepth += 1;
+  } else if (character === ']') {
+    bracketDepth -= 1;
+    if (bracketDepth === 0) {
+      deepDataEnd = index + 1;
+      break;
+    }
+  }
+}
+if (deepDataEnd === -1) throw new Error('Could not locate the end of the Study Lab lecture dataset');
+let deepTopics;
+try {
+  deepTopics = Function(`"use strict"; return (${deepBundle.slice(deepDataStart, deepDataEnd)});`)();
+} catch (error) {
+  throw new Error(`Study Lab lecture dataset is not valid literal data: ${error.message}`);
+}
+if (!Array.isArray(deepTopics) || deepTopics.length !== 29) {
+  throw new Error(`Study Lab must contain 29 taught topics; found ${Array.isArray(deepTopics) ? deepTopics.length : 'a non-array'}`);
+}
+if (deepTopics.some(topic => topic.lecture === 23)) {
+  throw new Error('Study Lab incorrectly treats official no-class Lecture 23 as taught content');
+}
+const deepTotals = deepTopics.reduce((totals, topic) => {
+  for (const field of ['keywords', 'concepts', 'questions']) {
+    if (!Array.isArray(topic[field])) throw new Error(`Study Lab Lecture ${topic.lecture} has invalid ${field}`);
+    totals[field] += topic[field].length;
+  }
+  return totals;
+}, { keywords: 0, concepts: 0, questions: 0 });
+const countClaims = [
+  `${deepTotals.keywords} keywords`,
+  `${deepTotals.concepts} concepts`,
+  `${deepTotals.questions} experiment prompts`
+];
+for (const file of ['README.md', 'apps/synapse/README.md', 'docs/index.html', 'docs/apps.json']) {
+  const content = readFileSync(file, 'utf8');
+  for (const claim of countClaims) {
+    if (!content.includes(claim)) throw new Error(`${file} does not match the Study Lab dataset total: ${claim}`);
+  }
+}
+
 const flashcards = readFileSync('docs/resources/NEUR3301_Glia1_Flashcards.csv', 'utf8');
 if (flashcards.trim().split(/\r?\n/).length < 15) {
   throw new Error('Corrected Glia I deck is unexpectedly small');

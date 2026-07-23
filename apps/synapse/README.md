@@ -16,7 +16,7 @@ The Exam Lab is a source-controlled, dependency-free static app. It provides the
 The recovered Study Lab is a real portable compiled app, not a saved Perplexity wrapper. It provides:
 
 - all 29 taught topics from the 13 July 2026 timetable;
-- 174 flashcards, 97 core concepts and 93 experiment-interpretation prompts;
+- 176 keywords, 88 concepts and 92 experiment prompts;
 - progress under `synapse-neur3301-progress-v1`;
 - progress export, import and reset;
 - handbook assessment mapping;
