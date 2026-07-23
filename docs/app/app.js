@@ -62,6 +62,142 @@ const questions = [
   { id: 'l30-scar', lecture: 30, block: 'Final', topic: 'Spinal cord repair', stem: 'Why is “the glial scar only blocks repair” inaccurate?', options: ['CSPGs never inhibit axons', 'Reactive astrocyte borders can also contain inflammation and preserve tissue', 'Astrocytes disappear after injury', 'Only microglia respond to injury'], answer: 1, explanation: 'Scar-associated signals can inhibit axon growth, while reactive borders can limit inflammatory spread and protect surviving tissue. Function depends on time, state and intervention.', trap: 'A structure can have both protective and inhibitory effects.' }
 ];
 
+// Optional per-question notes on why each distractor is wrong, keyed by
+// question id then by the original option index. Used only on a wrong
+// answer; questions without an entry degrade to the Examiner trap line.
+const distractorNotes = {
+  'l1-origin': {
+    0: "Neural crest gives rise to PNS Schwann cells and neurons, not CNS microglia — that is the trap being set.",
+    2: "In the healthy adult brain microglia self-renew locally; bone-marrow monocytes do not routinely replenish them.",
+    3: "Radial glia are neuroectodermal progenitors for neurons and macroglia, not the source of microglia."
+  },
+  'l1-myelin': {
+    0: "Schwann cells are peripheral and normally form one internode on one axon; they do not myelinate CNS axons.",
+    2: "Oligodendrocytes are neuroectodermal, not neural-crest derived — neural crest supplies PNS glia.",
+    3: "Peripheral myelin is made by Schwann cells; microglia are immune cells and do not myelinate."
+  },
+  'l2-retrograde': {
+    0: "Neurotrophins act through membrane Trk receptors and signalling endosomes, not by diffusing through the nucleus.",
+    2: "Trk stays a receptor tyrosine kinase; it is not converted into a neurotransmitter.",
+    3: "Survival is driven by target-derived Trk signalling reaching the soma, not passive somatic calcium sensing."
+  },
+  'l2-competition': {
+    0: "Trophic support is limiting, not unlimited — that scarcity is exactly what drives the competition.",
+    2: "Developmental death is competitive and target-dependent, not a synchronous intrinsic suicide of every neuron.",
+    3: "Survival depends on target-derived neurotrophins, not on myelination selecting which soma lives."
+  },
+  'l3-netrin': {
+    0: "Netrin signals through receptors such as DCC and UNC5; it is receptor state, not their absence, that sets the sign.",
+    2: "Axons clearly respond to diffusible cues — guidance is the whole point of netrin.",
+    3: "Guidance operates during outgrowth, well before myelination, and is independent of it."
+  },
+  'l3-ephrin': {
+    0: "Action potentials come from voltage-gated channels, not from graded guidance-molecule expression.",
+    2: "Cerebrospinal fluid is produced by the choroid plexus; ephrin gradients encode position, not fluid.",
+    3: "Vesicle fusion is a synaptic release event, unrelated to Eph/ephrin topographic mapping."
+  },
+  'l4-apoptosis': {
+    1: "Osmotic lysis without signalling is necrosis; trophic withdrawal drives regulated, caspase-dependent apoptosis.",
+    2: "Action-potential broadening is an excitability change, not a cell-death pathway.",
+    3: "Synaptic potentiation is a form of plasticity, not a mechanism of programmed cell death."
+  },
+  'l4-pruning': {
+    0: "Pruning is compartment-specific and can spare the soma; it does not necessarily kill the neuron.",
+    2: "Apoptosis removes the whole cell, not just synapses — that is what separates it from pruning.",
+    3: "The two differ in scale and mechanism; treating them as identical is the error being tested."
+  },
+  'l5-notch': {
+    1: "Notch keeps cells as progenitors; it does not drive myelination, which is a later oligodendrocyte role.",
+    2: "Microglia arise from the yolk-sac lineage, not from Notch signalling in neuroectodermal progenitors.",
+    3: "Notch is a transcriptional signalling pathway, not a direct gate for sodium channels."
+  },
+  'l5-lineage': {
+    0: "Lineage tracing follows cell descent, not electrophysiology such as membrane potential.",
+    2: "Ligand–receptor binding is a biochemistry assay; lineage tracing tracks cell ancestry over time.",
+    3: "Vesicle counts are a synaptic measure, unrelated to tracing which cell types a progenitor makes."
+  },
+  'l6-human': {
+    0: "Claiming total absence overstates the negative case; the honest position is that the evidence is contested.",
+    1: "Abundant, settled human neurogenesis is exactly what remains disputed — this overclaims certainty.",
+    3: "Robust adult SVZ-to-olfactory turnover is a rodent finding; it is not established for adult humans."
+  },
+  'l6-stemcell': {
+    0: "Staying alive for a day shows survival, not the self-renewal the question asks you to demonstrate.",
+    2: "A single NeuN-positive snapshot shows differentiation, not maintenance of a progenitor pool.",
+    3: "Presence of a growth factor is a culture condition, not evidence of self-renewal."
+  },
+  'l7-bbb': {
+    0: "Astrocyte endfeet regulate and support the barrier but are not the tight-junction seal itself — the classic trap.",
+    2: "Microglia are immune cells and play no structural role in the paracellular seal.",
+    3: "Oligodendrocytes myelinate axons; they are not part of the blood–brain barrier."
+  },
+  'l7-states': {
+    0: "Glia clearly change state; the problem is that binary labels are too coarse, not that states are fixed.",
+    2: "Glia express rich transcriptional programmes — the claim that only neurons express genes is simply false.",
+    3: "A1/A2 and M1/M2 describe reactive states, not fixed embryonic lineages."
+  },
+  'l8-chloride': {
+    0: "Driving force Vm − ECl = +5 mV pushes Cl⁻ inward, not outward — you reversed the ion direction.",
+    2: "Cl⁻ does enter, but for an anion inward movement is outward conventional current, not inward.",
+    3: "Vm and ECl differ by 5 mV, so a driving force exists and net flux does occur."
+  },
+  'l8-drivingforce': {
+    0: "With conductance fixed, current follows the driving force (Vm − Eion); conductance cannot make it rise here.",
+    2: "Current only reverses sign when Vm crosses Eion; approaching it just shrinks the current toward zero.",
+    3: "For I = g(Vm − Eion), current depends directly on voltage through the driving-force term."
+  },
+  'l9-minis': {
+    0: "Higher postsynaptic gain would raise mini amplitude; amplitude is unchanged here, pointing presynaptic.",
+    2: "Quantal size maps to amplitude, which did not change — frequency instead reflects release rate.",
+    3: "A reversal-potential shift would alter amplitude or direction, not selectively raise event frequency."
+  },
+  'l9-binomial': {
+    1: "Mean release is a product of n, p and q, not a sum — the model multiplies these terms.",
+    2: "Release probability alone is insufficient; site number n and quantal size q also scale the mean.",
+    3: "Membrane resistance shapes the postsynaptic response, not the binomial release mean."
+  },
+  'l10-calcium': {
+    0: "A log–log slope near four is phenomenological cooperativity, not proof that exactly four ions bind.",
+    2: "The exponent describes the calcium–release relationship, not a fixed number of fusing vesicles.",
+    3: "Channel subunit count is unrelated to the measured calcium dependence of release."
+  },
+  'l10-sensor': {
+    1: "AMPA receptors are postsynaptic and kinesin is a transport motor; neither triggers fast fusion.",
+    2: "Clathrin and dynein act in endocytosis and transport, not in triggering calcium-evoked exocytosis.",
+    3: "PSD-95 is a postsynaptic scaffold; it does not transport presynaptic vesicles."
+  },
+  'l11-ppr': {
+    0: "High initial release probability usually gives depression (low ratio); facilitation implies a low starting p.",
+    2: "Paired-pulse ratio is a presynaptic index; it does not certainly report postsynaptic receptor number.",
+    3: "The ratio probes short-term dynamics within a pulse pair, not long-term depression."
+  },
+  'l11-ltp': {
+    1: "Depolarisation does not close AMPA receptors; it relieves the NMDA Mg²⁺ block to admit calcium.",
+    2: "The point of coincidence is to allow calcium entry through NMDA receptors, not to prevent it.",
+    3: "CaMKII is activated downstream of the calcium signal, not degraded by depolarisation."
+  },
+  'l12-initiation': {
+    0: "The AIS does contain K⁺ channels; its low threshold comes from high Na⁺-channel density, not their absence.",
+    2: "The AIS is electrically continuous with the soma; isolation would prevent, not cause, initiation.",
+    3: "The AIS is a spike-initiation zone, not a neuroendocrine secretory structure."
+  },
+  'l12-remodel': {
+    0: "The direction of the excitability change depends on morphology and conductances; it is not always an increase.",
+    2: "The AIS remodels in an activity-dependent way in mature neurons; it is not fixed after development.",
+    3: "AIS plasticity tunes excitability and geometry, not the neuron’s transmitter identity."
+  },
+  'l13-complement': {
+    1: "CR3 is a microglial receptor that recognises opsonised material; it does not synthesise C1q inside neurons.",
+    2: "In the classical pathway C4 acts before C3, and the sequence is context-specific, not a fixed C3-then-C4 order.",
+    3: "Complement-mediated pruning operates in the developing CNS, not only in adult peripheral nerves."
+  },
+  'l13-causality': {
+    0: "Engulfment shows association; it cannot by itself prove microglia caused all of the synapse loss.",
+    2: "Finding synaptic material inside microglia shows it was neuronal, which contradicts this option.",
+    3: "This observation alone does not establish that complement is required — that needs a perturbation."
+  }
+};
+
 const answerPrompts = [
   {
     id: 'glia-homeostasis', domain: 'Development & glia', lectures: [1, 7, 28],
@@ -663,10 +799,20 @@ function answerQuestion(index) {
   result.textContent = correct ? 'Correct.' : 'Not yet.';
   const mechanism = document.createElement('p');
   mechanism.textContent = activeQuestion.explanation;
+  explanation.append(result, mechanism);
+  if (!correct) {
+    const note = distractorNotes[activeQuestion.id]?.[index];
+    if (note) {
+      const why = document.createElement('p');
+      why.innerHTML = '<strong>Why your choice is wrong:</strong> ';
+      why.append(document.createTextNode(note));
+      explanation.append(why);
+    }
+  }
   const trap = document.createElement('p');
   trap.innerHTML = '<strong>Examiner trap:</strong> ';
   trap.append(document.createTextNode(activeQuestion.trap));
-  explanation.append(result, mechanism, trap);
+  explanation.append(trap);
   if (!correct) {
     const log = document.createElement('button');
     log.type = 'button';
