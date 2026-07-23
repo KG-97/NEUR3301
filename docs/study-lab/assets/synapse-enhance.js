@@ -47,18 +47,31 @@
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
+  const EXPORT_APP = "neur3301-study-lab";
+  const EXPORT_SCHEMA = 1;
+
   function exportProgress() {
     const items = readProgress();
     const payload = {
-      app: "Synapse NEUR3301 Study Lab",
-      key: KEY,
+      app: EXPORT_APP,
+      schemaVersion: EXPORT_SCHEMA,
       exportedAt: new Date().toISOString(),
-      count: items.length,
-      items,
+      state: { items },
     };
     const stamp = new Date().toISOString().slice(0, 10);
-    downloadJson(`neur3301-progress-${stamp}.json`, payload);
+    downloadJson(`neur3301-study-lab-progress-${stamp}.json`, payload);
     toast(`Exported ${items.length} progress items`);
+  }
+
+  // Read the versioned envelope; fall back to the pre-envelope shapes
+  // (a bare array or a top-level { items }) so older backups still import.
+  function itemsFromImport(data) {
+    if (data && typeof data === "object" && !Array.isArray(data) && data.app && data.state) {
+      if (data.app !== EXPORT_APP) throw new Error(`file is for "${data.app}", not the Study Lab`);
+      if (Number(data.schemaVersion) > EXPORT_SCHEMA) throw new Error(`schema v${data.schemaVersion} is newer than supported (v${EXPORT_SCHEMA})`);
+      return data.state.items;
+    }
+    return Array.isArray(data) ? data : data.items;
   }
 
   function importProgress(file) {
@@ -66,7 +79,7 @@
     reader.onload = () => {
       try {
         const data = JSON.parse(String(reader.result || "{}"));
-        const items = Array.isArray(data) ? data : data.items;
+        const items = itemsFromImport(data);
         if (!Array.isArray(items)) throw new Error("No items array");
         const cleaned = items
           .filter((x) => x && typeof x.itemKey === "string" && x.status)

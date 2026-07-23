@@ -824,16 +824,31 @@ function renderLedger() {
 function toggleError(index) { state.errors[index].resolved = !state.errors[index].resolved; persist(); renderLedger(); }
 function deleteError(index) { state.errors.splice(index, 1); persist('Ledger entry deleted.'); renderLedger(); }
 
+const EXPORT_APP = 'neur3301-exam-lab';
+const EXPORT_SCHEMA = 1;
+
 function exportData() {
-  const url = URL.createObjectURL(new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' }));
+  const envelope = { app: EXPORT_APP, schemaVersion: EXPORT_SCHEMA, exportedAt: new Date().toISOString(), state };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(envelope, null, 2)], { type: 'application/json' }));
   const anchor = document.createElement('a');
   anchor.href = url;
-  anchor.download = `NEUR3301-progress-${new Date().toISOString().slice(0, 10)}.json`;
+  anchor.download = `NEUR3301-exam-lab-${new Date().toISOString().slice(0, 10)}.json`;
   document.body.append(anchor);
   anchor.click();
   anchor.remove();
   setTimeout(() => URL.revokeObjectURL(url), 0);
   showToast('Progress exported.');
+}
+
+// Accept the versioned envelope, and stay backward-compatible with the
+// pre-envelope exports that were just the raw state object.
+function unwrapEnvelope(parsed) {
+  if (parsed && typeof parsed === 'object' && !Array.isArray(parsed) && 'app' in parsed && 'state' in parsed) {
+    if (parsed.app !== EXPORT_APP) throw new Error(`this file is for “${parsed.app}”, not the Exam Lab`);
+    if (Number(parsed.schemaVersion) > EXPORT_SCHEMA) throw new Error(`file schema v${parsed.schemaVersion} is newer than this app supports (v${EXPORT_SCHEMA})`);
+    return parsed.state;
+  }
+  return parsed;
 }
 
 function importData(event) {
@@ -842,7 +857,7 @@ function importData(event) {
   const reader = new FileReader();
   reader.onload = () => {
     try {
-      state = normaliseState(JSON.parse(reader.result));
+      state = normaliseState(unwrapEnvelope(JSON.parse(reader.result)));
       persist('Progress imported and validated.');
       renderAll();
     } catch (error) {
