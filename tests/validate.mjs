@@ -41,6 +41,9 @@ for (const file of ['docs/index.html', 'docs/app/index.html', 'docs/study-lab/in
 
 const examLab = readFileSync('docs/app/index.html', 'utf8');
 const examLabScript = readFileSync('docs/app/app.js', 'utf8');
+if (!examLab.includes('styles.css?v=3') || !examLab.includes('app.js?v=3')) {
+  throw new Error('Exam Lab HTML and assets must share a cache-busting deployment version');
+}
 if (!examLab.includes('29 taught topics') || !examLabScript.includes("[30, 'Spinal cord injury and regeneration'")) {
   throw new Error('Exam Lab lecture count/progress denominator regressed');
 }
