@@ -1,8 +1,8 @@
 # NEUR3301 handbook alignment (2026)
 
 **Source:** `Handbook and timetable NEUR3301 2026 - 13 July.pdf`  
-**App:** Synapse NEUR3301 Study Lab (v3 improved)  
-**Checked:** 2026-07-14
+**App:** Synapse NEUR3301 Study Lab and Exam Lab (v4)
+**Checked:** 2026-07-23
 
 ## Lecture map (29 content lectures)
 
@@ -50,7 +50,7 @@
 | Seminar video | Fri 18 Sep 11:59pm, 25% group, 15 min (14–16) | Aligned |
 | Peer questions | Fri 9 Oct, part of 5% individual | Aligned (+ note that 5% = questions + Q&A) |
 | Final Q&A | Wed 14 Oct, compulsory, part of 5% | Label fixed (was over-claiming “5%” for Q&A alone) |
-| Final exam | 50%, 2 h, 4 of 8–10 long-answer, all lectures | Aligned; date “on LMS / exam period” |
+| Final exam | 50%, 2 h, 4 of 8–10 long-answer, all lectures | Aligned; 12 timed integrated prompts cover all 29 taught lectures; date “on LMS / exam period” |
 
 Venue: **ARTS [159] Austin Lecture Theatre** — Mon 10–11, Tue 14–15, Wed 10–11.
 
@@ -73,6 +73,7 @@ Venue: **ARTS [159] Austin Lecture Theatre** — Mon 10–11, Tue 14–15, Wed 1
 - **Dr Emily King** appears in handbook staff list without a 2026 timetable lecture — not represented as a topic lecturer.
 - **Final exam date** is not fixed in the handbook PDF (exam period / LMS).
 - **Seminar topics list** is chosen on LMS — app does not host the topic menu.
+- **Long-answer blueprints are practice scaffolds**, not lecturer-issued questions or official marking schemes.
 - Still **verify high-stakes claims** against Purves/Kandel + unit slides.
 
 ## Scientific micro-edits applied (this build)

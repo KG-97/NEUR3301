@@ -15,7 +15,7 @@ The GitHub tools are static and require no account, backend, Firebase project or
 ## What is included
 
 - exact 2026 assessment dates, weights and lecture numbering;
-- a maintainable Exam Lab with 36 mechanism-heavy MCQs, shuffled answer order, block targeting, per-item diagnostics, 29 due-first spaced-retrieval cards and a resolvable error ledger;
+- a maintainable Exam Lab with 36 mechanism-heavy MCQs, 12 integrated long-answer prompts covering every taught lecture, 30-minute answer timing, persistent answer plans, 29 due-first spaced-retrieval cards and a resolvable error ledger;
 - a deeper recovered Study Lab with 29 taught topics, 174 flashcards, 97 concepts and 93 experiment prompts;
 - fixed browser-local progress plus JSON import/export/reset;
 - an evidence-hardened 12-slide MDMA seminar studio and exact 15:00 rehearsal timer;

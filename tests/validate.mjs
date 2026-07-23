@@ -41,7 +41,7 @@ for (const file of ['docs/index.html', 'docs/app/index.html', 'docs/study-lab/in
 
 const examLab = readFileSync('docs/app/index.html', 'utf8');
 const examLabScript = readFileSync('docs/app/app.js', 'utf8');
-if (!examLab.includes('styles.css?v=3') || !examLab.includes('app.js?v=3')) {
+if (!examLab.includes('styles.css?v=4') || !examLab.includes('app.js?v=4')) {
   throw new Error('Exam Lab HTML and assets must share a cache-busting deployment version');
 }
 if (!examLab.includes('29 taught topics') || !examLabScript.includes("[30, 'Spinal cord injury and regeneration'")) {
@@ -119,6 +119,36 @@ for (const [index, card] of parsedCards.entries()) {
   if (cardFronts.has(frontKey)) throw new Error(`Duplicate flashcard front detected: ${card[0]}`);
   cardFronts.add(frontKey);
 }
+
+const answersOpen = examLabScript.indexOf('const answerPrompts = [');
+const answersStart = examLabScript.indexOf('[', answersOpen);
+const answersEnd = examLabScript.indexOf('\n];', answersOpen);
+if (answersOpen === -1 || answersEnd === -1) throw new Error('Could not locate the long-answer prompt array in app.js');
+const parsedAnswers = Function(`"use strict"; return (${examLabScript.slice(answersStart, answersEnd + 2)});`)();
+if (!Array.isArray(parsedAnswers) || parsedAnswers.length !== 12) {
+  throw new Error(`Expected 12 integrated long-answer prompts; found ${Array.isArray(parsedAnswers) ? parsedAnswers.length : 'a non-array'}`);
+}
+const answerIds = new Set();
+const answerLectureCoverage = new Set();
+for (const prompt of parsedAnswers) {
+  if (!prompt || typeof prompt !== 'object' || answerIds.has(prompt.id)) throw new Error(`Invalid or duplicate long-answer prompt: ${prompt?.id}`);
+  answerIds.add(prompt.id);
+  for (const field of ['id', 'domain', 'question', 'thesis', 'experiment', 'limitation']) {
+    if (typeof prompt[field] !== 'string' || !prompt[field].trim()) throw new Error(`Long-answer prompt ${prompt.id} has an empty ${field}`);
+  }
+  if (!Array.isArray(prompt.lectures) || !prompt.lectures.length || prompt.lectures.some(id => !Number.isInteger(id))) {
+    throw new Error(`Long-answer prompt ${prompt.id} has invalid lecture coverage`);
+  }
+  prompt.lectures.forEach(id => answerLectureCoverage.add(id));
+  if (!Array.isArray(prompt.points) || prompt.points.length !== 5 || prompt.points.some(point => typeof point !== 'string' || !point.trim())) {
+    throw new Error(`Long-answer prompt ${prompt.id} must have exactly five blueprint points`);
+  }
+}
+for (const id of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30]) {
+  if (!answerLectureCoverage.has(id)) throw new Error(`Long-answer prompts do not cover taught Lecture ${id}`);
+}
+if (answerLectureCoverage.has(23)) throw new Error('Long-answer prompts incorrectly treat Lecture 23 as taught content');
+
 if (!examLabScript.includes('button.dataset.index = String(originalIndex)') ||
     !examLabScript.includes('const optionIndex = Number(button.dataset.index)')) {
   throw new Error('Shuffled MCQ options no longer preserve their original answer-key mapping');
@@ -126,9 +156,12 @@ if (!examLabScript.includes('button.dataset.index = String(originalIndex)') ||
 for (const control of ['id="again-card"', 'id="hard-card"', 'id="good-card"', 'id="card-due-stat"']) {
   if (!examLab.includes(control)) throw new Error(`Spaced-review control missing from Exam Lab: ${control}`);
 }
+for (const control of ['data-view="answers"', 'id="answer-draft"', 'id="answer-timer"', 'id="answer-stat"']) {
+  if (!examLab.includes(control)) throw new Error(`Long Answer Lab control missing from Exam Lab: ${control}`);
+}
 for (const schedulerInvariant of [
-  "const STORAGE_KEY = 'neur3301-exam-lab-v3'",
-  "LEGACY_KEYS = ['neur3301-exam-lab-v2', 'neur3301-exam-lab-v1']",
+  "const STORAGE_KEY = 'neur3301-exam-lab-v4'",
+  "LEGACY_KEYS = ['neur3301-exam-lab-v3', 'neur3301-exam-lab-v2', 'neur3301-exam-lab-v1']",
   "new Date(now + 10 * MINUTE_MS)",
   "rateCard('hard')",
   "rateCard('good')"

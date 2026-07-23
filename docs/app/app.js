@@ -62,6 +62,105 @@ const questions = [
   { id: 'l30-scar', lecture: 30, block: 'Final', topic: 'Spinal cord repair', stem: 'Why is “the glial scar only blocks repair” inaccurate?', options: ['CSPGs never inhibit axons', 'Reactive astrocyte borders can also contain inflammation and preserve tissue', 'Astrocytes disappear after injury', 'Only microglia respond to injury'], answer: 1, explanation: 'Scar-associated signals can inhibit axon growth, while reactive borders can limit inflammatory spread and protect surviving tissue. Function depends on time, state and intervention.', trap: 'A structure can have both protective and inhibitory effects.' }
 ];
 
+const answerPrompts = [
+  {
+    id: 'glia-homeostasis', domain: 'Development & glia', lectures: [1, 7, 28],
+    question: 'Explain how astrocytes, oligodendrocyte-lineage cells and microglia support normal circuit function. Predict one circuit consequence of selectively impairing astrocytic potassium clearance or CNS myelination.',
+    thesis: 'Glial cell types maintain distinct but interacting homeostatic, metabolic, electrical and immune conditions required for reliable circuit computation.',
+    points: ['Separate the developmental origins and core roles of macroglia and microglia.', 'Link astrocytic Kir4.1/uptake and transmitter clearance to extracellular homeostasis.', 'Link oligodendrocyte myelin to conduction velocity, timing and axonal metabolic support.', 'Describe microglial surveillance and context-dependent synapse/injury responses.', 'Carry one selective manipulation from cellular change to circuit and measured behavioural/physiological outcome.'],
+    experiment: 'Use a cell-type-specific conditional perturbation, verify target engagement, then combine ion imaging or conduction measures with circuit output and a rescue.',
+    limitation: 'Reactive glial states are heterogeneous; a marker or correlation alone does not establish the responsible cell state or causal pathway.'
+  },
+  {
+    id: 'survival-regeneration', domain: 'Development & repair', lectures: [2, 4, 6, 30],
+    question: 'Compare developmental neuron survival with adult CNS regeneration. Why can trophic support preserve a neuron without necessarily producing long-distance functional repair?',
+    thesis: 'Trophic signalling can regulate survival and growth competence, but adult repair additionally requires overcoming intrinsic, environmental, guidance and circuit-integration constraints.',
+    points: ['Explain target-derived trophic competition and retrograde Trk signalling.', 'Distinguish apoptosis, branch pruning, axon regeneration and functional recovery.', 'Contrast the growth-competent developmental neuron with the adult CNS injury environment.', 'Include intrinsic programmes, inhibitory lesion signals, guidance and synaptic integration.', 'Define a functional endpoint beyond cell survival or marker expression.'],
+    experiment: 'Combine a growth-promoting intervention with pathway-specific tracing, electrophysiology and a task; use a lesion-only control and test whether recovered output depends on the new pathway.',
+    limitation: 'Behavioural recovery may reflect compensation or spared fibres rather than true regeneration across the lesion.'
+  },
+  {
+    id: 'maps-pruning', domain: 'Circuit development', lectures: [3, 4, 13],
+    question: 'Explain how molecular guidance, activity and regressive events cooperate to build an ordered neural map. How would you distinguish failed initial targeting from failed refinement?',
+    thesis: 'Coarse molecular targeting establishes spatial order, while patterned activity and selective pruning refine connectivity and remove inappropriate branches or synapses.',
+    points: ['Describe receptor/context-dependent responses to guidance cues.', 'Use graded Eph/ephrin signalling as a mechanism for topographic mapping.', 'Separate axon pruning and synapse elimination from whole-cell apoptosis.', 'Explain how activity can stabilise correlated inputs and weaken competitors.', 'Predict distinct anatomical or physiological signatures of targeting versus refinement failure.'],
+    experiment: 'Image labelled projections before and after the normal refinement period, perturb one cue or activity pattern, and quantify map position, arbor size and functional receptive fields.',
+    limitation: 'An endpoint map cannot reveal when the defect arose; developmental time-course data are required.'
+  },
+  {
+    id: 'lineage-neurogenesis', domain: 'Cell lineage', lectures: [5, 6],
+    question: 'What evidence is required to show that a neural progenitor is multipotent and self-renewing? Explain why marker expression or cell survival alone is insufficient.',
+    thesis: 'Stemness is a functional lineage property demonstrated by durable self-renewal plus generation of multiple differentiated descendants, not by a single marker or snapshot.',
+    points: ['Distinguish potency, proliferation, survival and self-renewal.', 'Explain lineage tracing with a heritable, temporally controlled label.', 'Require repeated divisions while progenitor capacity is retained.', 'Use validated identity and function of differentiated descendants.', 'Qualify species and methodological claims about adult human neurogenesis.'],
+    experiment: 'Perform sparse inducible lineage tracing with longitudinal or clonal analysis and serial re-plating/transplantation where appropriate.',
+    limitation: 'Labels can be leaky, injury can alter lineage behaviour, and marker panels may not uniquely define cell identity.'
+  },
+  {
+    id: 'synaptic-strength', domain: 'Synaptic physiology', lectures: [8, 9, 10],
+    question: 'A manipulation halves the evoked postsynaptic response. Build a strategy to decide whether the cause is altered membrane driving force, release probability, release-site number or quantal size.',
+    thesis: 'The same change in mean synaptic amplitude can arise from distinct pre- and postsynaptic mechanisms, so converging measurements are needed to localise the causal step.',
+    points: ['Use I = g(Vm − Eion) to separate conductance from driving force.', 'Introduce the simplifying relation mean response ≈ n·p·q.', 'Interpret miniature frequency and amplitude with explicit confounds.', 'Use paired-pulse or variance measures as indices rather than direct proof of p.', 'Relate presynaptic calcium and synaptotagmin/SNARE function to evoked release.'],
+    experiment: 'Combine voltage clamp at multiple holding potentials, miniature events, paired-pulse stimulation and a presynaptic calcium measure.',
+    limitation: 'Receptor saturation/desensitisation, detection threshold and non-uniform release sites can violate simple inferences.'
+  },
+  {
+    id: 'plasticity-excitability', domain: 'Plasticity', lectures: [11, 12, 13],
+    question: 'Compare synaptic plasticity with intrinsic excitability plasticity. How could each produce a larger postsynaptic response or altered circuit output after repeated activity?',
+    thesis: 'Experience can change synaptic transfer and the input-output function of the neuron; similar circuit phenotypes can therefore arise from different plasticity loci.',
+    points: ['Explain canonical NMDA-receptor coincidence detection and calcium-dependent induction.', 'Separate induction from expression and pre- from postsynaptic mechanisms.', 'Describe how AIS geometry/channel organisation can tune spike threshold.', 'Include activity-dependent synapse stabilisation or pruning.', 'Propose measurements that distinguish synaptic gain from altered spike initiation.'],
+    experiment: 'Pair synaptic recordings with current-clamp input-output curves and AIS imaging before and after induction; selectively block the candidate expression mechanism.',
+    limitation: 'Plasticity direction and locus depend on cell type, dendritic location, inhibition and neuromodulatory state.'
+  },
+  {
+    id: 'somatic-transduction', domain: 'Sensory systems', lectures: [14, 15],
+    question: 'Trace a mechanical skin stimulus from transduction to a central representation. Explain how intensity and location can be encoded, then predict the effect of a peripheral versus central lesion.',
+    thesis: 'Mechanical energy is converted into a graded receptor signal and spike code, then transformed across labelled pathways and central receptive fields into a context-dependent representation.',
+    points: ['Separate transduction current, receptor potential and action-potential generation.', 'Explain intensity coding using firing rate, timing and population recruitment.', 'Explain spatial coding using receptive fields and somatotopic organisation.', 'Include adaptation and central gain or inhibition.', 'Contrast peripheral loss with a central processing or map-level deficit.'],
+    experiment: 'Record receptor potential, afferent spikes and central responses across controlled stimulus intensity and location before and after a selective lesion.',
+    limitation: 'Perception is not a one-to-one readout of one neuron; attention, adaptation and descending control alter the representation.'
+  },
+  {
+    id: 'top-down-plasticity', domain: 'Sensory cognition', lectures: [16, 17, 18],
+    question: 'Explain how descending control and adult plasticity can change sensory processing. How would you test whether an fMRI BOLD change reflects altered neural coding rather than vascular coupling alone?',
+    thesis: 'Sensory processing is dynamically shaped by central feedback and experience, while BOLD is an indirect haemodynamic measure that requires converging neural evidence.',
+    points: ['Define centrifugal feedback and its possible effects on gain/selectivity.', 'Explain an activity-dependent mechanism for adult sensory plasticity.', 'Separate neural activity from the BOLD haemodynamic proxy.', 'Predict receptive-field or behavioural consequences of the manipulation.', 'Include a neural measure and vascular/control condition.'],
+    experiment: 'Manipulate a descending pathway while combining electrophysiology or EEG/MEG with fMRI and a sensory discrimination task.',
+    limitation: 'Temporal association between a cell signal, blood flow and BOLD does not establish exclusive causation.'
+  },
+  {
+    id: 'vision-audition', domain: 'Vision & audition', lectures: [19, 20, 21],
+    question: 'Compare early visual and auditory coding. How do specialised peripheral mechanisms transform physical energy, and how do central circuits extract contrast, frequency or spatial information?',
+    thesis: 'Vision and audition use different receptor mechanics but share hierarchical transformations that emphasise informative contrasts and population patterns rather than raw stimulus energy.',
+    points: ['Describe photoreceptor or retinal signal flow with centre-surround contrast coding.', 'Describe hair-cell mechanoelectrical transduction and cochlear tonotopy.', 'Separate inner-hair-cell afferent output from outer-hair-cell amplification.', 'Explain at least one central computation for auditory frequency or location.', 'Compare how lesions at receptor, nerve and central levels change function.'],
+    experiment: 'Use calibrated stimuli with receptor/nerve and central recordings, then apply a level-specific perturbation and compare coding and behaviour.',
+    limitation: 'A single receptive-field or tuning curve does not capture population decoding, attention or natural-scene context.'
+  },
+  {
+    id: 'neuroendocrine-control', domain: 'Neuroendocrinology', lectures: [22, 26, 27],
+    question: 'Use the HPA, energy-balance and reproductive axes to explain how feedback, hormonal state and temporal patterning regulate neural-endocrine output.',
+    thesis: 'Neuroendocrine systems convert distributed physiological information into patterned hormonal output using feedback loops whose gain and timing change with state and development.',
+    points: ['Trace CRH–ACTH–glucocorticoid signalling and negative feedback.', 'Explain how early-life or pregnancy context can programme later HPA regulation.', 'Contrast POMC and AgRP/NPY responses to energy-state signals such as leptin.', 'Explain why GnRH pulsatility changes pituitary responsiveness.', 'Connect one perturbation to hormone, circuit and organism-level outcomes.'],
+    experiment: 'Manipulate one feedback receptor or pulse pattern and sample hormones longitudinally while measuring relevant neural activity and behaviour.',
+    limitation: 'Circulating hormone concentration alone may miss pulsatility, receptor sensitivity, circadian phase and sex/reproductive state.'
+  },
+  {
+    id: 'motor-learning', domain: 'Motor systems', lectures: [24, 25],
+    question: 'Compare the roles of motor cortex and cerebellar circuits in motor learning. Predict how disrupting each system would alter acquisition, execution and error correction.',
+    thesis: 'Motor cortex contributes flexible action representation and corticospinal output, while cerebellar circuits use structured mossy- and climbing-fibre signals to update predictive control and error-dependent learning.',
+    points: ['Distinguish planning/execution/output from error-driven calibration.', 'Describe mossy fibre–granule–parallel fibre and climbing-fibre inputs to Purkinje cells.', 'Link Purkinje output to deep cerebellar nuclei and movement correction.', 'Include cortical and cerebellar plasticity without assigning all learning to one site.', 'Predict dissociable behavioural and physiological effects of each disruption.'],
+    experiment: 'Apply temporally precise perturbation during acquisition versus recall and measure kinematics, adaptation errors and circuit activity.',
+    limitation: 'Lesions can impair performance so severely that an apparent learning deficit becomes difficult to interpret.'
+  },
+  {
+    id: 'repair-prostheses', domain: 'Ageing, injury & repair', lectures: [28, 29, 30],
+    question: 'Critically compare biological regeneration and neural prostheses as strategies for restoring function after nervous-system damage. What counts as genuine repair?',
+    thesis: 'Biological and technological strategies can restore function through different mechanisms, and improvement must be separated into neuroprotection, compensation, sprouting, relay formation and true regeneration.',
+    points: ['Describe ageing/injury barriers including inflammation, myelin/ECM inhibition and reduced intrinsic growth.', 'Explain the protective and inhibitory roles of reactive astrocyte borders.', 'Compare remyelination, grafts, growth programmes, stimulation and prosthetic bypass.', 'Use cochlear/retinal implants, spinal stimulation, DBS or BCI as a concrete example.', 'Define structural, physiological and behavioural criteria for functional repair.'],
+    experiment: 'Use pathway tracing, electrophysiological connectivity, task performance and a reversible silencing test to show that recovered function depends on the proposed repair route.',
+    limitation: 'Better behaviour can arise from training, spared pathways or device compensation without anatomical regeneration.'
+  }
+];
+
 const cards = [
   ['Macroglia vs microglia origin?', 'Astrocytes and oligodendrocyte-lineage cells arise from neuroectoderm/radial glia; microglia derive predominantly from early yolk-sac erythromyeloid progenitors.'],
   ['OLIG2/SOX10 vs PDGFRα?', 'OLIG1/2 and SOX10 are lineage transcription factors. PDGFRα is a receptor and common oligodendrocyte-progenitor marker.'],
@@ -96,18 +195,23 @@ const cards = [
 
 const DAY_MS = 86400000;
 const MINUTE_MS = 60000;
-const STORAGE_KEY = 'neur3301-exam-lab-v3';
-const LEGACY_KEYS = ['neur3301-exam-lab-v2', 'neur3301-exam-lab-v1'];
+const STORAGE_KEY = 'neur3301-exam-lab-v4';
+const LEGACY_KEYS = ['neur3301-exam-lab-v3', 'neur3301-exam-lab-v2', 'neur3301-exam-lab-v1'];
 const validLectureIds = new Set(lectureGroups.flatMap(group => group.lectures.map(([id]) => id)));
 let state = loadState();
 let activeQuestion = null;
 let questionAnswered = false;
 let cardIndex = 0;
 let cardRevealed = false;
+let answerIndex = 0;
+let answerGuideRevealed = false;
+let answerRemainingSeconds = 30 * 60;
+let answerTimerId = null;
+let answerSaveTimer;
 let toastTimer;
 
 function defaultState() {
-  return { version: 3, done: [], quiz: { correct: 0, attempts: 0, items: {} }, cards: {}, errors: [] };
+  return { version: 4, done: [], quiz: { correct: 0, attempts: 0, items: {} }, cards: {}, answers: {}, errors: [] };
 }
 
 function normaliseState(input) {
@@ -152,6 +256,21 @@ function normaliseState(input) {
       };
     }
   }
+  if (input.answers && typeof input.answers === 'object' && !Array.isArray(input.answers)) {
+    for (const [id, value] of Object.entries(input.answers)) {
+      const prompt = answerPrompts.find(item => item.id === id);
+      if (!prompt || !value || typeof value !== 'object' || Array.isArray(value)) continue;
+      const checks = [...new Set((Array.isArray(value.checks) ? value.checks : []).map(Number)
+        .filter(index => Number.isInteger(index) && index >= 0 && index < prompt.points.length))];
+      clean.answers[id] = {
+        draft: String(value.draft ?? '').slice(0, 8000),
+        checks,
+        rating: ['needs-work', 'solid', 'strong'].includes(value.rating) ? value.rating : '',
+        attempts: Math.min(10000, Math.max(0, Math.floor(Number(value.attempts) || 0))),
+        updated: validDate(value.updated)
+      };
+    }
+  }
   clean.errors = (Array.isArray(input.errors) ? input.errors : []).slice(0, 500).map(item => ({
     question: String(item.question ?? item.q ?? '').slice(0, 240),
     type: String(item.type ?? item.t ?? 'Knowledge gap').slice(0, 80),
@@ -172,10 +291,8 @@ function loadState() {
     const sourceKey = [STORAGE_KEY, ...LEGACY_KEYS].find(key => localStorage.getItem(key));
     if (!sourceKey) return defaultState();
     const clean = normaliseState(JSON.parse(localStorage.getItem(sourceKey)));
-    if (sourceKey !== STORAGE_KEY) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(clean));
-      LEGACY_KEYS.forEach(key => localStorage.removeItem(key));
-    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(clean));
+    LEGACY_KEYS.forEach(key => localStorage.removeItem(key));
     return clean;
   } catch (error) {
     console.warn('Progress recovery failed; starting with a clean state.', error);
@@ -211,6 +328,7 @@ function switchView(id) {
     tab.setAttribute('aria-current', active ? 'page' : 'false');
   });
   if (id === 'quiz' && !activeQuestion) nextQuestion();
+  if (id === 'answers') renderAnswer();
   if (id === 'cards') focusReadyCard();
   if (id === 'errors') renderLedger();
   document.querySelector(`#${id}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -251,6 +369,10 @@ function renderDashboard() {
   document.querySelector('#answered-stat').textContent = `${state.quiz.attempts} ${state.quiz.attempts === 1 ? 'attempt' : 'attempts'}`;
   document.querySelector('#weak-stat').textContent = String(weakQuestions().length);
   document.querySelector('#card-due-stat').textContent = String(reviewedDueCards().length);
+  const attemptedAnswers = answerPrompts.filter(prompt => state.answers[prompt.id]?.attempts > 0).length;
+  const strongAnswers = answerPrompts.filter(prompt => state.answers[prompt.id]?.rating === 'strong').length;
+  document.querySelector('#answer-stat').textContent = `${attemptedAnswers}/${answerPrompts.length}`;
+  document.querySelector('#answer-detail').textContent = `${strongAnswers} rated strong`;
   document.querySelector('#error-stat').textContent = String(openErrors);
 
   const nextLecture = lectureGroups.flatMap(group => group.lectures).find(([id]) => !state.done.includes(id));
@@ -277,12 +399,151 @@ function renderDashboard() {
     detail.textContent = 'Compress the causal chain, retrieve it closed-book, then predict one intervention.';
     action.dataset.go = 'map';
     action.textContent = 'Open lecture map';
+  } else if (strongAnswers < answerPrompts.length) {
+    title.textContent = `Build final-exam answer ${strongAnswers + 1} of ${answerPrompts.length}.`;
+    detail.textContent = 'Plan it closed-book under the 30-minute constraint, then reveal the practice blueprint and repair omissions.';
+    action.dataset.go = 'answers';
+    action.textContent = 'Open Long Answer Lab';
   } else {
     title.textContent = 'All lectures processed. Shift to cumulative retrieval.';
     detail.textContent = 'Mix blocks, practise long-answer plans and keep repairing errors.';
     action.dataset.go = 'quiz';
     action.textContent = 'Start cumulative practice';
   }
+}
+
+function answerRecord(prompt = answerPrompts[answerIndex]) {
+  return state.answers[prompt.id] || { draft: '', checks: [], rating: '', attempts: 0, updated: new Date().toISOString() };
+}
+
+function populateAnswerSelect() {
+  const select = document.querySelector('#answer-prompt-select');
+  if (select.options.length) return;
+  answerPrompts.forEach((prompt, index) => {
+    const option = document.createElement('option');
+    option.value = prompt.id;
+    option.textContent = `${index + 1}. ${prompt.domain} · L${prompt.lectures.join(', ')}`;
+    select.append(option);
+  });
+}
+
+function renderAnswer() {
+  populateAnswerSelect();
+  const prompt = answerPrompts[answerIndex];
+  const record = answerRecord(prompt);
+  document.querySelector('#answer-prompt-select').value = prompt.id;
+  document.querySelector('#answer-meta').textContent = `${prompt.domain} · Lectures ${prompt.lectures.join(', ')} · integrated final practice`;
+  document.querySelector('#answer-question').textContent = prompt.question;
+  document.querySelector('#answer-draft').value = record.draft;
+  document.querySelector('#answer-guide').hidden = !answerGuideRevealed;
+  document.querySelector('#reveal-answer-guide').textContent = answerGuideRevealed ? 'Hide self-check blueprint' : 'Reveal self-check blueprint';
+  document.querySelector('#answer-thesis').textContent = prompt.thesis;
+  document.querySelector('#answer-experiment').textContent = prompt.experiment;
+  document.querySelector('#answer-limitation').textContent = prompt.limitation;
+  const points = document.querySelector('#answer-points');
+  points.replaceChildren(...prompt.points.map((point, index) => {
+    const label = document.createElement('label');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = record.checks.includes(index);
+    checkbox.addEventListener('change', () => toggleAnswerPoint(index));
+    const copy = document.createElement('span');
+    copy.textContent = point;
+    label.append(checkbox, copy);
+    return label;
+  }));
+  const rating = record.rating ? record.rating.replace('-', ' ') : 'not yet rated';
+  document.querySelector('#answer-progress').textContent = `${record.checks.length}/${prompt.points.length} blueprint elements checked · ${record.attempts} ${record.attempts === 1 ? 'attempt' : 'attempts'} · ${rating}`;
+  document.querySelectorAll('.answer-rating').forEach(button => {
+    const active = button.dataset.rating === record.rating;
+    button.setAttribute('aria-pressed', String(active));
+  });
+  renderAnswerTimer();
+}
+
+function saveAnswerDraft(message = 'Answer plan saved.') {
+  const prompt = answerPrompts[answerIndex];
+  const record = answerRecord(prompt);
+  state.answers[prompt.id] = {
+    ...record,
+    draft: document.querySelector('#answer-draft').value.slice(0, 8000),
+    updated: new Date().toISOString()
+  };
+  persist(message);
+}
+
+function queueAnswerSave() {
+  clearTimeout(answerSaveTimer);
+  answerSaveTimer = setTimeout(() => saveAnswerDraft(null), 500);
+}
+
+function selectAnswerPrompt(id) {
+  clearTimeout(answerSaveTimer);
+  saveAnswerDraft(null);
+  answerIndex = Math.max(0, answerPrompts.findIndex(prompt => prompt.id === id));
+  answerGuideRevealed = false;
+  resetAnswerTimer();
+  renderAnswer();
+}
+
+function toggleAnswerGuide() {
+  clearTimeout(answerSaveTimer);
+  saveAnswerDraft(null);
+  answerGuideRevealed = !answerGuideRevealed;
+  renderAnswer();
+}
+
+function toggleAnswerPoint(index) {
+  const prompt = answerPrompts[answerIndex];
+  const record = answerRecord(prompt);
+  const checks = record.checks.includes(index) ? record.checks.filter(value => value !== index) : [...record.checks, index].sort((a, b) => a - b);
+  state.answers[prompt.id] = { ...record, checks, updated: new Date().toISOString() };
+  persist();
+  renderAnswer();
+}
+
+function rateAnswer(rating) {
+  saveAnswerDraft(null);
+  const prompt = answerPrompts[answerIndex];
+  const record = answerRecord(prompt);
+  state.answers[prompt.id] = { ...record, rating, attempts: record.attempts + 1, updated: new Date().toISOString() };
+  persist(`Answer rated ${rating.replace('-', ' ')}.`);
+  renderAnswer();
+}
+
+function renderAnswerTimer() {
+  const minutes = Math.floor(answerRemainingSeconds / 60);
+  const seconds = answerRemainingSeconds % 60;
+  document.querySelector('#answer-timer').textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  document.querySelector('#answer-timer-toggle').textContent = answerTimerId ? 'Pause timer' : answerRemainingSeconds < 30 * 60 ? 'Resume timer' : 'Start 30-minute timer';
+}
+
+function toggleAnswerTimer() {
+  if (answerTimerId) {
+    clearInterval(answerTimerId);
+    answerTimerId = null;
+    renderAnswerTimer();
+    return;
+  }
+  if (answerRemainingSeconds <= 0) answerRemainingSeconds = 30 * 60;
+  answerTimerId = setInterval(() => {
+    answerRemainingSeconds -= 1;
+    if (answerRemainingSeconds <= 0) {
+      answerRemainingSeconds = 0;
+      clearInterval(answerTimerId);
+      answerTimerId = null;
+      showToast('Thirty minutes. Stop writing and self-check the answer you produced.');
+    }
+    renderAnswerTimer();
+  }, 1000);
+  renderAnswerTimer();
+}
+
+function resetAnswerTimer() {
+  clearInterval(answerTimerId);
+  answerTimerId = null;
+  answerRemainingSeconds = 30 * 60;
+  renderAnswerTimer();
 }
 
 function renderLectureMap() {
@@ -594,11 +855,14 @@ function importData(event) {
 }
 
 function resetAll() {
-  if (!confirm('Reset lectures, MCQs, cards and the error ledger? Export first if you may want this data later.')) return;
+  if (!confirm('Reset lectures, MCQs, answer plans, cards and the error ledger? Export first if you may want this data later.')) return;
   state = defaultState();
   activeQuestion = null;
   cardIndex = 0;
   cardRevealed = false;
+  answerIndex = 0;
+  answerGuideRevealed = false;
+  resetAnswerTimer();
   persist('All local progress reset.');
   renderAll();
 }
@@ -607,6 +871,7 @@ function renderAll() {
   renderCountdowns();
   renderDashboard();
   renderLectureMap();
+  renderAnswer();
   renderCard();
   renderLedger();
   if (document.querySelector('#quiz').classList.contains('active')) nextQuestion();
@@ -617,6 +882,13 @@ document.querySelectorAll('[data-go]').forEach(button => button.addEventListener
 document.querySelector('#quiz-block').addEventListener('change', () => { activeQuestion = null; nextQuestion(); });
 document.querySelector('#next-question').addEventListener('click', nextQuestion);
 document.querySelector('#reset-quiz').addEventListener('click', resetQuiz);
+document.querySelector('#answer-prompt-select').addEventListener('change', event => selectAnswerPrompt(event.target.value));
+document.querySelector('#answer-draft').addEventListener('input', queueAnswerSave);
+document.querySelector('#save-answer').addEventListener('click', () => saveAnswerDraft());
+document.querySelector('#reveal-answer-guide').addEventListener('click', toggleAnswerGuide);
+document.querySelector('#answer-timer-toggle').addEventListener('click', toggleAnswerTimer);
+document.querySelector('#answer-timer-reset').addEventListener('click', resetAnswerTimer);
+document.querySelectorAll('.answer-rating').forEach(button => button.addEventListener('click', () => rateAnswer(button.dataset.rating)));
 document.querySelector('#flashcard').addEventListener('click', revealCard);
 document.querySelector('#reveal-card').addEventListener('click', revealCard);
 document.querySelector('#previous-card').addEventListener('click', () => moveCard(-1));

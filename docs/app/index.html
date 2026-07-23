@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="NEUR3301 marks-first practice: official lecture map, targeted MCQs, retrieval cards and a misconception ledger.">
+  <meta name="description" content="NEUR3301 marks-first practice: official lecture map, targeted MCQs, long-answer planning, retrieval cards and a misconception ledger.">
   <meta name="theme-color" content="#07110f">
   <title>Synapse X · NEUR3301 Exam Lab</title>
-  <link rel="stylesheet" href="styles.css?v=3">
-  <script src="app.js?v=3" defer></script>
+  <link rel="stylesheet" href="styles.css?v=4">
+  <script src="app.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip" href="#workspace">Skip to study tools</a>
@@ -41,6 +41,7 @@
       <button class="tab active" type="button" data-view="dashboard">Dashboard</button>
       <button class="tab" type="button" data-view="map">Lecture map</button>
       <button class="tab" type="button" data-view="quiz">MCQ Forge</button>
+      <button class="tab" type="button" data-view="answers">Long Answer Lab</button>
       <button class="tab" type="button" data-view="cards">Flashcards</button>
       <button class="tab" type="button" data-view="errors">Error ledger</button>
     </nav>
@@ -56,6 +57,7 @@
           <article class="stat"><b id="accuracy-stat">0%</b><span>MCQ accuracy</span><small id="answered-stat">0 attempts</small></article>
           <article class="stat"><b id="weak-stat">0</b><span>weak MCQ items</span><small>Below 80% after an attempt</small></article>
           <article class="stat"><b id="card-due-stat">0</b><span>card reviews due</span><small>New cards excluded</small></article>
+          <article class="stat"><b id="answer-stat">0/12</b><span>answer plans attempted</span><small id="answer-detail">0 rated strong</small></article>
           <article class="stat"><b id="error-stat">0</b><span>open errors</span><small>Resolve after a clean retest</small></article>
         </div>
       </div>
@@ -107,6 +109,47 @@
           <span class="shortcut">Keys 1–4 answer · N next</span>
           <div><button id="next-question" class="button primary" type="button">Next question</button><button id="reset-quiz" class="button" type="button">Reset MCQ history</button></div>
         </div>
+      </div>
+    </section>
+
+    <section id="answers" class="view">
+      <div class="panel">
+        <div class="section-head answer-heading">
+          <div><p class="eyebrow">Final exam · 4 answers in 2 hours</p><h2>Long Answer Lab</h2></div>
+          <div class="answer-select">
+            <label for="answer-prompt-select">Integrated practice prompt</label>
+            <select id="answer-prompt-select"></select>
+          </div>
+        </div>
+        <p id="answer-meta" class="question-meta"></p>
+        <div id="answer-question" class="stem"></div>
+        <div class="answer-clock" aria-label="Practice timer">
+          <b id="answer-timer" aria-live="polite">30:00</b>
+          <button id="answer-timer-toggle" class="button" type="button">Start 30-minute timer</button>
+          <button id="answer-timer-reset" class="button" type="button">Reset timer</button>
+        </div>
+        <label class="answer-draft">
+          <span>Closed-book answer plan</span>
+          <textarea id="answer-draft" maxlength="8000" placeholder="Write your thesis, causal sequence, evidence/experiment, predicted result and limitation before revealing the blueprint."></textarea>
+        </label>
+        <div class="controls left">
+          <button id="save-answer" class="button primary" type="button">Save answer plan</button>
+          <button id="reveal-answer-guide" class="button" type="button">Reveal self-check blueprint</button>
+        </div>
+        <p id="answer-progress" class="muted"></p>
+        <section id="answer-guide" class="answer-guide" hidden>
+          <p class="eyebrow">Practice blueprint · not an official marking scheme</p>
+          <h3 id="answer-thesis"></h3>
+          <div id="answer-points" class="rubric-list"></div>
+          <p><b>Experiment/evidence move:</b> <span id="answer-experiment"></span></p>
+          <p><b>Limitation/alternative:</b> <span id="answer-limitation"></span></p>
+          <div class="controls left">
+            <span class="shortcut">Rate the answer you actually produced, not the blueprint.</span>
+            <button class="button danger answer-rating" data-rating="needs-work" type="button">Needs work</button>
+            <button class="button answer-rating" data-rating="solid" type="button">Solid</button>
+            <button class="button success answer-rating" data-rating="strong" type="button">Strong</button>
+          </div>
+        </section>
       </div>
     </section>
 
