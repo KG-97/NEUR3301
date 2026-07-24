@@ -11,6 +11,7 @@ const required = [
   'docs/study-lab/assets/synapse-enhance.js',
   'docs/seminar/index.html',
   'docs/apps.json',
+  'docs/sw.js',
   'docs/resources/NEUR3301_Study_Playbook_2026.md',
   'docs/resources/NEUR3301_Glia1_Flashcards.csv'
 ];

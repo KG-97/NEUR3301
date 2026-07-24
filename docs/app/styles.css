@@ -29,6 +29,17 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 }
 
 .wrap { width: min(1120px, calc(100% - 28px)); margin-inline: auto; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 .skip { position: fixed; left: 12px; top: -80px; z-index: 20; padding: 10px 14px; background: var(--cyan); color: #03110c; border-radius: 8px; }
 .skip:focus { top: 12px; }
 .top { position: sticky; top: 0; z-index: 10; background: #07110fe8; border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }

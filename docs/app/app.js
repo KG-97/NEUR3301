@@ -1143,3 +1143,15 @@ document.addEventListener('keydown', event => {
 
 renderAll();
 setInterval(renderCountdowns, 3600000);
+
+function announce(msg) {
+  const el = document.querySelector('#a11y-status');
+  if (el) { el.textContent = ''; setTimeout(() => { el.textContent = msg; }, 50); }
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('../sw.js').catch(() => {});
+  });
+}
+
