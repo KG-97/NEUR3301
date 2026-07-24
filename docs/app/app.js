@@ -195,6 +195,56 @@ const distractorNotes = {
     0: "Engulfment shows association; it cannot by itself prove microglia caused all of the synapse loss.",
     2: "Finding synaptic material inside microglia shows it was neuronal, which contradicts this option.",
     3: "This observation alone does not establish that complement is required — that needs a perturbation."
+  },
+  'l14-transduction': {
+    1: "All-or-none and non-decrementing propagation describes action potentials, not graded receptor potentials — the classic trap.",
+    2: "Receptor potentials depend directly on sensory transduction ion channels opening or closing in response to stimulus energy.",
+    3: "Receptor potentials occur in specialised sensory endings or receptor cells, not restricted to myelinated axons."
+  },
+  'l16-feedback': {
+    0: "Signals running from periphery to CNS are centripetal (afferent/feedforward), not centrifugal.",
+    2: "Centrifugal control refers to top-down sensory modulation, not motor neuron interconnection.",
+    3: "Muscle-to-tendon describes mechanical attachments, not neural feedback pathways."
+  },
+  'l18-bold': {
+    0: "BOLD measures blood oxygenation dynamics, not direct electrical action potentials — activation maps are not literal spikes.",
+    2: "BOLD reflects metabolic demand and neurovascular coupling across whole circuits, not a single neurotransmitter.",
+    3: "BOLD operates on a millimetre and second timescale, far below single-cell voltage trace resolution."
+  },
+  'l19-contrast': {
+    0: "Uniform illumination stimulates both centre and surround, cancelling out; early visual neurons encode spatial contrast rather than raw light levels.",
+    2: "Centre–surround receptive fields analyse incoming visual scenes, not the iris colour of the eye itself.",
+    3: "Centre–surround fields are sensory features of retinal ganglion and LGN neurons, not motor outputs."
+  },
+  'l20-haircells': {
+    1: "Inner hair cells drive ~90–95% of auditory nerve afferents; outer hair cells primarily function as mechanical amplifiers.",
+    2: "Middle-ear pressure is regulated by the Eustachian tube, not by sensory hair cells in the organ of Corti.",
+    3: "Hair cells are specialised neuroepithelial sensory receptors in the inner ear, not central neurons."
+  },
+  'l22-hpa': {
+    0: "Glucocorticoids provide negative feedback to inhibit CRH and ACTH release, preventing uncontrolled axis activation.",
+    2: "Glucocorticoids act via nuclear and membrane receptors on neuroendocrine pathways, not by directly gating mechanosensitive hair-cell channels.",
+    3: "Glucocorticoid secretion follows a circadian rhythm established by the SCN; negative feedback modulates amplitude rather than destroying the rhythm."
+  },
+  'l25-cerebellum': {
+    1: "Purkinje cells are the sole output neurons of the cerebellar cortex; mossy fibres are afferents arising from brainstem and spinal nuclei.",
+    2: "Climbing-fibre complex spikes act as powerful error/teaching signals that drive synaptic plasticity (LTD) at parallel fibre–Purkinje cell synapses.",
+    3: "Both climbing and mossy fibres directly project into and synapse within the cerebellar cortex."
+  },
+  'l26-energy': {
+    0: "This pattern is driven by hunger signals like ghrelin; leptin signals satiety and reverses this pattern.",
+    2: "Leptin selectively excites anorexigenic (POMC) neurons while inhibiting orexigenic (AgRP/NPY) sub-populations, not global silencing.",
+    3: "Leptin acts broadly on metabolic circuitry in the arcuate nucleus to regulate energy intake alongside reproductive permissive signals."
+  },
+  'l27-pulses': {
+    0: "Continuous GnRH downregulates pituitary receptors and suppresses gonadotrophin release, whereas pulsatile release sustains secretion.",
+    2: "GnRH is synthesised in the hypothalamus and acts on anterior pituitary gonadotrophs, not the adrenal gland.",
+    3: "GnRH is a hypothalamic neuropeptide secreted into the hypophyseal portal circulation, not stored in ovarian follicles."
+  },
+  'l30-scar': {
+    0: "Chondroitin sulphate proteoglycans (CSPGs) are well-established molecular inhibitors of axonal outgrowth.",
+    2: "Astrocytes proliferate, hypertrophy, and form a dense reactive border surrounding the injury lesion.",
+    3: "Spinal cord injury triggers a multi-cellular response involving astrocytes, microglia, oligodendrocytes, pericytes, and immune cells."
   }
 };
 
