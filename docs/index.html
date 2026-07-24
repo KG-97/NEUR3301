@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <header class="hero" id="top">
     <nav class="nav wrap">
       <a class="brand" href="#top"><span class="brand-mark">S</span><span><b>SYNAPSE</b><small>NEUR3301 · UWA · 2026</small></span></a>
@@ -29,7 +30,7 @@
       <p class="launch-note">The repository-hosted tools require no account, server, Firebase project or API key. Progress stays in your browser and can be exported.</p>
     </div>
   </header>
-  <main>
+  <main id="main" tabindex="-1">
     <section class="assessment wrap" aria-label="Assessment map">
       <article><span>30%</span><strong>Seminar</strong><small>Video due 18 Sep · Q&amp;A track</small></article>
       <article><span>10%</span><strong>Test 1</strong><small>Lectures 1–7 · 24 Aug</small></article>
@@ -39,6 +40,10 @@
     <section id="system" class="section wrap">
       <div class="section-heading"><div><p class="eyebrow">App directory</p><h2>The working system</h2></div><p>Recognition is not readiness. Each tool forces retrieval, prediction, explanation or repair.</p></div>
       <div id="app-grid" class="app-grid" aria-live="polite"><p class="loading">Loading tools…</p></div>
+    </section>
+    <section id="readiness" class="section wrap">
+      <div class="section-heading"><div><p class="eyebrow">This browser</p><h2>Your local readiness</h2></div><p>A read-only snapshot of progress saved in this browser. Nothing is uploaded; use each app’s export to move it between devices.</p></div>
+      <div id="readiness-grid" class="readiness-grid" aria-live="polite"><p class="loading">Reading local progress…</p></div>
     </section>
     <section class="section wrap">
       <div class="study-path"><div><p class="eyebrow">Default study loop</p><h2>Compress → retrieve → interrogate → repair</h2><p class="path-copy">For each lecture: reduce the mechanism to a causal chain, reproduce it closed-book, predict an intervention, then encode only the errors.</p></div><ol>
