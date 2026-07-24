@@ -1,4 +1,4 @@
-const CACHE_NAME = 'neur3301-offline-v1';
+const CACHE_NAME = 'neur3301-offline-v2';
 const PRECACHE_URLS = [
   './',
   './index.html',
@@ -36,31 +36,27 @@ self.addEventListener('activate', event => {
   );
 });
 
+async function networkFirst(request) {
+  try {
+    // Mutable HTML, CSS and JavaScript must arrive from the same deployment.
+    // Cache-first can mix releases and stop the app before it renders.
+    const networkResponse = await fetch(request);
+    if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+      const cache = await caches.open(CACHE_NAME);
+      await cache.put(request, networkResponse.clone());
+    }
+    return networkResponse;
+  } catch {
+    const cachedResponse = await caches.match(request);
+    if (cachedResponse) return cachedResponse;
+    if (request.headers.get('accept')?.includes('text/html')) {
+      return caches.match('./index.html');
+    }
+    return Response.error();
+  }
+}
+
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-  event.respondWith(
-    caches.match(event.request).then(cachedResponse => {
-      if (cachedResponse) {
-        // Return cached asset immediately and update in background
-        fetch(event.request).then(networkResponse => {
-          if (networkResponse && networkResponse.status === 200) {
-            caches.open(CACHE_NAME).then(cache => cache.put(event.request, networkResponse));
-          }
-        }).catch(() => {/* Offline fallback active */});
-        return cachedResponse;
-      }
-      return fetch(event.request).then(networkResponse => {
-        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-          return networkResponse;
-        }
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseToCache));
-        return networkResponse;
-      }).catch(() => {
-        if (event.request.headers.get('accept')?.includes('text/html')) {
-          return caches.match('./index.html');
-        }
-      });
-    })
-  );
+  event.respondWith(networkFirst(event.request));
 });

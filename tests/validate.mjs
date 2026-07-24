@@ -175,6 +175,27 @@ if (!deepBundle.includes('synapse-neur3301-progress-v1') || deepBundle.includes(
   throw new Error('Study Lab progress persistence is missing or regressed');
 }
 
+const serviceWorker = readFileSync('docs/sw.js', 'utf8');
+const precacheOpen = serviceWorker.indexOf('const PRECACHE_URLS = [');
+const precacheStart = serviceWorker.indexOf('[', precacheOpen);
+const precacheEnd = serviceWorker.indexOf('];', precacheStart);
+if (precacheOpen === -1 || precacheEnd === -1) throw new Error('Could not locate the service-worker precache list');
+const precacheUrls = Function(`"use strict"; return (${serviceWorker.slice(precacheStart, precacheEnd + 1)});`)();
+if (!Array.isArray(precacheUrls) || new Set(precacheUrls).size !== precacheUrls.length) {
+  throw new Error('Service-worker precache URLs must be a unique literal array');
+}
+for (const url of precacheUrls) {
+  if (typeof url !== 'string' || !url.startsWith('./')) throw new Error(`Invalid service-worker precache URL: ${url}`);
+  const relativePath = url.slice(2).split('?')[0] || 'index.html';
+  if (!existsSync(`docs/${relativePath}`)) throw new Error(`Service worker precaches a missing file: ${url}`);
+}
+const networkLookup = serviceWorker.indexOf('const networkResponse = await fetch(request)');
+const cacheFallback = serviceWorker.indexOf('const cachedResponse = await caches.match(request)');
+if (!/const CACHE_NAME = 'neur3301-offline-v\d+'/.test(serviceWorker) ||
+    networkLookup === -1 || cacheFallback === -1 || networkLookup > cacheFallback) {
+  throw new Error('Service worker must prefer matched current-deployment assets online and use cache only as fallback');
+}
+
 // Recover the compiled Study Lab's literal lecture dataset and keep public
 // content totals aligned with what the live dashboard actually computes.
 const deepDataMarker = deepBundle.match(/\b\w+=\[\{id:1,lecture:1,moduleId:/);
