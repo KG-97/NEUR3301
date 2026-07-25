@@ -21,13 +21,169 @@ const lectureGroups = [
   ]}
 ];
 
+const lectureBriefs = [
+  {
+    id: 2,
+    title: 'Growth and Trophic Factors',
+    date: '22 July 2026',
+    lecturer: 'Hodgetts',
+    scope: 'Official timetable identity; mechanism brief reconstructed from primary literature because the LMS slide deck was not supplied.',
+    outcomes: [
+      'Distinguish a growth factor from a neurotrophic factor and avoid treating every trophic signal as a survival-only signal.',
+      'Match NGF, BDNF/NT-4 and NT-3 to their preferred Trk receptors, while recognising that receptor expression and context determine the response.',
+      'Explain target-derived competition, Trk signalling endosomes and the survival-versus-apoptosis decision as one causal chain.',
+      'Predict how compartment-specific ligand removal, receptor blockade or transport disruption changes neuronal survival and target innervation.'
+    ],
+    chains: [
+      {
+        name: 'Target-derived survival',
+        steps: ['Limited target-derived neurotrophin', 'Trk binding and dimerisation', 'Receptor autophosphorylation', 'PI3K-Akt / Ras-MAPK / PLCγ signalling', 'pro-survival transcription and metabolism']
+      },
+      {
+        name: 'Long-range signal',
+        steps: ['Ligand-Trk complex at distal axon', 'endocytosis into a signalling endosome', 'dynein-dependent retrograde transport', 'somatic nuclear response', 'survival and differentiation programme']
+      },
+      {
+        name: 'Competition failure',
+        steps: ['Insufficient trophic capture', 'reduced Trk survival signalling', 'BIM/BAX-dominated mitochondrial permeabilisation', 'caspase activation', 'developmental apoptosis']
+      }
+    ],
+    distinctions: [
+      ['NGF', 'TrkA', 'Classically sympathetic and nociceptive sensory development; context matters'],
+      ['BDNF / NT-4', 'TrkB', 'Survival, differentiation and synaptic/circuit plasticity'],
+      ['NT-3', 'TrkC preferred', 'Proprioceptive and other developmental programmes; cross-activation can occur'],
+      ['Mature neurotrophin + Trk', 'Usually trophic/survival signalling', 'Not a universal outcome; cell state and co-receptors matter'],
+      ['Proneurotrophin + p75NTR/sortilin context', 'Can favour apoptotic or pruning signals', 'p75NTR is not simply a low-affinity “death receptor” in every context']
+    ],
+    experiments: [
+      {
+        name: 'Compartmented NGF-TrkA transport',
+        design: 'Supply NGF only to distal sympathetic axons, then track internalised NGF-TrkA and interrupt retrograde transport.',
+        result: 'Distal NGF can support somatic survival; blocking the transported signal removes that support.',
+        inference: 'A locally captured target signal can be conveyed to the soma by a signalling endosome.',
+        limit: 'Culture compartments simplify the target environment and transport blockade may disrupt more than Trk cargo.'
+      },
+      {
+        name: 'Neuronal competition model',
+        design: 'Manipulate NGF access and the competition-linked sensitisation programme in developing sympathetic neurons.',
+        result: 'Relative trophic access changes survival, rather than survival being set only by a fixed cell-autonomous timer.',
+        inference: 'Target competition is an active signalling process that selects appropriately connected neurons.',
+        limit: 'Sympathetic neurons are a powerful model, not proof that every CNS population uses the identical mechanism.'
+      }
+    ],
+    traps: [
+      '“Neurotrophin” is not synonymous with “neurotransmitter,” and retrograde transport is not retrograde synaptic transmission.',
+      'Trk activation can promote survival, growth, differentiation or plasticity; the ligand name alone does not specify the phenotype.',
+      'Cell survival is not functional innervation. A neuron may remain alive yet fail to reach, map onto or communicate with its target.',
+      'p75NTR can modulate affinity, survival, pruning or death depending on ligand form, co-receptors and intracellular context.'
+    ],
+    recall: [
+      ['Why does a target make trophic support limiting?', 'It couples neuronal survival to successful target access, matching neuron number to available target territory.'],
+      ['What makes a signalling endosome more than ordinary cargo?', 'It preserves an active ligand-receptor signalling complex during retrograde transport so the distal event can change somatic transcription.'],
+      ['What would dynein inhibition predict?', 'Reduced delivery of distal trophic signals to the soma, impaired survival/differentiation signalling and possible distal cargo accumulation.'],
+      ['Why is “more BDNF is always better” weak reasoning?', 'Dose, timing, receptor distribution, circuit state and off-target plasticity determine the outcome; trophic signalling is context-dependent.']
+    ],
+    download: '../resources/lectures/L02_Growth_and_Trophic_Factors.md',
+    references: [
+      ['Ye et al. (2003) — NGF-TrkA signalling endosomes', 'https://pubmed.ncbi.nlm.nih.gov/12848932/'],
+      ['Deppmann et al. (2008) — neuronal competition model', 'https://pubmed.ncbi.nlm.nih.gov/18323418/'],
+      ['Lazo et al. (2023) — Rab10 and retrograde TrkB signalling', 'https://pubmed.ncbi.nlm.nih.gov/36897066/']
+    ]
+  },
+  {
+    id: 3,
+    title: 'Axon Outgrowth, Target Recognition and Maps',
+    date: '27 July 2026',
+    lecturer: 'Hodgetts',
+    scope: 'Official timetable identity; mechanism brief reconstructed from primary literature because the LMS slide deck was not supplied.',
+    outcomes: [
+      'Explain how a growth cone converts spatially asymmetric receptor signalling into actin and microtubule rearrangement.',
+      'Classify guidance information as attractive/repulsive and long-range/contact-mediated without assigning a permanent sign to a cue.',
+      'Use intermediate targets and receptor switching to explain how an axon solves a multistep route rather than navigating directly to its final target.',
+      'Separate coarse molecular topography from activity-dependent refinement of an ordered neural map.'
+    ],
+    chains: [
+      {
+        name: 'Growth-cone turning',
+        steps: ['Cue gradient or contact signal', 'asymmetric receptor activation', 'local Ca2+ / cAMP / Rho-family GTPase signalling', 'biased actin assembly and microtubule capture', 'turn, advance, pause or collapse']
+      },
+      {
+        name: 'Midline choice',
+        steps: ['Pre-crossing attraction toward an intermediate target', 'receptor-state change after crossing', 'reduced attraction plus Slit-Robo repulsion', 'exit from the midline', 'prevention of recrossing']
+      },
+      {
+        name: 'Topographic map',
+        steps: ['Complementary receptor-ligand gradients', 'relative positional signalling', 'coarse termination zone', 'correlated spontaneous/activity-dependent competition', 'refined ordered projection']
+      }
+    ],
+    distinctions: [
+      ['Netrin', 'Secreted cue; DCC/UNC5 receptor context', 'Can attract or repel; “netrin = attractant” is unsafe'],
+      ['Semaphorin', 'Secreted or membrane-associated; neuropilin/plexin context', 'Often repulsive/collapse signalling, but sign is context-dependent'],
+      ['Eph / ephrin', 'Contact-mediated, graded, bidirectional-capable signalling', 'Boundary formation and relative topographic mapping'],
+      ['Cell-adhesion / ECM cues', 'Contact-dependent permissive or instructive substrate', 'Support fasciculation, defasciculation and pathway choice'],
+      ['Retinal waves', 'Correlated patterned activity', 'Refine termination zones; they do not replace initial molecular targeting']
+    ],
+    experiments: [
+      {
+        name: 'Netrin loss and commissural guidance',
+        design: 'Disrupt netrin-1 in the developing vertebrate nervous system and label commissural projections.',
+        result: 'Many commissural axons fail to follow their normal ventral trajectory.',
+        inference: 'Netrin-1 is required for normal commissural guidance, not merely correlated with the pathway.',
+        limit: 'A loss phenotype establishes necessity in that context, not that netrin acts alone or always attracts.'
+      },
+      {
+        name: 'Relative EphA signalling',
+        design: 'Elevate EphA3 in a subset of retinal ganglion cells and trace their superior-colliculus termination zones.',
+        result: 'The projection splits into ordered maps according to relative EphA signalling levels.',
+        inference: 'Relative, not simply absolute, EphA activity helps specify topographic position.',
+        limit: 'A knock-in perturbs the competitive population and does not reduce map formation to one gradient.'
+      },
+      {
+        name: 'Retinal-wave critical period',
+        design: 'Remove early cholinergic retinal waves in β2 nicotinic-receptor knockout mice and follow map refinement over time.',
+        result: 'Neighbouring retinal axons retain enlarged, diffuse termination zones despite later activity.',
+        inference: 'Correlated spontaneous activity is required during an early critical period for normal refinement.',
+        limit: 'The mutation changes a receptor throughout the animal; altered waves are central but not necessarily the only downstream effect.'
+      }
+    ],
+    traps: [
+      'Attraction and repulsion are responses of a particular growth cone state, not permanent properties printed on a cue.',
+      'Growth cone collapse is an assay readout, not automatically proof of long-range repulsion in vivo.',
+      'Target recognition includes stopping, branching and synapse selection; arriving in the correct region is not the whole job.',
+      'Molecular gradients establish coarse order; patterned activity refines it. Neither alone is a complete map theory.'
+    ],
+    recall: [
+      ['How can the same netrin gradient attract one axon and repel another?', 'Different DCC/UNC5 surface combinations and intracellular states change the sign of downstream cytoskeletal signalling.'],
+      ['What is the cytoskeletal output of a turning decision?', 'Actin protrusion/stabilisation becomes biased to one side and microtubules invade the selected region, redirecting growth.'],
+      ['How would failed targeting differ from failed refinement?', 'Targeting failure displaces or misroutes projections early; refinement failure preserves coarse location but leaves broad, overlapping or poorly focused arbors.'],
+      ['What does an EphA3 knock-in teach?', 'An axon interprets its EphA level relative to competitors and target gradients, supporting relative positional coding.']
+    ],
+    download: '../resources/lectures/L03_Axon_Outgrowth_Target_Recognition_Maps.md',
+    references: [
+      ['Kennedy et al. (1994) — netrins as chemotropic factors', 'https://pubmed.ncbi.nlm.nih.gov/8062385/'],
+      ['Serafini et al. (1996) — netrin-1 requirement in vivo', 'https://pubmed.ncbi.nlm.nih.gov/8978605/'],
+      ['Bartoe et al. (2006) — receptor trafficking switches netrin response', 'https://pubmed.ncbi.nlm.nih.gov/16554470/'],
+      ['Brown et al. (2000) — relative EphA signalling', 'https://pubmed.ncbi.nlm.nih.gov/10929715/'],
+      ['McLaughlin et al. (2003) — retinal-wave refinement', 'https://pubmed.ncbi.nlm.nih.gov/14687549/']
+    ]
+  }
+];
+
 const questions = [
   { id: 'l1-origin', lecture: 1, block: 'Test 1', topic: 'Glia I', stem: 'Which developmental origin most clearly distinguishes microglia from CNS macroglia?', options: ['Neural crest', 'Early yolk-sac erythromyeloid progenitors', 'Adult bone marrow in the healthy brain', 'Radial glia'], answer: 1, explanation: 'Microglia colonise the embryonic CNS from early yolk-sac macrophage lineages and largely self-renew locally. Astrocytes and oligodendrocyte-lineage cells are neuroectodermal.', trap: 'Do not generalise the neural-crest origin of Schwann cells to CNS glia.' },
   { id: 'l1-myelin', lecture: 1, block: 'Test 1', topic: 'Glia I', stem: 'Which comparison between myelinating cells is correct?', options: ['One Schwann cell myelinates many CNS axons', 'One oligodendrocyte can form internodes on multiple CNS axons', 'Oligodendrocytes are neural-crest derived', 'Microglia form peripheral myelin'], answer: 1, explanation: 'A single oligodendrocyte can myelinate segments on several CNS axons. A myelinating Schwann cell normally forms one internode on one PNS axon.', trap: 'Separate CNS/PNS location from the number of internodes formed per cell.' },
   { id: 'l2-retrograde', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'Target-derived neurotrophin binds a Trk receptor at an axon terminal. What best supports a long-range survival response?', options: ['The ligand must diffuse through the nucleus', 'A signalling endosome can undergo retrograde axonal transport', 'The receptor is converted into a neurotransmitter', 'The soma passively detects extracellular calcium'], answer: 1, explanation: 'Ligand–Trk complexes can signal locally and from retrogradely transported endosomes, coupling target access to transcriptional survival programmes in the soma.', trap: '“Retrograde” here describes transport toward the soma, not retrograde synaptic transmission.' },
   { id: 'l2-competition', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'In the classic neurotrophic-factor hypothesis, why do excess developing neurons die?', options: ['Every target releases an unlimited survival signal', 'Neurons compete for limiting target-derived support', 'All immature neurons are intrinsically programmed to die simultaneously', 'Myelin directly selects the surviving soma'], answer: 1, explanation: 'Targets provide limiting trophic support. Neurons that establish effective access activate survival pathways; others undergo programmed cell death.', trap: 'Cell death is regulated and competitive, not random cellular “wastage”.' },
+  { id: 'l2-receptors', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'Which preferred mature-neurotrophin receptor pairing is correct?', options: ['NGF–TrkA', 'BDNF–TrkC only', 'NT-3–TrkA only', 'NGF–NMDA receptor'], answer: 0, explanation: 'NGF preferentially activates TrkA; BDNF and NT-4 preferentially activate TrkB; NT-3 preferentially activates TrkC, with context-dependent receptor cross-activation.', trap: 'Learn preferred pairings without pretending ligand–receptor specificity is perfectly exclusive in every preparation.' },
+  { id: 'l2-transport-block', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'NGF is supplied only to distal sympathetic axons. Dynein-dependent retrograde transport is then selectively disrupted. What is the strongest prediction?', options: ['Somatic NGF-dependent transcription and survival support will fall', 'The axon will convert NGF into an action potential', 'TrkA will become a guidance cue receptor at the nucleus', 'Every local axonal NGF effect will increase'], answer: 0, explanation: 'Distal NGF–TrkA signalling must be communicated to the soma. Disrupting retrograde transport should reduce somatic target-derived survival signalling, even though some local axonal signalling may persist.', trap: 'A transport perturbation separates distal signal capture from long-range nuclear response; it does not mean all local signalling stops.' },
+  { id: 'l2-p75-context', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'Why is “p75NTR is simply the neurotrophin death receptor” an unsafe rule?', options: ['p75NTR has no ligands', 'Its effect depends on ligand form, co-receptors and cellular context', 'It is found only in muscle', 'It always activates TrkA kinase directly'], answer: 1, explanation: 'p75NTR can alter neurotrophin binding and participate in survival, pruning or apoptotic signalling. Proneurotrophins, sortilin-family co-receptors and cell state help determine the outcome.', trap: 'A receptor name does not fix one biological sign across every ligand and co-receptor state.' },
+  { id: 'l2-function', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'A treatment prevents developmental neuronal apoptosis but the rescued axons never innervate the correct target. Which conclusion is justified?', options: ['The circuit is functionally repaired', 'Survival was rescued, but target recognition and functional integration were not demonstrated', 'Trophic support is irrelevant to development', 'The neurons must form a correct map automatically'], answer: 1, explanation: 'Survival is only one developmental checkpoint. Correct guidance, target recognition, synapse formation and circuit function require separate evidence.', trap: 'Do not use cell counts as a proxy for connectivity or behaviour.' },
   { id: 'l3-netrin', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'Why is “netrin is an attractant” an incomplete rule?', options: ['Netrin has no receptors', 'The response depends on receptor state and intracellular context', 'All axons ignore diffusible cues', 'Attraction only occurs after myelination'], answer: 1, explanation: 'The same cue can promote attraction or repulsion depending on receptor combinations, co-receptors and intracellular signalling state.', trap: 'Guidance cues are not permanently assigned one behavioural sign.' },
   { id: 'l3-ephrin', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'Graded Eph receptor and ephrin expression is especially useful for:', options: ['Generating action potentials', 'Building continuous topographic maps', 'Making cerebrospinal fluid', 'Triggering vesicle fusion'], answer: 1, explanation: 'Complementary molecular gradients provide positional information that helps map neighbouring source neurons onto neighbouring target locations.', trap: 'A map can arise from graded relative signalling, not a unique label for every axon.' },
+  { id: 'l3-cytoskeleton', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'A guidance cue activates receptors asymmetrically across a growth cone. What most directly converts that asymmetry into turning?', options: ['Biased actin dynamics and microtubule capture', 'Uniform DNA replication in the soma', 'Myelin compaction around the growth cone', 'Synchronous apoptosis of target cells'], answer: 0, explanation: 'Local receptor signalling biases actin protrusion, adhesion and microtubule invasion or collapse. That spatially asymmetric cytoskeletal response redirects extension.', trap: 'The growth cone is a motile signalling structure; cue detection must be translated into local mechanics.' },
+  { id: 'l3-choice-point', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'Why must a commissural axon change receptor responsiveness after crossing the midline?', options: ['To remain trapped at the intermediate target', 'To reduce attraction and become responsive to exit/anti-recrossing signals', 'To stop expressing every guidance receptor', 'To begin synthesising myelin immediately'], answer: 1, explanation: 'Intermediate targets require state transitions. After crossing, altered receptor availability and Slit–Robo signalling help the axon leave the midline and prevent recrossing.', trap: 'A cue that gets an axon to a choice point must not keep it there indefinitely.' },
+  { id: 'l3-relative-map', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'A subset of retinal ganglion cells is engineered to express extra EphA3 and forms a second ordered termination map. What is the best inference?', options: ['Absolute EphA concentration uniquely labels every target neuron', 'Relative EphA signalling among axons contributes to topographic position', 'Retinal activity is unnecessary for refinement', 'Ephrins are freely diffusible long-range attractants'], answer: 1, explanation: 'The duplicated ordered map supports relative positional coding: axons compare their EphA signalling level within the projecting population and against target ephrin gradients.', trap: 'This experiment supports relative EphA coding; it does not prove that gradients alone finish the map.' },
+  { id: 'l3-refinement', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'Early retinal waves are disrupted. Axons reach approximately correct superior-colliculus regions but retain broad overlapping termination zones. Which process failed most directly?', options: ['Initial axon specification', 'Activity-dependent map refinement', 'Neurotrophin receptor translation', 'Neural crest migration'], answer: 1, explanation: 'Coarse molecular targeting can remain while correlated spontaneous activity is needed to sharpen overlapping arbors into focal termination zones during a critical period.', trap: 'Separate reaching the correct neighbourhood from refining a precise map within it.' },
   { id: 'l4-apoptosis', lecture: 4, block: 'Test 1', topic: 'Regressive events and cell death', stem: 'Loss of trophic support most directly favours which regulated death pathway?', options: ['Mitochondrial outer-membrane permeabilisation and caspase activation', 'Immediate osmotic lysis without signalling', 'Action-potential broadening only', 'Constitutive synaptic potentiation'], answer: 0, explanation: 'Trophic withdrawal can shift BCL-2-family signalling toward mitochondrial permeabilisation, cytochrome-c release and the intrinsic caspase cascade.', trap: 'Programmed developmental death is not equivalent to acute necrotic rupture.' },
   { id: 'l4-pruning', lecture: 4, block: 'Test 1', topic: 'Regressive events and cell death', stem: 'Which statement correctly separates axon pruning from neuronal apoptosis?', options: ['Pruning always kills the soma', 'Pruning can remove selected branches while preserving the neuron', 'Apoptosis only removes synapses', 'They are molecularly and anatomically identical'], answer: 1, explanation: 'Regressive development can be compartment-specific. Axons or synapses may be removed while the parent neuron survives.', trap: 'Do not infer whole-cell death from local structural elimination.' },
   { id: 'l5-notch', lecture: 5, block: 'Test 1', topic: 'Cell lineage', stem: 'High Notch signalling in a neural progenitor most commonly tends to:', options: ['Maintain progenitor identity and suppress premature neuronal differentiation', 'Force immediate axon myelination', 'Convert the cell into microglia', 'Open voltage-gated sodium channels'], answer: 0, explanation: 'Notch–Hes programmes often maintain progenitor state and inhibit proneural differentiation, allowing neighbouring cells with lower Notch activity to differentiate.', trap: 'Notch effects are context-dependent, but “high Notch equals immediate neuron” reverses the usual developmental logic.' },
@@ -764,6 +920,171 @@ function renderLectureMap() {
   }));
 }
 
+function textList(items, ordered = false) {
+  const list = document.createElement(ordered ? 'ol' : 'ul');
+  list.replaceChildren(...items.map(item => {
+    const entry = document.createElement('li');
+    entry.textContent = item;
+    return entry;
+  }));
+  return list;
+}
+
+function renderLectureBriefs() {
+  const root = document.querySelector('#lecture-brief-list');
+  root.replaceChildren(...lectureBriefs.map(brief => {
+    const article = document.createElement('article');
+    article.className = 'lecture-brief';
+
+    const head = document.createElement('header');
+    head.className = 'brief-head';
+    const eyebrow = document.createElement('p');
+    eyebrow.className = 'eyebrow';
+    eyebrow.textContent = `Lecture ${brief.id} · ${brief.date} · ${brief.lecturer} · Test 1`;
+    const title = document.createElement('h3');
+    title.textContent = brief.title;
+    const scope = document.createElement('p');
+    scope.textContent = brief.scope;
+    head.append(eyebrow, title, scope);
+
+    const body = document.createElement('div');
+    body.className = 'brief-body';
+
+    const outcomes = document.createElement('section');
+    const outcomesTitle = document.createElement('h4');
+    outcomesTitle.textContent = 'You should be able to';
+    outcomes.append(outcomesTitle, textList(brief.outcomes));
+
+    const mechanisms = document.createElement('section');
+    const mechanismsTitle = document.createElement('h4');
+    mechanismsTitle.textContent = 'Mechanism maps';
+    const chainGrid = document.createElement('div');
+    chainGrid.className = 'chain-grid';
+    chainGrid.replaceChildren(...brief.chains.map(chain => {
+      const card = document.createElement('article');
+      card.className = 'mechanism-chain';
+      const chainTitle = document.createElement('h5');
+      chainTitle.textContent = chain.name;
+      card.append(chainTitle, textList(chain.steps, true));
+      return card;
+    }));
+    mechanisms.append(mechanismsTitle, chainGrid);
+
+    const distinctions = document.createElement('section');
+    const distinctionsTitle = document.createElement('h4');
+    distinctionsTitle.textContent = 'Know the distinctions';
+    const tableWrap = document.createElement('div');
+    tableWrap.className = 'distinction-wrap';
+    const table = document.createElement('table');
+    table.className = 'distinction-table';
+    const tableHead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    ['Signal / concept', 'Receptor or role', 'Exam-safe interpretation'].forEach(label => {
+      const th = document.createElement('th');
+      th.scope = 'col';
+      th.textContent = label;
+      headerRow.append(th);
+    });
+    tableHead.append(headerRow);
+    const tableBody = document.createElement('tbody');
+    tableBody.replaceChildren(...brief.distinctions.map(row => {
+      const tr = document.createElement('tr');
+      row.forEach(value => {
+        const td = document.createElement('td');
+        td.textContent = value;
+        tr.append(td);
+      });
+      return tr;
+    }));
+    table.append(tableHead, tableBody);
+    tableWrap.append(table);
+    distinctions.append(distinctionsTitle, tableWrap);
+
+    const experiments = document.createElement('section');
+    const experimentsTitle = document.createElement('h4');
+    experimentsTitle.textContent = 'Experiment → inference';
+    const experimentGrid = document.createElement('div');
+    experimentGrid.className = 'experiment-grid';
+    experimentGrid.replaceChildren(...brief.experiments.map(experiment => {
+      const card = document.createElement('article');
+      card.className = 'experiment-card';
+      const experimentTitle = document.createElement('h5');
+      experimentTitle.textContent = experiment.name;
+      const details = document.createElement('dl');
+      for (const [label, value] of [['Design', experiment.design], ['Result', experiment.result], ['Inference', experiment.inference], ['Limit', experiment.limit]]) {
+        const dt = document.createElement('dt');
+        dt.textContent = label;
+        const dd = document.createElement('dd');
+        dd.textContent = value;
+        details.append(dt, dd);
+      }
+      card.append(experimentTitle, details);
+      return card;
+    }));
+    experiments.append(experimentsTitle, experimentGrid);
+
+    const traps = document.createElement('section');
+    const trapsTitle = document.createElement('h4');
+    trapsTitle.textContent = 'Examiner traps';
+    traps.append(trapsTitle, textList(brief.traps));
+
+    const recall = document.createElement('section');
+    const recallTitle = document.createElement('h4');
+    recallTitle.textContent = 'Active recall — answer before opening';
+    const recallList = document.createElement('div');
+    recallList.className = 'recall-list';
+    recallList.replaceChildren(...brief.recall.map(([question, answer]) => {
+      const details = document.createElement('details');
+      const summary = document.createElement('summary');
+      summary.textContent = question;
+      const response = document.createElement('p');
+      response.textContent = answer;
+      details.append(summary, response);
+      return details;
+    }));
+    recall.append(recallTitle, recallList);
+
+    const references = document.createElement('section');
+    const referencesTitle = document.createElement('h4');
+    referencesTitle.textContent = 'Primary evidence and printable note';
+    const referenceList = document.createElement('ul');
+    referenceList.className = 'reference-list';
+    referenceList.replaceChildren(...brief.references.map(([label, url]) => {
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = label;
+      item.append(link);
+      return item;
+    }));
+    const actions = document.createElement('div');
+    actions.className = 'brief-actions';
+    const download = document.createElement('a');
+    download.className = 'button';
+    download.href = brief.download;
+    download.textContent = `Open Lecture ${brief.id} printable note`;
+    const practice = document.createElement('button');
+    practice.className = 'button primary';
+    practice.type = 'button';
+    practice.textContent = `Practise Lecture ${brief.id} MCQs`;
+    practice.addEventListener('click', () => {
+      document.querySelector('#quiz-block').value = `Lecture ${brief.id}`;
+      activeQuestion = questions.find(question => question.lecture === brief.id);
+      questionAnswered = false;
+      switchView('quiz');
+      renderQuestion();
+    });
+    actions.append(download, practice);
+    references.append(referencesTitle, referenceList, actions);
+
+    body.append(outcomes, mechanisms, distinctions, experiments, traps, recall, references);
+    article.append(head, body);
+    return article;
+  }));
+}
+
 function toggleLecture(id) {
   state.done = state.done.includes(id) ? state.done.filter(value => value !== id) : [...state.done, id].sort((a, b) => a - b);
   persist();
@@ -783,6 +1104,10 @@ function currentPool() {
   const filter = document.querySelector('#quiz-block').value;
   if (filter === 'All') return questions;
   if (filter === 'Weak') return weakQuestions();
+  if (filter.startsWith('Lecture ')) {
+    const lecture = Number(filter.replace('Lecture ', ''));
+    return questions.filter(question => question.lecture === lecture);
+  }
   return questions.filter(question => question.block === filter);
 }
 
@@ -1083,6 +1408,7 @@ function renderAll() {
   renderCountdowns();
   renderDashboard();
   renderLectureMap();
+  renderLectureBriefs();
   renderAnswer();
   renderCard();
   renderLedger();
@@ -1154,4 +1480,3 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('../sw.js').catch(() => {});
   });
 }
-

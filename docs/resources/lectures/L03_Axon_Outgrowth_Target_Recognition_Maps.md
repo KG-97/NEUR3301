@@ -1,0 +1,130 @@
+# NEUR3301 Lecture 3 — Axon Outgrowth, Target Recognition and Maps
+
+**Official timetable:** 27 July 2026 · Dr Stuart Hodgetts · Test 1 (Lectures 1–7)
+
+> Evidence boundary: the supplied UWA handbook verifies the lecture identity, date, lecturer and assessment block. The LMS slide deck was not supplied. The content below is a primary-literature reconstruction to prepare for the lecture; verify Hodgetts's emphasis, diagrams and named studies against LMS.
+
+## What you need to know cold
+
+1. The growth cone samples its environment and converts spatially asymmetric receptor activation into asymmetric actin and microtubule behaviour.
+2. Guidance cues can be long-range or contact-mediated and can produce attraction, repulsion, advance, pausing, branching or collapse.
+3. A cue does not possess a universal behavioural sign. Receptor combinations, receptor trafficking, second-messenger state and developmental history determine the response.
+4. Intermediate targets solve multistep routes. After an axon reaches or crosses a choice point, receptor responsiveness must change so the axon can leave and avoid recrossing.
+5. Target recognition includes entry, stopping, branching, arborisation and synapse choice—not just arrival in the general region.
+6. Topographic maps preserve neighbour relations between source and target populations.
+7. Eph/ephrin gradients help establish coarse relative position; patterned activity then refines overlapping arbors into focal termination zones.
+
+## Core causal maps
+
+### Growth-cone turning
+
+Cue gradient or contact signal  
+→ asymmetric receptor activation  
+→ local Ca²⁺ / cyclic-nucleotide / Rho-family GTPase signalling  
+→ biased actin protrusion, adhesion and microtubule capture  
+→ turn, advance, pause or collapse
+
+### Midline choice
+
+Pre-crossing attraction toward an intermediate target  
+→ midline crossing  
+→ change in receptor surface availability/responsiveness  
+→ reduced attraction plus Slit-Robo repulsion  
+→ exit and prevention of recrossing
+
+### Ordered map construction
+
+Complementary source/target molecular gradients  
+→ relative positional signalling  
+→ coarse termination zone  
+→ correlated spontaneous/activity-dependent competition  
+→ refined ordered projection
+
+## Cue logic
+
+| Cue system | Typical spatial mode | Exam-safe interpretation |
+|---|---|---|
+| Netrin with DCC/UNC5 context | Secreted / longer range | Can attract or repel depending on receptor surface state |
+| Semaphorin with neuropilin/plexin | Secreted or membrane-associated | Often promotes repulsion/collapse, but context determines output |
+| Eph/ephrin | Contact-mediated, graded | Relative topographic mapping, boundaries and bidirectional-capable signalling |
+| Cell-adhesion molecules / ECM | Contact substrate | Permissive and instructive effects on fasciculation and pathway choice |
+| Patterned neural activity | Correlated population signal | Refines and stabilises maps; does not replace initial molecular targeting |
+
+## High-value experiment logic
+
+### Netrin requirement
+
+- **Manipulation:** Disrupt netrin-1 and label developing commissural axons.
+- **Result:** Many commissural axons fail to follow their normal ventral trajectory.
+- **Inference:** Netrin-1 is necessary for normal guidance in this context.
+- **Limit:** Necessity does not mean netrin acts alone or always produces attraction.
+
+### Receptor-state switch
+
+- **Manipulation:** Change UNC5A surface availability while exposing axons to a stable netrin gradient.
+- **Result:** Removing surface UNC5A can convert netrin-evoked repulsion into attraction.
+- **Inference:** Receptor trafficking can switch the sign of a guidance response at a choice point.
+- **Limit:** In-vitro gradients and receptor manipulations simplify the full in-vivo cue field.
+
+### Relative EphA signalling
+
+- **Manipulation:** Increase EphA3 in a subset of retinal ganglion cells and trace superior-colliculus projections.
+- **Result:** The population forms two ordered maps.
+- **Inference:** Relative EphA signalling among competing axons helps specify topographic position.
+- **Limit:** The manipulation alters the whole competitive population; one gradient is not a complete map theory.
+
+### Activity-dependent refinement
+
+- **Manipulation:** Remove early cholinergic retinal waves in β2 nicotinic-receptor knockout mice.
+- **Result:** Axons reach roughly appropriate regions but retain enlarged, diffuse termination zones.
+- **Inference:** Correlated activity is required during an early critical period to refine coarse molecular maps.
+- **Limit:** The receptor knockout may have downstream effects beyond wave disruption.
+
+## Intervention predictions
+
+| Intervention | Immediate effect | Predicted phenotype |
+|---|---|---|
+| DCC loss in a commissural population | Reduces netrin-attractive signalling | Failure or delay of approach to the midline |
+| Premature Robo surface expression | Increases Slit sensitivity too early | Axons may be repelled before crossing |
+| UNC5 internalisation | Reduces repulsive netrin receptor complex | Netrin response may shift toward DCC-mediated attraction |
+| EphA3 increase in an RGC subset | Raises relative EphA signalling | Shifted/duplicated topographic termination zones |
+| Early retinal-wave disruption | Removes correlated neighbour activity | Broad, overlapping termination zones despite coarse targeting |
+| Actin polymerisation blockade | Prevents local protrusive mechanics | Growth-cone advance and turning fail even if receptors detect the cue |
+
+## Examiner traps
+
+- "Netrin attracts" and "semaphorin repels" are starter rules, not sufficient final answers.
+- Growth-cone collapse in culture is a readout; it is not automatically proof of long-range repulsion in an intact embryo.
+- Misrouting and failed refinement produce different phenotypes. Use developmental timing and anatomy to distinguish them.
+- Reaching the right target region does not prove correct layer, cell type, synapse or functional map.
+- Molecular gradients and patterned activity cooperate; do not set up a false either/or.
+
+## Active recall
+
+1. How does a growth cone turn toward one side without the soma moving first?
+2. How can receptor trafficking reverse the sign of a netrin response?
+3. Why must commissural axons change state after crossing the midline?
+4. What result distinguishes initial targeting failure from refinement failure?
+5. What does the EphA3 knock-in experiment establish—and what does it not establish?
+
+## Long-answer skeleton
+
+**Prompt:** Explain how molecular guidance and neural activity cooperate to form an ordered topographic map.
+
+1. Thesis: gradients create coarse relative order; correlated activity sharpens and stabilises the projection.
+2. Define topographic mapping and neighbour preservation.
+3. Explain relative EphA/ephrin-A signalling and growth-cone cytoskeletal output.
+4. Use the EphA3 knock-in as causal evidence for relative signalling.
+5. Explain correlated retinal waves and competitive refinement.
+6. Use β2-knockout termination-zone broadening as causal evidence.
+7. Predict distinct early and late phenotypes for guidance versus activity perturbation.
+8. Limit the claim: multiple gradients, competition and activity interact; no single cue fully specifies the map.
+
+## Primary evidence
+
+- Kennedy TE et al. (1994). Netrins are diffusible chemotropic factors for commissural axons. [PubMed](https://pubmed.ncbi.nlm.nih.gov/8062385/)
+- Serafini T et al. (1996). Netrin-1 is required for commissural axon guidance in the developing vertebrate nervous system. [PubMed](https://pubmed.ncbi.nlm.nih.gov/8978605/)
+- Bartoe JL et al. (2006). Receptor trafficking converts netrin-1-mediated repulsion to attraction. [PubMed](https://pubmed.ncbi.nlm.nih.gov/16554470/)
+- Brown A et al. (2000). Topographic mapping is controlled by relative EphA receptor signalling. [PubMed](https://pubmed.ncbi.nlm.nih.gov/10929715/)
+- McLaughlin T et al. (2003). Retinotopic refinement requires spontaneous retinal waves during a critical period. [PubMed](https://pubmed.ncbi.nlm.nih.gov/14687549/)
+

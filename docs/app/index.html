@@ -6,8 +6,8 @@
   <meta name="description" content="NEUR3301 marks-first practice: official lecture map, targeted MCQs, long-answer planning, retrieval cards and a misconception ledger.">
   <meta name="theme-color" content="#07110f">
   <title>Synapse X · NEUR3301 Exam Lab</title>
-  <link rel="stylesheet" href="styles.css?v=4">
-  <script src="app.js?v=4" defer></script>
+  <link rel="stylesheet" href="styles.css?v=5">
+  <script src="app.js?v=5" defer></script>
 </head>
 <body>
   <a class="skip" href="#workspace">Skip to study tools</a>
@@ -41,6 +41,7 @@
     <nav class="tabs" role="tablist" aria-label="Study tools">
       <button class="tab active" type="button" role="tab" id="tab-dashboard" aria-selected="true" aria-controls="dashboard" tabindex="0" data-view="dashboard">Dashboard</button>
       <button class="tab" type="button" role="tab" id="tab-map" aria-selected="false" aria-controls="map" tabindex="-1" data-view="map">Lecture map</button>
+      <button class="tab" type="button" role="tab" id="tab-briefs" aria-selected="false" aria-controls="briefs" tabindex="-1" data-view="briefs">New lecture briefs</button>
       <button class="tab" type="button" role="tab" id="tab-quiz" aria-selected="false" aria-controls="quiz" tabindex="-1" data-view="quiz">MCQ Forge</button>
       <button class="tab" type="button" role="tab" id="tab-answers" aria-selected="false" aria-controls="answers" tabindex="-1" data-view="answers">Long Answer Lab</button>
       <button class="tab" type="button" role="tab" id="tab-cards" aria-selected="false" aria-controls="cards" tabindex="-1" data-view="cards">Flashcards</button>
@@ -87,6 +88,20 @@
       </div>
     </section>
 
+    <section id="briefs" class="view" role="tabpanel" aria-labelledby="tab-briefs" tabindex="0">
+      <div class="panel">
+        <div class="section-head">
+          <div><p class="eyebrow">Added 25 July · Test 1</p><h2>Lectures 2 and 3</h2></div>
+          <p>Mechanism-first course briefs with experiments, examiner traps and active recall. Timetable identity is official; content is a primary-literature reconstruction until the LMS slide decks are supplied.</p>
+        </div>
+        <div class="source-boundary" role="note">
+          <b>Evidence boundary</b>
+          <span>The supplied handbook confirms titles, dates, lecturer and assessment block. It does not contain the lecture slides. Check Hodgetts’s emphasis, diagrams and named studies against LMS.</span>
+        </div>
+        <div id="lecture-brief-list" class="brief-list"></div>
+      </div>
+    </section>
+
     <section id="quiz" class="view" role="tabpanel" aria-labelledby="tab-quiz" tabindex="0">
       <div class="panel">
         <div class="section-head quiz-heading">
@@ -94,6 +109,8 @@
           <div class="quiz-filters">
             <label for="quiz-block">Question set</label>
             <select id="quiz-block">
+              <option value="Lecture 2">Lecture 2 · Growth and trophic factors</option>
+              <option value="Lecture 3">Lecture 3 · Axon outgrowth and maps</option>
               <option value="Test 1">Test 1 · Lectures 1–7</option>
               <option value="Test 2">Test 2 · Lectures 8–13</option>
               <option value="Final">Final-support MCQs</option>

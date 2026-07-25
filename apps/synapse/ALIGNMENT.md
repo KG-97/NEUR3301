@@ -1,8 +1,8 @@
 # NEUR3301 handbook alignment (2026)
 
 **Source:** `Handbook and timetable NEUR3301 2026 - 13 July.pdf`  
-**App:** Synapse NEUR3301 Study Lab and Exam Lab (v4)
-**Checked:** 2026-07-23
+**App:** Synapse NEUR3301 Study Lab and Exam Lab (v5)
+**Checked:** 2026-07-25
 
 ## Lecture map (29 content lectures)
 
@@ -40,6 +40,13 @@
 | 30 | Spinal cord injury and regeneration | Spinal Cord Injury & Regeneration | Hodgetts | Final |
 
 **Result:** Full content-lecture coverage; titles/lecturers match the 13 Jul 2026 timetable.
+
+### Lecture intake status
+
+| Lecture | Official facts verified from handbook | Added course-aligned content | Evidence boundary |
+|---:|---|---|---|
+| 2 | Growth and Trophic Factors · 22 Jul · Hodgetts · Test 1 | Full mechanism brief, experiment logic, active recall and 6 MCQs | LMS slide deck not supplied; verify lecturer emphasis and named studies |
+| 3 | Axon outgrowth, target recognition, maps · 27 Jul · Hodgetts · Test 1 | Full mechanism brief, experiment logic, active recall and 6 MCQs | LMS slide deck not supplied; verify lecturer emphasis and named studies |
 
 ## Assessments (handbook → app)
 

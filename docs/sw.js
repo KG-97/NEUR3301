@@ -1,19 +1,21 @@
-const CACHE_NAME = 'neur3301-offline-v2';
+const CACHE_NAME = 'neur3301-offline-v3';
 const PRECACHE_URLS = [
   './',
   './index.html',
   './styles.css',
   './apps.json',
   './app/index.html',
-  './app/app.js?v=4',
-  './app/styles.css?v=4',
+  './app/app.js?v=5',
+  './app/styles.css?v=5',
   './seminar/index.html',
   './study-lab/index.html',
   './study-lab/assets/index-BR7I-zAT.js',
   './study-lab/assets/index-C3XRwkWz.css',
   './study-lab/assets/synapse-enhance.js',
   './resources/NEUR3301_Study_Playbook_2026.md',
-  './resources/NEUR3301_Glia1_Flashcards.csv'
+  './resources/NEUR3301_Glia1_Flashcards.csv',
+  './resources/lectures/L02_Growth_and_Trophic_Factors.md',
+  './resources/lectures/L03_Axon_Outgrowth_Target_Recognition_Maps.md'
 ];
 
 self.addEventListener('install', event => {
