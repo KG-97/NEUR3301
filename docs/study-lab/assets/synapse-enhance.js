@@ -161,22 +161,24 @@
       #${PANEL_ID} .se-card{
         background:rgba(15,23,42,.92); border:1px solid rgba(148,163,184,.35);
         border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.35);
-        backdrop-filter:blur(8px); padding:10px 12px; display:none;
+        backdrop-filter:blur(8px); padding:12px 14px; display:none;
+        max-height:min(70vh,520px); overflow-y:auto; overscroll-behavior:contain;
       }
       #${PANEL_ID}.open .se-card{ display:block; }
-      #${PANEL_ID} .se-title{ font-weight:650; font-size:12.5px; margin:0 0 4px; color:#f8fafc; }
-      #${PANEL_ID} .se-stats{ color:#94a3b8; margin:0 0 8px; font-size:11px; }
+      #${PANEL_ID} .se-title{ font-weight:650; font-size:14px; margin:0 0 4px; color:#f8fafc; }
+      #${PANEL_ID} .se-stats{ color:#94a3b8; margin:0 0 8px; font-size:12px; }
       #${PANEL_ID} .se-row{ display:flex; flex-wrap:wrap; gap:6px; }
       #${PANEL_ID} button, #${PANEL_ID} label.se-btn{
         appearance:none; border:1px solid rgba(148,163,184,.4); background:#1e293b;
-        color:#f1f5f9; border-radius:8px; padding:6px 9px; font:inherit; cursor:pointer;
+        color:#f1f5f9; border-radius:8px; padding:8px 10px; font:inherit; cursor:pointer;
+        min-height:44px; display:inline-flex; align-items:center; justify-content:center;
       }
       #${PANEL_ID} button:hover, #${PANEL_ID} label.se-btn:hover{ background:#334155; }
       #${PANEL_ID} button.danger{ border-color:rgba(248,113,113,.45); color:#fecaca; }
-      #${PANEL_ID} .se-note{ margin:8px 0 0; color:#64748b; font-size:10.5px; }
+      #${PANEL_ID} .se-note{ margin:8px 0 0; color:#94a3b8; font-size:12px; }
       #${PANEL_ID} .se-hr{ border:0; border-top:1px solid rgba(148,163,184,.25); margin:10px 0; }
-      #${PANEL_ID} .se-sub{ font-weight:600; color:#cbd5e1; margin:0 0 4px; font-size:11.5px; }
-      #${PANEL_ID} .se-list{ margin:0 0 6px; padding-left:1.1em; color:#94a3b8; font-size:10.5px; }
+      #${PANEL_ID} .se-sub{ font-weight:600; color:#cbd5e1; margin:0 0 4px; font-size:12.5px; }
+      #${PANEL_ID} .se-list{ margin:0 0 6px; padding-left:1.1em; color:#94a3b8; font-size:12px; }
       #${PANEL_ID} .se-list li{ margin:2px 0; }
       #${PANEL_ID} .se-toggle{
         margin-left:auto; display:inline-flex; align-items:center; gap:6px;
@@ -202,7 +204,7 @@
     const root = document.createElement("div");
     root.id = PANEL_ID;
     root.innerHTML = `
-      <div class="se-card" role="dialog" aria-label="Study tools">
+      <div class="se-card" id="se-card" role="region" aria-label="Study tools" aria-hidden="true">
         <p class="se-title">Study tools (local)</p>
         <p class="se-stats" id="synapse-progress-stats"></p>
         <div class="se-row">
@@ -231,15 +233,17 @@
         <p class="se-note">Progress in this browser only (localStorage). Aligns with handbook 13 Jul 2026; always verify against LMS slides. Alt+P toggles this panel.</p>
       </div>
       <div style="display:flex;justify-content:flex-end;margin-top:8px">
-        <button type="button" class="se-toggle" id="se-toggle" aria-expanded="false">Study tools</button>
+        <button type="button" class="se-toggle" id="se-toggle" aria-expanded="false" aria-controls="se-card">Study tools</button>
       </div>
     `;
     document.body.appendChild(root);
 
     const toggle = root.querySelector("#se-toggle");
+    const card = root.querySelector("#se-card");
     toggle.addEventListener("click", () => {
       const open = root.classList.toggle("open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      card.setAttribute("aria-hidden", open ? "false" : "true");
       if (open) refreshStats();
     });
 

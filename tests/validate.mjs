@@ -205,6 +205,21 @@ const deepBundle = readFileSync('docs/study-lab/assets/index-BR7I-zAT.js', 'utf8
 if (!deepBundle.includes('synapse-neur3301-progress-v1') || deepBundle.includes('port/5000')) {
   throw new Error('Study Lab progress persistence is missing or regressed');
 }
+const deepLabHtml = readFileSync('docs/study-lab/index.html', 'utf8');
+const deepEnhancements = readFileSync('docs/study-lab/assets/synapse-enhance.js', 'utf8');
+for (const invariant of [
+  'synapse-enhance.js?v=2',
+  'min-height:44px',
+  'max-height:min(70vh,520px)',
+  'overflow-y:auto',
+  'aria-controls="se-card"',
+  'aria-hidden="true"',
+  'role="region"'
+]) {
+  if (!deepLabHtml.includes(invariant) && !deepEnhancements.includes(invariant)) {
+    throw new Error(`Study Lab mobile maintenance panel regressed: ${invariant}`);
+  }
+}
 
 const serviceWorker = readFileSync('docs/sw.js', 'utf8');
 const precacheOpen = serviceWorker.indexOf('const PRECACHE_URLS = [');
