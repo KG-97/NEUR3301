@@ -1,12 +1,12 @@
-const CACHE_NAME = 'neur3301-offline-v8';
+const CACHE_NAME = 'neur3301-offline-v9';
 const PRECACHE_URLS = [
   './',
   './index.html',
   './styles.css',
   './apps.json',
   './app/index.html',
-  './app/app.js?v=8',
-  './app/styles.css?v=8',
+  './app/app.js?v=9',
+  './app/styles.css?v=9',
   './seminar/index.html',
   './study-lab/index.html',
   './study-lab/assets/index-BR7I-zAT.js',
