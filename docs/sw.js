@@ -1,12 +1,12 @@
-const CACHE_NAME = 'neur3301-offline-v4';
+const CACHE_NAME = 'neur3301-offline-v5';
 const PRECACHE_URLS = [
   './',
   './index.html',
   './styles.css',
   './apps.json',
   './app/index.html',
-  './app/app.js?v=5',
-  './app/styles.css?v=5',
+  './app/app.js?v=6',
+  './app/styles.css?v=6',
   './seminar/index.html',
   './study-lab/index.html',
   './study-lab/assets/index-BR7I-zAT.js',
@@ -14,6 +14,7 @@ const PRECACHE_URLS = [
   './study-lab/assets/synapse-enhance.js?v=2',
   './resources/NEUR3301_Study_Playbook_2026.md',
   './resources/NEUR3301_Glia1_Flashcards.csv',
+  './resources/lectures/L01_Glia_I.md',
   './resources/lectures/L02_Growth_and_Trophic_Factors.md',
   './resources/lectures/L03_Axon_Outgrowth_Target_Recognition_Maps.md'
 ];

@@ -23,11 +23,90 @@ const lectureGroups = [
 
 const lectureBriefs = [
   {
+    id: 1,
+    title: 'Glia I',
+    date: '21 July 2026',
+    lecturer: 'Hodgetts',
+    scope: 'Released lecture PDF and recording transcript condensed into an exam-safe mechanism brief; automatic-transcript terminology is normalised and older binary glial-state shorthand is qualified.',
+    outcomes: [
+      'Classify CNS and PNS glia by developmental origin, location and mechanistic role rather than treating “glia” as one cell class.',
+      'Compare how one oligodendrocyte and one myelinating Schwann cell distribute myelin across axons and internodes.',
+      'Explain how radial glia, astrocytes and microglia influence development, homeostasis, injury responses and circuit remodelling.',
+      'Predict why abolishing a reactive glial response may remove an inhibitory barrier yet worsen tissue damage or inflammatory spread.'
+    ],
+    chains: [
+      {
+        name: 'Radial-glial development',
+        steps: ['Neural-tube ventricular-zone progenitor', 'radial process spans ventricular-to-pial axis', 'newborn cell uses the scaffold and positional signals', 'migration and lineage progression', 'layered neural tissue']
+      },
+      {
+        name: 'Peripheral nerve repair',
+        steps: ['Axon injury and distal degeneration', 'Schwann-cell repair reprogramming', 'myelin/debris clearance plus trophic signalling', 'bands of Büngner guide regrowth', 'target reinnervation if distance and timing permit']
+      },
+      {
+        name: 'Reactive astrocyte trade-off',
+        steps: ['CNS injury', 'context-dependent astrocyte-state change', 'lesion border contains inflammation and protects tissue', 'scar-associated signals can restrict later axon extension', 'repair requires timing and state control—not blanket ablation']
+      }
+    ],
+    distinctions: [
+      ['CNS macroglia', 'Neuroectoderm / neural tube', 'Astrocytes, oligodendrocytes and ependymal cells do not share microglial ontogeny'],
+      ['Microglia', 'Embryonic yolk-sac erythromyeloid lineage', 'Resident immune cells largely self-renew locally; healthy adult microglia are not normally replaced by bone marrow'],
+      ['Oligodendrocyte', 'CNS myelin and axonal support', 'One cell can form internodes on multiple axons'],
+      ['Schwann cell', 'Neural-crest-derived PNS glia', 'One myelinating cell normally forms one internode on one axon; repair cells also support regeneration'],
+      ['Astrocyte / BBB', 'Barrier regulation and homeostasis', 'Endothelial tight junctions form the principal physical seal; astrocytes and pericytes regulate it'],
+      ['GFAP or M1/M2/A1/A2 labels', 'Useful but limited markers/shorthand', 'Markers and binary labels do not capture all glia or multidimensional reactive states']
+    ],
+    experiments: [
+      {
+        name: 'Microglial fate mapping',
+        design: 'Label early yolk-sac macrophage progenitors and trace their descendants into the adult CNS.',
+        result: 'Labelled embryonic progenitors contribute persistently to adult microglia.',
+        inference: 'Microglia have a mesodermal embryonic origin distinct from neuroectoderm-derived CNS macroglia.',
+        limit: 'A lineage label establishes ancestry; it does not by itself specify every adult activation state or function.'
+      },
+      {
+        name: 'Astrocyte-scar perturbation',
+        design: 'Prevent or ablate scar-forming astrocytes after spinal cord injury, then measure lesion spread and stimulated axon regrowth.',
+        result: 'Removing scar formation does not automatically improve regrowth and can remove tissue-protective functions.',
+        inference: 'Reactive astrocyte borders can be both protective and growth-limiting, depending on time and context.',
+        limit: 'Genetic ablation perturbs a cell population broadly; one injury model does not define every reactive astrocyte state.'
+      },
+      {
+        name: 'Schwann-cell repair programme',
+        design: 'Disrupt injury-induced c-Jun signalling selectively in Schwann cells after peripheral nerve injury.',
+        result: 'Repair-cell organisation, trophic support, axon regeneration and functional recovery are impaired.',
+        inference: 'Peripheral repair depends on active Schwann-cell reprogramming, not merely the passive absence of CNS inhibitors.',
+        limit: 'Rodent nerve distance and recovery time differ substantially from long human peripheral nerves.'
+      }
+    ],
+    traps: [
+      '“Glia are support cells” is too vague: name the cell, mechanism, location and predicted consequence of perturbation.',
+      'Astrocytic end-feet regulate the blood–brain barrier but are not the endothelial tight-junction seal itself.',
+      'GFAP is not a flawless all-astrocyte-and-only-astrocyte identity marker across regions, development and disease.',
+      'M1/M2 microglia and A1/A2 astrocytes are historical teaching shorthand, not two exhaustive fixed states.',
+      'A glial scar can restrict axon growth and contain damaging inflammation; erasing one function may erase the other.'
+    ],
+    recall: [
+      ['What lineage result separates microglia from CNS macroglia?', 'Microglia descend mainly from embryonic yolk-sac erythromyeloid progenitors, whereas astrocytes and oligodendrocytes are neuroectoderm-derived.'],
+      ['How does one oligodendrocyte differ from one myelinating Schwann cell?', 'One oligodendrocyte can form internodes on multiple CNS axons; one myelinating Schwann cell normally forms one PNS internode on one axon.'],
+      ['Why could blocking astrocyte scar formation backfire?', 'It might reduce a growth barrier while also weakening lesion containment, inflammatory control and protection of surviving tissue.'],
+      ['Why is GFAP positivity insufficient to define an astrocyte population?', 'Expression varies across astrocyte states and regions and is not perfectly exclusive, so anatomy, morphology, additional markers and context are required.'],
+      ['What makes the injured PNS more growth-permissive than the injured CNS?', 'Repair Schwann cells clear debris, provide trophic signals and form aligned regeneration tracks, although long distance and chronic denervation still limit recovery.']
+    ],
+    download: '../resources/lectures/L01_Glia_I.md',
+    references: [
+      ['Ginhoux et al. (2010) — embryonic origin of adult microglia', 'https://pubmed.ncbi.nlm.nih.gov/20966214/'],
+      ['Anderson et al. (2016) — astrocyte-scar functions in CNS regeneration', 'https://pubmed.ncbi.nlm.nih.gov/27027288/'],
+      ['Jessen and Mirsky (2016) — the repair Schwann cell', 'https://pubmed.ncbi.nlm.nih.gov/26864683/'],
+      ['Raisman and Li (2007) — olfactory ensheathing cells in pathway repair', 'https://pubmed.ncbi.nlm.nih.gov/17342173/']
+    ]
+  },
+  {
     id: 2,
     title: 'Growth and Trophic Factors',
     date: '22 July 2026',
     lecturer: 'Hodgetts',
-    scope: 'Official timetable identity; mechanism brief reconstructed from primary literature because the LMS slide deck was not supplied.',
+    scope: 'Released lecture PDF and recording transcript integrated with primary evidence; lecturer-emphasised transport, target-dependence, BDNF regulation and repair-delivery examples are separated from broader mechanistic inference.',
     outcomes: [
       'Distinguish a growth factor from a neurotrophic factor and avoid treating every trophic signal as a survival-only signal.',
       'Match NGF, BDNF/NT-4 and NT-3 to their preferred Trk receptors, while recognising that receptor expression and context determine the response.',
@@ -69,6 +148,13 @@ const lectureBriefs = [
         result: 'Relative trophic access changes survival, rather than survival being set only by a fixed cell-autonomous timer.',
         inference: 'Target competition is an active signalling process that selects appropriately connected neurons.',
         limit: 'Sympathetic neurons are a powerful model, not proof that every CNS population uses the identical mechanism.'
+      },
+      {
+        name: 'Growth-factor repair delivery',
+        design: 'Deliver a trophic factor directly, by vector, engineered cell or scaffold after nervous-system injury; measure survival, axon extension and reconnection separately.',
+        result: 'A treatment may improve cell survival or local growth without restoring target-specific connectivity or behaviour.',
+        inference: 'Dose, location and timing are part of the mechanism, and survival is only one checkpoint in functional repair.',
+        limit: 'Delivery vehicles and injury environments introduce effects beyond the named trophic factor.'
       }
     ],
     traps: [
@@ -95,7 +181,7 @@ const lectureBriefs = [
     title: 'Axon Outgrowth, Target Recognition and Maps',
     date: '27 July 2026',
     lecturer: 'Hodgetts',
-    scope: 'Official timetable identity; mechanism brief reconstructed from primary literature because the LMS slide deck was not supplied.',
+    scope: 'Pre-lecture primary-literature brief. The official timetable confirms identity and date, but no released Lecture 3 PDF or transcript was available as of 26 July 2026; verify lecturer emphasis after release.',
     outcomes: [
       'Explain how a growth cone converts spatially asymmetric receptor signalling into actin and microtubule rearrangement.',
       'Classify guidance information as attractive/repulsive and long-range/contact-mediated without assigning a permanent sign to a cue.',
@@ -172,6 +258,10 @@ const lectureBriefs = [
 const questions = [
   { id: 'l1-origin', lecture: 1, block: 'Test 1', topic: 'Glia I', stem: 'Which developmental origin most clearly distinguishes microglia from CNS macroglia?', options: ['Neural crest', 'Early yolk-sac erythromyeloid progenitors', 'Adult bone marrow in the healthy brain', 'Radial glia'], answer: 1, explanation: 'Microglia colonise the embryonic CNS from early yolk-sac macrophage lineages and largely self-renew locally. Astrocytes and oligodendrocyte-lineage cells are neuroectodermal.', trap: 'Do not generalise the neural-crest origin of Schwann cells to CNS glia.' },
   { id: 'l1-myelin', lecture: 1, block: 'Test 1', topic: 'Glia I', stem: 'Which comparison between myelinating cells is correct?', options: ['One Schwann cell myelinates many CNS axons', 'One oligodendrocyte can form internodes on multiple CNS axons', 'Oligodendrocytes are neural-crest derived', 'Microglia form peripheral myelin'], answer: 1, explanation: 'A single oligodendrocyte can myelinate segments on several CNS axons. A myelinating Schwann cell normally forms one internode on one PNS axon.', trap: 'Separate CNS/PNS location from the number of internodes formed per cell.' },
+  { id: 'l1-radial', lecture: 1, block: 'Test 1', topic: 'Glia I', stem: 'A developmental manipulation disrupts radial-glial processes spanning the ventricular to pial surfaces. What is the strongest predicted consequence?', options: ['Impaired migration and positioning of developing cortical cells', 'Immediate conversion of microglia into oligodendrocytes', 'Loss of all peripheral myelin', 'Selective failure of adult bone-marrow haematopoiesis'], answer: 0, explanation: 'Radial glia act as neural progenitors and provide elongated scaffolds and positional support for migrating cells during cortical development.', trap: 'Radial glia are not just mature structural support; their developmental progenitor and scaffold roles are central.' },
+  { id: 'l1-bbb', lecture: 1, block: 'Test 1', topic: 'Glia I', stem: 'Which statement best describes the astrocyte contribution to the blood–brain barrier?', options: ['Astrocyte membranes form the endothelial tight-junction seal', 'Astrocytes regulate barrier development and maintenance while endothelial tight junctions form the principal physical seal', 'Astrocytes replace pericytes and endothelial cells', 'Only microglia determine paracellular permeability'], answer: 1, explanation: 'Astrocytic end-feet and pericytes help regulate and maintain the specialised barrier phenotype, but brain endothelial tight junctions form the principal paracellular seal.', trap: 'Physical proximity to vessels does not make the astrocyte end-foot the sealed endothelial wall.' },
+  { id: 'l1-scar-tradeoff', lecture: 1, block: 'Test 1', topic: 'Glia I', stem: 'A therapy completely prevents formation of the reactive astrocyte border after spinal cord injury. Which outcome is most mechanistically plausible?', options: ['Axon regeneration must improve with no downside', 'A growth barrier may fall, but inflammatory spread and secondary tissue damage may worsen', 'Peripheral Schwann-cell myelin must disappear', 'The endothelial blood–brain barrier becomes irrelevant'], answer: 1, explanation: 'Reactive astrocyte borders can contain inflammation and protect surviving tissue while scar-associated signals can also restrict later axon growth. The net effect depends on timing and state.', trap: 'Do not force a context-dependent injury response into “good glia” versus “bad glia”.' },
+  { id: 'l1-repair-schwann', lecture: 1, block: 'Test 1', topic: 'Glia I', stem: 'After peripheral nerve injury, what most directly helps Schwann cells support axon regeneration?', options: ['Permanent maintenance of the mature myelin programme', 'Repair-state reprogramming, debris clearance, trophic support and aligned regeneration tracks', 'Conversion into CNS microglia', 'Formation of endothelial tight junctions'], answer: 1, explanation: 'Injured-nerve Schwann cells activate a specialised repair programme, clear myelin, support neuronal survival and form bands of Büngner that guide regrowing axons.', trap: 'PNS repair is an active cellular programme, not merely the absence of CNS inhibitors.' },
   { id: 'l2-retrograde', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'Target-derived neurotrophin binds a Trk receptor at an axon terminal. What best supports a long-range survival response?', options: ['The ligand must diffuse through the nucleus', 'A signalling endosome can undergo retrograde axonal transport', 'The receptor is converted into a neurotransmitter', 'The soma passively detects extracellular calcium'], answer: 1, explanation: 'Ligand–Trk complexes can signal locally and from retrogradely transported endosomes, coupling target access to transcriptional survival programmes in the soma.', trap: '“Retrograde” here describes transport toward the soma, not retrograde synaptic transmission.' },
   { id: 'l2-competition', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'In the classic neurotrophic-factor hypothesis, why do excess developing neurons die?', options: ['Every target releases an unlimited survival signal', 'Neurons compete for limiting target-derived support', 'All immature neurons are intrinsically programmed to die simultaneously', 'Myelin directly selects the surviving soma'], answer: 1, explanation: 'Targets provide limiting trophic support. Neurons that establish effective access activate survival pathways; others undergo programmed cell death.', trap: 'Cell death is regulated and competitive, not random cellular “wastage”.' },
   { id: 'l2-receptors', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'Which preferred mature-neurotrophin receptor pairing is correct?', options: ['NGF–TrkA', 'BDNF–TrkC only', 'NT-3–TrkA only', 'NGF–NMDA receptor'], answer: 0, explanation: 'NGF preferentially activates TrkA; BDNF and NT-4 preferentially activate TrkB; NT-3 preferentially activates TrkC, with context-dependent receptor cross-activation.', trap: 'Learn preferred pairings without pretending ligand–receptor specificity is perfectly exclusive in every preparation.' },

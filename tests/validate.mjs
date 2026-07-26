@@ -14,6 +14,7 @@ const required = [
   'docs/sw.js',
   'docs/resources/NEUR3301_Study_Playbook_2026.md',
   'docs/resources/NEUR3301_Glia1_Flashcards.csv',
+  'docs/resources/lectures/L01_Glia_I.md',
   'docs/resources/lectures/L02_Growth_and_Trophic_Factors.md',
   'docs/resources/lectures/L03_Axon_Outgrowth_Target_Recognition_Maps.md'
 ];
@@ -44,7 +45,7 @@ for (const file of ['docs/index.html', 'docs/app/index.html', 'docs/study-lab/in
 
 const examLab = readFileSync('docs/app/index.html', 'utf8');
 const examLabScript = readFileSync('docs/app/app.js', 'utf8');
-if (!examLab.includes('styles.css?v=5') || !examLab.includes('app.js?v=5')) {
+if (!examLab.includes('styles.css?v=6') || !examLab.includes('app.js?v=6')) {
   throw new Error('Exam Lab HTML and assets must share a cache-busting deployment version');
 }
 if (!examLab.includes('29 taught topics') || !examLabScript.includes("[30, 'Spinal cord injury and regeneration'")) {
@@ -57,8 +58,8 @@ if (!examLab.includes('4 of 8–10 long answers') || !examLab.includes('2026-08-
   throw new Error('Exam Lab official assessment facts regressed');
 }
 const questionRows = [...examLabScript.matchAll(/id: '([^']+)', lecture: (\d+), block: '([^']+)'/g)];
-if (questionRows.length !== 44 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
-  throw new Error(`Exam Lab must contain 44 uniquely identified questions; found ${questionRows.length}`);
+if (questionRows.length !== 48 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
+  throw new Error(`Exam Lab must contain 48 uniquely identified questions; found ${questionRows.length}`);
 }
 for (const [from, to, block] of [[1, 7, 'Test 1'], [8, 13, 'Test 2']]) {
   for (let lecture = from; lecture <= to; lecture += 1) {
@@ -79,8 +80,8 @@ try {
 } catch (error) {
   throw new Error(`Questions array is not valid literal data: ${error.message}`);
 }
-if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 44) {
-  throw new Error(`Expected 44 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
+if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 48) {
+  throw new Error(`Expected 48 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
 }
 const seenStems = new Set();
 for (const question of parsedQuestions) {
@@ -165,7 +166,7 @@ for (const control of ['data-view="answers"', 'id="answer-draft"', 'id="answer-t
 for (const control of ['data-view="briefs"', 'id="lecture-brief-list"', 'Evidence boundary']) {
   if (!examLab.includes(control)) throw new Error(`Lecture brief control missing from Exam Lab: ${control}`);
 }
-for (const filter of ['value="Lecture 2"', 'value="Lecture 3"']) {
+for (const filter of ['value="Lecture 1"', 'value="Lecture 2"', 'value="Lecture 3"']) {
   if (!examLab.includes(filter)) throw new Error(`Lecture-specific MCQ filter missing: ${filter}`);
 }
 if (!examLabScript.includes("filter.startsWith('Lecture ')") || !examLabScript.includes('`Lecture ${brief.id}`')) {
@@ -176,8 +177,8 @@ const briefsStart = examLabScript.indexOf('[', briefsOpen);
 const briefsEnd = examLabScript.indexOf('\n];', briefsOpen);
 if (briefsOpen === -1 || briefsEnd === -1) throw new Error('Could not locate the lecture brief array in app.js');
 const parsedBriefs = Function(`"use strict"; return (${examLabScript.slice(briefsStart, briefsEnd + 2)});`)();
-if (!Array.isArray(parsedBriefs) || parsedBriefs.map(brief => brief.id).join(',') !== '2,3') {
-  throw new Error('Lecture briefs must cover exactly official Lectures 2 and 3');
+if (!Array.isArray(parsedBriefs) || parsedBriefs.map(brief => brief.id).join(',') !== '1,2,3') {
+  throw new Error('Lecture briefs must cover exactly official Lectures 1, 2 and 3');
 }
 for (const brief of parsedBriefs) {
   for (const field of ['title', 'date', 'lecturer', 'scope', 'download']) {
