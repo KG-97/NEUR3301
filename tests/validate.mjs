@@ -316,7 +316,7 @@ validateImportedState(structuredClone(validImportState));
 const rejectedImports = [
   ['truncated state', state => { delete state.cards; }, 'state is missing required cards data'],
   ['non-array lecture progress', state => { state.done = 'not-an-array'; }, 'state.done must be an array'],
-  ['impossible quiz totals', state => { state.quiz = { attempts: -5, correct: 999, items: {} }; }, 'state.quiz.correct cannot exceed attempts'],
+  ['impossible quiz totals', state => { state.quiz = { attempts: -5, correct: 999, items: {} }; }, 'state.quiz.attempts must be an integer from 0 to 1000000'],
   ['unknown question record', state => { state.quiz.items.unknown = { attempts: 1, correct: 0 }; }, 'uses an unknown question ID'],
   ['invalid scheduled-card date', state => { state.cards[0].due = 'not-a-date'; }, 'must be a valid date string'],
   ['coercible answer attempt', state => { state.answers[parsedAnswers[0].id].attempts = '1'; }, 'must be an integer'],
