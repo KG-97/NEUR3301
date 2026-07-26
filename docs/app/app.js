@@ -646,6 +646,141 @@ function defaultState() {
   return { version: 4, done: [], quiz: { correct: 0, attempts: 0, items: {} }, cards: {}, answers: {}, errors: [] };
 }
 
+function importValidationError(path, expectation) {
+  throw new Error(`${path} ${expectation}`);
+}
+
+function requireImportObject(value, path) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    importValidationError(path, 'must be an object.');
+  }
+  return value;
+}
+
+function requireImportKeys(value, expected, path) {
+  const actual = Object.keys(value);
+  const missing = expected.filter(key => !Object.prototype.hasOwnProperty.call(value, key));
+  const unexpected = actual.filter(key => !expected.includes(key));
+  if (missing.length) importValidationError(path, `is missing required ${missing.join(', ')} data.`);
+  if (unexpected.length) importValidationError(path, `contains unsupported ${unexpected.join(', ')} data.`);
+}
+
+function requireImportArray(value, path, maximum) {
+  if (!Array.isArray(value)) importValidationError(path, 'must be an array.');
+  if (value.length > maximum) importValidationError(path, `must contain no more than ${maximum} entries.`);
+  return value;
+}
+
+function requireImportInteger(value, path, minimum, maximum) {
+  if (!Number.isInteger(value) || value < minimum || value > maximum) {
+    importValidationError(path, `must be an integer from ${minimum} to ${maximum}.`);
+  }
+}
+
+function requireImportNumber(value, path, minimum, maximum) {
+  if (!Number.isFinite(value) || value < minimum || value > maximum) {
+    importValidationError(path, `must be a finite number from ${minimum} to ${maximum}.`);
+  }
+}
+
+function requireImportString(value, path, maximum, allowEmpty = false) {
+  if (typeof value !== 'string' || value.length > maximum || (!allowEmpty && !value.trim())) {
+    importValidationError(path, `must be ${allowEmpty ? 'a' : 'a non-empty'} string of at most ${maximum} characters.`);
+  }
+}
+
+function requireImportDate(value, path) {
+  if (typeof value !== 'string' || !value.trim() || Number.isNaN(Date.parse(value))) {
+    importValidationError(path, 'must be a valid date string.');
+  }
+}
+
+function validateImportedState(input) {
+  const imported = requireImportObject(input, 'state');
+  requireImportKeys(imported, ['version', 'done', 'quiz', 'cards', 'answers', 'errors'], 'state');
+  if (imported.version !== 4) importValidationError('state.version', 'must be 4.');
+
+  const done = requireImportArray(imported.done, 'state.done', validLectureIds.size);
+  const seenLectures = new Set();
+  done.forEach((id, index) => {
+    requireImportInteger(id, `state.done[${index}]`, 1, 30);
+    if (!validLectureIds.has(id)) importValidationError(`state.done[${index}]`, 'is not a taught lecture ID.');
+    if (seenLectures.has(id)) importValidationError(`state.done[${index}]`, 'duplicates an earlier lecture ID.');
+    seenLectures.add(id);
+  });
+
+  const quiz = requireImportObject(imported.quiz, 'state.quiz');
+  requireImportKeys(quiz, ['correct', 'attempts', 'items'], 'state.quiz');
+  requireImportInteger(quiz.correct, 'state.quiz.correct', 0, 1000000);
+  requireImportInteger(quiz.attempts, 'state.quiz.attempts', 0, 1000000);
+  if (quiz.correct > quiz.attempts) importValidationError('state.quiz.correct', 'cannot exceed attempts.');
+  const quizItems = requireImportObject(quiz.items, 'state.quiz.items');
+  if (Object.keys(quizItems).length > questions.length) importValidationError('state.quiz.items', 'contains too many question records.');
+  const questionIds = new Set(questions.map(question => question.id));
+  for (const [id, value] of Object.entries(quizItems)) {
+    if (!questionIds.has(id)) importValidationError(`state.quiz.items.${id}`, 'uses an unknown question ID.');
+    const record = requireImportObject(value, `state.quiz.items.${id}`);
+    requireImportKeys(record, ['attempts', 'correct'], `state.quiz.items.${id}`);
+    requireImportInteger(record.attempts, `state.quiz.items.${id}.attempts`, 0, 1000000);
+    requireImportInteger(record.correct, `state.quiz.items.${id}.correct`, 0, 1000000);
+    if (record.correct > record.attempts) importValidationError(`state.quiz.items.${id}.correct`, 'cannot exceed attempts.');
+  }
+
+  const importedCards = requireImportObject(imported.cards, 'state.cards');
+  if (Object.keys(importedCards).length > cards.length) importValidationError('state.cards', 'contains too many card records.');
+  for (const [index, value] of Object.entries(importedCards)) {
+    const numericIndex = Number(index);
+    if (!Number.isInteger(numericIndex) || numericIndex < 0 || numericIndex >= cards.length || String(numericIndex) !== index) {
+      importValidationError(`state.cards.${index}`, 'uses an unknown card index.');
+    }
+    const record = requireImportObject(value, `state.cards.${index}`);
+    requireImportKeys(record, ['rating', 'due', 'intervalDays', 'ease', 'reviews', 'lapses'], `state.cards.${index}`);
+    if (!['again', 'hard', 'good'].includes(record.rating)) importValidationError(`state.cards.${index}.rating`, 'must be again, hard or good.');
+    requireImportDate(record.due, `state.cards.${index}.due`);
+    requireImportNumber(record.intervalDays, `state.cards.${index}.intervalDays`, 0, 3650);
+    requireImportNumber(record.ease, `state.cards.${index}.ease`, 1.3, 3);
+    requireImportInteger(record.reviews, `state.cards.${index}.reviews`, 0, 100000);
+    requireImportInteger(record.lapses, `state.cards.${index}.lapses`, 0, 100000);
+  }
+
+  const importedAnswers = requireImportObject(imported.answers, 'state.answers');
+  if (Object.keys(importedAnswers).length > answerPrompts.length) importValidationError('state.answers', 'contains too many answer records.');
+  const promptById = new Map(answerPrompts.map(prompt => [prompt.id, prompt]));
+  for (const [id, value] of Object.entries(importedAnswers)) {
+    const prompt = promptById.get(id);
+    if (!prompt) importValidationError(`state.answers.${id}`, 'uses an unknown answer ID.');
+    const record = requireImportObject(value, `state.answers.${id}`);
+    requireImportKeys(record, ['draft', 'checks', 'rating', 'attempts', 'updated'], `state.answers.${id}`);
+    requireImportString(record.draft, `state.answers.${id}.draft`, 8000, true);
+    const checks = requireImportArray(record.checks, `state.answers.${id}.checks`, prompt.points.length);
+    const seenChecks = new Set();
+    checks.forEach((check, index) => {
+      requireImportInteger(check, `state.answers.${id}.checks[${index}]`, 0, prompt.points.length - 1);
+      if (seenChecks.has(check)) importValidationError(`state.answers.${id}.checks[${index}]`, 'duplicates an earlier blueprint check.');
+      seenChecks.add(check);
+    });
+    if (!['', 'needs-work', 'solid', 'strong'].includes(record.rating)) {
+      importValidationError(`state.answers.${id}.rating`, 'must be empty, needs-work, solid or strong.');
+    }
+    requireImportInteger(record.attempts, `state.answers.${id}.attempts`, 0, 10000);
+    requireImportDate(record.updated, `state.answers.${id}.updated`);
+  }
+
+  const errors = requireImportArray(imported.errors, 'state.errors', 500);
+  errors.forEach((value, index) => {
+    const record = requireImportObject(value, `state.errors[${index}]`);
+    requireImportKeys(record, ['question', 'type', 'fix', 'date', 'resolved'], `state.errors[${index}]`);
+    requireImportString(record.question, `state.errors[${index}].question`, 240);
+    if (!['Knowledge gap', 'Mechanism reversal', 'Overclaim/context', 'Question-reading error'].includes(record.type)) {
+      importValidationError(`state.errors[${index}].type`, 'is not a supported error type.');
+    }
+    requireImportString(record.fix, `state.errors[${index}].fix`, 500);
+    requireImportDate(record.date, `state.errors[${index}].date`);
+    if (typeof record.resolved !== 'boolean') importValidationError(`state.errors[${index}].resolved`, 'must be true or false.');
+  });
+  return imported;
+}
+
 function normaliseState(input) {
   if (!input || typeof input !== 'object' || Array.isArray(input)) throw new Error('Progress file must contain an object.');
   const clean = defaultState();
@@ -1475,9 +1610,14 @@ function exportData() {
 // Accept the versioned envelope, and stay backward-compatible with the
 // pre-envelope exports that were just the raw state object.
 function unwrapEnvelope(parsed) {
-  if (parsed && typeof parsed === 'object' && !Array.isArray(parsed) && 'app' in parsed && 'state' in parsed) {
+  const envelopeMarkers = parsed && typeof parsed === 'object' && !Array.isArray(parsed)
+    ? ['app', 'schemaVersion', 'state'].filter(key => Object.prototype.hasOwnProperty.call(parsed, key))
+    : [];
+  if (envelopeMarkers.length) {
+    if (envelopeMarkers.length !== 3) throw new Error('versioned export envelope is incomplete');
     if (parsed.app !== EXPORT_APP) throw new Error(`this file is for “${parsed.app}”, not the Exam Lab`);
-    if (Number(parsed.schemaVersion) > EXPORT_SCHEMA) throw new Error(`file schema v${parsed.schemaVersion} is newer than this app supports (v${EXPORT_SCHEMA})`);
+    if (!Number.isInteger(parsed.schemaVersion) || parsed.schemaVersion < 1) throw new Error('schemaVersion must be a positive integer');
+    if (parsed.schemaVersion > EXPORT_SCHEMA) throw new Error(`file schema v${parsed.schemaVersion} is newer than this app supports (v${EXPORT_SCHEMA})`);
     return parsed.state;
   }
   return parsed;
@@ -1489,7 +1629,8 @@ function importData(event) {
   const reader = new FileReader();
   reader.onload = () => {
     try {
-      state = normaliseState(unwrapEnvelope(JSON.parse(reader.result)));
+      const importedState = normaliseState(validateImportedState(unwrapEnvelope(JSON.parse(reader.result))));
+      state = importedState;
       persist('Progress imported and validated.');
       renderAll();
     } catch (error) {
