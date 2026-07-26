@@ -45,7 +45,8 @@ for (const file of ['docs/index.html', 'docs/app/index.html', 'docs/study-lab/in
 
 const examLab = readFileSync('docs/app/index.html', 'utf8');
 const examLabScript = readFileSync('docs/app/app.js', 'utf8');
-if (!examLab.includes('styles.css?v=8') || !examLab.includes('app.js?v=8')) {
+const examLabStyles = readFileSync('docs/app/styles.css', 'utf8');
+if (!examLab.includes('styles.css?v=9') || !examLab.includes('app.js?v=9')) {
   throw new Error('Exam Lab HTML and assets must share a cache-busting deployment version');
 }
 const serviceWorker = readFileSync('docs/sw.js', 'utf8');
@@ -61,6 +62,33 @@ for (const asset of ['styles.css', 'app.js']) {
 }
 if (!examLab.includes('<option value="Weak">')) {
   throw new Error('Weak-item MCQ filter value regressed');
+}
+const mobileMenuStart = examLab.indexOf('<details class="mobile-menu">');
+const mobileMenuEnd = examLab.indexOf('</details>', mobileMenuStart);
+const mobileMenu = examLab.slice(mobileMenuStart, mobileMenuEnd);
+if (
+  mobileMenuStart < 0
+  || mobileMenuEnd < 0
+  || !mobileMenu.includes('<summary>Menu</summary>')
+  || !mobileMenu.includes('aria-label="Mobile project links"')
+  || examLab.includes('<details class="mobile-menu" open')
+) {
+  throw new Error('Exam Lab mobile project navigation is missing or open by default');
+}
+for (const destination of ['href="../"', 'href="../study-lab/"', 'href="../seminar/"', 'href="https://github.com/KG-97/NEUR3301"']) {
+  if (!mobileMenu.includes(destination)) throw new Error(`Exam Lab mobile navigation lost ${destination}`);
+}
+const mobileBreakpointStart = examLabStyles.indexOf('@media (max-width: 620px)');
+const nextBreakpointStart = examLabStyles.indexOf('@media', mobileBreakpointStart + 1);
+const mobileBreakpoint = examLabStyles.slice(
+  mobileBreakpointStart,
+  nextBreakpointStart < 0 ? examLabStyles.length : nextBreakpointStart
+);
+for (const invariant of ['.links { display: none;', '.mobile-menu { display: block;']) {
+  if (!mobileBreakpoint.includes(invariant)) throw new Error(`Exam Lab mobile breakpoint regressed: ${invariant}`);
+}
+for (const invariant of ['.mobile-menu { display: none;', '.mobile-menu-links {']) {
+  if (!examLabStyles.includes(invariant)) throw new Error(`Exam Lab mobile navigation styling regressed: ${invariant}`);
 }
 const dataToolsStart = examLab.indexOf('<details class="data-tools panel">');
 const errorViewStart = examLab.indexOf('<section id="errors"');
