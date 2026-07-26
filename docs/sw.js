@@ -1,4 +1,4 @@
-const CACHE_NAME = 'neur3301-offline-v5';
+const CACHE_NAME = 'neur3301-offline-v6';
 const PRECACHE_URLS = [
   './',
   './index.html',
@@ -11,7 +11,7 @@ const PRECACHE_URLS = [
   './study-lab/index.html',
   './study-lab/assets/index-BR7I-zAT.js',
   './study-lab/assets/index-C3XRwkWz.css',
-  './study-lab/assets/synapse-enhance.js?v=2',
+  './study-lab/assets/synapse-enhance.js?v=3',
   './resources/NEUR3301_Study_Playbook_2026.md',
   './resources/NEUR3301_Glia1_Flashcards.csv',
   './resources/lectures/L01_Glia_I.md',

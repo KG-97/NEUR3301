@@ -10,6 +10,17 @@
     />
     <meta name="color-scheme" content="dark light" />
     <title>Synapse — NEUR3301 Study Lab</title>
+    <script>
+      // Apply the saved theme before paint so reloads do not flash dark.
+      (function () {
+        var saved = localStorage.getItem("synapse-neur3301-theme");
+        var dark = saved
+          ? saved === "dark"
+          : !window.matchMedia("(prefers-color-scheme: light)").matches;
+        document.documentElement.classList.toggle("dark", dark);
+        document.documentElement.style.colorScheme = dark ? "dark" : "light";
+      })();
+    </script>
     <!-- System stack first: avoids loading 20+ Google fonts on a 3.7GB N100 -->
     <style>
       :root {
@@ -70,7 +81,7 @@
     </div>
     <div id="root" tabindex="-1"></div>
     <script type="module" crossorigin src="./assets/index-BR7I-zAT.js"></script>
-    <script src="./assets/synapse-enhance.js?v=2" defer></script>
+    <script src="./assets/synapse-enhance.js?v=3" defer></script>
     <script>
       // Hide boot splash once React mounts or after a short fallback.
       (function () {
