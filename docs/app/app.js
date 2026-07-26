@@ -814,7 +814,7 @@ function renderDashboard() {
   const action = document.querySelector('#next-action-button');
   if (weakQuestions().length) {
     title.textContent = `Retest ${weakQuestions().length} weak MCQ ${weakQuestions().length === 1 ? 'item' : 'items'}.`;
-    detail.textContent = 'Select “Weak items” in MCQ Forge and retrieve the mechanism before reading the options.';
+    detail.textContent = 'MCQ Forge will open in “Weak items” mode. Retrieve the mechanism before reading the options.';
     action.dataset.go = 'quiz';
     action.textContent = 'Retest weak items';
   } else if (openErrors) {
@@ -886,7 +886,7 @@ function renderAnswer() {
     return label;
   }));
   const rating = record.rating ? record.rating.replace('-', ' ') : 'not yet rated';
-  document.querySelector('#answer-progress').textContent = `${record.checks.length}/${prompt.points.length} blueprint elements checked · ${record.attempts} ${record.attempts === 1 ? 'attempt' : 'attempts'} · ${rating}`;
+  document.querySelector('#answer-progress').textContent = `${record.checks.length}/${prompt.points.length} blueprint elements checked · ${record.attempts} rated ${record.attempts === 1 ? 'attempt' : 'attempts'} · ${rating}`;
   document.querySelectorAll('.answer-rating').forEach(button => {
     const active = button.dataset.rating === record.rating;
     button.setAttribute('aria-pressed', String(active));
@@ -894,7 +894,7 @@ function renderAnswer() {
   renderAnswerTimer();
 }
 
-function saveAnswerDraft(message = 'Answer plan saved.') {
+function saveAnswerDraft(message = 'Draft saved. Rate it to count an attempt.') {
   const prompt = answerPrompts[answerIndex];
   const record = answerRecord(prompt);
   state.answers[prompt.id] = {
@@ -1383,10 +1383,31 @@ function rateCard(rating) {
 
 function addError(event) {
   event.preventDefault();
+  const questionField = document.querySelector('#error-question');
+  const fixField = document.querySelector('#error-fix');
+  const validation = document.querySelector('#error-validation');
+  const question = questionField.value.trim();
+  const fix = fixField.value.trim();
+  if (!question || !fix) {
+    validation.textContent = !question && !fix
+      ? 'Add the failed claim or question and the corrected mechanism before saving.'
+      : !question
+        ? 'Add the failed claim or question before saving.'
+        : 'Add the corrected mechanism before saving.';
+    validation.hidden = false;
+    questionField.setAttribute('aria-invalid', String(!question));
+    fixField.setAttribute('aria-invalid', String(!fix));
+    (!question ? questionField : fixField).focus();
+    announce(validation.textContent);
+    return;
+  }
+  validation.hidden = true;
+  questionField.removeAttribute('aria-invalid');
+  fixField.removeAttribute('aria-invalid');
   state.errors.unshift({
-    question: document.querySelector('#error-question').value.trim(),
+    question,
     type: document.querySelector('#error-type').value,
-    fix: document.querySelector('#error-fix').value.trim(),
+    fix,
     date: new Date().toISOString(),
     resolved: false
   });
@@ -1505,6 +1526,15 @@ function renderAll() {
   if (document.querySelector('#quiz').classList.contains('active')) nextQuestion();
 }
 
+function followDataGo(button) {
+  if (button.id === 'next-action-button' && button.dataset.go === 'quiz' && weakQuestions().length) {
+    document.querySelector('#quiz-block').value = 'Weak';
+    activeQuestion = null;
+    questionAnswered = false;
+  }
+  switchView(button.dataset.go);
+}
+
 const tabButtons = [...document.querySelectorAll('.tab')];
 tabButtons.forEach(tab => tab.addEventListener('click', () => switchView(tab.dataset.view)));
 document.querySelector('.tabs').addEventListener('keydown', event => {
@@ -1520,7 +1550,7 @@ document.querySelector('.tabs').addEventListener('keydown', event => {
   switchView(tabButtons[next].dataset.view);
   tabButtons[next].focus();
 });
-document.querySelectorAll('[data-go]').forEach(button => button.addEventListener('click', () => switchView(button.dataset.go)));
+document.querySelectorAll('[data-go]').forEach(button => button.addEventListener('click', () => followDataGo(button)));
 document.querySelector('#quiz-block').addEventListener('change', () => { activeQuestion = null; nextQuestion(); });
 document.querySelector('#next-question').addEventListener('click', nextQuestion);
 document.querySelector('#reset-quiz').addEventListener('click', resetQuiz);
@@ -1539,6 +1569,10 @@ document.querySelector('#again-card').addEventListener('click', () => rateCard('
 document.querySelector('#hard-card').addEventListener('click', () => rateCard('hard'));
 document.querySelector('#good-card').addEventListener('click', () => rateCard('good'));
 document.querySelector('#error-form').addEventListener('submit', addError);
+document.querySelectorAll('#error-question, #error-fix').forEach(field => field.addEventListener('input', () => {
+  document.querySelector('#error-validation').hidden = true;
+  field.removeAttribute('aria-invalid');
+}));
 document.querySelector('#export-data').addEventListener('click', exportData);
 document.querySelector('#import-data').addEventListener('change', importData);
 document.querySelector('#reset-all').addEventListener('click', resetAll);

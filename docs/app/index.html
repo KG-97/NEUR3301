@@ -6,8 +6,8 @@
   <meta name="description" content="NEUR3301 marks-first practice: official lecture map, targeted MCQs, long-answer planning, retrieval cards and a misconception ledger.">
   <meta name="theme-color" content="#07110f">
   <title>Synapse X · NEUR3301 Exam Lab</title>
-  <link rel="stylesheet" href="styles.css?v=6">
-  <script src="app.js?v=6" defer></script>
+  <link rel="stylesheet" href="styles.css?v=7">
+  <script src="app.js?v=7" defer></script>
 </head>
 <body>
   <a class="skip" href="#workspace">Skip to study tools</a>
@@ -59,7 +59,7 @@
           <article class="stat"><b id="accuracy-stat">0%</b><span>MCQ accuracy</span><small id="answered-stat">0 attempts</small></article>
           <article class="stat"><b id="weak-stat">0</b><span>weak MCQ items</span><small>Below 80% after an attempt</small></article>
           <article class="stat"><b id="card-due-stat">0</b><span>card reviews due</span><small>New cards excluded</small></article>
-          <article class="stat"><b id="answer-stat">0/12</b><span>answer plans attempted</span><small id="answer-detail">0 rated strong</small></article>
+          <article class="stat"><b id="answer-stat">0/12</b><span>answer plans self-rated</span><small id="answer-detail">0 rated strong</small></article>
           <article class="stat"><b id="error-stat">0</b><span>open errors</span><small>Resolve after a clean retest</small></article>
         </div>
       </div>
@@ -156,8 +156,9 @@
           <textarea id="answer-draft" maxlength="8000" placeholder="Write your thesis, causal sequence, evidence/experiment, predicted result and limitation before revealing the blueprint."></textarea>
         </label>
         <div class="controls left">
-          <button id="save-answer" class="button primary" type="button">Save answer plan</button>
+          <button id="save-answer" class="button primary" type="button">Save draft only</button>
           <button id="reveal-answer-guide" class="button" type="button">Reveal self-check blueprint</button>
+          <span class="shortcut">Saving a draft does not count as an attempt. Self-rating does.</span>
         </div>
         <p id="answer-progress" class="muted"></p>
         <section id="answer-guide" class="answer-guide" hidden>
@@ -206,20 +207,31 @@
           <div><p class="eyebrow">Misconception ledger</p><h2>Turn misses into work orders</h2></div>
           <p>“Review synapses” is not a correction. Log the precise failure and the corrected causal chain.</p>
         </div>
-        <form id="error-form" class="error-form">
+        <form id="error-form" class="error-form" novalidate>
           <label><span>Failed claim or question</span><input id="error-question" required maxlength="240" placeholder="What exactly did I get wrong?"></label>
           <label><span>Error type</span><select id="error-type"><option>Knowledge gap</option><option>Mechanism reversal</option><option>Overclaim/context</option><option>Question-reading error</option></select></label>
           <label><span>Corrected mechanism</span><input id="error-fix" required maxlength="500" placeholder="Write the corrected causal chain"></label>
           <button class="button primary" type="submit">Add error</button>
         </form>
+        <p id="error-validation" class="form-error" role="alert" aria-live="assertive" hidden></p>
         <div id="error-ledger" class="ledger"></div>
-        <div class="controls left">
-          <button id="export-data" class="button" type="button">Export JSON</button>
-          <label class="button file-button">Import JSON<input id="import-data" hidden type="file" accept="application/json"></label>
-          <button id="reset-all" class="button danger" type="button">Reset all data</button>
-        </div>
       </div>
     </section>
+
+    <details class="data-tools panel">
+      <summary>
+        <span class="data-tools-summary">
+          <span class="data-tools-title"><span class="eyebrow">Local progress</span><strong>Data controls</strong></span>
+          <span class="muted">Export, import or reset</span>
+        </span>
+      </summary>
+      <p class="muted">Progress stays in this browser. Export a backup before importing or resetting.</p>
+      <div class="controls left">
+        <button id="export-data" class="button" type="button">Export JSON</button>
+        <label class="button file-button">Import JSON<input id="import-data" hidden type="file" accept="application/json"></label>
+        <button id="reset-all" class="button danger" type="button">Reset all data</button>
+      </div>
+    </details>
   </main>
 
   <footer class="wrap">Independent educational project. Verify announcements against LMS and consequential claims against unit materials and primary sources.</footer>

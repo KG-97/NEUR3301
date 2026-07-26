@@ -45,8 +45,44 @@ for (const file of ['docs/index.html', 'docs/app/index.html', 'docs/study-lab/in
 
 const examLab = readFileSync('docs/app/index.html', 'utf8');
 const examLabScript = readFileSync('docs/app/app.js', 'utf8');
-if (!examLab.includes('styles.css?v=6') || !examLab.includes('app.js?v=6')) {
+if (!examLab.includes('styles.css?v=7') || !examLab.includes('app.js?v=7')) {
   throw new Error('Exam Lab HTML and assets must share a cache-busting deployment version');
+}
+const serviceWorker = readFileSync('docs/sw.js', 'utf8');
+for (const asset of ['styles.css', 'app.js']) {
+  const escapedAsset = asset.replace('.', '\\.');
+  const htmlVersion = examLab.match(new RegExp(`${escapedAsset}\\?v=(\\d+)`))?.[1];
+  const precacheVersions = [
+    ...serviceWorker.matchAll(new RegExp(`['"]\\./app/${escapedAsset}\\?v=(\\d+)['"]`, 'g'))
+  ].map(match => match[1]);
+  if (!htmlVersion || precacheVersions.length !== 1 || precacheVersions[0] !== htmlVersion) {
+    throw new Error(`Exam Lab ${asset} version must match its single service-worker precache entry`);
+  }
+}
+if (!examLab.includes('<option value="Weak">')) {
+  throw new Error('Weak-item MCQ filter value regressed');
+}
+const dataToolsStart = examLab.indexOf('<details class="data-tools panel">');
+const errorViewStart = examLab.indexOf('<section id="errors"');
+const errorViewEnd = examLab.indexOf('</section>', errorViewStart);
+const mainEnd = examLab.indexOf('</main>');
+if (dataToolsStart < errorViewEnd || dataToolsStart > mainEnd || examLab.includes('<details class="data-tools panel" open')) {
+  throw new Error('Global Exam Lab data controls must be collapsed by default below every tabpanel');
+}
+for (const control of ['id="export-data"', 'id="import-data"', 'id="reset-all"']) {
+  const position = examLab.indexOf(control);
+  if (position < dataToolsStart || position > mainEnd || examLab.slice(errorViewStart, errorViewEnd).includes(control)) {
+    throw new Error(`Global Exam Lab data control is not in the collapsed footer strip: ${control}`);
+  }
+}
+for (const wording of [
+  'answer plans self-rated',
+  'Save draft only',
+  'Saving a draft does not count as an attempt. Self-rating does.',
+  'id="error-validation"',
+  'novalidate'
+]) {
+  if (!examLab.includes(wording)) throw new Error(`Exam Lab UX clarification regressed: ${wording}`);
 }
 if (!examLab.includes('29 taught topics') || !examLabScript.includes("[30, 'Spinal cord injury and regeneration'")) {
   throw new Error('Exam Lab lecture count/progress denominator regressed');
@@ -172,6 +208,40 @@ for (const filter of ['value="Lecture 1"', 'value="Lecture 2"', 'value="Lecture 
 if (!examLabScript.includes("filter.startsWith('Lecture ')") || !examLabScript.includes('`Lecture ${brief.id}`')) {
   throw new Error('Lecture brief practice no longer stays inside the selected lecture pool');
 }
+const dataGoStart = examLabScript.indexOf('function followDataGo(button)');
+const dataGoEnd = examLabScript.indexOf('\n}', dataGoStart);
+const dataGoHandler = examLabScript.slice(dataGoStart, dataGoEnd);
+for (const invariant of [
+  "button.id === 'next-action-button'",
+  "button.dataset.go === 'quiz'",
+  "document.querySelector('#quiz-block').value = 'Weak'",
+  'activeQuestion = null',
+  'questionAnswered = false',
+  'switchView(button.dataset.go)'
+]) {
+  if (!dataGoHandler.includes(invariant)) throw new Error(`Weak-item retest action regressed: ${invariant}`);
+}
+if (!examLabScript.includes("addEventListener('click', () => followDataGo(button))")) {
+  throw new Error('Dashboard data-go controls no longer use the weak-item-aware navigation handler');
+}
+const addErrorStart = examLabScript.indexOf('function addError(event)');
+const addErrorEnd = examLabScript.indexOf('\nfunction renderLedger()', addErrorStart);
+const addErrorHandler = examLabScript.slice(addErrorStart, addErrorEnd);
+for (const invariant of [
+  "document.querySelector('#error-validation')",
+  'validation.hidden = false',
+  'aria-invalid',
+  'announce(validation.textContent)',
+  'Add the failed claim or question and the corrected mechanism before saving.'
+]) {
+  if (!addErrorHandler.includes(invariant)) throw new Error(`Visible ledger validation regressed: ${invariant}`);
+}
+for (const wording of [
+  'Draft saved. Rate it to count an attempt.',
+  "rated ${record.attempts === 1 ? 'attempt' : 'attempts'}"
+]) {
+  if (!examLabScript.includes(wording)) throw new Error(`Answer draft/attempt wording regressed: ${wording}`);
+}
 const briefsOpen = examLabScript.indexOf('const lectureBriefs = [');
 const briefsStart = examLabScript.indexOf('[', briefsOpen);
 const briefsEnd = examLabScript.indexOf('\n];', briefsOpen);
@@ -241,7 +311,6 @@ for (const invariant of [
   }
 }
 
-const serviceWorker = readFileSync('docs/sw.js', 'utf8');
 const precacheOpen = serviceWorker.indexOf('const PRECACHE_URLS = [');
 const precacheStart = serviceWorker.indexOf('[', precacheOpen);
 const precacheEnd = serviceWorker.indexOf('];', precacheStart);
