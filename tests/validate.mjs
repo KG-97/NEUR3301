@@ -45,7 +45,7 @@ for (const file of ['docs/index.html', 'docs/app/index.html', 'docs/study-lab/in
 
 const examLab = readFileSync('docs/app/index.html', 'utf8');
 const examLabScript = readFileSync('docs/app/app.js', 'utf8');
-if (!examLab.includes('styles.css?v=7') || !examLab.includes('app.js?v=7')) {
+if (!examLab.includes('styles.css?v=8') || !examLab.includes('app.js?v=8')) {
   throw new Error('Exam Lab HTML and assets must share a cache-busting deployment version');
 }
 const serviceWorker = readFileSync('docs/sw.js', 'utf8');
@@ -270,6 +270,77 @@ for (const schedulerInvariant of [
   "rateCard('good')"
 ]) {
   if (!examLabScript.includes(schedulerInvariant)) throw new Error(`Spaced-review scheduler regressed: ${schedulerInvariant}`);
+}
+
+const importValidatorStart = examLabScript.indexOf('function importValidationError(');
+const importValidatorEnd = examLabScript.indexOf('\nfunction normaliseState(', importValidatorStart);
+if (importValidatorStart === -1 || importValidatorEnd === -1) {
+  throw new Error('Could not locate strict import validation in app.js');
+}
+const validateImportedState = Function(
+  'validLectureIds',
+  'questions',
+  'cards',
+  'answerPrompts',
+  `"use strict";\n${examLabScript.slice(importValidatorStart, importValidatorEnd)}\nreturn validateImportedState;`
+)(
+  new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30]),
+  parsedQuestions,
+  parsedCards,
+  parsedAnswers
+);
+const importDate = '2026-07-26T12:00:00.000Z';
+const validImportState = {
+  version: 4,
+  done: [1],
+  quiz: {
+    correct: 1,
+    attempts: 2,
+    items: { [parsedQuestions[0].id]: { attempts: 2, correct: 1 } }
+  },
+  cards: {
+    0: { rating: 'good', due: importDate, intervalDays: 3, ease: 2.5, reviews: 1, lapses: 0 }
+  },
+  answers: {
+    [parsedAnswers[0].id]: { draft: 'Mechanism draft', checks: [0], rating: 'solid', attempts: 1, updated: importDate }
+  },
+  errors: [{
+    question: 'What failed?',
+    type: 'Knowledge gap',
+    fix: 'Corrected mechanism',
+    date: importDate,
+    resolved: false
+  }]
+};
+validateImportedState(structuredClone(validImportState));
+const rejectedImports = [
+  ['truncated state', state => { delete state.cards; }, 'state is missing required cards data'],
+  ['non-array lecture progress', state => { state.done = 'not-an-array'; }, 'state.done must be an array'],
+  ['impossible quiz totals', state => { state.quiz = { attempts: -5, correct: 999, items: {} }; }, 'state.quiz.attempts must be an integer from 0 to 1000000'],
+  ['unknown question record', state => { state.quiz.items.unknown = { attempts: 1, correct: 0 }; }, 'uses an unknown question ID'],
+  ['invalid scheduled-card date', state => { state.cards[0].due = 'not-a-date'; }, 'must be a valid date string'],
+  ['coercible answer attempt', state => { state.answers[parsedAnswers[0].id].attempts = '1'; }, 'must be an integer'],
+  ['truncated ledger entry', state => { delete state.errors[0].fix; }, 'is missing required fix data']
+];
+for (const [label, corrupt, expectedMessage] of rejectedImports) {
+  const candidate = structuredClone(validImportState);
+  corrupt(candidate);
+  let message = '';
+  try {
+    validateImportedState(candidate);
+  } catch (error) {
+    message = error.message;
+  }
+  if (!message.includes(expectedMessage)) {
+    throw new Error(`Strict import validator accepted ${label} or returned the wrong error: ${message}`);
+  }
+}
+const importHandlerStart = examLabScript.indexOf('function importData(event)');
+const importHandlerEnd = examLabScript.indexOf('\nfunction resetAll()', importHandlerStart);
+const importHandler = examLabScript.slice(importHandlerStart, importHandlerEnd);
+if (!importHandler.includes('normaliseState(validateImportedState(unwrapEnvelope(JSON.parse(reader.result))))') ||
+    importHandler.indexOf('const importedState =') > importHandler.indexOf('state = importedState;')) {
+  throw new Error('Exam Lab import must validate the full payload before replacing in-memory or stored progress');
 }
 
 const deepBundle = readFileSync('docs/study-lab/assets/index-BR7I-zAT.js', 'utf8');
