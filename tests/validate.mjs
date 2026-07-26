@@ -206,10 +206,29 @@ const deepBundle = readFileSync('docs/study-lab/assets/index-BR7I-zAT.js', 'utf8
 if (!deepBundle.includes('synapse-neur3301-progress-v1') || deepBundle.includes('port/5000')) {
   throw new Error('Study Lab progress persistence is missing or regressed');
 }
+for (const invariant of [
+  'initialData:__readSynapseProgress',
+  's.status==="unset"?u>=0&&a.splice(u,1)',
+  'localStorage.setItem("synapse-neur3301-theme"',
+  'status:O==="known"?"review":O==="review"?"unset":"known"',
+  'status cycles Known → Review → Clear',
+  'aria-selected":re',
+  'That study page does not exist or may have moved.',
+  'Return to dashboard'
+]) {
+  if (!deepBundle.includes(invariant)) {
+    throw new Error(`Study Lab audit fix regressed: ${invariant}`);
+  }
+}
+if (deepBundle.includes('Did you forget to add the page to the router?') ||
+    deepBundle.includes('document.documentElement.classList.add("dark")')) {
+  throw new Error('Study Lab still contains developer-facing 404 text or forced-dark startup');
+}
 const deepLabHtml = readFileSync('docs/study-lab/index.html', 'utf8');
 const deepEnhancements = readFileSync('docs/study-lab/assets/synapse-enhance.js', 'utf8');
 for (const invariant of [
-  'synapse-enhance.js?v=2',
+  'synapse-enhance.js?v=3',
+  'localStorage.getItem("synapse-neur3301-theme")',
   'min-height:44px',
   'max-height:min(70vh,520px)',
   'overflow-y:auto',
