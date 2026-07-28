@@ -396,7 +396,7 @@ if (deepBundle.includes('Did you forget to add the page to the router?') ||
 const deepLabHtml = readFileSync('docs/study-lab/index.html', 'utf8');
 const deepEnhancements = readFileSync('docs/study-lab/assets/synapse-enhance.js', 'utf8');
 for (const invariant of [
-  'synapse-enhance.js?v=4',
+  'synapse-enhance.js?v=5',
   'localStorage.getItem("synapse-neur3301-theme")',
   'min-height:44px',
   'max-height:min(70vh,520px)',
@@ -421,7 +421,10 @@ for (const invariant of [
     throw new Error(`Study Lab progress-bar accessibility regressed: ${invariant}`);
   }
 }
-if (!serviceWorker.includes("'./study-lab/assets/synapse-enhance.js?v=4'")) {
+if (!deepEnhancements.includes('parentText.match(/(100|[0-9]{1,2})%/)')) {
+  throw new Error('Study Lab progress parser must support React text with no space before the percentage');
+}
+if (!serviceWorker.includes("'./study-lab/assets/synapse-enhance.js?v=5'")) {
   throw new Error('Study Lab enhancement version must match its service-worker precache entry');
 }
 

@@ -174,7 +174,7 @@
       const parentText = (bar.parentElement && bar.parentElement.textContent || "")
         .replace(/\s+/g, " ")
         .trim();
-      const percentageMatch = parentText.match(/\b(100|[0-9]{1,2})%/);
+      const percentageMatch = parentText.match(/(100|[0-9]{1,2})%/);
       if (!percentageMatch) return;
 
       const value = Number(percentageMatch[1]);
