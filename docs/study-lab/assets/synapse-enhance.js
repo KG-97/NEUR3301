@@ -148,6 +148,67 @@
     }
   }
 
+  function progressBarLabel(bar, percentageMatch) {
+    const parentText = (bar.parentElement && bar.parentElement.textContent || "")
+      .replace(/\s+/g, " ")
+      .trim();
+    const inlineLabel = percentageMatch
+      ? parentText.slice(0, percentageMatch.index).trim()
+      : "";
+    if (inlineLabel) return inlineLabel.slice(0, 120);
+
+    let container = bar.parentElement;
+    for (let depth = 0; container && depth < 4; depth += 1) {
+      const heading = container.querySelector("h1, h2, h3");
+      const headingText = heading && heading.textContent
+        ? heading.textContent.replace(/\s+/g, " ").trim()
+        : "";
+      if (headingText) return `${headingText} mastery`.slice(0, 120);
+      container = container.parentElement;
+    }
+    return "Study progress";
+  }
+
+  function enhanceProgressBars() {
+    document.querySelectorAll('[role="progressbar"]').forEach((bar) => {
+      const parentText = (bar.parentElement && bar.parentElement.textContent || "")
+        .replace(/\s+/g, " ")
+        .trim();
+      const percentageMatch = parentText.match(/\b(100|[0-9]{1,2})%/);
+      if (!percentageMatch) return;
+
+      const value = Number(percentageMatch[1]);
+      bar.setAttribute("aria-valuemin", "0");
+      bar.setAttribute("aria-valuemax", "100");
+      bar.setAttribute("aria-valuenow", String(value));
+      bar.setAttribute("aria-valuetext", `${value}%`);
+      bar.setAttribute("aria-label", progressBarLabel(bar, percentageMatch));
+    });
+  }
+
+  function observeProgressBars() {
+    let scheduled = false;
+    const refresh = () => {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(() => {
+        scheduled = false;
+        enhanceProgressBars();
+      });
+    };
+
+    refresh();
+    const root = document.getElementById("root") || document.body;
+    if (!window.MutationObserver || !root) return;
+    new MutationObserver(refresh).observe(root, {
+      subtree: true,
+      childList: true,
+      characterData: true,
+      attributes: true,
+      attributeFilter: ["style"],
+    });
+  }
+
   function buildPanel() {
     if (document.getElementById(PANEL_ID)) return;
 
@@ -288,6 +349,7 @@
   function boot() {
     markOnlineStatus();
     buildPanel();
+    observeProgressBars();
   }
 
   if (document.readyState === "loading") {
