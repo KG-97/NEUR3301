@@ -74,17 +74,140 @@
     return Array.isArray(data) ? data : data.items;
   }
 
+  const PROGRESS_IMPORT_LIMIT = 600;
+  const PROGRESS_KEY_LIMIT = 300;
+  const PROGRESS_STATUS_LIMIT = 600;
+  const TAUGHT_TOPIC_IDS = new Set([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 24, 25, 26, 27, 28, 29, 30,
+  ]);
+  const STATUS_BY_KEY_TYPE = {
+    kw: new Set(["known", "review", "mastered"]),
+    concept: new Set(["mastered", "learning"]),
+    quiz: new Set(["got", "review"]),
+    seminar: new Set(["mastered", "learning"]),
+  };
+
+  function progressImportError(path, message) {
+    throw new Error(`${path} ${message}`);
+  }
+
+  function validateSchedule(status, path) {
+    let schedule;
+    try {
+      schedule = JSON.parse(status);
+    } catch {
+      progressImportError(path, "must contain valid spaced-repetition JSON");
+    }
+    if (!schedule || typeof schedule !== "object" || Array.isArray(schedule)) {
+      progressImportError(path, "must contain a spaced-repetition object");
+    }
+    const allowed = ["ease", "reps", "interval", "due", "last"];
+    const keys = Object.keys(schedule);
+    if (keys.some((key) => !allowed.includes(key)) || allowed.some((key) => !(key in schedule))) {
+      progressImportError(path, "has incomplete or unsupported spaced-repetition data");
+    }
+    if (!Number.isFinite(schedule.ease) || schedule.ease < 1.3 || schedule.ease > 5) {
+      progressImportError(path, "has an invalid ease value");
+    }
+    if (!Number.isInteger(schedule.reps) || schedule.reps < 0 || schedule.reps > 10000) {
+      progressImportError(path, "has an invalid repetition count");
+    }
+    if (!Number.isInteger(schedule.interval) || schedule.interval < 1 || schedule.interval > 36500) {
+      progressImportError(path, "has an invalid review interval");
+    }
+    if (
+      typeof schedule.due !== "string"
+      || !/^\d{4}-\d{2}-\d{2}$/.test(schedule.due)
+      || Number.isNaN(Date.parse(`${schedule.due}T00:00:00Z`))
+    ) {
+      progressImportError(path, "has an invalid due date");
+    }
+    if (!["again", "hard", "good", "easy"].includes(schedule.last)) {
+      progressImportError(path, "has an invalid last rating");
+    }
+  }
+
+  function validateProgressRecord(itemKey, status, path) {
+    const parts = itemKey.split(":");
+    const type = parts[0];
+
+    if (type === "seminar") {
+      if (parts.length !== 2 || !/^\d+$/.test(parts[1]) || Number(parts[1]) > 100) {
+        progressImportError(`${path}.itemKey`, "is not a valid seminar key");
+      }
+      if (!STATUS_BY_KEY_TYPE.seminar.has(status)) {
+        progressImportError(`${path}.status`, "is not a valid seminar status");
+      }
+      return;
+    }
+
+    if (!["kw", "concept", "quiz", "srs"].includes(type) || parts.length < 3) {
+      progressImportError(`${path}.itemKey`, "uses an unsupported progress-key format");
+    }
+    const topicId = Number(parts[1]);
+    if (!Number.isInteger(topicId) || !TAUGHT_TOPIC_IDS.has(topicId)) {
+      progressImportError(`${path}.itemKey`, "does not identify a taught lecture");
+    }
+    const suffix = parts.slice(2).join(":");
+    if (!suffix) progressImportError(`${path}.itemKey`, "is missing its item identifier");
+
+    if (type === "srs") {
+      validateSchedule(status, `${path}.status`);
+      return;
+    }
+    if ((type === "concept" || type === "quiz") && !/^\d+$/.test(suffix)) {
+      progressImportError(`${path}.itemKey`, "must end in a numeric item index");
+    }
+    if (!STATUS_BY_KEY_TYPE[type].has(status)) {
+      progressImportError(`${path}.status`, `is not a valid ${type} status`);
+    }
+  }
+
+  function validateProgressItems(items) {
+    if (!Array.isArray(items)) throw new Error("No items array");
+    if (!items.length) throw new Error("No progress items");
+    if (items.length > PROGRESS_IMPORT_LIMIT) {
+      throw new Error(`Progress file exceeds ${PROGRESS_IMPORT_LIMIT} items`);
+    }
+
+    const seen = new Set();
+    return items.map((item, index) => {
+      const path = `items[${index}]`;
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        progressImportError(path, "must be an object");
+      }
+      if (
+        typeof item.itemKey !== "string"
+        || !item.itemKey
+        || item.itemKey.length > PROGRESS_KEY_LIMIT
+      ) {
+        progressImportError(`${path}.itemKey`, `must be a non-empty string of at most ${PROGRESS_KEY_LIMIT} characters`);
+      }
+      if (
+        typeof item.status !== "string"
+        || !item.status
+        || item.status.length > PROGRESS_STATUS_LIMIT
+      ) {
+        progressImportError(`${path}.status`, `must be a non-empty string of at most ${PROGRESS_STATUS_LIMIT} characters`);
+      }
+      if (seen.has(item.itemKey)) {
+        progressImportError(`${path}.itemKey`, "duplicates an earlier progress record");
+      }
+      validateProgressRecord(item.itemKey, item.status, path);
+      seen.add(item.itemKey);
+      return { itemKey: item.itemKey, status: item.status };
+    });
+  }
+
   function importProgress(file) {
     const reader = new FileReader();
     reader.onload = () => {
       try {
         const data = JSON.parse(String(reader.result || "{}"));
         const items = itemsFromImport(data);
-        if (!Array.isArray(items)) throw new Error("No items array");
-        const cleaned = items
-          .filter((x) => x && typeof x.itemKey === "string" && x.status)
-          .map((x) => ({ itemKey: x.itemKey, status: x.status }));
-        if (!cleaned.length) throw new Error("No valid items");
+        const cleaned = validateProgressItems(items);
         if (
           !confirm(
             `Import ${cleaned.length} progress items?\nThis replaces the current browser progress.`

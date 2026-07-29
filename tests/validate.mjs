@@ -396,7 +396,7 @@ if (deepBundle.includes('Did you forget to add the page to the router?') ||
 const deepLabHtml = readFileSync('docs/study-lab/index.html', 'utf8');
 const deepEnhancements = readFileSync('docs/study-lab/assets/synapse-enhance.js', 'utf8');
 for (const invariant of [
-  'synapse-enhance.js?v=5',
+  'synapse-enhance.js?v=6',
   'localStorage.getItem("synapse-neur3301-theme")',
   'min-height:44px',
   'max-height:min(70vh,520px)',
@@ -424,8 +424,65 @@ for (const invariant of [
 if (!deepEnhancements.includes('parentText.match(/(100|[0-9]{1,2})%/)')) {
   throw new Error('Study Lab progress parser must support React text with no space before the percentage');
 }
-if (!serviceWorker.includes("'./study-lab/assets/synapse-enhance.js?v=5'")) {
+if (!serviceWorker.includes("'./study-lab/assets/synapse-enhance.js?v=6'")) {
   throw new Error('Study Lab enhancement version must match its service-worker precache entry');
+}
+
+const progressValidatorStart = deepEnhancements.indexOf('  const PROGRESS_IMPORT_LIMIT = 600;');
+const progressValidatorEnd = deepEnhancements.indexOf('\n  function importProgress(', progressValidatorStart);
+if (progressValidatorStart === -1 || progressValidatorEnd === -1) {
+  throw new Error('Could not locate strict Study Lab import validation');
+}
+const validateStudyProgress = Function(
+  `"use strict";\n${deepEnhancements.slice(progressValidatorStart, progressValidatorEnd)}\nreturn validateProgressItems;`
+)();
+const validSchedule = JSON.stringify({
+  ease: 2.5,
+  reps: 2,
+  interval: 6,
+  due: '2026-08-04',
+  last: 'good'
+});
+const validStudyProgress = [
+  { itemKey: 'kw:2:Neurotrophic hypothesis', status: 'known' },
+  { itemKey: 'concept:2:0', status: 'mastered' },
+  { itemKey: 'quiz:3:1', status: 'got' },
+  { itemKey: 'srs:3:Growth cone', status: validSchedule },
+  { itemKey: 'seminar:0', status: 'mastered' }
+];
+const validatedStudyProgress = validateStudyProgress(validStudyProgress);
+if (
+  validatedStudyProgress.length !== validStudyProgress.length
+  || validatedStudyProgress.some((item, index) => item.itemKey !== validStudyProgress[index].itemKey)
+) {
+  throw new Error('Study Lab import validator changed a valid progress payload');
+}
+for (const [label, items, expected] of [
+  ['empty payload', [], 'No progress items'],
+  ['duplicate key', [...validStudyProgress, validStudyProgress[0]], 'duplicates an earlier progress record'],
+  ['no-class lecture', [{ itemKey: 'kw:23:Not taught', status: 'known' }], 'does not identify a taught lecture'],
+  ['unknown status', [{ itemKey: 'quiz:3:0', status: 'perfect' }], 'is not a valid quiz status'],
+  ['bad schedule', [{ itemKey: 'srs:3:Growth cone', status: '{"ease":99}' }], 'incomplete or unsupported'],
+  ['unknown key family', [{ itemKey: 'admin:1:x', status: 'known' }], 'unsupported progress-key format']
+]) {
+  let message = '';
+  try {
+    validateStudyProgress(items);
+  } catch (error) {
+    message = error.message;
+  }
+  if (!message.includes(expected)) {
+    throw new Error(`Study Lab import validator accepted ${label} or returned the wrong error: ${message}`);
+  }
+}
+const studyImportStart = deepEnhancements.indexOf('  function importProgress(file)');
+const studyImportEnd = deepEnhancements.indexOf('\n  function resetProgress()', studyImportStart);
+const studyImportHandler = deepEnhancements.slice(studyImportStart, studyImportEnd);
+if (
+  !studyImportHandler.includes('const cleaned = validateProgressItems(items);')
+  || studyImportHandler.includes('.filter((x) => x && typeof x.itemKey')
+) {
+  throw new Error('Study Lab import must validate the complete payload before replacing progress');
 }
 
 const precacheOpen = serviceWorker.indexOf('const PRECACHE_URLS = [');
