@@ -53,6 +53,35 @@ Insufficient trophic capture
 → cytochrome-c/caspase cascade  
 → developmental apoptosis
 
+## Mechanistic deep dive
+
+The causal maps above route target support into a survival decision; this section opens the receptor and death machinery that executes it.
+
+### Trk downstream branches
+
+A ligand-bound, autophosphorylated Trk recruits three main cassettes, and the *duration* of signalling matters as much as its identity:
+
+- **Ras–ERK/MAPK:** Shc/Grb2/SOS → Ras → Raf → MEK → ERK → CREB-dependent transcription. Transient ERK favours proliferation; sustained ERK biases toward differentiation and neurite outgrowth.
+- **PI3K–Akt:** the principal survival arm. Akt phosphorylates and inactivates pro-apoptotic BAD and FOXO factors and inhibits GSK3β, while downstream mTORC1 supports growth and local translation.
+- **PLCγ:** generates DAG and IP₃ → PKC activation and Ca²⁺ release, feeding plasticity and activity-dependent responses.
+
+### The signalling endosome
+
+- Ligand–Trk complexes are internalised into Rab5 early endosomes that mature (Rab7, with Rab10 sorting of TrkB) into retrograde carriers.
+- The endosome keeps Trk catalytically active while dynein–dynactin hauls it to the soma, delivering a *sustained* nuclear (CREB) signal — the property that distinguishes an active signalling endosome from inert endocytic cargo.
+
+### p75NTR is a context switch, not a death button
+
+- With sortilin, proneurotrophins (proNGF, proBDNF) drive p75-dependent apoptosis through JNK.
+- p75 also activates RhoA (growth-cone inhibition) and undergoes regulated intramembrane proteolysis (α-secretase then γ-secretase), freeing an intracellular domain that engages adaptors such as NRIF.
+- Trk co-expression flips the same receptor toward survival by suppressing these outputs — which is why the answer must always state the ligand and co-receptor context.
+
+### The apoptotic execution pathway
+
+Trophic withdrawal shifts the BCL-2 family: BH3-only proteins (BIM, BAD) are de-repressed → BAX/BAK oligomerise and permeabilise the mitochondrial outer membrane → cytochrome c release → Apaf-1 apoptosome → caspase-9 → effector caspase-3. This intrinsic (mitochondrial) pathway is the executioner behind developmental programmed cell death.
+
+*Boundary:* most of this is mapped in sympathetic and sensory neurons; CNS populations can weight the same modules differently.
+
 ## High-value experiment logic
 
 ### Compartmented distal NGF experiment
@@ -119,3 +148,5 @@ Insufficient trophic capture
 - Ye H et al. (2003). Evidence in support of signalling-endosome-based retrograde survival of sympathetic neurons. [PubMed](https://pubmed.ncbi.nlm.nih.gov/12848932/)
 - Deppmann CD et al. (2008). A model for neuronal competition during development. [PubMed](https://pubmed.ncbi.nlm.nih.gov/18323418/)
 - Lazo OM et al. (2023). Rab10 regulates sorting of internalised TrkB for retrograde axonal transport and signalling. [PubMed](https://pubmed.ncbi.nlm.nih.gov/36897066/)
+- Reichardt LF (2006). Neurotrophin-regulated signalling pathways. [PubMed](https://pubmed.ncbi.nlm.nih.gov/16939974/)
+- Nykjaer A et al. (2004). Sortilin is essential for proNGF-induced neuronal cell death. [PubMed](https://pubmed.ncbi.nlm.nih.gov/14985763/)

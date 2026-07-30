@@ -99,6 +99,41 @@ CNS injury
 → scar-associated signals can restrict later axon extension
 → effective repair requires timing and state control rather than blanket ablation
 
+## Mechanistic deep dive
+
+The causal maps above name what glia do; this section names the molecules that do it. Confidence stays claim-specific, and mouse-derived mechanisms are flagged before any human generalisation.
+
+### Astrocyte ion and transmitter buffering
+
+- **Potassium siphoning:** Kir4.1 inward-rectifier K⁺ channels let astrocytes take up K⁺ released by firing neurons; the astrocyte syncytium, coupled by connexin-43 and connexin-30 gap junctions, redistributes it spatially. Losing Kir4.1 raises extracellular K⁺ and lowers seizure threshold.
+- **Water coupling:** aquaporin-4 (AQP4) at perivascular end-feet moves water with K⁺, linking ion buffering to tissue volume and to CSF–interstitial (glymphatic) flow.
+- **Glutamate clearance:** the transporters EAAT2/GLT-1 and EAAT1/GLAST perform most synaptic glutamate uptake; glutamine synthetase then recycles glutamate to glutamine (the glutamate–glutamine cycle). Failed clearance permits excitotoxicity.
+
+*Boundary:* these are strong, largely rodent-established mechanisms; marker and channel expression vary by region and reactive state.
+
+### Myelin, nodes and saltatory conduction
+
+- Myelin is compacted glial membrane held by distinct proteins: MBP and PLP/DM20 in the CNS, P0 and PMP22 in the PNS.
+- Saltatory conduction depends on molecular domains, not just insulation. Voltage-gated Naᵥ1.6 channels cluster at the node of Ranvier via ankyrin-G and βIV-spectrin, positioned by gliomedin and neurofascin-186; Caspr–contactin paranodal junctions seal the flanks; Kᵥ1 channels sit at the juxtaparanode.
+- This is why demyelination slows or blocks conduction and disperses nodal channels — an axonal-domain failure, not merely lost "insulation."
+
+### Microglial synaptic pruning
+
+- Developing synapses can be tagged by complement (C1q, then C3b); microglia bearing complement receptor 3 (CR3/CD11b) engulf the tagged inputs, with CX3CR1–fractalkine signalling tuning the process.
+- Shown most cleanly in the mouse retinogeniculate system during an activity-dependent window, where weaker (less active) inputs are preferentially removed.
+
+*Boundary:* robust developmental mechanism in mice; human and disease relevance is inferred, not settled.
+
+### Reactive astrocyte molecular control
+
+- Scar-border formation depends partly on STAT3 signalling within astrocytes.
+- A proposed neurotoxic reactive state ("A1") can be induced by microglia-derived IL-1α, TNF and C1q; but as the lecture stresses, in-vivo states are multidimensional and are not captured by a single A1/A2 axis.
+
+### Blood–brain barrier at the molecular level
+
+- The physical seal is endothelial tight junctions built from claudin-5, occludin and ZO-1, backed by efflux pumps such as P-glycoprotein.
+- Astrocyte end-feet and pericytes induce and maintain this phenotype — partly through secreted signals including sonic hedgehog — but they are not themselves the sealed endothelial wall.
+
 ## Experiment logic
 
 ### Microglial fate mapping
@@ -157,3 +192,5 @@ CNS injury
 - Anderson MA et al. (2016). Astrocyte scar formation aids central nervous system axon regeneration. [PubMed](https://pubmed.ncbi.nlm.nih.gov/27027288/)
 - Jessen KR and Mirsky R (2016). The repair Schwann cell and its function in regenerating nerves. [PubMed](https://pubmed.ncbi.nlm.nih.gov/26864683/)
 - Raisman G and Li Y (2007). Repair of neural pathways by olfactory ensheathing cells. [PubMed](https://pubmed.ncbi.nlm.nih.gov/17342173/)
+- Schafer DP et al. (2012). Microglia sculpt postnatal neural circuits in an activity and complement-dependent manner. [PubMed](https://pubmed.ncbi.nlm.nih.gov/22632727/)
+- Liddelow SA et al. (2017). Neurotoxic reactive astrocytes are induced by activated microglia. [PubMed](https://pubmed.ncbi.nlm.nih.gov/28099414/)
