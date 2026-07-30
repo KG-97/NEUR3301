@@ -54,7 +54,10 @@ const lectureBriefs = [
       ['Oligodendrocyte', 'CNS myelin and axonal support', 'One cell can form internodes on multiple axons'],
       ['Schwann cell', 'Neural-crest-derived PNS glia', 'One myelinating cell normally forms one internode on one axon; repair cells also support regeneration'],
       ['Astrocyte / BBB', 'Barrier regulation and homeostasis', 'Endothelial tight junctions form the principal physical seal; astrocytes and pericytes regulate it'],
-      ['GFAP or M1/M2/A1/A2 labels', 'Useful but limited markers/shorthand', 'Markers and binary labels do not capture all glia or multidimensional reactive states']
+      ['GFAP or M1/M2/A1/A2 labels', 'Useful but limited markers/shorthand', 'Markers and binary labels do not capture all glia or multidimensional reactive states'],
+      ['Astrocyte ion/transmitter buffering', 'Kir4.1, AQP4, EAAT2/GLT-1, glutamine synthetase', 'Spatial K+ siphoning, water coupling and glutamate clearance; failure permits excitotoxicity'],
+      ['Node of Ranvier organisation', 'Nav1.6 clustered by ankyrin-G/βIV-spectrin; Caspr–contactin paranodes', 'Saltatory conduction is a molecular-domain property; demyelination disperses nodal channels'],
+      ['Microglial complement pruning', 'C1q/C3b tag engaged by microglial CR3; CX3CR1 tuning', 'Less-active synapses are engulfed in an activity-dependent window (mouse retinogeniculate); human relevance inferred']
     ],
     experiments: [
       {
@@ -98,7 +101,9 @@ const lectureBriefs = [
       ['Ginhoux et al. (2010) — embryonic origin of adult microglia', 'https://pubmed.ncbi.nlm.nih.gov/20966214/'],
       ['Anderson et al. (2016) — astrocyte-scar functions in CNS regeneration', 'https://pubmed.ncbi.nlm.nih.gov/27027288/'],
       ['Jessen and Mirsky (2016) — the repair Schwann cell', 'https://pubmed.ncbi.nlm.nih.gov/26864683/'],
-      ['Raisman and Li (2007) — olfactory ensheathing cells in pathway repair', 'https://pubmed.ncbi.nlm.nih.gov/17342173/']
+      ['Raisman and Li (2007) — olfactory ensheathing cells in pathway repair', 'https://pubmed.ncbi.nlm.nih.gov/17342173/'],
+      ['Schafer et al. (2012) — complement-dependent microglial synaptic pruning', 'https://pubmed.ncbi.nlm.nih.gov/22632727/'],
+      ['Liddelow et al. (2017) — microglia-induced neurotoxic reactive astrocytes', 'https://pubmed.ncbi.nlm.nih.gov/28099414/']
     ]
   },
   {
@@ -132,7 +137,10 @@ const lectureBriefs = [
       ['BDNF / NT-4', 'TrkB', 'Survival, differentiation and synaptic/circuit plasticity'],
       ['NT-3', 'TrkC preferred', 'Proprioceptive and other developmental programmes; cross-activation can occur'],
       ['Mature neurotrophin + Trk', 'Usually trophic/survival signalling', 'Not a universal outcome; cell state and co-receptors matter'],
-      ['Proneurotrophin + p75NTR/sortilin context', 'Can favour apoptotic or pruning signals', 'p75NTR is not simply a low-affinity “death receptor” in every context']
+      ['Proneurotrophin + p75NTR/sortilin context', 'Can favour apoptotic or pruning signals', 'p75NTR is not simply a low-affinity “death receptor” in every context'],
+      ['Trk survival branches', 'PI3K-Akt vs Ras-ERK vs PLCγ', 'Akt inactivates BAD/FOXO for survival; sustained ERK drives differentiation; PLCγ feeds Ca2+/PKC plasticity'],
+      ['Signalling endosome maturation', 'Rab5 → Rab7; Rab10 sorts TrkB', 'Dynein hauls a catalytically active Trk carrier that delivers a sustained somatic CREB signal'],
+      ['Intrinsic apoptotic execution', 'BH3-only (BIM/BAD) → BAX/BAK → Apaf-1/caspase-9 → caspase-3', 'Trophic withdrawal permeabilises mitochondria; this sequence is the developmental death pathway']
     ],
     experiments: [
       {
@@ -173,7 +181,9 @@ const lectureBriefs = [
     references: [
       ['Ye et al. (2003) — NGF-TrkA signalling endosomes', 'https://pubmed.ncbi.nlm.nih.gov/12848932/'],
       ['Deppmann et al. (2008) — neuronal competition model', 'https://pubmed.ncbi.nlm.nih.gov/18323418/'],
-      ['Lazo et al. (2023) — Rab10 and retrograde TrkB signalling', 'https://pubmed.ncbi.nlm.nih.gov/36897066/']
+      ['Lazo et al. (2023) — Rab10 and retrograde TrkB signalling', 'https://pubmed.ncbi.nlm.nih.gov/36897066/'],
+      ['Reichardt (2006) — neurotrophin-regulated signalling pathways', 'https://pubmed.ncbi.nlm.nih.gov/16939974/'],
+      ['Nykjaer et al. (2004) — sortilin in proNGF-induced neuronal death', 'https://pubmed.ncbi.nlm.nih.gov/14985763/']
     ]
   },
   {
@@ -207,7 +217,10 @@ const lectureBriefs = [
       ['Semaphorin', 'Secreted or membrane-associated; neuropilin/plexin context', 'Often repulsive/collapse signalling, but sign is context-dependent'],
       ['Eph / ephrin', 'Contact-mediated, graded, bidirectional-capable signalling', 'Boundary formation and relative topographic mapping'],
       ['Cell-adhesion / ECM cues', 'Contact-dependent permissive or instructive substrate', 'Support fasciculation, defasciculation and pathway choice'],
-      ['Retinal waves', 'Correlated patterned activity', 'Refine termination zones; they do not replace initial molecular targeting']
+      ['Retinal waves', 'Correlated patterned activity', 'Refine termination zones; they do not replace initial molecular targeting'],
+      ['Growth-cone cytoskeleton', 'Actin (Arp2/3, Ena/VASP) + molecular clutch; Rac/Cdc42 vs RhoA-ROCK', 'The clutch converts retrograde actin flow into traction; Rac/Cdc42 protrude/attract, RhoA collapses'],
+      ['Second-messenger sign switch', 'cAMP/cGMP ratio and Ca2+ amplitude/source', 'High cAMP and large Ca2+ bias attraction; low cAMP and small Ca2+ bias repulsion to the same cue'],
+      ['Robo3/Rig-1 midline gating', 'Pre-crossing suppression of Robo1/2 Slit sensitivity', 'Silences repulsion before crossing; Robo1/2 rises afterward to expel and prevent recrossing']
     ],
     experiments: [
       {
@@ -250,7 +263,10 @@ const lectureBriefs = [
       ['Serafini et al. (1996) — netrin-1 requirement in vivo', 'https://pubmed.ncbi.nlm.nih.gov/8978605/'],
       ['Bartoe et al. (2006) — receptor trafficking switches netrin response', 'https://pubmed.ncbi.nlm.nih.gov/16554470/'],
       ['Brown et al. (2000) — relative EphA signalling', 'https://pubmed.ncbi.nlm.nih.gov/10929715/'],
-      ['McLaughlin et al. (2003) — retinal-wave refinement', 'https://pubmed.ncbi.nlm.nih.gov/14687549/']
+      ['McLaughlin et al. (2003) — retinal-wave refinement', 'https://pubmed.ncbi.nlm.nih.gov/14687549/'],
+      ['Ming et al. (1997) — cAMP sets netrin attraction versus repulsion', 'https://pubmed.ncbi.nlm.nih.gov/9331350/'],
+      ['Sabatier et al. (2004) — Robo3/Rig-1 gates midline crossing', 'https://pubmed.ncbi.nlm.nih.gov/15064421/'],
+      ['Lowery and Van Vactor (2009) — growth cone machinery', 'https://pubmed.ncbi.nlm.nih.gov/19513082/']
     ]
   }
 ];
