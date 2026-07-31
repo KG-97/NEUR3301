@@ -31,9 +31,23 @@ jobs:
       - name: Report bundle sizes and upload artifact
         run: |
                 node scripts/report-bundle-size.mjs
-        # upload bundle-sizes.json for historical tracking
       - name: Upload bundle size artifact
         uses: actions/upload-artifact@v4
         with:
                 name: bundle-sizes
                 path: bundle-sizes.json
+      - name: Checkout main branch for comparison
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          path: main
+      - name: Create PR bundle-size comment
+        run: |
+          node scripts/compare-bundle-sizes.mjs
+      - name: Post bundle-size comment on PR
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-file: bundle-size-comment.md
