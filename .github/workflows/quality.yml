@@ -16,7 +16,15 @@ jobs:
       - uses: actions/setup-node@v7
         with:
                 node-version: 24
+      - name: Install dependencies (none required)
+        run: |
+                node --version
       - name: Check static site and course facts
         run: |
-          node tests/validate.mjs
-          node scripts/check-site.mjs
+                node tests/validate.mjs
+                node scripts/check-site.mjs
+      - name: Bundle size guard (Study Lab assets)
+        env:
+                MAX_BUNDLE_BYTES: 700000
+        run: |
+                node scripts/check-bundle-size.mjs
