@@ -28,3 +28,12 @@ jobs:
                 MAX_BUNDLE_BYTES: 700000
         run: |
                 node scripts/check-bundle-size.mjs
+      - name: Report bundle sizes and upload artifact
+        run: |
+                node scripts/report-bundle-size.mjs
+        # upload bundle-sizes.json for historical tracking
+      - name: Upload bundle size artifact
+        uses: actions/upload-artifact@v4
+        with:
+                name: bundle-sizes
+                path: bundle-sizes.json
