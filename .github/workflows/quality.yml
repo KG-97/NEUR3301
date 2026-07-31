@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: read
+  issues: write
+  pull-requests: write
 
 jobs:
   validate:
@@ -15,8 +17,39 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v7
         with:
-          node-version: 22
+                node-version: 24
+      - name: Install dependencies (none required)
+        run: |
+                node --version
       - name: Check static site and course facts
         run: |
-          node tests/validate.mjs
-          node scripts/check-site.mjs
+                node tests/validate.mjs
+                node scripts/check-site.mjs
+      - name: Bundle size guard (Study Lab assets)
+        env:
+                MAX_BUNDLE_BYTES: 700000
+        run: |
+                node scripts/check-bundle-size.mjs
+      - name: Report bundle sizes and upload artifact
+        run: |
+                node scripts/report-bundle-size.mjs
+      - name: Upload bundle size artifact
+        uses: actions/upload-artifact@v4
+        with:
+                name: bundle-sizes
+                path: bundle-sizes.json
+      - name: Checkout main branch for comparison
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          path: main
+      - name: Create PR bundle-size comment
+        run: |
+          node scripts/compare-bundle-sizes.mjs
+      - name: Post bundle-size comment on PR
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-file: bundle-size-comment.md
