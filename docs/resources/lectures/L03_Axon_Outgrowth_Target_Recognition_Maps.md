@@ -1,164 +1,203 @@
-# NEUR3301 Lecture 3 — Axon Outgrowth, Target Recognition and Maps
+# NEUR3301 Lecture 3 - Axon Outgrowth, Target Recognition and Maps
 
-**Official timetable:** 27 July 2026 · Dr Stuart Hodgetts · Test 1 (Lectures 1–7)
+**Official timetable:** 27 July 2026 - Dr Stuart Hodgetts - Test 1 (Lectures 1-7)
 
-> Evidence boundary: the supplied UWA handbook verifies the lecture identity, date, lecturer and assessment block. The LMS slide deck was not supplied. The content below is a primary-literature reconstruction to prepare for the lecture; verify Hodgetts's emphasis, diagrams and named studies against LMS.
+> Evidence boundary: this note has been reconciled against the released Lecture 3 PDF, visually checked slide by slide. It follows Hodgetts's examples and emphasis; supporting literature extends the mechanism only where it clarifies those slides. Regressive removal and activity-dependent refinement are introduced here but developed in Lectures 4 and 13.
 
 ## What you need to know cold
 
-1. The growth cone samples its environment and converts spatially asymmetric receptor activation into asymmetric actin and microtubule behaviour.
-2. Guidance cues can be long-range or contact-mediated and can produce attraction, repulsion, advance, pausing, branching or collapse.
-3. A cue does not possess a universal behavioural sign. Receptor combinations, receptor trafficking, second-messenger state and developmental history determine the response.
-4. Intermediate targets solve multistep routes. After an axon reaches or crosses a choice point, receptor responsiveness must change so the axon can leave and avoid recrossing.
-5. Target recognition includes entry, stopping, branching, arborisation and synapse choice—not just arrival in the general region.
-6. Topographic maps preserve neighbour relations between source and target populations.
-7. Eph/ephrin gradients help establish coarse relative position; patterned activity then refines overlapping arbors into focal termination zones.
+1. Axon guidance is not one chemical compass. Mechanical factors, electrical and chemical gradients, extracellular matrix, adhesion molecules, diffusible cues, other axons and activity interact.
+2. Growth cones use filopodia and lamellipodia to sample local cues, then convert receptor and second-messenger asymmetry into local cytoskeletal change.
+3. Guidance depends on spatial profile and history. A neurite can cross a gradual proteoglycan rise that reaches a higher concentration than an abrupt inhibitory step.
+4. Attractive and repulsive are context-dependent responses. Receptor state, cAMP/cGMP, calcium, substrate and activity can change the sign or strength.
+5. Intermediate targets break a long route into solvable segments, but the growth cone must change receptor or adhesion state so it can leave the temporary target.
+6. Local translation lets a distal growth cone respond rapidly: attractive cues can favour beta-actin synthesis; repulsive cues can favour RhoA/cofilin-mediated actin breakdown.
+7. CNS myelin-associated inhibitors and CSPGs converge strongly on RhoA-ROCK signalling and growth-cone collapse.
+8. Target recognition is hierarchical: defasciculate -> enter and stay -> choose topographic location -> layer -> target cell -> correct part of that cell.
+9. Graded Eph/ephrin signalling helps position retinal terminals; an appropriate trophic context such as BDNF supports branching before later refinement.
 
 ## Core causal maps
 
-### Growth-cone turning
+### Context-to-turn conversion
 
-Cue gradient or contact signal  
-→ asymmetric receptor activation  
-→ local Ca²⁺ / cyclic-nucleotide / Rho-family GTPase signalling  
-→ biased actin protrusion, adhesion and microtubule capture  
-→ turn, advance, pause or collapse
+```text
+Graded or contact cue
+-> asymmetric receptor activation plus calcium/cyclic-nucleotide state
+-> Rho-family signalling and cue-specific local translation
+-> biased actin assembly or depolymerisation
+-> traction and turning versus retraction/collapse
+```
 
-### Midline choice
+### Intermediate-target escape
 
-Pre-crossing attraction toward an intermediate target  
-→ midline crossing  
-→ change in receptor surface availability/responsiveness  
-→ reduced attraction plus Slit-Robo repulsion  
-→ exit and prevention of recrossing
+```text
+Attraction toward floor plate or another choice point
+-> TAG1/N-CAM-associated approach
+-> arrival triggers receptor trafficking or expression change
+-> TAG1 falls and L1-associated onward growth rises
+-> old attraction is overcome and the axon continues
+```
 
-### Ordered map construction
+### CNS growth inhibition
 
-Complementary source/target molecular gradients  
-→ relative positional signalling  
-→ coarse termination zone  
-→ correlated spontaneous/activity-dependent competition  
-→ refined ordered projection
+```text
+CSPG step or Nogo/MAG/OMgp contact
+-> inhibitory receptor-complex activation
+-> RhoA-ROCK signalling
+-> growth-cone contraction/collapse
+-> extension stops unless signalling is bypassed or blocked
+```
+
+### Target-to-map hierarchy
+
+```text
+Defasciculate at the target
+-> enter and remain
+-> graded Eph/ephrin positional signalling
+-> select lamina, cell and subcellular site
+-> trophic-supported arborisation followed by regressive refinement
+```
+
+## Guidance vocabulary
+
+| Signal class | Lecture examples | Exam-safe interpretation |
+|---|---|---|
+| Mechanical | Tissue geometry and physical constraints | Can bias route and growth without being a ligand-receptor signal |
+| Electrical | Applied cathode/anode fields in culture | Strong in-vitro turning evidence; normal in-vivo developmental role is less secure |
+| Extracellular matrix | Proteoglycans, fibronectin, collagen | Substrate can be permissive or inhibitory; gradient steepness matters |
+| Adhesion | Laminin-integrin, cadherins, TAG1, N-CAM, L1 | Controls traction, fasciculation, defasciculation and choice-point state |
+| Diffusible | NGF, neurotrophins, semaphorins | Distance, receptor and second messengers set response |
+| Contact inhibition | Oligodendroglial/myelin Nogo, MAG, OMgp | Receptor complexes converge on RhoA-ROCK collapse |
+| Positional gradients | Eph receptors and ephrin ligands | Relative graded repulsion helps construct topographic order |
 
 ## Mechanistic deep dive
 
-The causal maps above describe turning and mapping at the behavioural level; this section supplies the cytoskeletal and second-messenger machinery that sets the *sign* of the response.
+### Gradient versus hurdle
 
-### Growth-cone mechanics: the actin clutch
+In the Snow/Letourneau proteoglycan assay, DRG neurites stop at a sharp proteoglycan boundary but can extend over a gradual increase that reaches a higher absolute concentration. Therefore:
 
-- Filopodia and lamellipodia are built from actin — elongated by Ena/VASP and formins, branched by the Arp2/3 complex and recycled by cofilin.
-- A "molecular clutch" couples retrograde actin flow to substrate adhesions (point-contact integrins and their linkers); engaging the clutch converts flow into traction and forward advance, while microtubules invade the stabilised side to consolidate a turn.
-- Rho-family GTPases arbitrate: Rac1 and Cdc42 promote protrusion and attraction; RhoA–ROCK promotes contraction, retraction and collapse.
+response = concentration + spatial slope + adaptation history + receptor state
 
-### The second-messenger sign switch
+The examiner trap is to reduce guidance to "high inhibitor equals stop."
 
-- The *same* cue can attract or repel depending on cytoplasmic state. A high cAMP/cGMP ratio biases netrin toward attraction; lowering it converts the response to repulsion.
-- Ca²⁺ is the shared node: larger-amplitude signals with calcium-induced calcium release favour attraction, whereas smaller signals favour repulsion — so receptor identity, PKA/PKG tone and Ca²⁺ source jointly set the turn.
+### Local NGF tropism
 
-### Midline crossing: silencing and re-arming Robo
+A local NGF source approximately 20-40 micrometres from a DRG growth cone can attract the neurite. This shows that a molecule classed as trophic can also supply spatial guidance information. The effect is distance- and geometry-dependent; a culture pipette does not define the dominant range in intact tissue.
 
-- Before crossing, commissural axons keep Slit sensitivity low — Robo3/Rig-1 suppresses Robo1/2 signalling (in flies, Commissureless sorts Robo away from the surface).
-- After crossing, Robo1/2 rises and Slit–Robo repulsion expels the axon and prevents recrossing, while pre-crossing attractants (netrin, Shh) lose their pull. This is the molecular basis of the receptor-state switch in the causal map.
+### Intermediate targets
 
-### Eph/ephrin: relative, bidirectional signalling
+An intermediate target must solve two opposite problems:
 
-- Graded EphA on retinal axons meets graded ephrin-A in the colliculus/tectum; forward signalling (Eph kinase in the growth cone) produces graded repulsion that positions terminals by *relative*, not absolute, level — the logic behind the EphA3 knock-in result.
-- Ephrin-B/EphB pairs add reverse signalling through the ephrin, so a single contact can signal into both cells.
+1. attract or permit the axon to arrive;
+2. stop attracting it once it has arrived.
 
-### Activity-dependent refinement
+The growth cone changes surface receptor, adhesion and signalling state through trafficking, translation, transcription, protein stability or sequestration. In the spinal example, TAG1 is reduced and L1 becomes prominent as commissural axons continue beyond the floor-plate region.
 
-- Stage II retinal waves are generated by starburst amacrine cells acting through β2-subunit nicotinic receptors; the correlated, neighbour-preserving firing drives Hebbian, NMDA-receptor-dependent competition that sharpens coarse Eph/ephrin maps into focal termination zones.
+### RhoA-ROCK collapse
 
-*Boundary:* much of this is assembled from Xenopus, chick, fly and mouse assays; molecular gradients and patterned activity cooperate rather than compete.
+Many inhibitory systems use different receptor complexes but converge on Rho-family control of the cytoskeleton. CSPGs, Nogo, MAG, OMgp, semaphorins and other repulsive cues can increase RhoA-ROCK signalling, contract the actin network and collapse the growth cone. Convergence explains why a downstream intervention may affect several inhibitors, but it also predicts broader effects than blocking one ligand.
 
-## Cue logic
+### Local translation
 
-| Cue system | Typical spatial mode | Exam-safe interpretation |
-|---|---|---|
-| Netrin with DCC/UNC5 context | Secreted / longer range | Can attract or repel depending on receptor surface state |
-| Semaphorin with neuropilin/plexin | Secreted or membrane-associated | Often promotes repulsion/collapse, but context determines output |
-| Eph/ephrin | Contact-mediated, graded | Relative topographic mapping, boundaries and bidirectional-capable signalling |
-| Cell-adhesion molecules / ECM | Contact substrate | Permissive and instructive effects on fasciculation and pathway choice |
-| Patterned neural activity | Correlated population signal | Refines and stabilises maps; does not replace initial molecular targeting |
+The growth cone contains thousands of mRNA species and can translate a small local proteome. The lecture's core contrast is:
+
+- **Attractive netrin/BDNF-like cue:** local beta-actin mRNA recruitment and translation -> actin polymerisation toward the source.
+- **Repulsive SEMA3A/SLIT2-like cue:** local RhoA/cofilin production or activation -> actin depolymerisation and turning away.
+
+This produces a rapid distal response without routing every decision through the soma.
+
+### Target recognition and map formation
+
+Correct gross arrival is only the first checkpoint. An axon must defasciculate at the correct location, enter and remain in the target, select a topographic location, choose the correct layer, recognise an appropriate cell and innervate the correct compartment.
+
+In the retinocollicular/retinotectal example, graded EphA receptor expression interacts with graded ephrin-A ligands. Temporal retinal axons with higher EphA signalling are more strongly repelled by high caudal/posterior ephrin-A, helping preserve neighbour relations. Single ephrin-A2 loss causes ectopic termination zones; combined ephrin-A2/A5 loss produces a stronger map defect, supporting overlapping positional signals rather than one unique address label per neuron.
 
 ## High-value experiment logic
 
-### Netrin requirement
+### 1. Proteoglycan gradient versus step
 
-- **Manipulation:** Disrupt netrin-1 and label developing commissural axons.
-- **Result:** Many commissural axons fail to follow their normal ventral trajectory.
-- **Inference:** Netrin-1 is necessary for normal guidance in this context.
-- **Limit:** Necessity does not mean netrin acts alone or always produces attraction.
+- **Manipulation:** Present the same inhibitory substrate as a sharp boundary or a gradual rise.
+- **Result:** The boundary stops neurites; the gradual rise can be crossed at a higher endpoint concentration.
+- **Inference:** Growth cones detect spatial rate-of-change and adapt, not just absolute level.
+- **Limit:** A two-dimensional culture substrate omits the mixed three-dimensional cue field in vivo.
 
-### Receptor-state switch
+### 2. NGF micropipette
 
-- **Manipulation:** Change UNC5A surface availability while exposing axons to a stable netrin gradient.
-- **Result:** Removing surface UNC5A can convert netrin-evoked repulsion into attraction.
-- **Inference:** Receptor trafficking can switch the sign of a guidance response at a choice point.
-- **Limit:** In-vitro gradients and receptor manipulations simplify the full in-vivo cue field.
+- **Manipulation:** Place an NGF source 20-40 micrometres from a cultured DRG growth cone.
+- **Result:** The neurite turns toward the source.
+- **Inference:** NGF can act as a local tropic cue.
+- **Limit:** Culture geometry does not establish normal tissue range or necessity.
 
-### Relative EphA signalling
+### 3. Oligodendrocyte contact plus antibody block
 
-- **Manipulation:** Increase EphA3 in a subset of retinal ganglion cells and trace superior-colliculus projections.
-- **Result:** The population forms two ordered maps.
-- **Inference:** Relative EphA signalling among competing axons helps specify topographic position.
-- **Limit:** The manipulation alters the whole competitive population; one gradient is not a complete map theory.
+- **Manipulation:** Grow neurites across oligodendrocytes, then block a functional inhibitory surface site.
+- **Result:** Contact arrests extension; antibody blockade releases part of the inhibition.
+- **Inference:** Specific surface signalling contributes to arrest, rather than an unavoidable physical barrier.
+- **Limit:** Partial culture rescue does not prove long-distance functional regeneration in vivo.
 
-### Activity-dependent refinement
+### 4. Ephrin-A knockout mapping
 
-- **Manipulation:** Remove early cholinergic retinal waves in β2 nicotinic-receptor knockout mice.
-- **Result:** Axons reach roughly appropriate regions but retain enlarged, diffuse termination zones.
-- **Inference:** Correlated activity is required during an early critical period to refine coarse molecular maps.
-- **Limit:** The receptor knockout may have downstream effects beyond wave disruption.
+- **Manipulation:** Compare retinal projections in wild type, ephrin-A2 knockout and ephrin-A2/A5 double knockout.
+- **Result:** Single loss causes ectopic zones; double loss causes more severe disorganisation.
+- **Inference:** Multiple ephrin gradients cooperate to specify topographic position.
+- **Limit:** The experiment does not establish correct laminar, cell-type, synaptic or functional targeting.
 
 ## Intervention predictions
 
 | Intervention | Immediate effect | Predicted phenotype |
 |---|---|---|
-| DCC loss in a commissural population | Reduces netrin-attractive signalling | Failure or delay of approach to the midline |
-| Premature Robo surface expression | Increases Slit sensitivity too early | Axons may be repelled before crossing |
-| UNC5 internalisation | Reduces repulsive netrin receptor complex | Netrin response may shift toward DCC-mediated attraction |
-| EphA3 increase in an RGC subset | Raises relative EphA signalling | Shifted/duplicated topographic termination zones |
-| Early retinal-wave disruption | Removes correlated neighbour activity | Broad, overlapping termination zones despite coarse targeting |
-| Actin polymerisation blockade | Prevents local protrusive mechanics | Growth-cone advance and turning fail even if receptors detect the cue |
+| Replace a gradual CSPG rise with a sharp step | Increases local inhibitory slope | More growth cones stop or turn at the boundary |
+| Raise cAMP/cGMP state | Changes cue-response sign and cytoskeletal signalling | A normally repulsive response may weaken or reverse in a defined preparation |
+| Block local translation | Removes rapid distal production of cue-specific proteins | Guidance turns are delayed or lost despite receptor detection |
+| Express L1 too early/late at a choice point | Alters adhesion and onward responsiveness | Premature exit or failure to leave the intermediate target |
+| Block RhoA-ROCK | Reduces convergence of several collapse pathways | More extension across inhibitory substrates, with possible off-target guidance errors |
+| Delete ephrin-A2 and A5 | Removes overlapping positional information | Severe ectopic retinal termination zones |
+| Supply BDNF at the wrong target position | Permits branching in an inappropriate location | Misplaced arborisation even if long-range pathfinding is intact |
 
 ## Examiner traps
 
-- "Netrin attracts" and "semaphorin repels" are starter rules, not sufficient final answers.
-- Growth-cone collapse in culture is a readout; it is not automatically proof of long-range repulsion in an intact embryo.
-- Misrouting and failed refinement produce different phenotypes. Use developmental timing and anatomy to distinguish them.
-- Reaching the right target region does not prove correct layer, cell type, synapse or functional map.
-- Molecular gradients and patterned activity cooperate; do not set up a false either/or.
+- Absolute concentration is not the whole signal; steepness and history matter.
+- "Semaphorin repels" is a useful starting rule, not a universal sign across every intracellular state.
+- Growth-cone collapse in a dish is not automatic proof of the dominant in-vivo guidance mechanism.
+- Applied electrical fields guide cultured cells; normal developmental relevance requires in-vivo evidence.
+- Blocking one myelin inhibitor is not equivalent to removing all CNS regeneration barriers.
+- Reaching the target is not the same as choosing the correct layer, cell, compartment or functional map.
+- Early misrouting and later failed refinement produce different anatomical phenotypes.
 
 ## Active recall
 
-1. How does a growth cone turn toward one side without the soma moving first?
-2. How can receptor trafficking reverse the sign of a netrin response?
-3. Why must commissural axons change state after crossing the midline?
-4. What result distinguishes initial targeting failure from refinement failure?
-5. What does the EphA3 knock-in experiment establish—and what does it not establish?
+1. Why can a neurite cross a gradual proteoglycan gradient but stop at a lower abrupt step?
+2. Name the major classes of guidance influence in the lecture.
+3. How does local translation differ for an attractive versus repulsive cue?
+4. Why must a growth cone change state at an intermediate target?
+5. What result makes oligodendrocyte contact inhibition mechanistic rather than purely mechanical?
+6. Recite the target-recognition hierarchy after a fasciculated axon reaches the target region.
+7. What do ephrin-A2 and ephrin-A2/A5 knockout phenotypes establish?
+8. Where does later regressive refinement enter the map-construction sequence?
 
 ## Long-answer skeleton
 
-**Prompt:** Explain how molecular guidance and neural activity cooperate to form an ordered topographic map.
+**Prompt:** Explain how a developing axon reaches an appropriate target and establishes a topographically correct terminal arbor.
 
-1. Thesis: gradients create coarse relative order; correlated activity sharpens and stabilises the projection.
-2. Define topographic mapping and neighbour preservation.
-3. Explain relative EphA/ephrin-A signalling and growth-cone cytoskeletal output.
-4. Use the EphA3 knock-in as causal evidence for relative signalling.
-5. Explain correlated retinal waves and competitive refinement.
-6. Use β2-knockout termination-zone broadening as causal evidence.
-7. Predict distinct early and late phenotypes for guidance versus activity perturbation.
-8. Limit the claim: multiple gradients, competition and activity interact; no single cue fully specifies the map.
+1. Thesis: route selection emerges from interacting graded, contact and activity-dependent signals interpreted by a stateful growth cone.
+2. Classify the cue field: mechanical, electrical, ECM, adhesion, diffusible and axon-axon influences.
+3. Explain receptor/second-messenger asymmetry -> local translation/cytoskeleton -> turning.
+4. Use the proteoglycan step-versus-gradient assay as evidence that slope/history matter.
+5. Explain intermediate-target arrival and receptor/adhesion switching.
+6. Explain target-recognition checkpoints beyond gross arrival.
+7. Use Eph/ephrin gradients and knockout mapping as topographic evidence.
+8. Add trophic-supported branching and explicitly hand later refinement to regressive events.
+9. Limit the answer: culture assays simplify the route; no single cue specifies the entire map.
 
-## Primary evidence
+## Evidence
 
-- Kennedy TE et al. (1994). Netrins are diffusible chemotropic factors for commissural axons. [PubMed](https://pubmed.ncbi.nlm.nih.gov/8062385/)
-- Serafini T et al. (1996). Netrin-1 is required for commissural axon guidance in the developing vertebrate nervous system. [PubMed](https://pubmed.ncbi.nlm.nih.gov/8978605/)
-- Bartoe JL et al. (2006). Receptor trafficking converts netrin-1-mediated repulsion to attraction. [PubMed](https://pubmed.ncbi.nlm.nih.gov/16554470/)
-- Brown A et al. (2000). Topographic mapping is controlled by relative EphA receptor signalling. [PubMed](https://pubmed.ncbi.nlm.nih.gov/10929715/)
-- McLaughlin T et al. (2003). Retinotopic refinement requires spontaneous retinal waves during a critical period. [PubMed](https://pubmed.ncbi.nlm.nih.gov/14687549/)
-- Ming GL et al. (1997). cAMP-dependent growth cone guidance by netrin-1. [PubMed](https://pubmed.ncbi.nlm.nih.gov/9331350/)
-- Sabatier C et al. (2004). The divergent Robo family protein Rig-1/Robo3 is required for midline crossing by commissural axons. [PubMed](https://pubmed.ncbi.nlm.nih.gov/15064421/)
-- Lowery LA and Van Vactor D (2009). The trip of the tip: understanding the growth cone machinery. [PubMed](https://pubmed.ncbi.nlm.nih.gov/19513082/)
+The released NEUR3301 Lecture 3 PDF is the course-emphasis source and is not republished here. Supporting literature:
 
+- Snow DM and Letourneau PC (1992). Neurite outgrowth on a CSPG step gradient. [PubMed](https://pubmed.ncbi.nlm.nih.gov/1624935/)
+- Gundersen RW and Barrett JN (1979). Chick dorsal-root axons turn toward NGF. [PubMed](https://pubmed.ncbi.nlm.nih.gov/493992/)
+- Brown A et al. (2000). Topographic mapping controlled by relative EphA signalling. [PubMed](https://pubmed.ncbi.nlm.nih.gov/10929715/)
+- Ming GL et al. (1997). cAMP-dependent growth-cone guidance by netrin-1. [PubMed](https://pubmed.ncbi.nlm.nih.gov/9331350/)
+- Gibson DA and Ma L (2011). Developmental regulation of axon branching. [PubMed](https://pubmed.ncbi.nlm.nih.gov/21177340/)
+- Lowery LA and Van Vactor D (2009). Growth-cone machinery. [PubMed](https://pubmed.ncbi.nlm.nih.gov/19513082/)
+- de Ramon Francas G et al. (2017). How axons navigate intermediate targets. [PubMed](https://pubmed.ncbi.nlm.nih.gov/27965053/)
+- Thiede-Stan NK and Schwab ME (2015). Attractive and repulsive receptor complexes. [PubMed](https://pubmed.ncbi.nlm.nih.gov/26116576/)

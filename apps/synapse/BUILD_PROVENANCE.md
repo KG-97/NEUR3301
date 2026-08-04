@@ -9,6 +9,7 @@ The deployable build is published from `docs/study-lab/`.
 - Alignment review date: 14 July 2026
 - Imported to GitHub: 22 July 2026
 - Last memory refresh: 4 August 2026 (see "Project memory checkpoint" below)
+- Last course-content alignment: 4 August 2026 (released Lectures 3 and 4)
 - Curriculum authority: `Handbook and timetable NEUR3301 2026 - 13 July.pdf`
 
 ## What this build fixes
@@ -28,20 +29,22 @@ The richer externally hosted Synapse X remains linked from the portal because it
 
 ## Project memory checkpoint - 4 August 2026
 
-Verified working state. This supersedes the older `378433a` and `9d5b3b8` checkpoints, which were both real commits but are no longer the head.
+Verified working state. This supersedes the older `378433a` and `9d5b3b8` checkpoints, which were both real commits but are no longer the head. Issue #12 records the durable handoff.
 
 ### Repository
 
-- `main` head is `ad6897e` (31 July 2026), the merge of PR #10 "CI: bundle-size checks & PR reports".
-- Ten pull requests opened, nine merged, none open.
-- Green on `ad6897e`: "Validate course site" run 54 and "Validate and deploy GitHub Pages" run 48.
+- Verified base before the Lecture 3/4 content branch: `c481a8f`, the merge of PR #11 "Update project memory checkpoint (4 Aug 2026)".
+- At that handoff, eleven pull requests had been opened, ten merged and none remained open.
+- "Validate course site" run 56 passed on `c481a8f`. Pages correctly did not redeploy because PR #11 changed `apps/`, not `docs/`.
 - One open architectural task: Issue #1, recover the canonical React/TypeScript Study Lab source.
-- Local checks pass: 16 required files, five app-registry entries, static-site integrity, Study Lab bundle-size guard.
+- The Lecture 3/4 pass raises the validated required-file set to 17 while retaining five app-registry entries, static-site integrity and the Study Lab bundle-size guard.
 - Hub, Exam Lab, Study Lab and Seminar Studio all return HTTP 200.
 
 ### Content coverage
 
-- Exam Lab: 48 mechanism-heavy MCQs, 12 long-answer blueprints, 29 retrieval cards, but full mechanism briefs for Lectures 1-3 only.
+- Exam Lab after the released-slide alignment: 54 mechanism-heavy MCQs, 12 long-answer blueprints, 29 retrieval cards and full mechanism briefs for Lectures 1-4.
+- Lecture 3 now follows the released PDF emphasis on gradient-versus-hurdle logic, intermediate targets, local translation, CNS growth inhibition and hierarchical target recognition rather than a pre-lecture reconstruction.
+- Lecture 4 adds target and afferent survival logic, BCL-2/caspase apoptosis, classical necrosis, four levels of regression, four interpretation studies and bounded non-canonical death pathways.
 - Study Lab in this repository: 29 taught topics, 176 keywords, 88 concepts, 92 experiment prompts.
 - The external Synapse X at `neur3301-synapse.pplx.app` has diverged ahead of this build: 180 keywords, 92 concepts and an auto-graded MCQ Test mode. Treat it as a feature reference, not as the course-fact authority.
 - Progress is per-origin `localStorage`. The two deployments never share state, so mastery numbers are not comparable between them.
@@ -58,11 +61,12 @@ Verified working state. This supersedes the older `378433a` and `9d5b3b8` checkp
 
 Nine corrections are cleanly represented: chloride current direction, calcium cooperativity, blood-brain barrier structure, D-serine caution, paired-pulse ratio, STDP, BOLD causality, adult-neurogenesis species limits, and the glial scar's dual role.
 
-Three loose ends remain:
+Two loose ends remain:
 
-- the Exam Lab still contains one legacy "C1q/C3b tag engaged by CR3" phrase, where iC3b-CR3 is more precise;
 - electrical-synapse rectification is not taught;
 - Reelin's functions beyond a simple stop signal are not taught.
+
+The Exam Lab complement phrase is now explicit: C1q-driven complement activation deposits iC3b, which can engage microglial CR3. CI rejects regression to the legacy C1q/C3b shorthand.
 
 ### Source hierarchy
 
@@ -73,4 +77,4 @@ Three loose ends remain:
 
 ### Next action
 
-One tightly scoped pull request should reconcile Lecture 3 against the released slides, add a full Lecture 4 mechanism brief covering trophic competition, retrograde and anterograde influences, apoptosis versus necrosis, BCL-2 and caspases, pruning levels and non-canonical death pathways, expand Lecture 4 MCQs and experimental-interpretation prompts, fix the remaining complement wording, and update provenance and validators. The MDMA evidence refresh should be a separate, evidence-only pass afterward.
+After the Lecture 3/4 content PR, run the separate evidence-only MDMA seminar pass: refresh the stale evidence stamp and apply the three deck corrections listed above. Issue #1 remains the standing architectural task; do not hand-edit the minified Study Lab bundle.

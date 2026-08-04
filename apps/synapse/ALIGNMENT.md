@@ -1,8 +1,8 @@
 # NEUR3301 handbook alignment (2026)
 
 **Source:** `Handbook and timetable NEUR3301 2026 - 13 July.pdf`  
-**App:** Synapse NEUR3301 Study Lab and Exam Lab (v5)
-**Checked:** 2026-07-25
+**App:** Synapse NEUR3301 Study Lab and Exam Lab
+**Checked:** 2026-08-04
 
 ## Lecture map (29 content lectures)
 
@@ -45,8 +45,9 @@
 
 | Lecture | Official facts verified from handbook | Added course-aligned content | Evidence boundary |
 |---:|---|---|---|
-| 2 | Growth and Trophic Factors · 22 Jul · Hodgetts · Test 1 | Full mechanism brief, experiment logic, active recall and 6 MCQs | LMS slide deck not supplied; verify lecturer emphasis and named studies |
-| 3 | Axon outgrowth, target recognition, maps · 27 Jul · Hodgetts · Test 1 | Full mechanism brief, experiment logic, active recall and 6 MCQs | LMS slide deck not supplied; verify lecturer emphasis and named studies |
+| 2 | Growth and Trophic Factors · 22 Jul · Hodgetts · Test 1 | Full mechanism brief, experiment logic, active recall and 6 MCQs | Reconciled to released PDF and available recording transcript |
+| 3 | Axon outgrowth, target recognition, maps · 27 Jul · Hodgetts · Test 1 | Full mechanism brief, experiment logic, active recall and 6 MCQs | Reconciled to released PDF on 4 Aug; pre-lecture boundary removed |
+| 4 | Regressive events and cell death · 28 Jul · Hodgetts · Test 1 | Full mechanism brief, four interpretation studies, active recall and 8 MCQs | Reconciled to released PDF on 4 Aug; classic death morphology separated from regulated non-canonical pathways |
 
 ## Assessments (handbook → app)
 
@@ -91,3 +92,5 @@ Venue: **ARTS [159] Austin Lecture Theatre** — Mon 10–11, Tue 14–15, Wed 1
 - fMRI/BOLD: indirect haemodynamic proxy via neurovascular coupling
 - SGZ adult neurogenesis: rodent-robust; human evidence contested
 - Prior corrections retained: Cl⁻ driving force, Ca²⁺ cooperativity as Hill slope, PPR as index, STDP non-universality, glial scar dual nature
+- Complement wording tightened from a C1q/C3b shorthand to C1q-driven iC3b deposition and microglial CR3 recognition
+- Lecture 4: TUNEL treated as a DNA-break assay rather than an apoptosis-only label; rescue separated from endogenous necessity; pruning separated from soma death

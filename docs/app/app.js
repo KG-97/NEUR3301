@@ -57,7 +57,7 @@ const lectureBriefs = [
       ['GFAP or M1/M2/A1/A2 labels', 'Useful but limited markers/shorthand', 'Markers and binary labels do not capture all glia or multidimensional reactive states'],
       ['Astrocyte ion/transmitter buffering', 'Kir4.1, AQP4, EAAT2/GLT-1, glutamine synthetase', 'Spatial K+ siphoning, water coupling and glutamate clearance; failure permits excitotoxicity'],
       ['Node of Ranvier organisation', 'Nav1.6 clustered by ankyrin-G/βIV-spectrin; Caspr–contactin paranodes', 'Saltatory conduction is a molecular-domain property; demyelination disperses nodal channels'],
-      ['Microglial complement pruning', 'C1q/C3b tag engaged by microglial CR3; CX3CR1 tuning', 'Less-active synapses are engulfed in an activity-dependent window (mouse retinogeniculate); human relevance inferred']
+      ['Microglial complement pruning', 'C1q-driven complement activation deposits iC3b, which can engage microglial CR3; CX3CR1 tunes the window', 'Less-active synapses are engulfed in an activity-dependent window (mouse retinogeniculate); human relevance inferred']
     ],
     experiments: [
       {
@@ -191,82 +191,208 @@ const lectureBriefs = [
     title: 'Axon Outgrowth, Target Recognition and Maps',
     date: '27 July 2026',
     lecturer: 'Hodgetts',
-    scope: 'Pre-lecture primary-literature brief. The official timetable confirms identity and date, but no released Lecture 3 PDF or transcript was available as of 26 July 2026; verify lecturer emphasis after release.',
+    scope: 'Released Lecture 3 PDF checked slide by slide and reconciled with primary evidence. The brief follows Hodgetts\'s emphasis on graded versus abrupt barriers, intermediate targets, local growth-cone translation, myelin-associated inhibition and the hierarchy of target recognition.',
     outcomes: [
-      'Explain how a growth cone converts spatially asymmetric receptor signalling into actin and microtubule rearrangement.',
-      'Classify guidance information as attractive/repulsive and long-range/contact-mediated without assigning a permanent sign to a cue.',
-      'Use intermediate targets and receptor switching to explain how an axon solves a multistep route rather than navigating directly to its final target.',
-      'Separate coarse molecular topography from activity-dependent refinement of an ordered neural map.'
+      'Classify the mechanical, electrical, extracellular-matrix, adhesion, diffusible and axon-axon influences that shape a growing process.',
+      'Explain how a growth cone converts local receptor and second-messenger asymmetry into actin assembly, local translation, traction or collapse.',
+      'Use intermediate targets and changing receptor/adhesion states to explain how an axon reaches a choice point and then escapes it.',
+      'Separate target entry from topographic, laminar, cell-type and subcellular recognition, then explain how Eph/ephrin gradients and trophic signals support ordered arborisation.'
     ],
     chains: [
       {
-        name: 'Growth-cone turning',
-        steps: ['Cue gradient or contact signal', 'asymmetric receptor activation', 'local Ca2+ / cAMP / Rho-family GTPase signalling', 'biased actin assembly and microtubule capture', 'turn, advance, pause or collapse']
+        name: 'Context-to-turn conversion',
+        steps: ['Graded or contact cue', 'asymmetric receptor plus Ca2+ / cyclic-nucleotide state', 'Rho-family signalling and cue-specific local mRNA translation', 'biased actin assembly or depolymerisation', 'traction and turning versus retraction/collapse']
       },
       {
-        name: 'Midline choice',
-        steps: ['Pre-crossing attraction toward an intermediate target', 'receptor-state change after crossing', 'reduced attraction plus Slit-Robo repulsion', 'exit from the midline', 'prevention of recrossing']
+        name: 'Intermediate-target escape',
+        steps: ['Attraction toward floor plate or another choice point', 'arrival while TAG1 / N-CAM support the approach', 'receptor trafficking or transcriptional/translation state change', 'TAG1 falls and L1-associated onward growth rises', 'attraction is overcome and the axon continues']
       },
       {
-        name: 'Topographic map',
-        steps: ['Complementary receptor-ligand gradients', 'relative positional signalling', 'coarse termination zone', 'correlated spontaneous/activity-dependent competition', 'refined ordered projection']
+        name: 'CNS growth inhibition',
+        steps: ['CSPG step or myelin-associated Nogo / MAG / OMgp contact', 'inhibitory receptor-complex activation', 'RhoA-ROCK signalling', 'growth-cone contraction/collapse', 'extension stops unless the inhibitory signal is bypassed or blocked']
+      },
+      {
+        name: 'Target-to-map hierarchy',
+        steps: ['Defasciculate at the target', 'enter and remain in the target', 'graded Eph/ephrin positional signalling', 'select the correct lamina, cell and cellular compartment', 'BDNF-supported arborisation followed by later regressive refinement']
       }
     ],
     distinctions: [
-      ['Netrin', 'Secreted cue; DCC/UNC5 receptor context', 'Can attract or repel; “netrin = attractant” is unsafe'],
-      ['Semaphorin', 'Secreted or membrane-associated; neuropilin/plexin context', 'Often repulsive/collapse signalling, but sign is context-dependent'],
-      ['Eph / ephrin', 'Contact-mediated, graded, bidirectional-capable signalling', 'Boundary formation and relative topographic mapping'],
-      ['Cell-adhesion / ECM cues', 'Contact-dependent permissive or instructive substrate', 'Support fasciculation, defasciculation and pathway choice'],
-      ['Retinal waves', 'Correlated patterned activity', 'Refine termination zones; they do not replace initial molecular targeting'],
-      ['Growth-cone cytoskeleton', 'Actin (Arp2/3, Ena/VASP) + molecular clutch; Rac/Cdc42 vs RhoA-ROCK', 'The clutch converts retrograde actin flow into traction; Rac/Cdc42 protrude/attract, RhoA collapses'],
-      ['Second-messenger sign switch', 'cAMP/cGMP ratio and Ca2+ amplitude/source', 'High cAMP and large Ca2+ bias attraction; low cAMP and small Ca2+ bias repulsion to the same cue'],
-      ['Robo3/Rig-1 midline gating', 'Pre-crossing suppression of Robo1/2 Slit sensitivity', 'Silences repulsion before crossing; Robo1/2 rises afterward to expel and prevent recrossing']
+      ['Abrupt proteoglycan step', 'A sudden high local change', 'Can stop a DRG neurite even when the absolute concentration is below a gradual-gradient maximum'],
+      ['Gradual proteoglycan gradient', 'Progressive concentration change', 'A neurite can adapt and cross concentrations that would inhibit when presented as a sharp hurdle'],
+      ['Diffusible cue', 'NGF or semaphorin acting over a distance', 'Range, gradient geometry, receptor state and cAMP/cGMP context shape the response'],
+      ['Contact / substrate cue', 'Laminin-integrin, cadherin, CSPG or myelin contact', 'Can be permissive, adhesive or inhibitory and can interact with diffusible signals'],
+      ['Attraction versus repulsion', 'Growth-cone response, not an immutable cue label', 'Semaphorins are often repulsive, but intracellular state and activity can alter the sign or magnitude'],
+      ['Local translation', 'Attractive cues favour local beta-actin synthesis; repulsive cues can favour RhoA/cofilin', 'Gives the distal growth cone a rapid asymmetric response without waiting for the soma'],
+      ['Intermediate target', 'Temporary attractive/guidance station plus state switch', 'The growth cone must change surface receptors or adhesion molecules so it can leave rather than remain trapped'],
+      ['CNS myelin inhibition', 'Nogo, MAG and OMgp plus CSPG-associated signalling', 'Distinct receptor complexes converge strongly on RhoA-ROCK-mediated collapse; antibody blockade can release contact inhibition'],
+      ['Eph / ephrin', 'Contact-mediated gradients with bidirectional-capable signalling', 'Relative receptor-ligand levels help place retinal terminals; ephrin-A2/A5 loss progressively disrupts mapping'],
+      ['Recognition hierarchy', 'Target entry -> topographic location -> lamina -> cell -> subcellular site', 'Arrival in the correct gross region is necessary but does not establish specific functional connectivity']
     ],
     experiments: [
       {
-        name: 'Netrin loss and commissural guidance',
-        design: 'Disrupt netrin-1 in the developing vertebrate nervous system and label commissural projections.',
-        result: 'Many commissural axons fail to follow their normal ventral trajectory.',
-        inference: 'Netrin-1 is required for normal commissural guidance, not merely correlated with the pathway.',
-        limit: 'A loss phenotype establishes necessity in that context, not that netrin acts alone or always attracts.'
+        name: 'Proteoglycan gradient versus hurdle',
+        design: 'Expose DRG neurites to either an abrupt proteoglycan-coated boundary or a gradually rising proteoglycan gradient that reaches an equal or higher concentration.',
+        result: 'The abrupt boundary arrests growth, whereas neurites can extend across the gradual increase.',
+        inference: 'Growth cones read spatial rate-of-change and history, not only absolute inhibitor concentration.',
+        limit: 'An in-vitro substrate assay simplifies the mixed three-dimensional cue fields present in vivo.'
       },
       {
-        name: 'Relative EphA signalling',
-        design: 'Elevate EphA3 in a subset of retinal ganglion cells and trace their superior-colliculus termination zones.',
-        result: 'The projection splits into ordered maps according to relative EphA signalling levels.',
-        inference: 'Relative, not simply absolute, EphA activity helps specify topographic position.',
-        limit: 'A knock-in perturbs the competitive population and does not reduce map formation to one gradient.'
+        name: 'Local NGF tropism',
+        design: 'Place an NGF source 20-40 micrometres from a cultured DRG growth cone and track turning.',
+        result: 'The neurite bends toward the local NGF gradient within the effective distance range.',
+        inference: 'A diffusible trophic factor can act as a short-range tropic guidance cue as well as a survival signal.',
+        limit: 'Micropipette geometry and culture conditions do not establish the effective range or dominant cue in intact tissue.'
       },
       {
-        name: 'Retinal-wave critical period',
-        design: 'Remove early cholinergic retinal waves in β2 nicotinic-receptor knockout mice and follow map refinement over time.',
-        result: 'Neighbouring retinal axons retain enlarged, diffuse termination zones despite later activity.',
-        inference: 'Correlated spontaneous activity is required during an early critical period for normal refinement.',
-        limit: 'The mutation changes a receptor throughout the animal; altered waves are central but not necessarily the only downstream effect.'
+        name: 'Oligodendrocyte contact inhibition',
+        design: 'Co-culture neurites with oligodendrocytes, then block a functional myelin-inhibitor site with an antibody.',
+        result: 'Oligodendrocyte contact inhibits extension; functional blockade releases part of that inhibition.',
+        inference: 'The arrest is mediated by specific surface signalling rather than an unavoidable mechanical barrier.',
+        limit: 'Partial rescue does not identify every inhibitor or show that the same blockade restores long-distance CNS regeneration in vivo.'
+      },
+      {
+        name: 'Ephrin-A map perturbation',
+        design: 'Trace retinal projections in wild-type, ephrin-A2 knockout and ephrin-A2/A5 double-knockout animals.',
+        result: 'Single loss produces ectopic termination zones; double loss leaves few correctly placed zones.',
+        inference: 'Overlapping ephrin gradients cooperate to provide topographic positional information.',
+        limit: 'A mapping phenotype does not show that Eph/ephrin alone specifies lamina, partner cell, synapse or later refinement.'
       }
     ],
     traps: [
-      'Attraction and repulsion are responses of a particular growth cone state, not permanent properties printed on a cue.',
-      'Growth cone collapse is an assay readout, not automatically proof of long-range repulsion in vivo.',
-      'Target recognition includes stopping, branching and synapse selection; arriving in the correct region is not the whole job.',
-      'Molecular gradients establish coarse order; patterned activity refines it. Neither alone is a complete map theory.'
+      'Absolute concentration is not the whole signal: a gradual proteoglycan rise may be crossed even when a lower abrupt step stops growth.',
+      'Growth-cone collapse or turning in culture is a mechanistic assay, not automatic proof that the same cue dominates the intact route.',
+      'Electrical-field guidance is clear in vitro; its magnitude and causal role during normal in-vivo brain development remain less secure.',
+      'Target recognition includes defasciculation, entry, stopping, topography, lamina, cell and subcellular site—not merely arrival.',
+      'Initial guidance and later regressive refinement are linked but distinct; do not use pruning to explain an early misrouting phenotype.'
     ],
     recall: [
-      ['How can the same netrin gradient attract one axon and repel another?', 'Different DCC/UNC5 surface combinations and intracellular states change the sign of downstream cytoskeletal signalling.'],
-      ['What is the cytoskeletal output of a turning decision?', 'Actin protrusion/stabilisation becomes biased to one side and microtubules invade the selected region, redirecting growth.'],
-      ['How would failed targeting differ from failed refinement?', 'Targeting failure displaces or misroutes projections early; refinement failure preserves coarse location but leaves broad, overlapping or poorly focused arbors.'],
-      ['What does an EphA3 knock-in teach?', 'An axon interprets its EphA level relative to competitors and target gradients, supporting relative positional coding.']
+      ['Why can a neurite cross a gradual proteoglycan gradient but stop at a lower abrupt step?', 'The growth cone responds to spatial change and adaptation history as well as absolute concentration; the sudden hurdle generates a stronger inhibitory transition.'],
+      ['How can local translation produce opposite turns?', 'Attractive cues can bias beta-actin synthesis and polymerisation toward the source, whereas repulsive cues can locally increase RhoA/cofilin-driven actin breakdown.'],
+      ['Why must an axon change state at an intermediate target?', 'The cues and adhesion state that attract it to the choice point must be reduced or replaced so it can leave and follow the next route segment.'],
+      ['What does antibody release of oligodendrocyte contact inhibition establish?', 'A specific surface signalling mechanism contributes to arrest; it does not prove that blocking one ligand is sufficient for functional CNS regeneration.'],
+      ['What are the levels of target recognition?', 'Defasciculate at the right place, enter and remain, choose topographic position, lamina, target cell and the correct compartment of that cell.'],
+      ['How do Eph/ephrin and BDNF divide labour in the lecture model?', 'Relative Eph/ephrin gradients bias positional termination; appropriate trophic support permits branching/arborisation, with later regressive events refining the map.']
     ],
     download: '../resources/lectures/L03_Axon_Outgrowth_Target_Recognition_Maps.md',
     references: [
-      ['Kennedy et al. (1994) — netrins as chemotropic factors', 'https://pubmed.ncbi.nlm.nih.gov/8062385/'],
-      ['Serafini et al. (1996) — netrin-1 requirement in vivo', 'https://pubmed.ncbi.nlm.nih.gov/8978605/'],
-      ['Bartoe et al. (2006) — receptor trafficking switches netrin response', 'https://pubmed.ncbi.nlm.nih.gov/16554470/'],
+      ['Snow and Letourneau (1992) — neurite growth across a CSPG step gradient', 'https://pubmed.ncbi.nlm.nih.gov/1624935/'],
+      ['Gundersen and Barrett (1979) — NGF-directed DRG axon turning', 'https://pubmed.ncbi.nlm.nih.gov/493992/'],
       ['Brown et al. (2000) — relative EphA signalling', 'https://pubmed.ncbi.nlm.nih.gov/10929715/'],
-      ['McLaughlin et al. (2003) — retinal-wave refinement', 'https://pubmed.ncbi.nlm.nih.gov/14687549/'],
       ['Ming et al. (1997) — cAMP sets netrin attraction versus repulsion', 'https://pubmed.ncbi.nlm.nih.gov/9331350/'],
-      ['Sabatier et al. (2004) — Robo3/Rig-1 gates midline crossing', 'https://pubmed.ncbi.nlm.nih.gov/15064421/'],
-      ['Lowery and Van Vactor (2009) — growth cone machinery', 'https://pubmed.ncbi.nlm.nih.gov/19513082/']
+      ['Gibson and Ma (2011) — developmental regulation of axon branching', 'https://pubmed.ncbi.nlm.nih.gov/21177340/'],
+      ['Lowery and Van Vactor (2009) — growth cone machinery', 'https://pubmed.ncbi.nlm.nih.gov/19513082/'],
+      ['de Ramon Francas et al. (2017) — navigation through intermediate targets', 'https://pubmed.ncbi.nlm.nih.gov/27965053/'],
+      ['Thiede-Stan and Schwab (2015) — attractive and repulsive receptor complexes', 'https://pubmed.ncbi.nlm.nih.gov/26116576/']
+    ]
+  },
+  {
+    id: 4,
+    title: 'Regressive Events and Cell Death',
+    date: '28 July 2026',
+    lecturer: 'Hodgetts',
+    scope: 'Released Lecture 4 PDF checked slide by slide and condensed into an exam-safe mechanism brief. The classic apoptosis-versus-necrosis comparison is retained, while regulated non-canonical pathways and evidence limits are kept distinct from normal developmental apoptosis.',
+    outcomes: [
+      'Explain how developmental overproduction, limiting target support and activity-dependent competition match neuron number and connectivity to available targets.',
+      'Distinguish target-derived retrograde influences from afferent anterograde influences, and explain the proposed acquisition of target dependence after axon arrival.',
+      'Compare apoptosis with classical necrosis at the molecular, morphological and inflammatory levels, including BCL-2-family control and the caspase cascade.',
+      'Order regressive events from whole-cell death through branch retraction and spine loss to synapse elimination, then identify what evidence distinguishes one level from another.',
+      'Recognise necroptosis, ferroptosis, pyroptosis and parthanatos as regulated non-canonical pathways without assuming that each drives normal developmental cell loss.'
+    ],
+    chains: [
+      {
+        name: 'Target-dependent survival competition',
+        steps: ['Excess neurons reach a limited target field', 'axons differ in target access, activity and trophic capture', 'successful terminals generate retrograde survival signalling', 'survival genes and phenotype are stabilised', 'poorly supported competitors undergo developmental apoptosis']
+      },
+      {
+        name: 'Bidirectional population control',
+        steps: ['Afferent input and activity alter the target neuron', 'anterograde signals change target state', 'target-derived ligands are captured at efferent terminals', 'retrograde endosomal signalling reaches the soma', 'final neuronal number and phenotype reflect both sides of the circuit']
+      },
+      {
+        name: 'Intrinsic apoptotic execution',
+        steps: ['Trophic withdrawal or pro-apoptotic signal', 'BH3-only proteins such as BIM/BAD outweigh anti-apoptotic BCL-2/BCL-xL', 'BAX/BAK drive mitochondrial outer-membrane permeabilisation', 'cytochrome c plus Apaf-1 assemble the apoptosome', 'caspase-9 activates effector caspases such as caspase-3', 'cell shrinks, fragments and is phagocytosed without membrane rupture']
+      },
+      {
+        name: 'Increasingly selective circuit regression',
+        steps: ['Whole-neuron programmed death', 'axon branch or collateral retraction', 'terminal-arbor and dendritic-spine loss', 'individual synapse elimination', 'activity and experience stabilise the best-fit pattern']
+      }
+    ],
+    distinctions: [
+      ['Naturally occurring developmental death', 'Normal population matching and error correction', 'Often apoptotic and coordinated with target size, afferents, activity and developmental timing'],
+      ['Functions of programmed death', 'Patterning, morphogenesis, system-size matching, error correction and removal of transient or inappropriate phenotypes', 'The outcome can be constructive at circuit level even though individual cells are eliminated'],
+      ['Target-derived retrograde influence', 'Signal travels from axon terminal toward soma', 'Links successful target access to somatic survival and phenotype'],
+      ['Afferent anterograde influence', 'Input-side signal or activity changes the postsynaptic population', 'Deafferentation can increase death; trophic agents can partly rescue the loss'],
+      ['Early target independence -> later dependence', 'Axon initially extends before it can access target-derived factors', 'After arrival, a proposed state switch makes survival sensitive to target support; the switch is not fully resolved'],
+      ['Apoptosis', 'Active regulated execution: shrinkage, chromatin condensation, blebbing, apoptotic bodies, caspases', 'Membrane integrity is largely retained until clearance, so inflammation is limited'],
+      ['Classical necrosis', 'ATP/osmotic failure: cell and mitochondria swell, membrane lyses, contents spill', 'Usually inflammatory and often affects groups of acutely injured cells'],
+      ['Autophagy', 'Lysosomal recycling and stress-adaptation process', 'Can protect or interact with death pathways; do not claim that it inevitably initiates apoptosis'],
+      ['TUNEL signal', 'Labels DNA strand breaks', 'Supports cell-death detection but is not uniquely specific for apoptosis without morphology or pathway markers'],
+      ['BDNF rescue versus BDNF knockout', 'Exogenous BDNF can rescue vulnerable retinal ganglion cells while a knockout count may remain normal', 'Rescue shows capacity; a normal knockout suggests redundancy/compensation and does not erase BDNF responsiveness'],
+      ['Necroptosis', 'RIPK1/RIPK3 -> MLKL membrane disruption', 'Regulated necrotic death, mechanistically distinct from passive osmotic lysis'],
+      ['Ferroptosis', 'Iron-dependent lipid peroxidation opposed by GPX4', 'Oxidative membrane damage; prominent in injury/degeneration models rather than the default developmental pathway'],
+      ['Pyroptosis', 'Inflammasome-linked gasdermin-D pore formation', 'Lytic and inflammatory'],
+      ['Parthanatos', 'DNA damage -> PARP1 overactivation -> AIF-associated death', 'Caspase-independent regulated death pathway'],
+      ['Pruning versus apoptosis', 'Selected branch, spine or synapse is removed while the soma survives', 'Loss of a projection label does not prove that its parent neuron died'],
+      ['Microglial pruning evidence', 'Microglia can engulf synaptic material in defined developmental contexts', 'Engulfment supports involvement; necessity requires perturbing the pathway and measuring synapse or circuit outcomes']
+    ],
+    experiments: [
+      {
+        name: 'Target size and motor-neuron survival',
+        design: 'Remove an embryonic limb bud or add target tissue, then count surviving motor neurons across the normal death period; separately block neuromuscular activity with curare.',
+        result: 'Less target increases neuronal loss, extra target rescues part of the population, and activity blockade can also reduce normal loss.',
+        inference: 'Target availability and functional competition jointly regulate survival; target size is not the only variable.',
+        limit: 'Limb and curare manipulations alter many signals and do not identify one molecular trophic factor.'
+      },
+      {
+        name: 'Afferent deafferentation and rescue',
+        design: 'Remove descending or local afferent input to the developing chick spinal cord, then test tissue extracts or defined trophic agents.',
+        result: 'Deafferentation causes regressive loss across motor, interneuron and sensory populations; several trophic preparations partly rescue cells.',
+        inference: 'Afferents can support neuronal viability through activity and/or anterograde trophic influence.',
+        limit: 'Broad lesions and multi-factor extracts cannot isolate the necessary endogenous signal or prove a direct synaptic route.'
+      },
+      {
+        name: 'Retinal target ablation and BDNF logic',
+        design: 'Ablate the retinal ganglion-cell target, test exogenous BDNF rescue, and compare the result with ganglion-cell number in BDNF knockout animals.',
+        result: 'Target loss removes many retinal ganglion cells; added BDNF rescues many, yet baseline number can remain normal in the knockout.',
+        inference: 'BDNF is sufficient to support vulnerable cells in that context, while endogenous survival control is redundant or compensated.',
+        limit: 'A rescue experiment does not establish that endogenous BDNF is necessary, and a developmental knockout can recruit compensation.'
+      },
+      {
+        name: 'Callosal projection fate mapping',
+        design: 'Retrogradely label callosal projection neurons early, label the mature projection later, and ask whether early-labelled somata survive after the projection disappears.',
+        result: 'Early-labelled cells remain, but many are no longer back-labelled from the mature target.',
+        inference: 'The transient callosal axons reached the target and were later pruned without whole-neuron death.',
+        limit: 'Tracer uptake and transport must be controlled; failure of later labelling alone is not enough without showing somatic survival.'
+      }
+    ],
+    traps: [
+      'Developmental cell death is normal circuit construction, not evidence that the embryo is pathologically degenerating.',
+      'More surviving neurons is not automatically better: excess or poorly matched cells can degrade population matching and circuit specificity.',
+      'Apoptosis is one regulated cell-death mechanism; programmed or regulated cell death is the broader category.',
+      'TUNEL positivity is not a standalone molecular diagnosis of apoptosis.',
+      'Exogenous-factor rescue demonstrates biological capacity, not endogenous necessity; compare rescue, blockade and knockout logic.',
+      'Projection loss may reflect branch pruning, transport failure or soma death. Pair tracing with cell counts and morphology.',
+      'Autophagy is not a guaranteed one-way prelude to apoptosis; it can be adaptive, harmful or cross-talking depending on context.',
+      'Do not import adult neurodegenerative ferroptosis, pyroptosis or parthanatos into normal developmental death without pathway-specific evidence.'
+    ],
+    recall: [
+      ['Why make target-derived support limiting?', 'It couples survival to successful target access and matches the size of a neuronal population to the available target territory.'],
+      ['Why can curare reduce developmental motor-neuron death even though it blocks function?', 'Paralysis changes competitive neuromuscular occupancy and activity-dependent selection, showing that survival is not set by target size alone.'],
+      ['What is the intrinsic apoptosis chain?', 'Trophic withdrawal -> BH3-only bias -> BAX/BAK mitochondrial permeabilisation -> cytochrome c/Apaf-1 apoptosome -> caspase-9 -> caspase-3 execution.'],
+      ['How would histology distinguish apoptosis from classical necrosis?', 'Apoptosis shows shrinkage, condensed/fragmented nuclei and apoptotic bodies with limited inflammation; necrosis shows swelling, membrane rupture, lysis and inflammation.'],
+      ['What result proves branch pruning rather than neuron death?', 'The parent soma remains identifiable/alive after its previously labelled branch or target projection disappears.'],
+      ['What does a BDNF rescue plus normal BDNF-knockout count teach?', 'BDNF can support cells under challenge, but endogenous control is redundant or developmentally compensated; sufficiency and necessity are different claims.'],
+      ['Name one diagnostic node for each non-canonical pathway.', 'Necroptosis: RIPK1/RIPK3-MLKL; ferroptosis: iron/lipid peroxidation with GPX4 failure; pyroptosis: inflammasome-gasdermin D pores; parthanatos: PARP1-AIF.']
+    ],
+    download: '../resources/lectures/L04_Regressive_Events_and_Cell_Death.md',
+    references: [
+      ['Moses et al. (2015) — acquisition of target dependence by retinal ganglion cells', 'https://pubmed.ncbi.nlm.nih.gov/26464991/'],
+      ['Taylor et al. (2012) — proBDNF and motoneuron programmed death', 'https://pubmed.ncbi.nlm.nih.gov/21834083/'],
+      ['Yin et al. (1994) — deafferentation and trophic rescue', 'https://pubmed.ncbi.nlm.nih.gov/7996201/'],
+      ['Ascano et al. (2009) — axonal Trk targeting and neurotrophin sensitivity', 'https://pubmed.ncbi.nlm.nih.gov/19759314/'],
+      ['Gibson and Ma (2011) — developmental axon-branch regulation', 'https://pubmed.ncbi.nlm.nih.gov/21177340/'],
+      ['Pathak et al. (2021) — long-distance regressive signalling', 'https://pubmed.ncbi.nlm.nih.gov/32391977/'],
+      ['Yong et al. (2019) — p75NTR/DR6 phases of axon degeneration', 'https://pubmed.ncbi.nlm.nih.gov/31628183/'],
+      ['Ercin et al. (2026) — non-canonical death in neurodegeneration', 'https://pubmed.ncbi.nlm.nih.gov/41699331/']
     ]
   }
 ];
@@ -284,14 +410,20 @@ const questions = [
   { id: 'l2-transport-block', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'NGF is supplied only to distal sympathetic axons. Dynein-dependent retrograde transport is then selectively disrupted. What is the strongest prediction?', options: ['Somatic NGF-dependent transcription and survival support will fall', 'The axon will convert NGF into an action potential', 'TrkA will become a guidance cue receptor at the nucleus', 'Every local axonal NGF effect will increase'], answer: 0, explanation: 'Distal NGF–TrkA signalling must be communicated to the soma. Disrupting retrograde transport should reduce somatic target-derived survival signalling, even though some local axonal signalling may persist.', trap: 'A transport perturbation separates distal signal capture from long-range nuclear response; it does not mean all local signalling stops.' },
   { id: 'l2-p75-context', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'Why is “p75NTR is simply the neurotrophin death receptor” an unsafe rule?', options: ['p75NTR has no ligands', 'Its effect depends on ligand form, co-receptors and cellular context', 'It is found only in muscle', 'It always activates TrkA kinase directly'], answer: 1, explanation: 'p75NTR can alter neurotrophin binding and participate in survival, pruning or apoptotic signalling. Proneurotrophins, sortilin-family co-receptors and cell state help determine the outcome.', trap: 'A receptor name does not fix one biological sign across every ligand and co-receptor state.' },
   { id: 'l2-function', lecture: 2, block: 'Test 1', topic: 'Growth and trophic factors', stem: 'A treatment prevents developmental neuronal apoptosis but the rescued axons never innervate the correct target. Which conclusion is justified?', options: ['The circuit is functionally repaired', 'Survival was rescued, but target recognition and functional integration were not demonstrated', 'Trophic support is irrelevant to development', 'The neurons must form a correct map automatically'], answer: 1, explanation: 'Survival is only one developmental checkpoint. Correct guidance, target recognition, synapse formation and circuit function require separate evidence.', trap: 'Do not use cell counts as a proxy for connectivity or behaviour.' },
-  { id: 'l3-netrin', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'Why is “netrin is an attractant” an incomplete rule?', options: ['Netrin has no receptors', 'The response depends on receptor state and intracellular context', 'All axons ignore diffusible cues', 'Attraction only occurs after myelination'], answer: 1, explanation: 'The same cue can promote attraction or repulsion depending on receptor combinations, co-receptors and intracellular signalling state.', trap: 'Guidance cues are not permanently assigned one behavioural sign.' },
+  { id: 'l3-netrin', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'A DRG neurite stops at an abrupt proteoglycan boundary but crosses a gradual gradient that reaches a higher final concentration. What is the best inference?', options: ['Only the highest absolute inhibitor concentration controls growth', 'Spatial steepness and adaptation history matter as well as absolute concentration', 'Proteoglycans become neurotrophins when presented gradually', 'The neurite cannot detect extracellular-matrix cues'], answer: 1, explanation: 'The same class of inhibitor produces different behaviour when presented as a sudden hurdle versus a gradual rise. Growth cones interpret spatial change and prior exposure as well as concentration.', trap: 'Do not reduce a gradient response to a single concentration threshold.' },
   { id: 'l3-ephrin', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'Graded Eph receptor and ephrin expression is especially useful for:', options: ['Generating action potentials', 'Building continuous topographic maps', 'Making cerebrospinal fluid', 'Triggering vesicle fusion'], answer: 1, explanation: 'Complementary molecular gradients provide positional information that helps map neighbouring source neurons onto neighbouring target locations.', trap: 'A map can arise from graded relative signalling, not a unique label for every axon.' },
   { id: 'l3-cytoskeleton', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'A guidance cue activates receptors asymmetrically across a growth cone. What most directly converts that asymmetry into turning?', options: ['Biased actin dynamics and microtubule capture', 'Uniform DNA replication in the soma', 'Myelin compaction around the growth cone', 'Synchronous apoptosis of target cells'], answer: 0, explanation: 'Local receptor signalling biases actin protrusion, adhesion and microtubule invasion or collapse. That spatially asymmetric cytoskeletal response redirects extension.', trap: 'The growth cone is a motile signalling structure; cue detection must be translated into local mechanics.' },
-  { id: 'l3-choice-point', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'Why must a commissural axon change receptor responsiveness after crossing the midline?', options: ['To remain trapped at the intermediate target', 'To reduce attraction and become responsive to exit/anti-recrossing signals', 'To stop expressing every guidance receptor', 'To begin synthesising myelin immediately'], answer: 1, explanation: 'Intermediate targets require state transitions. After crossing, altered receptor availability and Slit–Robo signalling help the axon leave the midline and prevent recrossing.', trap: 'A cue that gets an axon to a choice point must not keep it there indefinitely.' },
-  { id: 'l3-relative-map', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'A subset of retinal ganglion cells is engineered to express extra EphA3 and forms a second ordered termination map. What is the best inference?', options: ['Absolute EphA concentration uniquely labels every target neuron', 'Relative EphA signalling among axons contributes to topographic position', 'Retinal activity is unnecessary for refinement', 'Ephrins are freely diffusible long-range attractants'], answer: 1, explanation: 'The duplicated ordered map supports relative positional coding: axons compare their EphA signalling level within the projecting population and against target ephrin gradients.', trap: 'This experiment supports relative EphA coding; it does not prove that gradients alone finish the map.' },
-  { id: 'l3-refinement', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'Early retinal waves are disrupted. Axons reach approximately correct superior-colliculus regions but retain broad overlapping termination zones. Which process failed most directly?', options: ['Initial axon specification', 'Activity-dependent map refinement', 'Neurotrophin receptor translation', 'Neural crest migration'], answer: 1, explanation: 'Coarse molecular targeting can remain while correlated spontaneous activity is needed to sharpen overlapping arbors into focal termination zones during a critical period.', trap: 'Separate reaching the correct neighbourhood from refining a precise map within it.' },
+  { id: 'l3-choice-point', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'Why must a commissural growth cone change receptor or adhesion state after reaching an intermediate target such as the floor plate?', options: ['To remain permanently trapped by the approach cue', 'To overcome the old attraction and become responsive to the next route segment', 'To eliminate every surface receptor at once', 'To begin myelinating before the axon exits'], answer: 1, explanation: 'An intermediate target is temporary. Trafficking, translation or expression changes—including the lecture\'s TAG1-to-L1 transition—allow the axon to leave and continue.', trap: 'The mechanism that gets an axon to a choice point must be reconfigured so it does not hold the axon there.' },
+  { id: 'l3-relative-map', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'Ephrin-A2 knockout produces some ectopic retinal termination zones, whereas ephrin-A2/A5 double knockout leaves few zones correctly placed. What is the best inference?', options: ['One ephrin uniquely labels every target cell', 'Overlapping ephrin gradients cooperate to provide topographic positional information', 'Eph/ephrin signalling is freely diffusible over long distances', 'The phenotype proves laminar and synaptic targeting are normal'], answer: 1, explanation: 'The stronger double-knockout phenotype supports partially overlapping ephrin positional signals acting with graded Eph receptor expression.', trap: 'A topographic termination-zone result does not establish correct layer, partner cell, synapse or function.' },
+  { id: 'l3-refinement', lecture: 3, block: 'Test 1', topic: 'Axon guidance', stem: 'Which local-translation pairing best matches the released lecture?', options: ['Attractive cue -> beta-actin synthesis; repulsive cue -> RhoA/cofilin-associated actin breakdown', 'Attractive cue -> membrane lysis; repulsive cue -> DNA replication', 'Attractive cue -> myelin compaction; repulsive cue -> synaptic vesicle fusion', 'Both cues require every new protein to be translated in the soma first'], answer: 0, explanation: 'Attractive cues can bias local beta-actin production and polymerisation, whereas repulsive cues can promote local RhoA/cofilin-associated depolymerisation. This enables rapid distal turning.', trap: 'The growth cone can translate cue-specific mRNAs locally; it is not merely a passive extension of somatic protein supply.' },
   { id: 'l4-apoptosis', lecture: 4, block: 'Test 1', topic: 'Regressive events and cell death', stem: 'Loss of trophic support most directly favours which regulated death pathway?', options: ['Mitochondrial outer-membrane permeabilisation and caspase activation', 'Immediate osmotic lysis without signalling', 'Action-potential broadening only', 'Constitutive synaptic potentiation'], answer: 0, explanation: 'Trophic withdrawal can shift BCL-2-family signalling toward mitochondrial permeabilisation, cytochrome-c release and the intrinsic caspase cascade.', trap: 'Programmed developmental death is not equivalent to acute necrotic rupture.' },
   { id: 'l4-pruning', lecture: 4, block: 'Test 1', topic: 'Regressive events and cell death', stem: 'Which statement correctly separates axon pruning from neuronal apoptosis?', options: ['Pruning always kills the soma', 'Pruning can remove selected branches while preserving the neuron', 'Apoptosis only removes synapses', 'They are molecularly and anatomically identical'], answer: 1, explanation: 'Regressive development can be compartment-specific. Axons or synapses may be removed while the parent neuron survives.', trap: 'Do not infer whole-cell death from local structural elimination.' },
+  { id: 'l4-target-size', lecture: 4, block: 'Test 1', topic: 'Regressive events and cell death', stem: 'Removing an embryonic limb target increases motor-neuron loss, whereas adding target tissue preserves extra motor neurons. What is the strongest inference?', options: ['Every motor neuron contains an identical fixed death timer', 'Target access supplies limiting survival support that helps match neuronal number to target territory', 'The target mechanically pulls motor-neuron somata into the spinal cord', 'Only afferent input can regulate motor-neuron survival'], answer: 1, explanation: 'Changing target territory shifts how many neurons survive the normal death period, supporting competition for limiting target-associated trophic support.', trap: 'Target size matters, but activity and afferent influences mean it is not the only survival variable.' },
+  { id: 'l4-curare', lecture: 4, block: 'Test 1', topic: 'Regressive events and cell death', stem: 'Curare blocks embryonic neuromuscular transmission yet can reduce normal motor-neuron loss. Which interpretation best fits the lecture?', options: ['Motor-neuron survival is unrelated to targets', 'Curare directly replaces every neurotrophin receptor', 'Activity and competitive target occupancy modify which connections are stabilised', 'Apoptosis requires skeletal-muscle contraction as its executioner'], answer: 2, explanation: 'Paralysis changes neuromuscular competition and occupancy, showing that functional activity helps regulate developmental selection alongside target-derived support.', trap: 'The result challenges a target-size-only model; it does not show that activity or trophic signalling is irrelevant.' },
+  { id: 'l4-directionality', lecture: 4, block: 'Test 1', topic: 'Regressive events and cell death', stem: 'Which pairing correctly distinguishes retrograde from anterograde developmental survival influence?', options: ['Target-derived terminal signal to soma = retrograde; afferent input to a neuronal population = anterograde', 'Afferent input to target = retrograde; target signal to soma = anterograde', 'Both terms mean neurotransmitter diffusion across one synapse', 'Both terms describe only movement of the entire axon'], answer: 0, explanation: 'Retrograde signalling carries information from the distal target/terminal toward the soma. Anterograde influence arrives from afferents and can change the viability or phenotype of the postsynaptic population.', trap: 'Transport direction and synaptic transmission direction are related spatial ideas but are not interchangeable labels.' },
+  { id: 'l4-tunel', lecture: 4, block: 'Test 1', topic: 'Regressive events and cell death', stem: 'A dying neuron is TUNEL-positive. What additional result most strongly supports apoptosis rather than classical necrosis?', options: ['Cell and mitochondria are swollen and the membrane has ruptured', 'Large groups of cells lyse with marked inflammation', 'ATP failure produces uncontrolled osmotic swelling', 'The cell shrinks, chromatin condenses and caspase-linked apoptotic bodies are phagocytosed'], answer: 3, explanation: 'TUNEL detects DNA strand breaks but is not uniquely apoptotic. Shrinkage, condensed chromatin, apoptotic bodies, retained membrane integrity and caspase evidence make the interpretation stronger.', trap: 'Do not turn one histochemical label into a pathway diagnosis.' },
+  { id: 'l4-bdnf-redundancy', lecture: 4, block: 'Test 1', topic: 'Regressive events and cell death', stem: 'Added BDNF rescues many retinal ganglion cells after target ablation, but baseline ganglion-cell number is normal in a BDNF knockout. What is the best conclusion?', options: ['BDNF has no survival action', 'BDNF can support challenged cells, while endogenous survival control is redundant or developmentally compensated', 'The rescue proves endogenous BDNF is the only necessary factor', 'The knockout proves target-derived signalling is irrelevant'], answer: 1, explanation: 'Rescue establishes biological capacity or sufficiency in the challenged context. A normal developmental knockout suggests other ligands or compensatory pathways can preserve baseline number.', trap: 'Sufficiency, necessity and developmental compensation are different causal claims.' },
+  { id: 'l4-noncanonical', lecture: 4, block: 'Test 1', topic: 'Regressive events and cell death', stem: 'Which non-canonical death mechanism is paired with its defining molecular logic?', options: ['Ferroptosis - iron-dependent lipid peroxidation opposed by GPX4', 'Necroptosis - Apaf-1 apoptosome and caspase-9 only', 'Pyroptosis - BCL-2-mediated mitochondrial protection', 'Parthanatos - Eph/ephrin topographic repulsion'], answer: 0, explanation: 'Ferroptosis is driven by iron-dependent lipid peroxidation when antioxidant systems such as GPX4 fail. Necroptosis uses RIPK1/RIPK3-MLKL, pyroptosis uses gasdermin pores, and parthanatos involves PARP1/AIF.', trap: 'A dead neuron is not enough to name a pathway; use pathway-specific molecular evidence.' },
   { id: 'l5-notch', lecture: 5, block: 'Test 1', topic: 'Cell lineage', stem: 'High Notch signalling in a neural progenitor most commonly tends to:', options: ['Maintain progenitor identity and suppress premature neuronal differentiation', 'Force immediate axon myelination', 'Convert the cell into microglia', 'Open voltage-gated sodium channels'], answer: 0, explanation: 'Notch–Hes programmes often maintain progenitor state and inhibit proneural differentiation, allowing neighbouring cells with lower Notch activity to differentiate.', trap: 'Notch effects are context-dependent, but “high Notch equals immediate neuron” reverses the usual developmental logic.' },
   { id: 'l5-lineage', lecture: 5, block: 'Test 1', topic: 'Cell lineage', stem: 'A lineage-tracing experiment is designed primarily to determine:', options: ['The membrane potential of every descendant', 'Which cell types descend from a labelled progenitor over time', 'Whether a ligand binds its receptor in vitro', 'The exact number of synaptic vesicles released'], answer: 1, explanation: 'A heritable label marks a progenitor and its descendants, revealing fate relationships across development.', trap: 'Marker co-expression at one time point is not, by itself, proof of ancestry.' },
   { id: 'l6-human', lecture: 6, block: 'Test 1', topic: 'Adult neurogenesis', stem: 'What is the safest claim about adult hippocampal neurogenesis in humans?', options: ['It is absent in every adult', 'It is abundant and methodologically settled', 'Evidence remains disputed and depends strongly on tissue and detection methods', 'The adult SVZ supplies most human olfactory neurons'], answer: 2, explanation: 'Rodent adult neurogenesis is well established, but the extent and persistence of the phenomenon in adult humans remain methodologically contested.', trap: 'Do not transfer the size and certainty of rodent effects directly to humans.' },
@@ -349,9 +481,9 @@ const distractorNotes = {
     3: "Survival depends on target-derived neurotrophins, not on myelination selecting which soma lives."
   },
   'l3-netrin': {
-    0: "Netrin signals through receptors such as DCC and UNC5; it is receptor state, not their absence, that sets the sign.",
-    2: "Axons clearly respond to diffusible cues — guidance is the whole point of netrin.",
-    3: "Guidance operates during outgrowth, well before myelination, and is independent of it."
+    0: "The higher final concentration is crossed, so absolute concentration alone cannot explain the stop.",
+    2: "Presentation geometry changes the response, not the molecular identity of the proteoglycan.",
+    3: "Stopping at the abrupt boundary shows that the neurite does detect extracellular-matrix guidance information."
   },
   'l3-ephrin': {
     0: "Action potentials come from voltage-gated channels, not from graded guidance-molecule expression.",
@@ -367,6 +499,36 @@ const distractorNotes = {
     0: "Pruning is compartment-specific and can spare the soma; it does not necessarily kill the neuron.",
     2: "Apoptosis removes the whole cell, not just synapses — that is what separates it from pruning.",
     3: "The two differ in scale and mechanism; treating them as identical is the error being tested."
+  },
+  'l4-target-size': {
+    0: "Survival changes when target territory changes, so a fixed cell-autonomous timer cannot be the whole explanation.",
+    2: "The target changes trophic access; it does not mechanically pull motor-neuron somata into the spinal cord.",
+    3: "Afferents matter, but the limb-target manipulation directly shows a target-associated survival influence."
+  },
+  'l4-curare': {
+    0: "The experiment modifies activity within an intact target relationship; it does not make targets irrelevant.",
+    1: "Curare blocks nicotinic neuromuscular transmission; it does not substitute for every neurotrophin receptor.",
+    3: "Apoptosis is executed by regulated intracellular pathways, not by muscle contraction itself."
+  },
+  'l4-directionality': {
+    1: "This reverses the directions: target-to-soma signalling is retrograde, while afferent influence travels anterogradely into the population.",
+    2: "The terms describe long-range direction in a circuit/axon and are not synonyms for transmitter diffusion across one cleft.",
+    3: "Cargo and signals move within axons; the entire axon need not move for either influence."
+  },
+  'l4-tunel': {
+    0: "Swelling and membrane rupture support classical necrosis, not apoptosis.",
+    1: "Group lysis with inflammation is the necrotic pattern in the lecture comparison.",
+    2: "Uncontrolled osmotic swelling after ATP failure is classical necrosis; TUNEL can occur in more than one death context."
+  },
+  'l4-bdnf-redundancy': {
+    0: "The rescue itself shows that BDNF can support vulnerable cells, so 'no survival action' contradicts the result.",
+    2: "Rescue shows capacity in a challenge; it does not prove BDNF is the sole endogenous necessary factor.",
+    3: "A normal developmental knockout can reflect redundancy or compensation and does not erase target dependence."
+  },
+  'l4-noncanonical': {
+    1: "Apaf-1 and caspase-9 define intrinsic apoptosis; necroptosis instead centres on RIPK1/RIPK3 and MLKL.",
+    2: "BCL-2 restrains mitochondrial apoptosis; pyroptosis is an inflammasome/gasdermin-pore pathway.",
+    3: "Eph/ephrin guides topographic mapping; parthanatos involves PARP1 overactivation and AIF-associated death."
   },
   'l5-notch': {
     1: "Notch keeps cells as progenitors; it does not drive myelination, which is a later oligodendrocyte role.",
