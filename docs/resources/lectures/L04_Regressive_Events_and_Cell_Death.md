@@ -1,6 +1,6 @@
 # NEUR3301 Lecture 4 - Regressive Events and Cell Death
 
-**Official timetable:** 28 July 2026 - Dr Stuart Hodgetts - Test 1 (Lectures 1-7)
+**Timetable attribution — unconfirmed:** 28 July 2026 · Dr Stuart Hodgetts · Test 1 (Lectures 1–7). Verify the date and lecturer against the LMS or Outlook before treating them as official.
 
 > Evidence boundary: this note is a mechanism-first compression of the released NEUR3301 Lecture 4 slide deck, visually checked slide by slide. It preserves the lecture's classic apoptosis-versus-necrosis comparison but adds two safeguards: TUNEL is not uniquely diagnostic of apoptosis, and regulated non-canonical pathways should not be assumed to mediate normal developmental death without pathway-specific evidence.
 

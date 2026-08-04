@@ -92,5 +92,5 @@ Venue: **ARTS [159] Austin Lecture Theatre** — Mon 10–11, Tue 14–15, Wed 1
 - fMRI/BOLD: indirect haemodynamic proxy via neurovascular coupling
 - SGZ adult neurogenesis: rodent-robust; human evidence contested
 - Prior corrections retained: Cl⁻ driving force, Ca²⁺ cooperativity as Hill slope, PPR as index, STDP non-universality, glial scar dual nature
-- Complement wording tightened from a C1q/C3b shorthand to C1q-driven iC3b deposition and microglial CR3 recognition
+- Complement wording tightened from the legacy imprecise shorthand to C1q-driven iC3b deposition and microglial CR3 recognition
 - Lecture 4: TUNEL treated as a DNA-break assay rather than an apoptosis-only label; rescue separated from endogenous necessity; pruning separated from soma death

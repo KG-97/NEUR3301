@@ -24,6 +24,18 @@ for (const file of required) {
   if (!existsSync(file)) throw new Error(`Missing required file: ${file}`);
 }
 
+const legacyComplementWording = ['C1q', 'C3b'].join('/');
+for (const file of [
+  ...required,
+  'docs/resources/MDMA_Seminar_Full_Script_15min.md',
+  'apps/synapse/BUILD_PROVENANCE.md',
+  'apps/synapse/ALIGNMENT.md'
+]) {
+  if (readFileSync(file, 'utf8').includes(legacyComplementWording)) {
+    throw new Error(`${file} reintroduced the legacy complement shorthand`);
+  }
+}
+
 const apps = JSON.parse(readFileSync('docs/apps.json', 'utf8'));
 if (!Array.isArray(apps) || apps.length < 5) {
   throw new Error('docs/apps.json must register both Synapse builds, the full suite, seminar and playbook');
@@ -42,6 +54,70 @@ for (const file of ['docs/index.html', 'docs/app/index.html', 'docs/study-lab/in
   if (/localhost:\d+|port\/5000\/api\/progress/.test(html)) {
     throw new Error(`${file}: contains a broken local/backend dependency`);
   }
+}
+
+const seminarStudio = readFileSync('docs/seminar/index.html', 'utf8');
+const seminarFullScript = readFileSync('docs/resources/MDMA_Seminar_Full_Script_15min.md', 'utf8');
+if (!seminarStudio.includes("const EVIDENCE_AS_OF='30 July 2026';") || seminarStudio.includes("const EVIDENCE_AS_OF='24 July 2026';")) {
+  throw new Error('Seminar evidence stamp must preserve the 30 July 2026 review date');
+}
+const seminarSlidesOpen = seminarStudio.indexOf('const slides=[');
+const seminarSlidesStart = seminarStudio.indexOf('[', seminarSlidesOpen);
+const seminarSlidesEnd = seminarStudio.indexOf('\n];', seminarSlidesOpen);
+if (seminarSlidesOpen === -1 || seminarSlidesEnd === -1) throw new Error('Could not locate the Seminar Studio slide array');
+const seminarSlides = Function(`"use strict"; return (${seminarStudio.slice(seminarSlidesStart, seminarSlidesEnd + 2)});`)();
+const expectedSeminarTimes = [
+  '0:00–0:40', '0:40–1:25', '1:25–3:20', '3:20–4:40',
+  '4:40–6:10', '6:10–7:40', '7:40–9:30', '9:30–11:10',
+  '11:10–12:30', '12:30–13:40', '13:40–14:30', '14:30–15:00'
+];
+if (!Array.isArray(seminarSlides) || seminarSlides.length !== 12 || seminarSlides.map(slide => slide.time).join('|') !== expectedSeminarTimes.join('|')) {
+  throw new Error('Seminar must retain its 12-slide 15:00 structure and timing spine');
+}
+if (!seminarStudio.includes('let remaining=900')) {
+  throw new Error('Seminar rehearsal timer must remain exactly 15:00');
+}
+for (const invariant of [
+  'Release potency and uptake-inhibition potency are separate pharmacological measurements',
+  'release profile is 5-HT ≈ noradrenaline > dopamine',
+  'uptake inhibition ranks NET > SERT ≫ DAT',
+  'Young et al. (2015) used mice and a BDNF-neutralising antibody',
+  'TrkB was not measured or manipulated, so receptor involvement remains inferred',
+  '5-HT2A involvement therefore means indirect downstream engagement through serotonin efflux, not direct agonism'
+]) {
+  if (!seminarStudio.includes(invariant)) throw new Error(`Seminar evidence correction regressed: ${invariant}`);
+}
+for (const invariant of [
+  'In release assays, MDMA is roughly equipotent for serotonin and noradrenaline and weaker for dopamine',
+  'In uptake-inhibition assays at cloned human transporters, potency ranks NET, then SERT, then DAT',
+  'Young et al. (2015), used a BDNF-neutralising antibody',
+  'Young did not measure or manipulate TrkB, so receptor involvement remains inferred',
+  'not direct agonism by MDMA of the kind that defines a classic psychedelic'
+]) {
+  if (!seminarFullScript.includes(invariant)) throw new Error(`Canonical seminar script correction regressed: ${invariant}`);
+}
+for (const legacy of [
+  'Direct receptor actions beyond release',
+  'It also binds or modulates 5-HT2A',
+  'Young et al. (2015) used rats',
+  'TrkB involvement was directly measured'
+]) {
+  if (seminarStudio.includes(legacy) || seminarFullScript.includes(legacy)) {
+    throw new Error(`Seminar reintroduced legacy evidence wording: ${legacy}`);
+  }
+}
+for (const [file, content] of [
+  ['docs/seminar/index.html', seminarStudio],
+  ['docs/resources/MDMA_Seminar_Full_Script_15min.md', seminarFullScript]
+]) {
+  const orderedVoteWording = /two yes to nine no[^.]{0,80}efficacy[^.]{0,80}one yes to ten no[^.]{0,80}benefit/i;
+  if (!orderedVoteWording.test(content) || /\b(?:1|2|9|10)\s+(?:yes|no)\b/i.test(content)) {
+    throw new Error(`${file} must preserve the correctly ordered FDA votes spelled out in words`);
+  }
+}
+const lecture4Brief = readFileSync('docs/resources/lectures/L04_Regressive_Events_and_Cell_Death.md', 'utf8');
+if (!lecture4Brief.includes('Timetable attribution — unconfirmed') || lecture4Brief.includes('**Official timetable:** 28 July 2026')) {
+  throw new Error('Lecture 4 date and lecturer must remain explicitly unconfirmed');
 }
 
 const examLab = readFileSync('docs/app/index.html', 'utf8');
@@ -315,7 +391,7 @@ for (const invariant of [
 ]) {
   if (!examLabScript.includes(invariant)) throw new Error(`Lecture 4 mechanism coverage regressed: ${invariant}`);
 }
-if (!examLabScript.includes('deposits iC3b, which can engage microglial CR3') || examLabScript.includes('C1q/C3b tag engaged')) {
+if (!examLabScript.includes('deposits iC3b, which can engage microglial CR3') || examLabScript.includes(`${legacyComplementWording} tag engaged`)) {
   throw new Error('Exam Lab complement wording must preserve the iC3b-CR3 correction');
 }
 for (const schedulerInvariant of [
@@ -584,6 +660,9 @@ const deepTotals = deepTopics.reduce((totals, topic) => {
   }
   return totals;
 }, { keywords: 0, concepts: 0, questions: 0 });
+if (deepTotals.keywords !== 176) {
+  throw new Error(`Study Lab keyword count must remain 176; found ${deepTotals.keywords}`);
+}
 const countClaims = [
   `${deepTotals.keywords} keywords`,
   `${deepTotals.concepts} concepts`,
