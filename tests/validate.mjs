@@ -16,7 +16,8 @@ const required = [
   'docs/resources/NEUR3301_Glia1_Flashcards.csv',
   'docs/resources/lectures/L01_Glia_I.md',
   'docs/resources/lectures/L02_Growth_and_Trophic_Factors.md',
-  'docs/resources/lectures/L03_Axon_Outgrowth_Target_Recognition_Maps.md'
+  'docs/resources/lectures/L03_Axon_Outgrowth_Target_Recognition_Maps.md',
+  'docs/resources/lectures/L04_Regressive_Events_and_Cell_Death.md'
 ];
 
 for (const file of required) {
@@ -46,7 +47,7 @@ for (const file of ['docs/index.html', 'docs/app/index.html', 'docs/study-lab/in
 const examLab = readFileSync('docs/app/index.html', 'utf8');
 const examLabScript = readFileSync('docs/app/app.js', 'utf8');
 const examLabStyles = readFileSync('docs/app/styles.css', 'utf8');
-if (!examLab.includes('styles.css?v=9') || !examLab.includes('app.js?v=9')) {
+if (!examLab.includes('styles.css?v=10') || !examLab.includes('app.js?v=10')) {
   throw new Error('Exam Lab HTML and assets must share a cache-busting deployment version');
 }
 const serviceWorker = readFileSync('docs/sw.js', 'utf8');
@@ -122,8 +123,8 @@ if (!examLab.includes('4 of 8–10 long answers') || !examLab.includes('2026-08-
   throw new Error('Exam Lab official assessment facts regressed');
 }
 const questionRows = [...examLabScript.matchAll(/id: '([^']+)', lecture: (\d+), block: '([^']+)'/g)];
-if (questionRows.length !== 48 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
-  throw new Error(`Exam Lab must contain 48 uniquely identified questions; found ${questionRows.length}`);
+if (questionRows.length !== 54 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
+  throw new Error(`Exam Lab must contain 54 uniquely identified questions; found ${questionRows.length}`);
 }
 for (const [from, to, block] of [[1, 7, 'Test 1'], [8, 13, 'Test 2']]) {
   for (let lecture = from; lecture <= to; lecture += 1) {
@@ -144,8 +145,8 @@ try {
 } catch (error) {
   throw new Error(`Questions array is not valid literal data: ${error.message}`);
 }
-if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 48) {
-  throw new Error(`Expected 48 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
+if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 54) {
+  throw new Error(`Expected 54 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
 }
 const seenStems = new Set();
 for (const question of parsedQuestions) {
@@ -230,7 +231,7 @@ for (const control of ['data-view="answers"', 'id="answer-draft"', 'id="answer-t
 for (const control of ['data-view="briefs"', 'id="lecture-brief-list"', 'Evidence boundary']) {
   if (!examLab.includes(control)) throw new Error(`Lecture brief control missing from Exam Lab: ${control}`);
 }
-for (const filter of ['value="Lecture 1"', 'value="Lecture 2"', 'value="Lecture 3"']) {
+for (const filter of ['value="Lecture 1"', 'value="Lecture 2"', 'value="Lecture 3"', 'value="Lecture 4"']) {
   if (!examLab.includes(filter)) throw new Error(`Lecture-specific MCQ filter missing: ${filter}`);
 }
 if (!examLabScript.includes("filter.startsWith('Lecture ')") || !examLabScript.includes('`Lecture ${brief.id}`')) {
@@ -275,8 +276,8 @@ const briefsStart = examLabScript.indexOf('[', briefsOpen);
 const briefsEnd = examLabScript.indexOf('\n];', briefsOpen);
 if (briefsOpen === -1 || briefsEnd === -1) throw new Error('Could not locate the lecture brief array in app.js');
 const parsedBriefs = Function(`"use strict"; return (${examLabScript.slice(briefsStart, briefsEnd + 2)});`)();
-if (!Array.isArray(parsedBriefs) || parsedBriefs.map(brief => brief.id).join(',') !== '1,2,3') {
-  throw new Error('Lecture briefs must cover exactly official Lectures 1, 2 and 3');
+if (!Array.isArray(parsedBriefs) || parsedBriefs.map(brief => brief.id).join(',') !== '1,2,3,4') {
+  throw new Error('Lecture briefs must cover exactly official Lectures 1, 2, 3 and 4');
 }
 for (const brief of parsedBriefs) {
   for (const field of ['title', 'date', 'lecturer', 'scope', 'download']) {
@@ -289,6 +290,33 @@ for (const brief of parsedBriefs) {
   }
   const questionCount = parsedQuestions.filter(question => question.lecture === brief.id).length;
   if (questionCount < 6) throw new Error(`Lecture ${brief.id} needs at least six MCQs after LMS intake; found ${questionCount}`);
+}
+if (parsedBriefs.find(brief => brief.id === 3)?.scope.includes('Pre-lecture')) {
+  throw new Error('Lecture 3 still claims to be a pre-lecture reconstruction after released-slide reconciliation');
+}
+for (const invariant of [
+  'Proteoglycan gradient versus hurdle',
+  'Local NGF tropism',
+  'Oligodendrocyte contact inhibition',
+  'Ephrin-A map perturbation',
+  'Target-to-map hierarchy'
+]) {
+  if (!examLabScript.includes(invariant)) throw new Error(`Lecture 3 released-slide alignment regressed: ${invariant}`);
+}
+for (const invariant of [
+  'Target-dependent survival competition',
+  'Intrinsic apoptotic execution',
+  'BAX/BAK drive mitochondrial outer-membrane permeabilisation',
+  'Autophagy',
+  'Necroptosis',
+  'Ferroptosis',
+  'Pyroptosis',
+  'Parthanatos'
+]) {
+  if (!examLabScript.includes(invariant)) throw new Error(`Lecture 4 mechanism coverage regressed: ${invariant}`);
+}
+if (!examLabScript.includes('deposits iC3b, which can engage microglial CR3') || examLabScript.includes('C1q/C3b tag engaged')) {
+  throw new Error('Exam Lab complement wording must preserve the iC3b-CR3 correction');
 }
 for (const schedulerInvariant of [
   "const STORAGE_KEY = 'neur3301-exam-lab-v4'",

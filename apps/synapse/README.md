@@ -9,7 +9,7 @@
 
 ## Exam Lab
 
-The Exam Lab is a source-controlled, dependency-free static app. It provides the exact taught-topic numbering (29 taught topics across official lecture numbers 1–30, with number 23 correctly treated as a no-class public-holiday slot), 48 mechanism-heavy MCQs, full mechanism-first briefs for Lectures 1–3, Test 1/Test 2 targeting, per-item weakness diagnostics, 29 due-first spaced-retrieval mechanism cards, a resolvable misconception ledger and validated portable local progress.
+The Exam Lab is a source-controlled, dependency-free static app. It provides the exact taught-topic numbering (29 taught topics across official lecture numbers 1–30, with number 23 correctly treated as a no-class public-holiday slot), 54 mechanism-heavy MCQs, full mechanism-first briefs for Lectures 1–4, Test 1/Test 2 targeting, per-item weakness diagnostics, 29 due-first spaced-retrieval mechanism cards, a resolvable misconception ledger and validated portable local progress.
 
 ## Study Lab
 
