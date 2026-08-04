@@ -44,18 +44,18 @@ Verified working state. This supersedes the older `378433a` and `9d5b3b8` checkp
 
 - Exam Lab after the released-slide alignment: 54 mechanism-heavy MCQs, 12 long-answer blueprints, 29 retrieval cards and full mechanism briefs for Lectures 1-4.
 - Lecture 3 now follows the released PDF emphasis on gradient-versus-hurdle logic, intermediate targets, local translation, CNS growth inhibition and hierarchical target recognition rather than a pre-lecture reconstruction.
-- Lecture 4 adds target and afferent survival logic, BCL-2/caspase apoptosis, classical necrosis, four levels of regression, four interpretation studies and bounded non-canonical death pathways.
+- Lecture 4 adds target and afferent survival logic, BCL-2/caspase apoptosis, classical necrosis, four levels of regression, four interpretation studies and bounded non-canonical death pathways. Its 28 July / Hodgetts attribution remains unconfirmed pending LMS or Outlook verification and is labelled accordingly in the brief.
 - Study Lab in this repository: 29 taught topics, 176 keywords, 88 concepts, 92 experiment prompts.
 - The external Synapse X at `neur3301-synapse.pplx.app` has diverged ahead of this build: 180 keywords, 92 concepts and an auto-graded MCQ Test mode. Treat it as a feature reference, not as the course-fact authority.
 - Progress is per-origin `localStorage`. The two deployments never share state, so mastery numbers are not comparable between them.
 
 ### Seminar
 
-- Studio deck: 12 slides, exact 15:00 spine, explicit A/B/C evidence tiers. The evidence stamp still reads 24 July 2026 although seminar content changed on 30 July, so a small evidence-refresh pass is due.
-- FDA advisory-committee votes are correct in the current deck: 2-9 on efficacy and 1-10 on benefit-risk. Do not adopt the swapped figures found in the compass artifact markdown.
+- Studio deck: 12 slides, exact 15:00 spine, explicit A/B/C evidence tiers. The evidence stamp now reflects the 30 July 2026 content review.
+- FDA advisory-committee votes remain spelled out in the deck as two yes to nine no on efficacy and one yes to ten no on benefit–risk. Do not adopt the swapped figures found in the compass artifact markdown.
 - Word counts describe different artifacts and should not be forced to match: the studio page reports 1741 words for the on-site script, while the Canva presenter notes were trimmed from 1,683 to 1,474 spoken words.
 - Canva deck `MDMA_and_the_Brain_NEUR3301_Seminar_2026.pptx`: no slide above roughly 116 wpm, pointer cues on slides 3, 8 and 9, evidence-tier system explained on slide 1, speaker load balanced near 33/33/34, source blocks marked reference-only, final verdict returned to Speaker 1. The title change to "MDMA and the Brain - NEUR3301 Seminar 2026" is staged and still needs approval.
-- Deck corrections still to fold in: Young 2015 used mice rather than rats, with a BDNF antibody and TrkB inferred (slide 6); separate release potency from uptake inhibition (slide 3); MDMA engages 5-HT2A indirectly via serotonin efflux rather than acting as a classic direct psychedelic agonist.
+- The evidence-only seminar pass now records that Young 2015 used mice and a BDNF-neutralising antibody while TrkB remained inferred (slide 6), separates release potency from uptake-inhibition potency (slide 3), and treats 5-HT2A engagement as indirect via serotonin efflux rather than direct classic-psychedelic agonism.
 
 ### Twelve-correction ledger
 
@@ -66,7 +66,7 @@ Two loose ends remain:
 - electrical-synapse rectification is not taught;
 - Reelin's functions beyond a simple stop signal are not taught.
 
-The Exam Lab complement phrase is now explicit: C1q-driven complement activation deposits iC3b, which can engage microglial CR3. CI rejects regression to the legacy C1q/C3b shorthand.
+The Exam Lab complement phrase is now explicit: C1q-driven complement activation deposits iC3b, which can engage microglial CR3. CI rejects regression to the legacy imprecise complement shorthand.
 
 ### Source hierarchy
 
@@ -77,4 +77,4 @@ The Exam Lab complement phrase is now explicit: C1q-driven complement activation
 
 ### Next action
 
-After the Lecture 3/4 content PR, run the separate evidence-only MDMA seminar pass: refresh the stale evidence stamp and apply the three deck corrections listed above. Issue #1 remains the standing architectural task; do not hand-edit the minified Study Lab bundle.
+Issue #1 remains the standing architectural task: recover the canonical React/TypeScript Study Lab source. Do not hand-edit the minified Study Lab bundle.
