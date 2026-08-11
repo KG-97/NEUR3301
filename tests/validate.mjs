@@ -17,7 +17,10 @@ const required = [
   'docs/resources/lectures/L01_Glia_I.md',
   'docs/resources/lectures/L02_Growth_and_Trophic_Factors.md',
   'docs/resources/lectures/L03_Axon_Outgrowth_Target_Recognition_Maps.md',
-  'docs/resources/lectures/L04_Regressive_Events_and_Cell_Death.md'
+  'docs/resources/lectures/L04_Regressive_Events_and_Cell_Death.md',
+  'docs/resources/lectures/L05_Cell_Lineage.md',
+  'docs/resources/lectures/L06_Adult_Neurogenesis_Stem_Cells.md',
+  'docs/resources/lectures/L07_Glia_II.md'
 ];
 
 for (const file of required) {
@@ -123,7 +126,7 @@ if (!lecture4Brief.includes('Timetable attribution — unconfirmed') || lecture4
 const examLab = readFileSync('docs/app/index.html', 'utf8');
 const examLabScript = readFileSync('docs/app/app.js', 'utf8');
 const examLabStyles = readFileSync('docs/app/styles.css', 'utf8');
-if (!examLab.includes('styles.css?v=11') || !examLab.includes('app.js?v=11')) {
+if (!examLab.includes('styles.css?v=12') || !examLab.includes('app.js?v=12')) {
   throw new Error('Exam Lab HTML and assets must share a cache-busting deployment version');
 }
 const serviceWorker = readFileSync('docs/sw.js', 'utf8');
@@ -199,8 +202,8 @@ if (!examLab.includes('4 of 8–10 long answers') || !examLab.includes('2026-08-
   throw new Error('Exam Lab official assessment facts regressed');
 }
 const questionRows = [...examLabScript.matchAll(/id: '([^']+)', lecture: (\d+), block: '([^']+)'/g)];
-if (questionRows.length !== 74 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
-  throw new Error(`Exam Lab must contain 74 uniquely identified questions; found ${questionRows.length}`);
+if (questionRows.length !== 92 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
+  throw new Error(`Exam Lab must contain 92 uniquely identified questions; found ${questionRows.length}`);
 }
 for (const [from, to, block] of [[1, 7, 'Test 1'], [8, 13, 'Test 2']]) {
   for (let lecture = from; lecture <= to; lecture += 1) {
@@ -221,8 +224,8 @@ try {
 } catch (error) {
   throw new Error(`Questions array is not valid literal data: ${error.message}`);
 }
-if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 74) {
-  throw new Error(`Expected 74 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
+if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 92) {
+  throw new Error(`Expected 92 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
 }
 const seenStems = new Set();
 for (const question of parsedQuestions) {
@@ -393,6 +396,38 @@ for (const invariant of [
 }
 if (!examLabScript.includes('deposits iC3b, which can engage microglial CR3') || examLabScript.includes(`${legacyComplementWording} tag engaged`)) {
   throw new Error('Exam Lab complement wording must preserve the iC3b-CR3 correction');
+}
+
+// Test 1 gap closed on 11 Aug 2026: Lectures 5-7 built from the released L5 deck and the
+// 3/4 Aug lecture recordings. These invariants stop the in-scope content regressing.
+for (const invariant of [
+  'antagonise BMP signalling',
+  'ganglionic eminence',
+  'rostral migratory stream',
+  'chloride to a high internal concentration',
+  'cytochrome P450 epoxygenase',
+  'GLT-1 and GLAST',
+  'yolk-sac myeloid progenitors',
+  'CX3CR1'
+]) {
+  if (!examLabScript.includes(invariant)) throw new Error(`Exam Lab Lecture 5-7 coverage regressed: ${invariant}`);
+}
+
+// Lecture 5 scope: Hodgetts never taught the Reelin pathway. The L05 brief must keep saying so,
+// otherwise a future pass will quietly promote final-exam enrichment into Test 1 content.
+const lecture5Brief = readFileSync('docs/resources/lectures/L05_Cell_Lineage.md', 'utf8');
+if (!lecture5Brief.includes('never names Reelin')) {
+  throw new Error('L05 brief must retain the Reelin out-of-scope warning');
+}
+
+// Lectures 6 and 7 are transcript-derived, not slide-derived. That provenance must stay visible.
+for (const [file, marker] of [
+  ['docs/resources/lectures/L06_Adult_Neurogenesis_Stem_Cells.md', 'lecture recording transcript'],
+  ['docs/resources/lectures/L07_Glia_II.md', 'lecture recording transcript']
+]) {
+  if (!readFileSync(file, 'utf8').includes(marker)) {
+    throw new Error(`${file} must declare its transcript provenance`);
+  }
 }
 
 // Content gaps closed on 9 Aug 2026 (issue #12). Electrical-synapse rectification
