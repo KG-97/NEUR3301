@@ -128,7 +128,7 @@ if (!lecture4Brief.includes('Timetable attribution — unconfirmed') || lecture4
 const examLab = readFileSync('docs/app/index.html', 'utf8');
 const examLabScript = readFileSync('docs/app/app.js', 'utf8');
 const examLabStyles = readFileSync('docs/app/styles.css', 'utf8');
-if (!examLab.includes('styles.css?v=12') || !examLab.includes('app.js?v=12')) {
+if (!examLab.includes('styles.css?v=13') || !examLab.includes('app.js?v=13')) {
   throw new Error('Exam Lab HTML and assets must share a cache-busting deployment version');
 }
 const serviceWorker = readFileSync('docs/sw.js', 'utf8');
@@ -229,6 +229,30 @@ try {
 if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 92) {
   throw new Error(`Expected 92 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
 }
+// The bank shipped with 62 of 92 answers on B and only 4 on C or D combined, so a
+// letter-only guesser scored 67%. That trains a slot habit instead of the content.
+// Keep every option position in play.
+const answerSpread = parsedQuestions.reduce((acc, q) => {
+  acc[q.answer] = (acc[q.answer] || 0) + 1;
+  return acc;
+}, {});
+for (let position = 0; position < 4; position += 1) {
+  const count = answerSpread[position] || 0;
+  const share = count / parsedQuestions.length;
+  if (share < 0.15 || share > 0.35) {
+    throw new Error(`Exam Lab answer positions are skewed: ${count}/${parsedQuestions.length} correct answers at index ${position} (expected 15-35%)`);
+  }
+}
+const test1Spread = parsedQuestions.filter(q => q.block === 'Test 1').reduce((acc, q) => {
+  acc[q.answer] = (acc[q.answer] || 0) + 1;
+  return acc;
+}, {});
+for (let position = 0; position < 4; position += 1) {
+  if ((test1Spread[position] || 0) < 5) {
+    throw new Error(`Test 1 scope needs at least five correct answers at index ${position}; found ${test1Spread[position] || 0}`);
+  }
+}
+
 const seenStems = new Set();
 for (const question of parsedQuestions) {
   const label = question && question.id ? question.id : '(missing id)';
