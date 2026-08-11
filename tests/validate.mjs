@@ -18,6 +18,8 @@ const required = [
   'docs/resources/lectures/L02_Growth_and_Trophic_Factors.md',
   'docs/resources/lectures/L03_Axon_Outgrowth_Target_Recognition_Maps.md',
   'docs/resources/lectures/L04_Regressive_Events_and_Cell_Death.md',
+  'docs/resources/NEUR3301_Test1_Mock_Paper.md',
+  'docs/resources/NEUR3301_Test1_Mock_Answers.md',
   'docs/resources/lectures/L05_Cell_Lineage.md',
   'docs/resources/lectures/L06_Adult_Neurogenesis_Stem_Cells.md',
   'docs/resources/lectures/L07_Glia_II.md'
@@ -396,6 +398,26 @@ for (const invariant of [
 }
 if (!examLabScript.includes('deposits iC3b, which can engage microglial CR3') || examLabScript.includes(`${legacyComplementWording} tag engaged`)) {
   throw new Error('Exam Lab complement wording must preserve the iC3b-CR3 correction');
+}
+
+// Test 1 mock paper: 35 questions across all seven lectures, with the key kept in a
+// separate file so the paper can be sat honestly. Both invariants are load-bearing.
+const mockPaper = readFileSync('docs/resources/NEUR3301_Test1_Mock_Paper.md', 'utf8');
+const mockAnswers = readFileSync('docs/resources/NEUR3301_Test1_Mock_Answers.md', 'utf8');
+const mockQuestionCount = (mockPaper.match(/^\*\*\d+\.\*\* /gm) || []).length;
+if (mockQuestionCount !== 35) {
+  throw new Error(`Mock paper must contain 35 questions; found ${mockQuestionCount}`);
+}
+for (let lecture = 1; lecture <= 7; lecture += 1) {
+  if (!mockPaper.includes(`## Lecture ${lecture} —`)) {
+    throw new Error(`Mock paper is missing the Lecture ${lecture} section`);
+  }
+}
+if (/^\| 1 \| [A-D] \|/m.test(mockPaper)) {
+  throw new Error('Mock paper must not contain the answer key - it belongs in the answers file');
+}
+if (!mockAnswers.includes('Do not open until the timer has stopped')) {
+  throw new Error('Mock answers file must retain its spoiler warning');
 }
 
 // Test 1 gap closed on 11 Aug 2026: Lectures 5-7 built from the released L5 deck and the
