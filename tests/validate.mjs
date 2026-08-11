@@ -123,7 +123,7 @@ if (!lecture4Brief.includes('Timetable attribution — unconfirmed') || lecture4
 const examLab = readFileSync('docs/app/index.html', 'utf8');
 const examLabScript = readFileSync('docs/app/app.js', 'utf8');
 const examLabStyles = readFileSync('docs/app/styles.css', 'utf8');
-if (!examLab.includes('styles.css?v=10') || !examLab.includes('app.js?v=10')) {
+if (!examLab.includes('styles.css?v=11') || !examLab.includes('app.js?v=11')) {
   throw new Error('Exam Lab HTML and assets must share a cache-busting deployment version');
 }
 const serviceWorker = readFileSync('docs/sw.js', 'utf8');
@@ -199,8 +199,8 @@ if (!examLab.includes('4 of 8–10 long answers') || !examLab.includes('2026-08-
   throw new Error('Exam Lab official assessment facts regressed');
 }
 const questionRows = [...examLabScript.matchAll(/id: '([^']+)', lecture: (\d+), block: '([^']+)'/g)];
-if (questionRows.length !== 54 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
-  throw new Error(`Exam Lab must contain 54 uniquely identified questions; found ${questionRows.length}`);
+if (questionRows.length !== 74 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
+  throw new Error(`Exam Lab must contain 74 uniquely identified questions; found ${questionRows.length}`);
 }
 for (const [from, to, block] of [[1, 7, 'Test 1'], [8, 13, 'Test 2']]) {
   for (let lecture = from; lecture <= to; lecture += 1) {
@@ -221,8 +221,8 @@ try {
 } catch (error) {
   throw new Error(`Questions array is not valid literal data: ${error.message}`);
 }
-if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 54) {
-  throw new Error(`Expected 54 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
+if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 74) {
+  throw new Error(`Expected 74 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
 }
 const seenStems = new Set();
 for (const question of parsedQuestions) {
@@ -252,8 +252,8 @@ const cardsStart = examLabScript.indexOf('[', cardsOpen);
 const cardsEnd = examLabScript.indexOf('\n];', cardsOpen);
 if (cardsOpen === -1 || cardsEnd === -1) throw new Error('Could not locate the flashcard array in app.js');
 const parsedCards = Function(`"use strict"; return (${examLabScript.slice(cardsStart, cardsEnd + 2)});`)();
-if (!Array.isArray(parsedCards) || parsedCards.length !== 29) {
-  throw new Error(`Expected 29 mechanism cards; found ${Array.isArray(parsedCards) ? parsedCards.length : 'a non-array'}`);
+if (!Array.isArray(parsedCards) || parsedCards.length !== 40) {
+  throw new Error(`Expected 40 mechanism cards; found ${Array.isArray(parsedCards) ? parsedCards.length : 'a non-array'}`);
 }
 const cardFronts = new Set();
 for (const [index, card] of parsedCards.entries()) {
@@ -393,6 +393,36 @@ for (const invariant of [
 }
 if (!examLabScript.includes('deposits iC3b, which can engage microglial CR3') || examLabScript.includes(`${legacyComplementWording} tag engaged`)) {
   throw new Error('Exam Lab complement wording must preserve the iC3b-CR3 correction');
+}
+
+// Content gaps closed on 9 Aug 2026 (issue #12). Electrical-synapse rectification
+// and Reelin were absent from both public apps; these guards stop a silent regression.
+for (const invariant of [
+  'Cajal–Retzius',
+  'VLDLR/ApoER2',
+  'DAB1',
+  'inside-out laminar order'
+]) {
+  if (!examLabScript.includes(invariant)) throw new Error(`Exam Lab Reelin/lamination coverage regressed: ${invariant}`);
+}
+for (const invariant of [
+  'rectifying electrical synapse',
+  'transjunctional voltage',
+  'connexon',
+  'Connexin 36',
+  'Furshpan and Potter (1959)'
+]) {
+  if (!examLabScript.includes(invariant)) throw new Error(`Exam Lab electrical-synapse coverage regressed: ${invariant}`);
+}
+// The distinction the July audit flagged: junctional rectification is not Kir/delayed-rectifier
+// channel rectification. Keep the disambiguation explicit in the question bank.
+if (!examLabScript.includes('rectification is a property of the junction between two cells')) {
+  throw new Error('Exam Lab must keep junctional rectification distinct from ion-channel rectification');
+}
+for (const lecture of [15, 17, 21, 24, 28, 29]) {
+  if (!parsedQuestions.some(question => question.lecture === lecture)) {
+    throw new Error(`Exam Lab lost its only questions for taught Lecture ${lecture}`);
+  }
 }
 for (const schedulerInvariant of [
   "const STORAGE_KEY = 'neur3301-exam-lab-v4'",
