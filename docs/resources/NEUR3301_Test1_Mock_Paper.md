@@ -22,23 +22,23 @@
 **1.** A single oligodendrocyte and a single Schwann cell differ in one basic architectural respect. Which statement is correct?
 
 - A. Each Schwann cell myelinates many axons; each oligodendrocyte myelinates one internode
-- B. Each oligodendrocyte myelinates internodes on multiple axons; each Schwann cell forms one internode on one axon
-- C. Both myelinate exactly one internode on one axon
+- B. Both myelinate exactly one internode on one axon
+- C. Each oligodendrocyte myelinates internodes on multiple axons; each Schwann cell forms one internode on one axon
 - D. Neither forms discrete internodes; both provide continuous ensheathment
 
 **2.** Which glial cell type lines the ventricular system and contributes to cerebrospinal fluid movement?
 
-- A. Protoplasmic astrocytes
-- B. Ependymal cells
+- A. Ependymal cells
+- B. Protoplasmic astrocytes
 - C. Microglia
 - D. Oligodendrocyte precursor cells
 
 **3.** After a peripheral nerve is crushed, Schwann cells distal to the injury adopt a distinct repair state. Which description best captures what this achieves?
 
 - A. They form a dense inhibitory scar that prevents further damage
-- B. They dedifferentiate, clear myelin debris and form a growth-supportive pathway for regenerating axons
-- C. They convert into microglia and phagocytose the axon
-- D. They immediately remyelinate the degenerated stump before any regrowth occurs
+- B. They convert into microglia and phagocytose the axon
+- C. They immediately remyelinate the degenerated stump before any regrowth occurs
+- D. They dedifferentiate, clear myelin debris and form a growth-supportive pathway for regenerating axons
 
 **4.** NG2 cells (oligodendrocyte precursor cells) are notable in the adult CNS because they:
 
@@ -49,8 +49,8 @@
 
 **5.** A revision resource states that glia outnumber neurons roughly ten to one in the human brain. What is the best response?
 
-- A. Correct, and it applies uniformly across regions
-- B. The ratio is roughly comparable overall and varies by region; the 10:1 figure is outdated
+- A. The ratio is roughly comparable overall and varies by region; the 10:1 figure is outdated
+- B. Correct, and it applies uniformly across regions
 - C. Neurons outnumber glia by 10:1 in every region
 - D. The ratio cannot be estimated by any current method
 
@@ -61,9 +61,9 @@
 **6.** The neurotrophic hypothesis explains developmental neuronal death primarily by proposing that:
 
 - A. Neurons are programmed to die at a fixed time regardless of connectivity
-- B. Target tissues produce survival factor in limiting amounts, so innervating neurons compete for it
-- C. Trophic factors are produced by the neuron itself and act autonomously
-- D. Death is caused by mechanical crowding within the target field
+- B. Trophic factors are produced by the neuron itself and act autonomously
+- C. Death is caused by mechanical crowding within the target field
+- D. Target tissues produce survival factor in limiting amounts, so innervating neurons compete for it
 
 **7.** In a compartmented culture chamber, sympathetic neuron cell bodies sit in one compartment and their distal axons extend into another. NGF is applied **only to the distal axon compartment**. What is the expected outcome?
 
@@ -75,22 +75,22 @@
 **8.** Which statement about neurotrophin receptors is correct?
 
 - A. Trk receptors bind all neurotrophins with equal affinity, while p75 is fully selective
-- B. Trk receptors show preferential ligand selectivity, while p75 binds neurotrophins more broadly and can modulate or oppose Trk signalling
-- C. p75 signalling always promotes survival
+- B. p75 signalling always promotes survival
+- C. Trk receptors show preferential ligand selectivity, while p75 binds neurotrophins more broadly and can modulate or oppose Trk signalling
 - D. Neurotrophins act only through ionotropic receptors
 
 **9.** The "signalling endosome" concept is important because it explains how:
 
-- A. Neurotransmitter is recycled at the presynaptic terminal
-- B. A ligand–receptor complex internalised at the axon terminal can carry an intact survival signal back to the cell body
+- A. A ligand–receptor complex internalised at the axon terminal can carry an intact survival signal back to the cell body
+- B. Neurotransmitter is recycled at the presynaptic terminal
 - C. Myelin debris is cleared after injury
 - D. Potassium is redistributed through the astrocyte syncytium
 
 **10.** Excess NGF is supplied to a developing sympathetic ganglion throughout the period of naturally occurring cell death. What is the predicted effect on final neuron number, and why?
 
 - A. No change, because the number of surviving neurons is fixed intrinsically
-- B. An increase, because neurons that would have lost the competition for limiting trophic support now survive
-- C. A decrease, because excess trophic factor is toxic to all neurons
+- B. A decrease, because excess trophic factor is toxic to all neurons
+- C. An increase, because neurons that would have lost the competition for limiting trophic support now survive
 - D. An increase, but only because NGF causes additional progenitor divisions
 
 ---
@@ -100,9 +100,9 @@
 **11.** The same guidance cue can attract one growth cone and repel another. The best explanation is that:
 
 - A. The cue changes chemical identity between the two cells
-- B. The response depends on which receptors the growth cone expresses and its intracellular signalling state
-- C. Attraction and repulsion are determined solely by cue concentration
-- D. Only repulsive responses are physiologically real
+- B. Attraction and repulsion are determined solely by cue concentration
+- C. Only repulsive responses are physiologically real
+- D. The response depends on which receptors the growth cone expresses and its intracellular signalling state
 
 **12.** Commissural axons are attracted to the floor plate, cross it, and then do not turn back. This requires that after crossing they:
 
@@ -121,16 +121,16 @@
 **14.** Chondroitin sulphate proteoglycans can act as a graded discouragement rather than an absolute barrier. Experimentally, distinguishing "gradient" from "hurdle" behaviour matters because:
 
 - A. Only a hurdle can be degraded enzymatically
-- B. A gradient predicts axons slow and steer within the field, while a hurdle predicts abrupt stopping at a boundary
-- C. Gradients cannot be produced in vitro
+- B. Gradients cannot be produced in vitro
+- C. A gradient predicts axons slow and steer within the field, while a hurdle predicts abrupt stopping at a boundary
 - D. The distinction has no measurable consequence
 
 **15.** Graded Eph receptor and ephrin expression across two structures generates a topographic map by:
 
 - A. Assigning each axon a unique molecular identity tag
-- B. Converting relative position into graded repulsion, so relative order is preserved
-- C. Physically tethering each axon to a fixed target cell before growth begins
-- D. Eliminating all axons that arrive in the wrong place
+- B. Physically tethering each axon to a fixed target cell before growth begins
+- C. Eliminating all axons that arrive in the wrong place
+- D. Converting relative position into graded repulsion, so relative order is preserved
 
 ---
 
@@ -145,16 +145,16 @@
 
 **17.** In the intrinsic apoptotic pathway, the correct order of events is:
 
-- A. Caspase activation → cytochrome c release → BCL-2 family shift
-- B. BCL-2 family shift at the mitochondrion → cytochrome c release → apoptosome and caspase-9 activation
+- A. BCL-2 family shift at the mitochondrion → cytochrome c release → apoptosome and caspase-9 activation
+- B. Caspase activation → cytochrome c release → BCL-2 family shift
 - C. Cytochrome c release → BCL-2 family shift → membrane rupture
 - D. Death receptor binding → mitochondrial swelling → necrosis
 
 **18.** A developing target field is surgically enlarged before innervation. The most likely consequence for the innervating neuron population is:
 
 - A. Increased death, because more axons must compete
-- B. Reduced death, because more target-derived survival support is available
-- C. No change, since neuron number is set intrinsically
+- B. No change, since neuron number is set intrinsically
+- C. Reduced death, because more target-derived survival support is available
 - D. Complete loss of the population
 
 **19.** Regression during development occurs at several anatomical resolutions. Which sequence lists them from coarsest to finest?
@@ -167,9 +167,9 @@
 **20.** A tissue section shows numerous TUNEL-positive nuclei after an injury. What is the safest interpretation?
 
 - A. All those cells died by apoptosis
-- B. TUNEL reports DNA fragmentation, which occurs in several death modes, so pathway-specific evidence is needed
-- C. TUNEL positivity proves caspase-3 activation
-- D. TUNEL exclusively labels necrotic cells
+- B. TUNEL positivity proves caspase-3 activation
+- C. TUNEL exclusively labels necrotic cells
+- D. TUNEL reports DNA fragmentation, which occurs in several death modes, so pathway-specific evidence is needed
 
 ---
 
@@ -177,16 +177,16 @@
 
 **21.** Which sequence correctly orders potency from broadest to most restricted?
 
-- A. Pluripotent → totipotent → multipotent → unipotent
-- B. Totipotent → pluripotent → multipotent → oligopotent → unipotent
+- A. Totipotent → pluripotent → multipotent → oligopotent → unipotent
+- B. Pluripotent → totipotent → multipotent → unipotent
 - C. Multipotent → totipotent → oligopotent → pluripotent
 - D. Unipotent → oligopotent → multipotent → totipotent
 
 **22.** In the developing neural tube, which pairing of signal and axis is correct?
 
 - A. Shh dorsalising; Wnt ventralising
-- B. Shh ventralising; Wnt dorsalising
-- C. Both Shh and Wnt ventralising
+- B. Both Shh and Wnt ventralising
+- C. Shh ventralising; Wnt dorsalising
 - D. Shh sets anterior–posterior identity; Wnt sets left–right identity
 
 **23.** The chick–quail chimera technique was used in developmental neuroscience principally to:
@@ -198,16 +198,16 @@
 
 **24.** The isthmus is significant in brain compartmentalisation because it:
 
-- A. Defines the boundary between midbrain and hindbrain
-- B. Forms the anterior limit of the telencephalon
-- C. Is the site of adult neurogenesis in rodents
-- D. Separates grey from white matter in the cortex
+- A. Forms the anterior limit of the telencephalon
+- B. Is the site of adult neurogenesis in rodents
+- C. Separates grey from white matter in the cortex
+- D. Defines the boundary between midbrain and hindbrain
 
 **25.** Histone acetyltransferases (HATs) and histone deacetylases (HDACs) influence cell fate by:
 
 - A. Editing the DNA base sequence at fate-determining loci
-- B. Altering chromatin compaction, so acetylation loosens chromatin and permits transcription while deacetylation condenses it
-- C. Transporting transcription factors into the nucleus
+- B. Transporting transcription factors into the nucleus
+- C. Altering chromatin compaction, so acetylation loosens chromatin and permits transcription while deacetylation condenses it
 - D. Degrading microRNAs before they can act
 
 ---
@@ -224,9 +224,9 @@
 **27.** In the adult subgranular zone, the lineage from stem cell to mature neuron runs:
 
 - A. Type 2 → Type 1 → neuroblast → mature neuron
-- B. Type 1 radial glial-like cell → Type 2 progenitor → neuroblast → immature neuron → mature neuron
-- C. Neuroblast → Type 1 → astrocyte only
-- D. Mature neuron → dedifferentiated Type 2 → Type 1
+- B. Neuroblast → Type 1 → astrocyte only
+- C. Mature neuron → dedifferentiated Type 2 → Type 1
+- D. Type 1 radial glial-like cell → Type 2 progenitor → neuroblast → immature neuron → mature neuron
 
 **28.** Rodents housed in an enriched environment with a running wheel show more hippocampal neurogenesis, higher BDNF, and better Morris water maze performance. What is the strongest justified conclusion?
 
@@ -245,8 +245,8 @@
 **30.** Which limitation of hippocampal MRI volumetry as a proxy for human neurogenesis is correct?
 
 - A. MRI cannot resolve the hippocampus at all
-- B. Volume includes water, dendrites and other tissue components, and gives a snapshot without identifying cell type or birth date
-- C. MRI directly labels dividing cells but only in children
+- B. MRI directly labels dividing cells but only in children
+- C. Volume includes water, dendrites and other tissue components, and gives a snapshot without identifying cell type or birth date
 - D. MRI measures neurogenesis accurately but is too expensive to use
 
 ---
@@ -256,9 +256,9 @@
 **31.** In the tripartite synapse, which astrocyte-derived molecule acts as a required co-agonist at NMDA receptors?
 
 - A. GABA
-- B. D-serine
-- C. Aquaporin-4
-- D. Chondroitin sulphate
+- B. Aquaporin-4
+- C. Chondroitin sulphate
+- D. D-serine
 
 **32.** Aquaporin-4 is concentrated in which structure, and does what?
 
@@ -270,23 +270,23 @@
 **33.** Astrocytes occupy largely non-overlapping territories yet are coupled to one another. The functional consequence is that:
 
 - A. Each astrocyte is electrically isolated from all others
-- B. Gap junctions create a syncytial network allowing molecules below a size limit to be redistributed across a functional domain
-- C. Astrocytes fuse into a single continuous multinucleate cell
+- B. Astrocytes fuse into a single continuous multinucleate cell
+- C. Gap junctions create a syncytial network allowing molecules below a size limit to be redistributed across a functional domain
 - D. Coupling occurs only after injury
 
 **34.** Which pairing of glial activation phenotype with its character is correct?
 
-- A. M1 microglia reparative; M2 microglia pro-inflammatory
-- B. M1 microglia pro-inflammatory; M2 microglia reparative, releasing IL-10 and TGF-β
+- A. M1 microglia pro-inflammatory; M2 microglia reparative, releasing IL-10 and TGF-β
+- B. M1 microglia reparative; M2 microglia pro-inflammatory
 - C. A1 and A2 describe microglia; M1 and M2 describe astrocytes
 - D. Only microglia polarise; astrocytes have no equivalent states
 
 **35.** If the extracellular space in a brain region is reduced by half, the direct consequence for a toxic solute already present is that its concentration:
 
 - A. Halves, because the solute is diluted
-- B. Doubles, which is why astrocytic regulation of extracellular space volume is itself protective
-- C. Is unchanged, since concentration is independent of volume
-- D. Falls to zero as astrocytes absorb it completely
+- B. Is unchanged, since concentration is independent of volume
+- C. Falls to zero as astrocytes absorb it completely
+- D. Doubles, which is why astrocytic regulation of extracellular space volume is itself protective
 
 ---
 
