@@ -419,6 +419,19 @@ if (/^\| 1 \| [A-D] \|/m.test(mockPaper)) {
 if (!mockAnswers.includes('Do not open until the timer has stopped')) {
   throw new Error('Mock answers file must retain its spoiler warning');
 }
+// The first draft of this paper had 31 of 35 answers on B, which let a reader score
+// without reading. Keep the key spread so the mock stays a real diagnostic.
+const mockKey = [...mockAnswers.matchAll(/\*\*(\d+)\. ([A-D])\.\*\*/g)];
+if (mockKey.length !== 35) {
+  throw new Error(`Mock answers must carry 35 keyed rationales; found ${mockKey.length}`);
+}
+const keySpread = mockKey.reduce((acc, [, , letter]) => ({ ...acc, [letter]: (acc[letter] || 0) + 1 }), {});
+for (const letter of ['A', 'B', 'C', 'D']) {
+  const n = keySpread[letter] || 0;
+  if (n < 6 || n > 12) {
+    throw new Error(`Mock answer key is unbalanced: ${n} answers on ${letter} (expected 6-12 of 35)`);
+  }
+}
 
 // Test 1 gap closed on 11 Aug 2026: Lectures 5-7 built from the released L5 deck and the
 // 3/4 Aug lecture recordings. These invariants stop the in-scope content regressing.
