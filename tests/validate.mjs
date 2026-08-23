@@ -122,8 +122,8 @@ if (!examLab.includes('4 of 8–10 long answers') || !examLab.includes('2026-08-
   throw new Error('Exam Lab official assessment facts regressed');
 }
 const questionRows = [...examLabScript.matchAll(/id: '([^']+)', lecture: (\d+), block: '([^']+)'/g)];
-if (questionRows.length !== 48 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
-  throw new Error(`Exam Lab must contain 48 uniquely identified questions; found ${questionRows.length}`);
+if (questionRows.length !== 50 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
+  throw new Error(`Exam Lab must contain 50 uniquely identified questions; found ${questionRows.length}`);
 }
 for (const [from, to, block] of [[1, 7, 'Test 1'], [8, 13, 'Test 2']]) {
   for (let lecture = from; lecture <= to; lecture += 1) {
@@ -144,8 +144,8 @@ try {
 } catch (error) {
   throw new Error(`Questions array is not valid literal data: ${error.message}`);
 }
-if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 48) {
-  throw new Error(`Expected 48 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
+if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 50) {
+  throw new Error(`Expected 50 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
 }
 const seenStems = new Set();
 for (const question of parsedQuestions) {
