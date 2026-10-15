@@ -12,6 +12,13 @@
 | 2 | Growth and Trophic factors | Growth and Trophic Factors | Hodgetts | Test 1 |
 | 3 | Axon outgrowth, target recognition, maps | Axon Outgrowth, Target Recognition & Maps | Hodgetts | Test 1 |
 | 4 | Regressive events and cell death | Regressive Events & Cell Death | Hodgetts | Test 1 |
+| 24 | Motor cortex: neurophysiology and plasticity · 29 Sep · Tang · Final | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF; spoken emphasis not captured |
+| 25 | Cerebellar networks: neurophysiology and plasticity · 30 Sep · Tang · Final | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF; spoken emphasis not captured |
+| 26 | Neuroendocrine control of energy balance · 5 Oct · Smith · Final | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF; figures read only through their text labels; spoken emphasis not captured |
+| 27 | Neuroendocrine control of fertility · 6 Oct · Smith · Final | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF (deck headed "Kisspeptin 2022"); figures read only through their text labels; spoken emphasis not captured |
+| 28 | Ageing, injury and degeneration · 7 Oct · Hodgetts · Final | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF; spoken emphasis not captured |
+| 29 | Sensory deficits and prostheses · 12 Oct · Beros · Final | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF; spoken emphasis not captured |
+| 30 | Spinal cord injury and regeneration · 13 Oct · Hodgetts · Final | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF labelled 2025, the only deck released; the 2026 delivery may differ; spoken emphasis not captured |
 | 5 | Cell lineage | Cell Lineage | Hodgetts | Test 1 |
 | 6 | Adult neurogenesis/stem cells | Adult Neurogenesis / Stem Cells | Beros | Test 1 |
 | 7 | Glia II | Glia II | Hodgetts | Test 1 |

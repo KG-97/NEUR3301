@@ -43,6 +43,7 @@ Verified working state. This supersedes the older `378433a` and `9d5b3b8` checkp
 ### Content coverage
 
 - Exam Lab after the released-slide alignment: 54 mechanism-heavy MCQs, 12 long-answer blueprints, 29 retrieval cards and full mechanism briefs for Lectures 1-4.
+- Exam Lab after the 15 October 2026 final-block intake: 124 MCQs (31 correct answers at each option position), 54 retrieval cards and full mechanism briefs for Lectures 1-4 and 24-30. Lectures 24-30 come from the released slide PDFs (Lecture 30 from the 2025 deck, the only one released) and were fact-checked against the slides; spoken emphasis is not captured.
 - Lecture 3 now follows the released PDF emphasis on gradient-versus-hurdle logic, intermediate targets, local translation, CNS growth inhibition and hierarchical target recognition rather than a pre-lecture reconstruction.
 - Lecture 4 adds target and afferent survival logic, BCL-2/caspase apoptosis, classical necrosis, four levels of regression, four interpretation studies and bounded non-canonical death pathways. Its 28 July / Hodgetts attribution remains unconfirmed pending LMS or Outlook verification and is labelled accordingly in the brief.
 - Study Lab in this repository: 29 taught topics, 176 keywords, 88 concepts, 92 experiment prompts.
