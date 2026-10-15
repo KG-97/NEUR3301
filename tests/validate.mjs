@@ -23,6 +23,12 @@ const required = [
   'docs/resources/lectures/L05_Cell_Lineage.md',
   'docs/resources/lectures/L06_Adult_Neurogenesis_Stem_Cells.md',
   'docs/resources/lectures/L07_Glia_II.md',
+  'docs/resources/lectures/L08_Membrane_Mechanisms.md',
+  'docs/resources/lectures/L09_Quantal_Transmission.md',
+  'docs/resources/lectures/L10_Neurotransmitter_Release.md',
+  'docs/resources/lectures/L11_Synaptic_Plasticity_Learning_and_Memory.md',
+  'docs/resources/lectures/L12_Axon_Initial_Segment_and_Plasticity.md',
+  'docs/resources/lectures/L13_Synaptic_Development_and_Pruning.md',
   'docs/resources/lectures/L24_Motor_Cortex_Neurophysiology_Plasticity.md',
   'docs/resources/lectures/L25_Cerebellar_Networks_Neurophysiology_Plasticity.md',
   'docs/resources/lectures/L26_Neuroendocrine_Control_of_Energy_Balance.md',
@@ -211,8 +217,8 @@ if (!examLab.includes('4 of 8–10 long answers') || !examLab.includes('2026-08-
   throw new Error('Exam Lab official assessment facts regressed');
 }
 const questionRows = [...examLabScript.matchAll(/id: '([^']+)', lecture: (\d+), block: '([^']+)'/g)];
-if (questionRows.length !== 124 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
-  throw new Error(`Exam Lab must contain 124 uniquely identified questions; found ${questionRows.length}`);
+if (questionRows.length !== 142 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
+  throw new Error(`Exam Lab must contain 142 uniquely identified questions; found ${questionRows.length}`);
 }
 for (const [from, to, block] of [[1, 7, 'Test 1'], [8, 13, 'Test 2']]) {
   for (let lecture = from; lecture <= to; lecture += 1) {
@@ -233,8 +239,8 @@ try {
 } catch (error) {
   throw new Error(`Questions array is not valid literal data: ${error.message}`);
 }
-if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 124) {
-  throw new Error(`Expected 124 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
+if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 142) {
+  throw new Error(`Expected 142 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
 }
 // The bank shipped with 62 of 92 answers on B and only 4 on C or D combined, so a
 // letter-only guesser scored 67%. That trains a slot habit instead of the content.
@@ -288,8 +294,8 @@ const cardsStart = examLabScript.indexOf('[', cardsOpen);
 const cardsEnd = examLabScript.indexOf('\n];', cardsOpen);
 if (cardsOpen === -1 || cardsEnd === -1) throw new Error('Could not locate the flashcard array in app.js');
 const parsedCards = Function(`"use strict"; return (${examLabScript.slice(cardsStart, cardsEnd + 2)});`)();
-if (!Array.isArray(parsedCards) || parsedCards.length !== 54) {
-  throw new Error(`Expected 54 mechanism cards; found ${Array.isArray(parsedCards) ? parsedCards.length : 'a non-array'}`);
+if (!Array.isArray(parsedCards) || parsedCards.length !== 66) {
+  throw new Error(`Expected 66 mechanism cards; found ${Array.isArray(parsedCards) ? parsedCards.length : 'a non-array'}`);
 }
 const cardFronts = new Set();
 for (const [index, card] of parsedCards.entries()) {
@@ -343,7 +349,7 @@ for (const control of ['data-view="answers"', 'id="answer-draft"', 'id="answer-t
 for (const control of ['data-view="briefs"', 'id="lecture-brief-list"', 'Evidence boundary']) {
   if (!examLab.includes(control)) throw new Error(`Lecture brief control missing from Exam Lab: ${control}`);
 }
-for (const filter of [1, 2, 3, 4, 24, 25, 26, 27, 28, 29, 30].map(id => `value="Lecture ${id}"`)) {
+for (const filter of [1, 2, 3, 4, 8, 9, 10, 11, 12, 13, 24, 25, 26, 27, 28, 29, 30].map(id => `value="Lecture ${id}"`)) {
   if (!examLab.includes(filter)) throw new Error(`Lecture-specific MCQ filter missing: ${filter}`);
 }
 if (!examLabScript.includes("filter.startsWith('Lecture ')") || !examLabScript.includes('`Lecture ${brief.id}`')) {
@@ -388,8 +394,8 @@ const briefsStart = examLabScript.indexOf('[', briefsOpen);
 const briefsEnd = examLabScript.indexOf('\n];', briefsOpen);
 if (briefsOpen === -1 || briefsEnd === -1) throw new Error('Could not locate the lecture brief array in app.js');
 const parsedBriefs = Function(`"use strict"; return (${examLabScript.slice(briefsStart, briefsEnd + 2)});`)();
-if (!Array.isArray(parsedBriefs) || parsedBriefs.map(brief => brief.id).join(',') !== '1,2,3,4,24,25,26,27,28,29,30') {
-  throw new Error('Lecture briefs must cover exactly official Lectures 1-4 and 24-30');
+if (!Array.isArray(parsedBriefs) || parsedBriefs.map(brief => brief.id).join(',') !== '1,2,3,4,8,9,10,11,12,13,24,25,26,27,28,29,30') {
+  throw new Error('Lecture briefs must cover exactly official Lectures 1-4, 8-13 and 24-30');
 }
 for (const brief of parsedBriefs) {
   for (const field of ['title', 'date', 'lecturer', 'scope', 'download']) {
@@ -496,8 +502,14 @@ for (const [file, marker] of [
   }
 }
 
-// Lectures 24-30 are slide-derived, and Lecture 30 rests on the 2025 deck. Keep both visible.
+// Lectures 8-13 and 24-30 are slide-derived, and Lecture 30 rests on the 2025 deck. Keep both visible.
 for (const file of [
+  'docs/resources/lectures/L08_Membrane_Mechanisms.md',
+  'docs/resources/lectures/L09_Quantal_Transmission.md',
+  'docs/resources/lectures/L10_Neurotransmitter_Release.md',
+  'docs/resources/lectures/L11_Synaptic_Plasticity_Learning_and_Memory.md',
+  'docs/resources/lectures/L12_Axon_Initial_Segment_and_Plasticity.md',
+  'docs/resources/lectures/L13_Synaptic_Development_and_Pruning.md',
   'docs/resources/lectures/L24_Motor_Cortex_Neurophysiology_Plasticity.md',
   'docs/resources/lectures/L25_Cerebellar_Networks_Neurophysiology_Plasticity.md',
   'docs/resources/lectures/L26_Neuroendocrine_Control_of_Energy_Balance.md',
