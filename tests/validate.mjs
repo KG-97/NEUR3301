@@ -135,7 +135,7 @@ if (!lecture4Brief.includes('Timetable attribution — unconfirmed') || lecture4
 const examLab = readFileSync('docs/app/index.html', 'utf8');
 const examLabScript = readFileSync('docs/app/app.js', 'utf8');
 const examLabStyles = readFileSync('docs/app/styles.css', 'utf8');
-if (!examLab.includes('styles.css?v=14') || !examLab.includes('app.js?v=14')) {
+if (!examLab.includes('styles.css?v=15') || !examLab.includes('app.js?v=15')) {
   throw new Error('Exam Lab HTML and assets must share a cache-busting deployment version');
 }
 const serviceWorker = readFileSync('docs/sw.js', 'utf8');
