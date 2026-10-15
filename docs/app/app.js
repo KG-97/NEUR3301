@@ -1467,6 +1467,11 @@ function textList(items, ordered = false) {
   return list;
 }
 
+function lectureBlock(id) {
+  const group = lectureGroups.find(candidate => candidate.lectures.some(([lectureId]) => lectureId === id));
+  return group ? (group.block === 'Final' ? 'Final exam' : group.block) : '';
+}
+
 function renderLectureBriefs() {
   const root = document.querySelector('#lecture-brief-list');
   root.replaceChildren(...lectureBriefs.map(brief => {
@@ -1477,7 +1482,7 @@ function renderLectureBriefs() {
     head.className = 'brief-head';
     const eyebrow = document.createElement('p');
     eyebrow.className = 'eyebrow';
-    eyebrow.textContent = `Lecture ${brief.id} · ${brief.date} · ${brief.lecturer} · Test 1`;
+    eyebrow.textContent = `Lecture ${brief.id} · ${brief.date} · ${brief.lecturer} · ${lectureBlock(brief.id)}`;
     const title = document.createElement('h3');
     title.textContent = brief.title;
     const scope = document.createElement('p');
