@@ -12,6 +12,12 @@
 | 2 | Growth and Trophic factors | Growth and Trophic Factors | Hodgetts | Test 1 |
 | 3 | Axon outgrowth, target recognition, maps | Axon Outgrowth, Target Recognition & Maps | Hodgetts | Test 1 |
 | 4 | Regressive events and cell death | Regressive Events & Cell Death | Hodgetts | Test 1 |
+| 8 | Membrane mechanisms · 5 Aug · Beros · Test 2 | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF; spoken emphasis not captured |
+| 9 | Quantal transmission · 10 Aug · Beros · Test 2 | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF; spoken emphasis not captured |
+| 10 | Neurotransmitter release · 11 Aug · Beros · Test 2 | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF; spoken emphasis not captured |
+| 11 | Synaptic plasticity, learning and memory · 18 Aug · Tang · Test 2 | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF (PDF metadata dates it to August 2025; the 2026 delivery may differ); spoken emphasis not captured |
+| 12 | Axon initial segment (AIS) and plasticity · 19 Aug · Tang · Test 2 | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF; spoken emphasis not captured |
+| 13 | Synaptic development and pruning · 25 Aug · Beros · Test 2 | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF; spoken emphasis not captured |
 | 24 | Motor cortex: neurophysiology and plasticity · 29 Sep · Tang · Final | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF; spoken emphasis not captured |
 | 25 | Cerebellar networks: neurophysiology and plasticity · 30 Sep · Tang · Final | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF; spoken emphasis not captured |
 | 26 | Neuroendocrine control of energy balance · 5 Oct · Smith · Final | Printable note, full mechanism brief, three interpretation studies, active recall, 6 MCQs and 2 cards | Built from the released slide PDF; figures read only through their text labels; spoken emphasis not captured |

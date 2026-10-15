@@ -2,12 +2,12 @@
   {
     "name": "Synapse Exam Lab",
     "subtitle": "Fast marks-first practice",
-    "description": "Exact 2026 timetable numbering, full mechanism briefs for Lectures 1–4 and 24–30, 124 mechanism-heavy MCQs, 12 timed long-answer blueprints, due-first retrieval and portable browser-local progress.",
+    "description": "Exact 2026 timetable numbering, full mechanism briefs for Lectures 1–4, 8–13 and 24–30, 142 mechanism-heavy MCQs, 12 timed long-answer blueprints, due-first retrieval and portable browser-local progress.",
     "url": "app/",
     "status": "Live in this repository",
     "tags": [
-      "124 MCQs",
-      "L1–4 + L24–30 briefs",
+      "142 MCQs",
+      "L1–4, 8–13, 24–30 briefs",
       "12 answer plans",
       "Weak-item queue",
       "Spaced retrieval",

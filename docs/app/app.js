@@ -396,6 +396,988 @@ const lectureBriefs = [
     ]
   },
   {
+    id: 8,
+    title: 'Membrane Mechanisms',
+    date: '5 August 2026',
+    lecturer: 'Beros',
+    scope: 'Released Lecture 8 slide PDF condensed into an exam-safe mechanism brief covering channel gating classes, ionotropic glutamate receptors and their modulation, Na⁺ channel availability and post-inhibitory rebound, A-type K⁺, Ca²⁺-activated K⁺, T-type Ca²⁺ and h channels as determinants of firing pattern, and metabotropic G-protein signalling. Built from all 39 slides without the recording; the deck has no equations, and its traces come from animal or in-vitro preparations or textbook figures.',
+    outcomes: [
+      'Explain why one Na⁺ channel and one delayed-rectifier K⁺ channel cannot account for regular, adapting, delayed, stuttering and bursting firing, and how channel mix and holding potential switch a cell such as a thalamic relay neuron between tonic and burst modes.',
+      'Classify ion channels by gating (ligand, voltage, mechanical, leak) and contrast non-NMDA with NMDA glutamate receptors, including the glutamate-plus-glycine requirement, voltage-dependent Mg²⁺ block and Ca²⁺ entry.',
+      'Describe how receptor and channel activity is modulated by zinc and copper, by Ca²⁺-dependent inactivation (direct binding and calcineurin dephosphorylation) and by refractory inactivation, and predict the consequences for firing.',
+      'Predict how Na⁺ channel availability, A-type K⁺, Ca²⁺-activated K⁺, T-type Ca²⁺ and h channels produce post-inhibitory rebound, first-spike delay, longer interspike intervals, firing-rate adaptation and rhythmic bursting.',
+      'Contrast ionotropic and metabotropic signalling: the GTP/GDP switch, direct G-protein gating versus cAMP–kinase and PLC–IP₃/DAG cascades, amplification, fast versus slow EPSPs, gene regulation and tyrosine-kinase growth-factor receptors.'
+    ],
+    chains: [
+      {
+        name: 'Post-inhibitory rebound',
+        steps: [
+          'Inhibitory input hyperpolarises the membrane',
+          'Na⁺ channel inactivation is removed, raising the available pool from about 60% toward 100%',
+          'inhibition ends and the membrane relaxes toward threshold',
+          'more Na⁺ channels open for the same depolarisation',
+          'the neuron fires a rebound burst'
+        ]
+      },
+      {
+        name: 'Firing-rate adaptation',
+        steps: [
+          'Sustained depolarisation drives a spike train',
+          'Ca²⁺ enters through voltage-gated Ca²⁺ channels with each spike',
+          'rising intracellular Ca²⁺ opens voltage-insensitive Ca²⁺-activated K⁺ channels',
+          'outward K⁺ current builds a late hyperpolarisation',
+          'firing slows; Cd²⁺ abolishes this and 1-EBIO exaggerates it'
+        ]
+      },
+      {
+        name: 'Rhythmic bursting (h + T channels)',
+        steps: [
+          'Hyperpolarisation near −70 mV opens h channels',
+          'mixed Na⁺/K⁺ inward current slowly depolarises the cell',
+          'T-type Ca²⁺ channels, made available by the hyperpolarisation, open',
+          'the Ca²⁺ depolarisation triggers a burst of Na⁺ spikes',
+          'strong depolarisation closes h and Ca²⁺ channels, hyperpolarisation redevelops and the cycle repeats'
+        ]
+      },
+      {
+        name: 'Slow metabotropic signalling',
+        steps: [
+          'Noradrenaline binds a β-adrenergic G-protein-coupled receptor',
+          'Gα exchanges GDP for GTP and separates from Gβγ',
+          'adenylyl cyclase converts ATP to cAMP, amplifying the signal',
+          'cAMP activates a protein kinase',
+          'the kinase acts on a K⁺ channel, changing excitability over a slow time course'
+        ]
+      }
+    ],
+    distinctions: [
+      [
+        'Non-NMDA (AMPA/GluA) versus NMDA receptor',
+        'Glutamate alone opens non-NMDA channels; NMDA receptors need glutamate plus glycine and depolarisation to expel Mg²⁺',
+        'NMDA receptors are both ligand- and voltage-gated, and their Ca²⁺ influx links activity to plasticity'
+      ],
+      [
+        'Mg²⁺ versus Zn²⁺ at the NMDA receptor',
+        'Mg²⁺ plugs the pore at rest; zinc binds a separate modulatory site and inhibits the current',
+        'Zinc inhibition is shown in cultured neurons and oocytes; protection against excitotoxicity is only posed as a question on the slide'
+      ],
+      [
+        'Absolute versus relative refractory period',
+        'Absolute: Na⁺ channels inactivated so no stimulus fires; relative: some channels have recovered',
+        'Refractoriness is a channel-state property; only in the relative period can a larger stimulus fire the cell'
+      ],
+      [
+        'Delayed-rectifier versus A-type K⁺ current',
+        'Delayed rectifier is sustained and does not inactivate; A-type is transient, inactivated at about −50 mV and above, and recovers on hyperpolarisation',
+        'The A-type current sets first-spike delay and interspike interval rather than simply repolarising the spike'
+      ],
+      [
+        'TTX versus TEA',
+        'TTX blocks voltage-gated Na⁺ channels; TEA blocks voltage-gated K⁺ channels',
+        'Each isolates the other current under voltage clamp; dissection measures currents and does not by itself show their role in a firing pattern'
+      ],
+      [
+        'Ca²⁺-activated K⁺ channels',
+        'Opened by intracellular Ca²⁺ after spiking, not by voltage',
+        'They mediate firing-rate adaptation: Cd²⁺ removes adaptation by removing the Ca²⁺ trigger, while 1-EBIO exaggerates it'
+      ],
+      [
+        'T-type versus h channels',
+        'T-type: low-threshold Ca²⁺ channels available only after hyperpolarisation (about −75 mV); h: opened by hyperpolarisation (about −70 mV), carrying mixed Na⁺/K⁺ inward current',
+        'Together they let holding potential decide tonic versus burst firing and can sustain rhythmic bursts'
+      ],
+      [
+        'Ionotropic versus metabotropic receptor',
+        'Ionotropic: the receptor is the channel; metabotropic: a GPCR acting through G-proteins and often second messengers',
+        'Fast EPSP versus slow EPSP; metabotropic signalling is slower but amplified, longer-lasting and can regulate gene transcription'
+      ],
+      [
+        'Direct G-protein gating versus second-messenger cascade',
+        'Shortcut: the G-protein gates a channel itself; cascade: adenylyl cyclase–cAMP–kinase or PLC–IP₃/DAG–Ca²⁺/PKC',
+        'Metabotropic does not always mean a cytoplasmic messenger, but both routes are slower than ionotropic transmission'
+      ],
+      [
+        'Growth-factor receptors',
+        'NGF, BDNF, NT-3, CNTF, EGF and FGF signal to neurons and glia, often via tyrosine kinase receptors',
+        'A receptor class distinct from GPCRs that shapes growth, development and neuronal death rather than fast transmission'
+      ]
+    ],
+    experiments: [
+      {
+        name: 'Voltage clamp with TTX and TEA',
+        design: 'Clamp the membrane with a depolarising step from −65 mV and record total current, then repeat with TTX to block voltage-gated Na⁺ channels or TEA to block voltage-gated K⁺ channels.',
+        result: 'Control shows a transient inward current followed by a sustained delayed outward current; TTX leaves only the sustained outward K⁺ current, and TEA leaves only a transient inward Na⁺ current that switches itself off.',
+        inference: 'Na⁺ and delayed-rectifier K⁺ currents are separable: Na⁺ channels inactivate and classical axonal K⁺ channels do not. These are classic textbook axon recordings rather than mammalian neurons, so the dissection identifies currents rather than their role in a mammalian firing pattern.'
+      },
+      {
+        name: 'Zinc on NMDA receptors',
+        design: 'Patch-clamp cultured mouse hippocampal neurons during NMDA application with 50 µM zinc, and record recombinant receptors in oocytes with glutamate/glycine while zinc is stepped from nanomolar to micromolar concentrations.',
+        result: 'Zinc reversibly suppressed the NMDA current in neurons, and in oocytes the current fell progressively with each zinc step from 3 nM to 1 µM.',
+        inference: 'NMDA receptors carry a zinc modulatory site distinct from the Mg²⁺ block, so endogenous zinc could tune NMDA signalling; protection against excitotoxicity is a hypothesis these in-vitro data do not test.'
+      },
+      {
+        name: 'Firing-rate adaptation pharmacology',
+        design: 'Two separate datasets shown on the slide: depolarising current steps in control versus 5 mM Cd²⁺ (blocking Ca²⁺ entry), and in control versus 1-EBIO (enhancing Ca²⁺-activated K⁺ channels) with washout.',
+        result: 'Control trains adapt; with Cd²⁺ firing stays regular throughout the step; 1-EBIO enlarges afterhyperpolarisation currents and cuts the train to about one spike, reversing on wash.',
+        inference: 'Loss- and gain-of-function point the same way: Ca²⁺ entry acting on Ca²⁺-activated K⁺ channels generates adaptation. Cd²⁺ blocks all voltage-gated Ca²⁺ channels, so it identifies the trigger, not a specific Ca²⁺ channel subtype.'
+      }
+    ],
+    traps: [
+      'Hyperpolarisation is not simply inhibitory: by removing inactivation it can leave a neuron more excitable afterwards (Na⁺ and T-type recovery, giving a rebound burst) or slower to fire (A-type recovery, giving a first-spike delay).',
+      'Not all K⁺ channels lack inactivation: delayed rectifiers stay open, but A-type channels inactivate and need hyperpolarisation to recover.',
+      'The A-type delay appears from about −75 mV, not from −55 mV, where the channels are already largely inactivated.',
+      'Cd²⁺ abolishes adaptation by removing the Ca²⁺ trigger; Ca²⁺-activated K⁺ channels are gated by Ca²⁺, not by voltage, and Cd²⁺ is not a K⁺ channel blocker.',
+      'Glutamate alone at rest gives little NMDA current: glycine is also required and Mg²⁺ blocks until depolarisation; zinc inhibits at a separate site, and its neuroprotective role is only a question on the slide.',
+      'Metabotropic signalling is not always a cytoplasmic cascade: some GPCRs gate channels directly through the G-protein.'
+    ],
+    recall: [
+      [
+        'What two conditions open an NMDA receptor, and what makes it voltage-dependent?',
+        'Glutamate plus glycine binding, and depolarisation to expel the Mg²⁺ that blocks the pore at rest; the open channel admits Ca²⁺ that supports plasticity.'
+      ],
+      [
+        'Roughly what fraction of Na⁺ channels is available at −65 mV, and how does hyperpolarisation change it?',
+        'About 60%; a 40 mV hyperpolarisation makes nearly all available (about 1.7 times the resting pool), which underlies post-inhibitory rebound.'
+      ],
+      [
+        'What do TTX and TEA each reveal under voltage clamp?',
+        'TTX blocks Na⁺ channels and leaves the sustained delayed outward K⁺ current; TEA blocks K⁺ channels and leaves the transient, self-inactivating inward Na⁺ current.'
+      ],
+      [
+        'How do A-type K⁺ channels lengthen the interspike interval?',
+        'They are inactivated at about −50 mV and above, recover during the afterhyperpolarisation, then pass a transient outward current that slows the next climb to threshold.'
+      ],
+      [
+        'What abolishes and what exaggerates firing-rate adaptation?',
+        'Blocking Ca²⁺ entry with Cd²⁺ abolishes it; 1-EBIO, which enhances Ca²⁺-activated K⁺ channels, exaggerates it to about one spike.'
+      ],
+      [
+        'How does a metabotropic receptor produce a slow EPSP?',
+        'ACh acting on a metabotropic receptor signals through a G-protein and messengers to M-type K⁺ channels, giving a slow, long-lasting EPSP alongside the fast ionotropic one.'
+      ]
+    ],
+    download: '../resources/lectures/L08_Membrane_Mechanisms.md',
+    references: [
+      ['Hodgkin & Huxley (1952) — prior membrane potential sets how much sodium conductance is available in the squid giant axon', 'https://pubmed.ncbi.nlm.nih.gov/14946715/'],
+      [
+        'Westbrook & Mayer (1987) — micromolar zinc non-competitively antagonises NMDA responses of cultured mouse hippocampal neurons at a site distinct from Mg²⁺',
+        'https://pubmed.ncbi.nlm.nih.gov/3039375/'
+      ],
+      [
+        'Horning & Trombley (2001) — zinc and copper inhibit voltage-gated Ca²⁺ currents and alter repetitive firing in rat olfactory bulb neurons',
+        'https://pubmed.ncbi.nlm.nih.gov/11600628/'
+      ],
+      ['Stocker (2004) — SK-type Ca²⁺-activated K⁺ channels generate afterhyperpolarisations that regulate neuronal firing', 'https://pubmed.ncbi.nlm.nih.gov/15378036/'],
+      [
+        'Brown & Adams (1980) — muscarinic receptors suppress the M-type K⁺ current in frog sympathetic neurons, the basis of slow cholinergic excitation',
+        'https://pubmed.ncbi.nlm.nih.gov/6965523/'
+      ]
+    ]
+  },
+  {
+    id: 9,
+    title: 'Quantal Transmission',
+    date: '10 August 2026',
+    lecturer: 'Beros',
+    scope: 'Released Lecture 9 slide PDF condensed into an exam-safe mechanism brief covering calcium-triggered release, the NMJ as the model synapse, MEPPs and the quantal hypothesis, vesicles as quanta, and quantal analysis (p, n, q, m) with its CNS limits. Built from all 25 slides without the recording; all evidence comes from frog, squid and mouse preparations, several slides are figure-only, and the deck contains no electrical-synapse content.',
+    outcomes: [
+      'Explain how Katz and Miledi\'s squid giant-synapse experiments and presynaptic voltage clamp show that depolarisation-driven Ca²⁺ entry, not the action potential\'s Na⁺ and K⁺ currents, triggers transmitter release.',
+      'Describe why the NMJ is the preparation of choice, the sequence from motor-neuron spike to muscle action potential, and the alignment of active-zone Ca²⁺ channels with postsynaptic ACh receptors.',
+      'Explain how spontaneous MEPPs and low-Ca²⁺ evoked responses (failures, units and integer multiples) establish quantal release, and how electron microscopy and freeze-fracture identify the quantum with one vesicle.',
+      'Define p, n, q and m, calculate mean quantal content as mean EPP divided by mean MEPP, and read quantal size and quantal number from an amplitude histogram.',
+      'Evaluate the limits of quantal analysis: why N is ill-defined, why q is hard to measure in the CNS, what sets MEPP size, and how the CLC-3 knockout shows a presynaptic cause of smaller minis.'
+    ],
+    chains: [
+      {
+        name: 'Calcium trigger for release',
+        steps: [
+          'Presynaptic depolarisation, by a spike or by injected current with Na⁺ channels blocked',
+          'voltage-gated Ca²⁺ channels open at active zones',
+          'inward Ca²⁺ current grows with depolarisation',
+          'more vesicles fuse per stimulus',
+          'postsynaptic potential grows with presynaptic Ca²⁺ current'
+        ]
+      },
+      {
+        name: 'NMJ transmission',
+        steps: [
+          'Motor-neuron action potential invades the terminal',
+          'Ca²⁺ enters at active zones aligned with ACh receptors',
+          'many ACh vesicles fuse, so the EPP is multi-quantal',
+          'ACh opens non-selective cation channels and depolarises the end plate',
+          'muscle Na⁺ channels fire an action potential while acetylcholinesterase ends the signal'
+        ]
+      },
+      {
+        name: 'One vesicle to one MEPP',
+        steps: [
+          'A single vesicle fuses spontaneously and at random',
+          'about 5,000 ACh molecules are released',
+          'about 2,000 receptor-channels open',
+          'one MEPP of about 0.5 mV, the quantal size q',
+          'q varies with vesicle content, transmitter clearance and receptor number'
+        ]
+      },
+      {
+        name: 'Quantal analysis',
+        steps: [
+          'Lower Ca²⁺ and raise Mg²⁺ to reduce release probability',
+          'failures, unit responses and integer multiples appear',
+          'plot an amplitude histogram and fit its peaks',
+          'read q from the first-peak position, peak spacing or mean MEPP',
+          'm = mean EPP ÷ mean MEPP; p comes from the model and N needs anatomy'
+        ]
+      }
+    ],
+    distinctions: [
+      ['MEPP versus EPP', 'One spontaneously released quantum versus the evoked sum of many quanta', 'A MEPP measures q; the mean EPP divided by the mean MEPP gives m'],
+      [
+        'q (quantal size)',
+        'Postsynaptic response to one quantum, usually in mV',
+        'Set by vesicle content, transmitter clearance and receptor number; bath Ca²⁺ and Mg²⁺ should not change it'
+      ],
+      ['m (mean quantal content)', 'Average number of quanta released per stimulus', 'Calculated as mean EPP ÷ mean MEPP; falls when Ca²⁺ is lowered'],
+      ['p versus n', 'Release probability versus number of quanta available for release', 'Failure probability is 1 − p for one site but (1 − p)ⁿ for n independent sites'],
+      ['Failures', 'Stimuli that release no quanta', 'Their presence confirms Ca²⁺ is low enough to resolve single quanta'],
+      ['Low-Ca²⁺ / high-Mg²⁺ saline', 'Reduces presynaptic Ca²⁺ entry and release probability', 'Keeps EPPs subthreshold so quanta are visible; it changes m, not q'],
+      [
+        'Active-zone Ca²⁺ channels',
+        'Presynaptic rows aligned opposite postsynaptic ACh receptors on junctional folds',
+        'Places Ca²⁺ entry at the fusion site; the postsynaptic partners are ACh receptors, not Ca²⁺ receptors'
+      ],
+      [
+        'Readily releasable versus reserve pool',
+        'Docked vesicles available now versus a stored supply',
+        'Explains why n is smaller than the total vesicle count and why N is hard to define'
+      ],
+      [
+        'Smaller mIPSCs in Clcn3⁻/⁻ mice',
+        'Loss of presynaptic CLC-3 impairs vesicle acidification and GABA loading',
+        'A fall in mini amplitude can be presynaptic, so amplitude alone does not locate the change'
+      ],
+      [
+        'NMJ versus CNS quantal analysis',
+        'One input, transmitter and receptor type versus small multi-input synapses with dendritic attenuation',
+        'q is reliable at the NMJ but uncertain centrally'
+      ]
+    ],
+    experiments: [
+      {
+        name: 'Release without spikes (Katz and Miledi)',
+        design: 'Block action potentials at the squid giant synapse, then depolarise the presynaptic terminal directly with current pulses while recording postsynaptically.',
+        result: 'Matched depolarising pulses still evoke normal postsynaptic potentials, and the response grows steeply with presynaptic depolarisation.',
+        inference: 'Release is triggered by depolarisation and the Ca²⁺ entry it allows, not by the Na⁺ and K⁺ currents of the spike; shown at an invertebrate synapse.'
+      },
+      {
+        name: 'Quantal components of the EPP (del Castillo and Katz)',
+        design: 'Stimulate the motor nerve repeatedly at a frog NMJ in low-Ca²⁺, high-Mg²⁺ saline and compare evoked EPP amplitudes with spontaneous MEPPs.',
+        result: 'Responses fall into failures, unit events the size of a MEPP, and integer multiples of that unit, never fractions.',
+        inference: 'Transmitter is released in fixed quanta, a MEPP is one quantum and a normal EPP is a sum of quanta; the amplitude histogram then yields q and m.'
+      },
+      {
+        name: 'CLC-3 knockout and inhibitory minis (Riazanski et al.)',
+        design: 'Record miniature IPSCs in hippocampal slices from Clcn3⁻/⁻ and wild-type mice before neurodegeneration, and test chloride-dependent vesicle acidification.',
+        result: 'mIPSC amplitude and frequency both fall; CLC-3 co-localises with the vesicular GABA transporter and is needed for Cl⁻-driven vesicle acidification.',
+        inference: 'Vesicle filling sets inhibitory quantal size, so smaller minis can have a presynaptic cause; the knockout is global and the mechanism is inferred in mice.'
+      }
+    ],
+    traps: [
+      'Lowering Ca²⁺ reduces how many quanta are released (p and m), not the size of each quantum; histogram peaks keep their spacing.',
+      'A MEPP is not a single channel opening: one quantum releases about 5,000 ACh molecules and opens about 2,000 channels.',
+      'Release does not need the action potential\'s Na⁺ and K⁺ currents; depolarisation with Ca²⁺ entry is sufficient.',
+      'Smaller minis are not automatically postsynaptic: under-filled vesicles in CLC-3 knockout mice shrink mIPSCs from the presynaptic side.',
+      'Failure probability equals 1 − p only for a single release site, and neither m nor n is the total vesicle count in the terminal.',
+      'All quantal evidence in the deck comes from frog, squid and mouse preparations, and NMJ methods do not transfer cleanly to small, dendritically filtered CNS synapses.'
+    ],
+    recall: [
+      [
+        'What did Katz and Miledi conclude about transmitter release at the squid giant synapse?',
+        'Release depends on presynaptic depolarisation and does not need the Na⁺ and K⁺ channels of the action potential; depolarising the terminal directly still evokes release.'
+      ],
+      [
+        'What three kinds of evoked response appear at a low-Ca²⁺ NMJ, and what do they show?',
+        'Failures, unit responses the size of a MEPP, and integer multiples of it; transmitter is released in fixed quanta and an EPP is a sum of quanta.'
+      ],
+      ['How is mean quantal content calculated?', 'm = mean evoked EPP ÷ mean MEPP amplitude, the average number of quanta released per stimulus.'],
+      ['Name three ways to read q from an amplitude histogram.', 'The mean spontaneous MEPP amplitude, the position of the first peak, or the spacing between successive peaks.'],
+      [
+        'What evidence identifies the quantum with a vesicle?',
+        'Electron microscopy shows vesicles clustered at active zones, and freeze-fracture after stimulation captures vesicle fusions whose number rises with quantal output.'
+      ],
+      [
+        'Why is quantal analysis harder in the CNS than at the NMJ?',
+        'Synaptic potentials decay along dendrites, synapses are small and receive many inputs that are hard to stimulate separately, and one cell can use several transmitters and receptors.'
+      ]
+    ],
+    download: '../resources/lectures/L09_Quantal_Transmission.md',
+    references: [
+      ['Fatt & Katz (1952) — spontaneous miniature end-plate potentials at the frog NMJ', 'https://pubmed.ncbi.nlm.nih.gov/14946732/'],
+      ['del Castillo & Katz (1954) — the end-plate potential is built from quantal components', 'https://pubmed.ncbi.nlm.nih.gov/13175199/'],
+      ['Katz & Miledi (1967) — presynaptic depolarisation evokes release after spikes are blocked', 'https://pubmed.ncbi.nlm.nih.gov/4383089/'],
+      ['Heuser et al. (1979) — quick-freezing captures vesicle exocytosis matched to quantal release', 'https://pubmed.ncbi.nlm.nih.gov/38256/'],
+      ['Riazanski et al. (2011) — presynaptic CLC-3 sets the quantal size of hippocampal inhibition', 'https://pubmed.ncbi.nlm.nih.gov/21378974/']
+    ]
+  },
+  {
+    id: 10,
+    title: 'Neurotransmitter Release',
+    date: '11 August 2026',
+    lecturer: 'Beros',
+    scope: 'Released Lecture 10 slide PDF condensed into an exam-safe mechanism brief covering active zones, how release is measured, vesicle pools, the SNARE–synaptotagmin–Munc fusion cycle, botulinum toxin, membrane retrieval modes and ribbon-synapse specialisation. It is built from all 23 slides without the recording. The deck is largely schematic, so the experiments come from cited or supporting primary papers. Loosely worded slide claims, such as capacitance rising on docking and vesicles being made in lysosomes, are flagged.',
+    outcomes: [
+      'Explain why active zones place release-ready vesicles beside dense Ca²⁺ channels, how the NMJ aligns them with ACh receptors, and how CNS boutons differ.',
+      'Interpret capacitance, fluorescent-dye and electrochemical measurements of release, including why capacitance rises on fusion, falls on retrieval and reports only net membrane area.',
+      'Trace the vesicle cycle through soma-made components, filling, synapsin tethering in the reserve pool, Ca²⁺/CaMKII-driven recruitment to the readily releasable pool, and tethering, docking and priming.',
+      'Explain how synaptobrevin, syntaxin and SNAP-25 zipper to fuse membranes. Explain how synaptotagmin, complexin, Munc18 and Munc13 control timing and priming, how NSF/α-SNAP reset the SNAREs, and how botulinum toxin breaks the cycle.',
+      'Compare full-collapse fusion, kiss-and-run and bulk endocytosis with clathrin–dynamin retrieval, and explain how ribbon synapses that differ in Ca²⁺ handling let one hair cell drive afferents with different thresholds.'
+    ],
+    chains: [
+      {
+        name: 'Calcium-triggered fast release',
+        steps: [
+          'Action potential invades the terminal',
+          'voltage-gated Ca²⁺ channels at the active zone open',
+          'local Ca²⁺ binds the synaptotagmin C2 domains',
+          'primed trans-SNARE complexes complete zippering',
+          'the membranes hemifuse and a fusion pore opens',
+          'transmitter enters the cleft as capacitance rises'
+        ]
+      },
+      {
+        name: 'Reserve pool to readily releasable pool',
+        steps: [
+          'High-frequency firing raises terminal Ca²⁺',
+          'CaMKII (with PKC) is activated',
+          'synapsin is phosphorylated and releases vesicles from actin',
+          'freed vesicles move to the active zone',
+          'tethering, docking and Munc13/Munc18-assisted priming refill the RRP'
+        ]
+      },
+      {
+        name: 'SNARE assembly and reset',
+        steps: [
+          'Munc18 holds syntaxin',
+          'Munc13 and SNAP-25 allow assembly with synaptobrevin into a trans-SNARE complex',
+          'zippering forces the membranes to about 1 nm and they fuse',
+          'the complex relaxes into a force-free cis-SNARE complex in one membrane',
+          'α-SNAP recruits NSF, which uses ATP to separate the SNAREs for reuse'
+        ]
+      },
+      {
+        name: 'Membrane retrieval after full collapse',
+        steps: [
+          'Vesicle membrane merges into the plasma membrane',
+          'adaptors recruit clathrin triskelia that curve the membrane',
+          'dynamin pinches the neck',
+          'Hsc70 and auxilin remove the coat',
+          'the vesicle is refilled and rejoins the pools as capacitance falls back (τ ≈ 10–50 s)'
+        ]
+      }
+    ],
+    distinctions: [
+      [
+        'Synaptobrevin (VAMP)',
+        'v-SNARE on the vesicle',
+        'One of the four core-complex helices; botulinum B, D, F and G cleave it, which blocks release (tetanus toxin also cleaves it: context beyond the slides)'
+      ],
+      ['Syntaxin and SNAP-25', 't-SNAREs on the plasma membrane', 'Botulinum A, C and E cut SNAP-25, and C also cuts syntaxin; losing any SNARE stops evoked fusion'],
+      [
+        'Synaptotagmin',
+        'Ca²⁺ sensor with C2A and C2B domains that engages SNAREs and lipids',
+        'It times fast release; knockout spares slow and spontaneous fusion, so it is the trigger rather than the engine'
+      ],
+      [
+        'Trans- vs cis-SNARE complex',
+        'Spans both membranes before fusion vs lies in one membrane after it',
+        'Trans complexes exert the inward force that fuses membranes; cis complexes exert none and must be recycled'
+      ],
+      [
+        'Munc18 vs Munc13',
+        'Munc18 binds syntaxin; Munc13 primes docked vesicles',
+        'Both act on SNARE assembly before Ca²⁺ arrives, close to Ca²⁺ channels; Munc13 converts docked vesicles into release-ready ones'
+      ],
+      [
+        'NSF and α-SNAP',
+        'ATP-driven disassembly of cis-SNARE complexes',
+        'They reset SNAREs after fusion; blocking them lets already primed vesicles fuse, but release then fails'
+      ],
+      ['Synapsin I', 'Tethers reserve-pool vesicles to actin', 'Phosphorylation by CaMKII frees vesicles, so recruitment scales with activity; synapsin is not the fusion trigger'],
+      [
+        'Reserve pool vs readily releasable pool',
+        'Tethered back-up vesicles vs docked, primed vesicles at the active zone',
+        'The RRP supplies quanta for single spikes; the reserve pool sustains release during high-frequency trains'
+      ],
+      [
+        'Full collapse vs kiss-and-run vs bulk endocytosis',
+        'Full merger then retrieval; transient pore; large infolding after heavy release',
+        'The modes coexist; kiss-and-run is fast but may release incompletely, and how common it is remains debated'
+      ],
+      [
+        'Low- vs high-threshold ribbons',
+        'More vs fewer Ca²⁺ channels at an inner-hair-cell active zone (slide model)',
+        'One receptor potential drives fibres for soft and for loud sounds; Ca²⁺-channel voltage dependence and fusion mode also contribute'
+      ]
+    ],
+    experiments: [
+      {
+        name: 'Capacitance steps during secretion (Fernandez, Neher & Gomperts)',
+        design: 'Record whole-cell membrane capacitance in rat mast cells while GTPγS and Mg-ATP in the patch pipette trigger degranulation.',
+        result: 'Capacitance rises in discrete steps, each consistent with one secretory granule fusing with the plasma membrane, while membrane conductance stays low.',
+        inference: 'Capacitance gives a real-time readout of membrane area added by exocytosis. These cells secreted without Ca²⁺ entry, so the steps report fusion rather than its trigger. Single small synaptic vesicles (about 0.05 fF each) are far harder to resolve.'
+      },
+      {
+        name: 'Clostridial toxins cleave synaptobrevin (Schiavo et al.)',
+        design: 'Test tetanus and botulinum B light chains for protease activity on synaptic-vesicle proteins, and inject the toxins into Aplysia neurons with or without peptides containing the cleavage site.',
+        result: 'The light chains are zinc endopeptidases that cut synaptobrevin-2 at a single bond. Transmitter release is blocked, and cleavage-site peptides delay the block.',
+        inference: 'Intact synaptobrevin is necessary for release, which explains toxin paralysis. This is loss-of-function evidence from biochemistry and invertebrate neurons.'
+      },
+      {
+        name: 'Synaptotagmin I knockout and Ca²⁺-affinity mutant (Geppert et al.; Fernández-Chacón et al.)',
+        design: 'Delete synaptotagmin I in mice and record from cultured hippocampal neurons; separately, knock in a point mutation that halves its Ca²⁺ affinity.',
+        result: 'The knockout strongly reduces fast synchronous release, while asynchronous, spontaneous and hypertonic-sucrose release persist. The affinity mutant halves the Ca²⁺ sensitivity of release without changing spontaneous release or RRP size.',
+        inference: 'Synaptotagmin I is the main fast Ca²⁺ sensor: Ca²⁺ binding to it sets the timing and sensitivity of release, while the SNARE fusion machinery works without it. These are mouse culture data.'
+      }
+    ],
+    traps: [
+      'Capacitance rises when a vesicle fuses, not when it docks: docking adds no membrane area, whatever the slide\'s wording.',
+      'Synaptotagmin is the Ca²⁺ trigger and SNARE zippering supplies the fusion force. NSF and α-SNAP use ATP to take SNAREs apart after fusion; they do not drive it.',
+      'Botulinum toxin cleaves presynaptic SNAREs downstream of Ca²⁺ entry. It does not block Ca²⁺ channels or ACh receptors, and each serotype has its own target.',
+      'Synapsin phosphorylation recruits reserve vesicles over many spikes; it is not the sub-millisecond trigger of fusion.',
+      'Kiss-and-run recycles faster but may not empty the vesicle, and how common it is remains debated; do not present it as simply more efficient.',
+      'Capacitance, dyes and probes show that release occurred. Showing that a protein is necessary needs a perturbation such as a toxin, knockout or mutation, mostly in rodent and invertebrate preparations.'
+    ],
+    recall: [
+      ['Which SNARE is on the vesicle, and which two are on the plasma membrane?', 'Synaptobrevin (VAMP) is the v-SNARE; syntaxin and SNAP-25 are the t-SNAREs.'],
+      [
+        'How does Ca²⁺ recruit reserve-pool vesicles?',
+        'Ca²⁺ activates CaMKII (with PKC), which phosphorylates synapsin and frees vesicles from actin so they can move to the active zone.'
+      ],
+      [
+        'What do Munc18 and Munc13 contribute to release?',
+        'Munc18 binds syntaxin, stabilising or opening it for SNARE assembly. Munc13 converts docked vesicles to a primed state close to Ca²⁺ channels.'
+      ],
+      ['What do NSF and α-SNAP do, and what powers them?', 'Powered by ATP, they pull cis-SNARE complexes apart after fusion so the SNAREs can be reused.'],
+      [
+        'What are the steps of clathrin-mediated vesicle retrieval?',
+        'Adaptors recruit clathrin triskelia that curve the membrane, dynamin pinches the neck, Hsc70 and auxilin remove the coat, and the vesicle is refilled.'
+      ],
+      [
+        'How can one hair cell drive both low- and high-threshold afferent fibres?',
+        'Its ribbons differ. Those with more Ca²⁺ channels release at smaller depolarisations and those with fewer need more, and fusion modes may also differ, so separate fibres cover soft and loud sounds.'
+      ]
+    ],
+    download: '../resources/lectures/L10_Neurotransmitter_Release.md',
+    references: [
+      ['Fernandez et al. (1984) — capacitance rises in discrete steps as single secretory granules fuse in mast cells', 'https://pubmed.ncbi.nlm.nih.gov/6504157/'],
+      ['Schiavo et al. (1992) — tetanus and botulinum B light chains block release by cleaving synaptobrevin', 'https://pubmed.ncbi.nlm.nih.gov/1331807/'],
+      ['Geppert et al. (1994) — synaptotagmin I knockout strongly reduces fast synchronous but not asynchronous release', 'https://pubmed.ncbi.nlm.nih.gov/7954835/'],
+      ['Südhof & Rothman (2009) — SNARE zippering with Munc18 drives fusion while synaptotagmin and complexin time it', 'https://pubmed.ncbi.nlm.nih.gov/19164740/'],
+      ['Ohn et al. (2016) — active zones within one hair cell differ in the voltage dependence of Ca²⁺ influx', 'https://pubmed.ncbi.nlm.nih.gov/27462107/']
+    ]
+  },
+  {
+    id: 11,
+    title: 'Synaptic Plasticity, Learning and Memory',
+    date: '18 August 2026',
+    lecturer: 'Tang',
+    scope: 'Released Lecture 11 slide PDF condensed into an exam-safe mechanism brief covering Hebbian plasticity, electrophysiological readouts of synaptic strength, LTP and LTD and their NMDA/AMPA-receptor mechanisms, cortical ensembles, spike timing, the sliding modification threshold and metaplasticity. Built from all 23 slides without the recording; every experiment shown is animal work (rabbit, rat and mouse), the BCM model is theory, and several figure panels lack on-slide protocol or species labels.',
+    outcomes: [
+      'State Hebb\'s postulate, explain why its wording is causal rather than merely about simultaneity, and give its slide implications: high-frequency activity strengthens synapses and low-frequency activity weakens them.',
+      'Compare patch-clamp (single-cell) and field-potential (network) readouts of synaptic strength, calculate percentage change from baseline, and separate short-term plasticity (milliseconds to minutes) from long-term plasticity (more than 30 min).',
+      'Explain LTP and LTD as induction through NMDA receptors followed by expression through changes in synaptic AMPA-receptor number, and interpret the D-APV versus MK-801 LTD result.',
+      'Describe neuronal ensembles and how repeated two-photon optogenetic co-activation imprinted a recallable ensemble in mouse visual cortex, including what that experiment did not measure.',
+      'Explain how anti-Hebbian plasticity, spike-timing-dependent plasticity, the BCM sliding threshold and metaplasticity keep plasticity balanced and prevent saturation or excitotoxicity.'
+    ],
+    chains: [
+      {
+        name: 'Hebbian LTP at a glutamatergic synapse',
+        steps: [
+          'High-frequency presynaptic activity drives the postsynaptic cell',
+          'glutamate plus strong depolarisation activate NMDA receptors',
+          'calcium entry engages phosphorylation, AMPA-receptor trafficking, cytoskeletal change and local protein synthesis',
+          'more AMPA receptors are inserted at the postsynaptic density',
+          'a larger EPSC and steeper fEPSP lasting more than 30 min'
+        ]
+      },
+      {
+        name: 'LTD by low-frequency stimulation',
+        steps: [
+          'Prolonged low-frequency presynaptic input',
+          'weaker NMDA-receptor engagement (in one study glutamate binding alone sufficed; this is contested)',
+          'AMPA receptors are removed from the synapse',
+          'a smaller postsynaptic response lasting more than 30 min'
+        ]
+      },
+      {
+        name: 'Imprinting an ensemble (mouse visual cortex)',
+        steps: [
+          'Repeated simultaneous two-photon photostimulation of a chosen group of neurons',
+          'connections among the co-active cells are inferred to strengthen',
+          'the group recurs spontaneously as a new ensemble',
+          'stimulating one member recalls the whole group (pattern completion)'
+        ]
+      },
+      {
+        name: 'Keeping plasticity in range',
+        steps: [
+          'Prior activity or priming signals such as transmitters, paracrine factors and hormones',
+          'the synapse\'s state changes for minutes to days, often with baseline transmission unchanged',
+          'the modification threshold θM slides up after high activity and down after low activity',
+          'the same later stimulus yields more LTD or more LTP',
+          'weights stay modifiable while saturation and excitotoxicity are avoided'
+        ]
+      }
+    ],
+    distinctions: [
+      [
+        'Hebb\'s postulate',
+        'Cell A repeatedly takes part in firing cell B, so A\'s efficacy at firing B rises',
+        'The wording is causal, so order matters; "fire together, wire together" is a slogan, not the full rule'
+      ],
+      [
+        'Patch-clamp recording',
+        'Single-cell resolution of one identified connection',
+        'Change in postsynaptic response amplitude measures strength; the slide example is a current trace in pA'
+      ],
+      [
+        'Field-potential recording',
+        'Network resolution: summed response of a population, e.g. CA3 input onto CA1',
+        'Amplitude and slope track strength but cannot by themselves separate presynaptic, postsynaptic and excitability changes'
+      ],
+      [
+        'Short-term versus long-term plasticity',
+        'Milliseconds to minutes versus more than 30 min',
+        'Duration, not direction, defines the class; potentiation and depression occur on both time scales'
+      ],
+      ['NMDA receptor', 'Induction trigger for synaptic plasticity', 'Blockers prevent induction; the receptor does not itself set the expressed synaptic strength'],
+      ['AMPA receptor', 'Expression: number and density at the synapse set strength', 'Insertion or removal follows induction; it is the readout, not the trigger'],
+      [
+        'D-APV versus MK-801',
+        'Glutamate-site antagonist versus open-channel blocker of the NMDA receptor',
+        'In the slide panels D-APV blocked LTD and MK-801 did not, pointing to ligand binding over ion flux; contested in mouse CA1'
+      ],
+      [
+        'Hebbian versus anti-Hebbian plasticity',
+        'Synapse strengthens versus weakens when the presynaptic cell drives the postsynaptic cell',
+        'The sign of the rule is synapse-specific; causal firing does not guarantee potentiation'
+      ],
+      [
+        'Spike-timing-dependent plasticity',
+        'Pre-before-post potentiates and post-before-pre depresses within about ±40 ms',
+        'Spike order sets the sign, and the rules vary with synapse location on the dendrite'
+      ],
+      [
+        'BCM sliding threshold versus metaplasticity',
+        'θM shifts with prior postsynaptic activity; priming alters the capacity for later plasticity',
+        'BCM is one formal model of metaplasticity; neither requires a change in baseline synaptic strength'
+      ]
+    ],
+    experiments: [
+      {
+        name: 'Discovery of LTP (Bliss and Lømo)',
+        design: 'Stimulate the perforant path in anaesthetised rabbits with brief high-frequency conditioning trains and record population responses in the dentate area, with an unconditioned pathway as control.',
+        result: 'The population EPSP and population spike grew and spike latency shortened for hours; repeated trains stepped potentiation up to a plateau near 300%, while the control pathway stayed near baseline.',
+        inference: 'High-frequency activity produces long-lasting, saturable, pathway-specific potentiation, the first description of LTP. Population measures mix synaptic efficacy with granule-cell excitability.'
+      },
+      {
+        name: 'Ligand binding versus ion flux in LTD (Nabavi et al.)',
+        design: 'In rat hippocampal slices, deliver an LTD-inducing stimulus in D-APV, which competes at the NMDA-receptor glutamate site, or in MK-801, which blocks the open channel, and compare with 100 Hz LTP without drug.',
+        result: 'In D-APV only a transient depression occurred and the response returned to baseline, whereas a lasting depression persisted in MK-801.',
+        inference: 'Glutamate binding to NMDA receptors, rather than ion flow through the channel, may be enough to trigger this LTD. A later mouse CA1 study found that MK-801 did block LTD, so the claim is contested.'
+      },
+      {
+        name: 'Imprinting and recalling cortical ensembles (Carrillo-Reid et al.)',
+        design: 'In awake head-fixed mice, repeatedly co-activate a chosen group of visual-cortex neurons with two-photon optogenetics (C1V1) while imaging calcium (GCaMP6s), then test spontaneous activity and single-cell stimulation.',
+        result: 'After training the group recurred spontaneously as an ensemble, and photostimulating one member recalled the ensemble, which had not happened before training.',
+        inference: 'Co-activation is sufficient to build a pattern-completing ensemble, as Hebb predicted. Synaptic strengthening is inferred from activity rather than measured, and no behaviour was tested.'
+      }
+    ],
+    traps: [
+      'Hebb\'s postulate is causal (A takes part in firing B), so close timing alone does not guarantee strengthening; STDP shows that spike order sets the sign.',
+      'A larger field potential is a measurement, not a mechanism: by itself it cannot distinguish more AMPA receptors from more release or greater cell excitability.',
+      'NMDA receptors induce plasticity; inserting or removing AMPA receptors is the expression that follows, not the trigger.',
+      '"NMDA blockers prevent all plasticity" overclaims: in the slide figure D-APV blocked LTD but MK-801 did not.',
+      'High prior activity raises the BCM threshold and makes LTP harder, while low prior activity (dark rearing) lowers it and makes LTP easier. Do not reverse this.',
+      'The ensemble experiment imaged activity in mouse cortex, so synaptic strengthening is inferred; none of the lecture\'s evidence is from humans.'
+    ],
+    recall: [
+      [
+        'What separates short-term from long-term synaptic plasticity on the slides?',
+        'Duration: changes lasting milliseconds to minutes are short-term, and changes lasting more than 30 min are long-term (LTP or LTD).'
+      ],
+      [
+        'Where did Bliss and Lømo stimulate and record, and what changed?',
+        'They stimulated the perforant path and recorded in the dentate area of anaesthetised rabbits. The population EPSP and population spike grew and spike latency shortened for hours, and the potentiation saturated with repeated trains.'
+      ],
+      [
+        'Which glutamate receptor induces NMDA-dependent plasticity, and which expresses it?',
+        'NMDA receptors trigger induction; the change in the number or density of synaptic AMPA receptors expresses the altered strength.'
+      ],
+      [
+        'What did D-APV and MK-801 each do to LTD in the Nabavi panels?',
+        'In D-APV only a transient depression occurred and the response returned to baseline, while a lasting depression persisted in MK-801. This suggests ligand binding rather than ion flux can trigger LTD.'
+      ],
+      [
+        'How was a cortical ensemble imprinted and recalled in 2016?',
+        'Repeated two-photon co-activation of a chosen group of mouse visual-cortex neurons made the group recur spontaneously, and stimulating a single member then recalled the whole ensemble.'
+      ],
+      [
+        'How does previous activity move the BCM threshold, and what did dark rearing show?',
+        'High prior activity shifts θM up, so LTP is harder, and low prior activity shifts it down. Dark-reared cortex switched from LTD to LTP near 2 Hz, versus about 5–10 Hz after light rearing.'
+      ]
+    ],
+    download: '../resources/lectures/L11_Synaptic_Plasticity_Learning_and_Memory.md',
+    references: [
+      [
+        'Bliss and Lømo (1973) — high-frequency perforant-path stimulation produces long-lasting potentiation in the rabbit dentate area',
+        'https://pubmed.ncbi.nlm.nih.gov/4727084/'
+      ],
+      ['Nabavi et al. (2013) — glutamate binding to NMDA receptors without ion flow is sufficient to induce LTD', 'https://pubmed.ncbi.nlm.nih.gov/23431133/'],
+      ['Carrillo-Reid et al. (2016) — two-photon optogenetics imprints cortical ensembles that single-cell stimulation can recall', 'https://pubmed.ncbi.nlm.nih.gov/27516599/'],
+      ['Kirkwood et al. (1996) — visual deprivation shifts the LTD/LTP modification threshold in visual cortex, as BCM predicts', 'https://pubmed.ncbi.nlm.nih.gov/8632826/'],
+      ['Abraham (2008) — metaplasticity: prior activity tunes synapses and networks for later plasticity', 'https://pubmed.ncbi.nlm.nih.gov/18401345/']
+    ]
+  },
+  {
+    id: 12,
+    title: 'Axon Initial Segment (AIS) and Plasticity',
+    date: '19 August 2026',
+    lecturer: 'Tang',
+    scope: 'Released Lecture 12 slide PDF condensed into an exam-safe mechanism brief covering AIS structure, NaV subtypes, axon-carrying dendrites, and activity-dependent AIS plasticity in culture, in development, in young adulthood and alongside NMDA-receptor LTD. Built from all 25 slides without the recording. The plasticity evidence comes from rodent culture, chick embryos and mice, and values read from graphs are approximate.',
+    outcomes: [
+      'Describe AIS structure and function: integration and spike initiation, 5–50-fold NaV and about tenfold Kv1 enrichment, the ankyrin-G/βIV-spectrin scaffold, the polarity barrier and axo-axonic input.',
+      'Explain how distal NaV1.6 (lower threshold, initiation) and proximal NaV1.2 (backpropagation) divide labour. Explain why axon-carrying dendrites give privileged access to spike initiation, and state how their frequency differs between rodents and primates (the slides report this difference but do not explain it).',
+      'Explain how chronic depolarisation moves the AIS away from the soma through L- and T-type Ca²⁺ channels without needing spikes, and why burst patterns succeed where unpatterned stimulation fails.',
+      'Describe AIS plasticity in development (chick) and in young adults (mouse barrel cortex), including which features depend on activity and how the timescales of deprivation and enrichment differ.',
+      'Explain the evidence that NMDA-receptor activation links LTD to AIS shortening and to a rise in voltage threshold of about 0.5 mV per µm.'
+    ],
+    chains: [
+      {
+        name: 'Homeostatic AIS relocation (culture)',
+        steps: [
+          'Chronic depolarisation (+15 mM K⁺ for 48 h) or 1 Hz optogenetic bursts',
+          'L- and T-type Ca²⁺ channels open; NaV spiking is not required',
+          'ankyrin-G scaffold and channels shift about 5–7 µm distally with length unchanged',
+          'current threshold rises (about 310 → 410 pA)',
+          'firing is pushed back toward its set point; normal medium reverses the shift'
+        ]
+      },
+      {
+        name: 'Tonotopic refinement (chick nucleus magnocellularis)',
+        steps: [
+          'Afferent input arrives and hearing begins (about E10–E14)',
+          'AIS shortens from about 50 µm in all regions (much of this persists after otocyst removal), and afferent input adds extra shortening in high-frequency cells',
+          'low-frequency cells keep a longer AIS (about 25 vs 20 µm after hatching)',
+          'in parallel, NaV channels accumulate and NaV1.2 gives way to NaV1.6',
+          'otocyst removal abolishes the length difference but spares the channel changes'
+        ]
+      },
+      {
+        name: 'Sensory drive sets AIS length (mouse barrel cortex)',
+        steps: [
+          'Weeks of whisker trimming lower sensory input',
+          'AIS lengthens (regrowth reverses this in juveniles) and can still be lengthened after P100',
+          'novel enrichment raises input within an hour (c-Fos up)',
+          'AIS shortens at 1–3 h and current threshold rises',
+          'novelty fades and AIS length returns to baseline by 6 h'
+        ]
+      },
+      {
+        name: 'NMDA receptors couple LTD to the AIS (mouse slices)',
+        steps: [
+          'Bath NMDA activates NMDA receptors',
+          'Schaffer-collateral EPSCs depress by about 30%',
+          'CA1 AIS shortens over 30–60 min, and APV blocks this',
+          'voltage threshold rises about 0.5 mV per µm of AIS lost',
+          'synaptic input and spike output gain are both reduced'
+        ]
+      }
+    ],
+    distinctions: [
+      [
+        'Ankyrin-G and βIV-spectrin',
+        'Scaffold that anchors NaV and Kv7 channels and links them to actin',
+        'The standard AIS marker; \'AIS plasticity\' is quantified as the measured position and length of ankyrin-G'
+      ],
+      [
+        'NaV1.6',
+        'Distal AIS, lower activation threshold, main role in spike initiation',
+        'Distal placement and a low threshold make it the initiation channel; it replaces NaV1.2 during chick development'
+      ],
+      ['NaV1.2', 'Proximal AIS, important for backpropagation into soma and dendrites', 'Not the main initiator; its proximal position serves the backward-propagating spike'],
+      [
+        'Axon-carrying dendrite (AcD)',
+        'Axon arises from a basal dendrite rather than the soma',
+        'Input on that dendrite avoids somatic inhibition and reaches threshold more easily; common in rodent CA1 but rare in primate grey matter'
+      ],
+      [
+        'L- and T-type Ca²⁺ channels',
+        'Activity sensors for depolarisation-induced AIS relocation',
+        'Nifedipine, mibefradil and Ni²⁺ block the shift; TTX, SNX, agatoxin and conotoxin do not'
+      ],
+      [
+        'AIS position versus AIS length',
+        'Depolarisation in culture moves the AIS without changing its length; the in vivo and NMDA effects change length',
+        'Say which parameter changed before predicting excitability'
+      ],
+      [
+        'Current threshold versus voltage threshold',
+        'Injected current needed to fire versus membrane voltage at spike onset',
+        'Enrichment raised current threshold with voltage threshold unchanged; NMDA raised voltage threshold'
+      ],
+      ['c-Fos', 'Immediate-early gene product used as an activity readout', 'Tracks the enrichment time course but is not shown to cause AIS shortening'],
+      [
+        'NMDA-bath LTD versus electrical LTD',
+        'Chemical NMDA-receptor activation versus classical stimulation-induced LTD',
+        'Only the NMDA bath shortened the AIS, and firing alone also failed, so synaptic depression by itself is not sufficient'
+      ]
+    ],
+    experiments: [
+      {
+        name: 'High-K⁺ relocation and blocker panel (Grubb & Burrone)',
+        design: 'Hold cultured hippocampal neurons in +15 mM K⁺ for 48 h with or without channel blockers, image where ankyrin-G starts, peaks and ends, and measure current threshold. Separately, drive ChR2-expressing neurons with different light patterns.',
+        result: 'The AIS shifts about 5–7 µm distally with its length unchanged, and the shift reverses in normal medium; current threshold rises. L/T-type Ca²⁺ blockers prevent the shift but TTX does not, and only 1 Hz bursts move the AIS, not 0.2 Hz or unpatterned 1 Hz light.',
+        inference: 'Depolarisation sensed through L- and T-type Ca²⁺ channels sets AIS position in a pattern-sensitive, reversible way consistent with homeostasis. These are culture data, and the link to threshold is correlational.'
+      },
+      {
+        name: 'Deprivation and enrichment in barrel cortex (Jamann et al.)',
+        design: 'Trim whiskers daily from birth, with regrowth and adult (>P100) groups; or trim one whisker pad and place P28 mice in a novel enriched cage for 1–6 h. Measure AIS length, c-Fos, and current and voltage threshold.',
+        result: 'Long deprivation lengthens the AIS; whisker regrowth reverses this in juveniles, and 16 days of trimming still lengthens it after P100 (reversal was not tested at that age). Enrichment shortens it at 1–3 h while c-Fos peaks, it recovers by 6 h, and enrichment raises current threshold but not voltage threshold.',
+        inference: 'Sensory input adjusts AIS length in both directions and reversibly in vivo into young adulthood, on fast (hours) and slow (weeks) timescales. c-Fos is a correlate, not a demonstrated cause.'
+      },
+      {
+        name: 'NMDA-induced LTD and the AIS (Fréal et al.)',
+        design: 'Apply NMDA then APV to hippocampal slices from AnkG-GFP mice, record Schaffer-collateral EPSCs and image CA1 AIS length over an hour. Compare with NMDA-receptor block, electrical LTD and evoked firing.',
+        result: 'EPSCs fall by about 30%, the AIS shortens (about 31 → 26 µm) and voltage threshold rises about 0.5 mV per µm. APV prevents this, and neither electrical LTD nor firing alone shortens the AIS.',
+        inference: 'NMDA-receptor activation is a shared trigger for synaptic and AIS plasticity. The slides leave the mechanism open, although the title of the cited paper names sodium-channel endocytosis.'
+      }
+    ],
+    traps: [
+      'AIS relocation does not need action potentials: TTX left the high-K⁺ shift intact, while L/T-type Ca²⁺ blockers abolished it.',
+      'AIS plasticity has no fixed sign: depolarisation in culture moved the AIS without changing its length, deprivation lengthened it, and enrichment and NMDA shortened it.',
+      'Activity pattern matters: 1 Hz bursts moved the AIS but unpatterned 1 Hz light at the same mean rate did not.',
+      'Chick development is only partly activity-dependent: otocyst removal abolished the tonotopic length difference but spared NaV accumulation and the NaV1.2-to-NaV1.6 switch.',
+      'Only NMDA-bath LTD shortened the AIS; electrically induced LTD and evoked firing did not, so \'any LTD remodels the AIS\' overclaims.',
+      'Current threshold and voltage threshold are different measures: enrichment raised current threshold without changing voltage threshold. All plasticity data here come from rodents or chicks; the only human data are AcD counts.'
+    ],
+    recall: [
+      [
+        'Which scaffold proteins identify the AIS, and what do they do?',
+        'Ankyrin-G and βIV-spectrin. They anchor NaV and Kv7 channels at the axonal membrane and link them to the actin cytoskeleton.'
+      ],
+      [
+        'What did 48 h of +15 mM K⁺ do to the AIS in culture?',
+        'It shifted the AIS about 5–7 µm away from the soma without changing its length and raised current threshold. The shift reversed when cells returned to normal medium.'
+      ],
+      [
+        'Which channels sense activity for AIS relocation, and how was this shown?',
+        'L- and T-type Ca²⁺ channels. Nifedipine, mibefradil and Ni²⁺ blocked the shift, whereas TTX and the R-, P/Q- and N-type blockers did not.'
+      ],
+      [
+        'What did otocyst removal at E2 change and spare in chick nucleus magnocellularis?',
+        'It abolished the tonotopic difference in AIS length but spared NaV accumulation and the NaV1.2-to-NaV1.6 switch, so maturation is only partly activity-dependent.'
+      ],
+      [
+        'How do whisker trimming and enrichment change barrel-cortex AIS length, and on what timescales?',
+        'Weeks of trimming lengthen the AIS (regrowth reverses this in juveniles) and still do so after P100. Novel enrichment shortens it within 1–3 h, and it recovers by 6 h as novelty and activity fade.'
+      ],
+      [
+        'What does NMDA-induced LTD do to the CA1 AIS, and which controls fail to reproduce it?',
+        'It shortens the AIS and raises voltage threshold by about 0.5 mV per µm. APV prevents it, and neither electrical LTD nor evoked firing alone shortens the AIS.'
+      ]
+    ],
+    download: '../resources/lectures/L12_Axon_Initial_Segment_and_Plasticity.md',
+    references: [
+      [
+        'Grubb & Burrone (2010) — chronic depolarisation moves the AIS away from the soma via T/L-type Ca²⁺ channels and raises current threshold',
+        'https://pubmed.ncbi.nlm.nih.gov/20543823/'
+      ],
+      [
+        'Akter et al. (2020) — tonotopic AIS shortening in chick nucleus magnocellularis depends partly on afferent input, unlike sodium-channel accumulation',
+        'https://pubmed.ncbi.nlm.nih.gov/32719016/'
+      ],
+      ['Jamann et al. (2021) — sensory deprivation lengthens and enrichment rapidly shortens the AIS in mouse barrel cortex', 'https://pubmed.ncbi.nlm.nih.gov/33397944/'],
+      [
+        'Fréal et al. (2023) — NMDA-receptor activation causes LTD and sodium-channel endocytosis that shortens the AIS and raises spike threshold',
+        'https://pubmed.ncbi.nlm.nih.gov/37713493/'
+      ],
+      [
+        'Thome et al. (2014) — axon-carrying dendrites give their synaptic input privileged access to spike initiation in hippocampal neurons',
+        'https://pubmed.ncbi.nlm.nih.gov/25199704/'
+      ]
+    ]
+  },
+  {
+    id: 13,
+    title: 'Synaptic Development and Pruning',
+    date: '25 August 2026',
+    lecturer: 'Beros',
+    scope: 'Released Lecture 13 slide PDF condensed into an exam-safe mechanism brief covering synapse formation at the neuromuscular junction and in the CNS, AChR clustering, competitive activity-dependent synapse elimination, microglia–synapse interactions, Hebbian refinement and ocular dominance plasticity. It was built from all 39 slides without the recording. Causal evidence comes from frog, mouse and other animal preparations; the only human data are post-mortem synapse-density counts.',
+    outcomes: [
+      'Order the stages of synapse formation from target contact to maturation and elimination, and explain why presynaptic organisation and postsynaptic specialisation depend on two-way signalling.',
+      'Explain how the synaptic basal lamina and muscle-derived laminin act as retrograde organisers at the NMJ, using the evidence from axons regenerating onto basal lamina and from α2 and β2 laminin mutants.',
+      'Distinguish the four routes that concentrate AChRs (anchoring, metabolic stabilisation, synaptic transcription and extrasynaptic repression), and assign agrin–MuSK–rapsyn, neuregulin–ErbB and muscle electrical activity to the right route.',
+      'Contrast NMJ and CNS synapse assembly, including the absence of a central basal lamina and the split between neuroligin 1–PSD-95 (excitatory) and neuroligin 2–gephyrin (inhibitory) synapses.',
+      'Describe the sequence and competitive rules of synapse elimination (maintenance versus punishment signals, synchrony, JAK2–STAT1 and the microglial modes), and apply Hebbian logic to ocular dominance columns and critical-period deprivation.'
+    ],
+    chains: [
+      {
+        name: 'NMJ postsynaptic assembly',
+        steps: [
+          'Motor axon deposits agrin in the synaptic basal lamina',
+          'agrin activates the MuSK complex and MuSK is tyrosine-phosphorylated',
+          'rapsyn anchors AChRs into cytoskeleton-linked clusters under the terminal',
+          'nerve-derived neuregulin acts on ErbB to raise AChR transcription in synaptic nuclei',
+          'muscle electrical activity represses AChR genes in extrasynaptic nuclei',
+          'a dense, metabolically stable cluster forms, with receptor residence rising from about 1 day to about 14 days'
+        ]
+      },
+      {
+        name: 'CNS synapse assembly',
+        steps: [
+          '(Proto)cadherins recognise matched pre- and postsynaptic membranes',
+          'synaptic vesicles accumulate at the contact',
+          'presynaptic neurexin binds postsynaptic neuroligin across the cleft',
+          'neuroligin 1 with PSD-95 clusters AMPA and NMDA receptors at excitatory synapses',
+          'neuroligin 2 with gephyrin clusters GABA-A receptors at inhibitory synapses'
+        ]
+      },
+      {
+        name: 'Competitive elimination of a losing input',
+        steps: [
+          'Two inputs to one target fire out of synchrony',
+          'the active input drives postsynaptic receptors, giving local protection and a punishment signal that spreads to neighbours',
+          'punishment activates JAK2–STAT1 in the inactive terminal',
+          'AChRs are lost under the losing terminal and its quantal content falls',
+          'the losing axon thins and withdraws as a retraction bulb, leaving single innervation'
+        ]
+      },
+      {
+        name: 'Hebbian segregation of eye inputs',
+        steps: [
+          'Afferents from the same eye fire together',
+          'coincident pre- and postsynaptic activity opens NMDA receptors and admits Ca2+',
+          'correlated terminals are strengthened and capture postsynaptic neurotrophic support',
+          'terminals from the other eye, uncorrelated with them, weaken and withdraw',
+          'eye-specific ocular dominance bands form in layer 4 of V1 during the critical period'
+        ]
+      }
+    ],
+    distinctions: [
+      [
+        'Agrin',
+        'Nerve-derived; signals through MuSK (with Lrp4 and Dok-7) and rapsyn',
+        'Anchors and clusters AChRs under the terminal; on the slides it is the clustering signal, not the transcriptional one'
+      ],
+      ['Neuregulin', 'Nerve-derived; acts on ErbB receptors in muscle and Schwann cells', 'Raises AChR gene expression in synaptic nuclei and is also needed for later plasticity'],
+      [
+        'Muscle electrical activity',
+        'Represses AChR transcription in extrasynaptic nuclei',
+        'Direct stimulation of denervated muscle prevents extrasynaptic AChR upregulation, so transmitter is not required'
+      ],
+      [
+        'Synaptic laminin (basal lamina)',
+        'Muscle-derived retrograde organiser of the nerve terminal',
+        'α2 loss gives poor folds and Schwann-cell intrusion; β2 loss lets the Schwann cell cap the terminal and abolishes release; there is no synaptic basal lamina in the central cleft'
+      ],
+      [
+        'Neuroligin 1 versus neuroligin 2',
+        'PSD-95 clustering of AMPA and NMDA receptors versus gephyrin clustering of GABA-A receptors',
+        'The postsynaptic neuroligin–scaffold pair sets excitatory or inhibitory identity; presynaptic release machinery is largely shared'
+      ],
+      [
+        '(Proto)cadherins',
+        'Recognition of matched pre- and postsynaptic membranes',
+        'An early CNS adhesion step, before vesicle accumulation and recruitment of inductive molecules such as neurexin and neuroligin'
+      ],
+      [
+        'Maintenance versus punishment signal',
+        'Local protection under active terminals versus a spreading signal that destabilises inactive neighbours',
+        'Elimination depends on relative activity: if every input is silent, no punishment arises and all inputs are kept'
+      ],
+      [
+        'JAK2–STAT1',
+        'Kinase pathway activated in the inactive synapse by signals from active synapses',
+        'A molecular determinant of losing-synapse elimination in mice; its link to microglial recruitment is only proposed'
+      ],
+      [
+        'Microglial stripping and trogocytosis',
+        'Non-phagocytic insertion of processes versus nibbling of small membrane pieces',
+        'Microglia change synapses in several ways beyond whole-synapse engulfment, including removing extracellular matrix and clearing debris'
+      ],
+      [
+        'Monocular versus binocular deprivation',
+        'Unbalanced versus balanced loss of eye-specific activity during the critical period',
+        'Monocular closure hands cortex to the open eye, while binocular closure keeps cells driven by both eyes, so relative rather than absolute activity decides'
+      ]
+    ],
+    experiments: [
+      {
+        name: 'Regeneration onto basal lamina sheaths (Glicksman & Sanes)',
+        design: 'In frog muscle, cut the motor nerve and also damage the muscle so the fibres degenerate while their basal lamina sheaths survive, then let the axons regenerate.',
+        result: 'Regenerating axons return to the original synaptic sites on the empty basal lamina and form terminals with vesicle clusters, although these are smaller and less complete than normal terminals.',
+        inference: 'Instructions for presynaptic differentiation are stored in the synaptic basal lamina and do not need a living postsynaptic cell. The incomplete terminals suggest the muscle normally supplies further signals.'
+      },
+      {
+        name: 'Focal AChR blockade at the NMJ (Balice-Gordon & Lichtman)',
+        design: 'In living mice, apply α-bungarotoxin to a small part of an adult, singly innervated neuromuscular junction so that only one patch of receptors is blocked, and compare with blocking the whole junction.',
+        result: 'Receptors are lost from the blocked patch and the overlying nerve-terminal branch then withdraws, mimicking natural elimination; blocking the whole junction does not cause elimination.',
+        inference: 'Silencing a small patch of postsynaptic receptors is enough to trigger local receptor loss and then withdrawal of the overlying branch, even at a mature junction; active synaptic sites destabilise inactive neighbours, so elimination depends on relative rather than absolute activity.'
+      },
+      {
+        name: 'JAK2 as the determinant of inactive-synapse elimination (Yasuda et al.)',
+        design: 'Silence a subset of mouse cingulate-cortex neurons so that their callosal inputs compete with active inputs, then manipulate JAK2 or its substrate STAT1 in the silenced neurons.',
+        result: 'Silenced inputs are eliminated through competition. JAK2 is activated at inactive synapses by signals from active ones and is required for their elimination, with STAT1 mediating it. When all inputs are inactive, none are eliminated.',
+        inference: 'JAK2 acts as an activity-dependent switch that marks the losing synapse, giving a molecular basis for the punishment signal. The proposed link to microglial recruitment remains a hypothesis.'
+      }
+    ],
+    traps: [
+      'In the mature NMJ each muscle fibre receives one motor axon, but each motor neuron still innervates many fibres, so reading the rule as one neuron per fibre is wrong.',
+      'Inactivity alone does not trigger elimination. Silent inputs are removed only when active competitors nearby generate a punishment signal, so inputs that are all silent are kept.',
+      'Agrin–MuSK–rapsyn clusters and anchors AChRs, whereas neuregulin–ErbB boosts transcription in synaptic nuclei; do not swap them.',
+      'Extrasynaptic AChR repression comes from the muscle\'s own electrical activity, not from nerve-released ACh, because direct stimulation of denervated muscle is enough.',
+      'At the NMJ, receptor loss mostly comes before axon retraction, so the claim that the axon leaves first and the receptors follow reverses the order.',
+      'Human synapse-density curves are cross-sectional post-mortem density counts. They describe overproduction and pruning, but they do not reveal mechanism or prove a link to cognition.'
+    ],
+    recall: [
+      [
+        'What are the four ways AChRs become concentrated at the NMJ?',
+        'Redistribution and anchoring in the membrane, greater metabolic stability (residence rises from about 1 day embryonic to about 14 days adult), more transcription in synaptic nuclei, and repression of transcription in extrasynaptic nuclei.'
+      ],
+      [
+        'What happens to NMJs in laminin β2 knockouts?',
+        'The Schwann cell covers the terminal, there is no vesicle release or receptor specialisation, and the animals die during development. This shows laminin is a retrograde synaptic organiser.'
+      ],
+      [
+        'Which neuroligin–scaffold pairs build excitatory and inhibitory CNS synapses?',
+        'Neuroligin 1 binds PSD-95 to cluster AMPA and NMDA receptors, and neuroligin 2 binds gephyrin to cluster GABA-A receptors.'
+      ],
+      [
+        'List the steps by which a losing input is eliminated at the NMJ.',
+        'Inputs segregate, the winner invades as the loser retracts (nearest sites first), AChRs are lost under the loser, and its axon then thins into a retraction bulb. The loser\'s quantal content falls throughout.'
+      ],
+      [
+        'What evidence shows that NMJ elimination is competitive rather than random?',
+        'Fibres are never left uninnervated, early partial denervation leaves the surviving axons with extra terminals, reinnervation repeats overproduction then elimination, and synchronous firing preserves polyneuronal innervation.'
+      ],
+      [
+        'How do monocular deprivation, binocular deprivation and synchronous stimulation affect ocular dominance?',
+        'Monocular deprivation in the critical period expands the open eye\'s territory and can leave the deprived eye cortically blind. Binocular deprivation keeps cells driven by both eyes, and synchronous stimulation of both eyes prevents columns from forming.'
+      ]
+    ],
+    download: '../resources/lectures/L13_Synaptic_Development_and_Pruning.md',
+    references: [
+      ['Glicksman & Sanes (1983) — motor nerve terminals differentiate on synaptic basal lamina in the absence of muscle fibres', 'https://pubmed.ncbi.nlm.nih.gov/6352869/'],
+      ['Craig & Kang (2007) — neurexin–neuroligin signalling organises excitatory and inhibitory synapse development', 'https://pubmed.ncbi.nlm.nih.gov/17275284/'],
+      ['Huttenlocher (1979) — human frontal synaptic density peaks at 1–2 years and declines to a stable adult level by adolescence', 'https://pubmed.ncbi.nlm.nih.gov/427544/'],
+      [
+        'Balice-Gordon & Lichtman (1994) — focal, but not junction-wide, postsynaptic receptor blockade causes local synapse elimination',
+        'https://pubmed.ncbi.nlm.nih.gov/7990923/'
+      ],
+      ['Yasuda et al. (2021) — JAK2–STAT1 signalling at inactive synapses drives activity-dependent synapse elimination', 'https://pubmed.ncbi.nlm.nih.gov/33770504/']
+    ]
+  },
+  {
     id: 24,
     title: 'Motor Cortex: Neurophysiology and Plasticity',
     date: '29 September 2026',
@@ -1616,22 +2598,40 @@ const questions = [
 
   { id: 'l8-chloride', lecture: 8, block: 'Test 2', topic: 'Membrane mechanisms', stem: 'Vm is −65 mV and ECl is −70 mV. Opening chloride channels initially drives:', options: ['Chloride out and inward conventional current', 'Chloride in and outward conventional current', 'Chloride in and inward conventional current', 'No ion flux'], answer: 1, explanation: 'Vm − ECl = +5 mV. Negative chloride enters, producing outward conventional current and driving Vm toward −70 mV.', trap: 'Ion movement and conventional-current direction are opposite for anions.' },
   { id: 'l8-drivingforce', lecture: 8, block: 'Test 2', topic: 'Membrane mechanisms', stem: 'If a channel conductance is unchanged but Vm moves closer to that ion’s equilibrium potential, the current magnitude should generally:', options: ['Increase because conductance dominates', 'Reverse without crossing the equilibrium potential', 'Become independent of voltage', 'Decrease because electrochemical driving force shrinks'], answer: 3, explanation: 'For an approximately ohmic current, I = g(Vm − Eion). With fixed conductance, current falls as Vm approaches Eion.', trap: 'Open-channel number and driving force are separate determinants of current.' },
+  { id: 'l8-rebound-na-availability', lecture: 8, block: 'Test 2', topic: 'Membrane mechanisms', stem: 'On the lecture\'s Na⁺ channel availability curve, about 60% of voltage-gated Na⁺ channels are available at a resting potential of −65 mV. A prolonged inhibitory input hyperpolarises a neuron by about 40 mV and then stops. What is the best prediction?', options: ['Nearly all Na⁺ channels become available, about 1.7 times the resting pool, so the cell is more likely to fire a rebound burst as it returns toward threshold', 'Almost no Na⁺ channels remain available, because hyperpolarisation drives them into the inactivated state, so firing is suppressed after the inhibition ends', 'Availability stays near 60%, because inactivation depends only on time since the last spike, so the cell responds exactly as it would from rest', 'Availability rises, but the cell cannot fire because an absolute refractory period begins as soon as the inhibitory input is withdrawn'], answer: 0, explanation: 'Na⁺ channel inactivation depends on voltage: depolarisation drives channels into the inactivated state, and hyperpolarisation lets them recover. On the slide\'s curve, a 40 mV hyperpolarisation raises availability from about 60% to nearly 100%, so the next depolarisation can recruit roughly 1.7 times as much Na⁺ conductance. The lecture uses this to explain post-inhibitory rebound, with retinal ganglion cells that burst when an inhibitory stimulus ends as its example.', trap: 'Treating hyperpolarisation as purely inhibitory, when it also removes Na⁺ channel inactivation and primes the cell to fire once inhibition ends.' },
+  { id: 'l8-a-type-delay-block', lecture: 8, block: 'Test 2', topic: 'Membrane mechanisms', stem: 'A neuron fires immediately when a current step is applied from −55 mV. The same step applied from −75 mV produces a transient outward current and a delay before the first spike. Which manipulation should most selectively abolish the delay from −75 mV?', options: ['Block voltage-gated Na⁺ channels with TTX so that the transient outward current cannot be activated', 'Block the transient A-type K⁺ current so that the membrane climbs to threshold without opposition', 'Enhance Ca²⁺-activated K⁺ channels with 1-EBIO so that the afterhyperpolarisation becomes larger', 'Shift the holding potential to −90 mV so that A-type channels are fully closed before the step begins'], answer: 1, explanation: 'A-type K⁺ channels are largely inactivated at −55 mV, so firing starts at once from there. Holding at −75 mV removes their inactivation, and the step then activates a transient outward K⁺ current that opposes depolarisation and delays the first Na⁺ spike. Blocking that current should remove the delay and leave spiking intact.', trap: 'Attributing the delay to Na⁺ channels or to the afterhyperpolarisation, rather than to the voltage-dependent recovery of an inactivating K⁺ current.' },
+  { id: 'l8-adaptation-cd-ebio', lecture: 8, block: 'Test 2', topic: 'Membrane mechanisms', stem: 'In a simplified scenario combining two of the slide datasets, a neuron fires rapidly at first during a depolarising current step and then slows. With 5 mM Cd²⁺ in the bath it fires steadily throughout the step. With 1-EBIO it fires about one spike and then stops, and it recovers on wash. What do the two results together show?', options: ['Adaptation reflects cumulative Na⁺ channel inactivation, which Cd²⁺ relieves and 1-EBIO accelerates during the step', 'Adaptation reflects depletion of intracellular K⁺ during the spike train, which Cd²⁺ slows and 1-EBIO speeds up', 'Adaptation needs Ca²⁺ entry to open Ca²⁺-activated K⁺ channels: removing the trigger abolishes it and boosting the channels exaggerates it', 'Adaptation arises from presynaptic metabotropic receptors on input terminals, which both drugs act on to alter transmitter release'], answer: 2, explanation: 'Each spike admits Ca²⁺ through voltage-gated Ca²⁺ channels. The rising Ca²⁺ opens voltage-insensitive Ca²⁺-activated K⁺ channels, and their outward current builds a late hyperpolarisation that slows firing. Cd²⁺ blocks the Ca²⁺ entry, so adaptation disappears; 1-EBIO makes the K⁺ channels more effective, so the afterhyperpolarisation grows and firing stops early. Loss- and gain-of-function results that point the same way make a stronger case than either alone, although Cd²⁺ blocks all voltage-gated Ca²⁺ channels rather than one subtype.', trap: 'Reading Cd²⁺ as a K⁺ channel blocker, when it acts upstream by removing the Ca²⁺ that gates the K⁺ channels.' },
+  { id: 'l8-slow-epsp-g-protein', lecture: 8, block: 'Test 2', topic: 'Membrane mechanisms', stem: 'A single presynaptic spike releases ACh onto a neuron that has both ionotropic and metabotropic ACh receptors, producing a fast EPSP followed by a much longer slow EPSP. A drug is applied that prevents G-protein activation without affecting receptor binding. What is the predicted result?', options: ['Both EPSPs disappear, because both responses need ACh to activate the same G-protein-coupled receptor', 'The fast EPSP disappears and the slow EPSP persists, because the slow response is carried by a ligand-gated channel', 'Both EPSPs persist but become faster, because G-protein activation normally delays the opening of postsynaptic channels', 'The fast EPSP persists and the slow EPSP is lost, because only the slow response needs G-protein signalling to reach M-type K⁺ channels'], answer: 3, explanation: 'The fast EPSP comes from ACh opening an ionotropic receptor that is itself the channel, so no G-protein step is involved. The slow EPSP comes from a metabotropic receptor that signals through a G-protein and intracellular messengers to M-type K⁺ channels; in the classic work this suppresses a resting K⁺ current and depolarises the cell slowly. Blocking G-protein activation therefore removes the slow component and spares the fast one.', trap: 'Swapping the two receptor classes, or assuming that one transmitter must act through a single receptor mechanism.' },
   { id: 'l9-minis', lecture: 9, block: 'Test 2', topic: 'Quantal transmission', stem: 'Miniature event frequency rises while mean amplitude is unchanged. What is the best first inference?', options: ['Presynaptic spontaneous release increased', 'Postsynaptic receptor gain increased', 'Quantal size increased', 'The reversal potential shifted'], answer: 0, explanation: 'Frequency usually reflects presynaptic event rate; unchanged amplitude argues that postsynaptic quantal size is broadly intact.', trap: 'This is an inference, not a proof—detection thresholds and synapse number can confound it.' },
   { id: 'l9-binomial', lecture: 9, block: 'Test 2', topic: 'Quantal transmission', stem: 'In a simple binomial release model, mean synaptic response is proportional to:', options: ['n + p − q', 'p/q only', 'n × p × q', 'Membrane resistance only'], answer: 2, explanation: 'The model separates number of release sites n, release probability p and quantal size q. Mean response is n·p·q under its simplifying assumptions.', trap: 'Real synapses may violate independence and uniform-p assumptions.' },
   { id: 'l9-electrical-delay', lecture: 9, block: 'Test 2', topic: 'Electrical synapses', stem: 'Compared with a chemical synapse, transmission at an electrical synapse is characterised by:', options: ['Essentially no synaptic delay, because current passes directly through intercellular channels', 'A synaptic delay of roughly 0.5–1 ms caused by transmitter diffusion', 'Obligatory amplification of every presynaptic signal', 'Exclusive use of second-messenger cascades'], answer: 0, explanation: 'Gap-junction channels create direct cytoplasmic continuity, so charge spreads electrotonically with almost no delay. Chemical transmission adds delay through calcium entry, vesicle fusion, diffusion and receptor binding.', trap: 'Speed is the gain; electrical synapses generally cannot invert sign or amplify a signal the way chemical synapses can.' },
   { id: 'l9-connexin', lecture: 9, block: 'Test 2', topic: 'Electrical synapses', stem: 'Which structural description of a vertebrate neuronal gap junction is correct?', options: ['A single connexin spans both membranes to form the pore', 'The channel is assembled from SNARE proteins', 'Six connexin subunits form a connexon, and two apposed connexons form the intercellular channel', 'The pore is formed by clustered voltage-gated sodium channels'], answer: 2, explanation: 'Six connexins oligomerise into a connexon (hemichannel); docking of connexons in apposed membranes forms the conducting intercellular channel. Connexin 36 predominates at mammalian neuronal electrical synapses.', trap: 'A connexon is only a hemichannel — the conducting unit needs two, one contributed by each cell.' },
   { id: 'l9-rectifying', lecture: 9, block: 'Test 2', topic: 'Electrical synapses', stem: 'At the crayfish giant motor synapse, depolarising current injected presynaptically passes readily to the postsynaptic cell, but the same current injected postsynaptically does not pass back. What does this demonstrate?', options: ['The junction is chemical rather than electrical', 'A rectifying electrical synapse, in which junctional conductance depends on transjunctional voltage and its polarity', 'Failure of the postsynaptic membrane to conduct any current at all', 'That gap junctions are necessarily bidirectional'], answer: 1, explanation: 'Furshpan and Potter (1959) showed junctional current flowing preferentially in one direction. Asymmetric junctions — in vertebrates typically heterotypic connexin pairings — make junctional conductance a function of transjunctional voltage, so coupling becomes directional.', trap: 'Do not confuse this with inward-rectifier (Kir4.1) or delayed-rectifier K⁺ channels: those rectify current across one membrane, whereas here rectification is a property of the junction between two cells.' },
+  { id: 'l9-low-calcium-histogram', lecture: 9, block: 'Test 2', topic: 'Quantal transmission', stem: 'At a frog neuromuscular junction in low-Ca²⁺, high-Mg²⁺ saline, evoked end-plate potentials are recorded before and after bath Ca²⁺ is lowered further. Which change in the evoked amplitude histogram is predicted?', options: ['More failures and fewer multi-quantal responses, with peaks still at integer multiples of an unchanged MEPP amplitude', 'Peaks shift to smaller amplitudes because each vesicle now carries less ACh, while the failure rate stays the same', 'Spontaneous MEPP amplitude falls in step with Ca²⁺, so quantal size and quantal content decline together', 'Failures disappear and responses become continuously graded, because single quanta can no longer be resolved'], answer: 0, explanation: 'Extracellular Ca²⁺ sets presynaptic Ca²⁺ entry and therefore release probability, so lowering it reduces the mean number of quanta per stimulus (m) and raises the proportion of failures. Quantal size (q) depends on vesicle content and postsynaptic receptors, so the spontaneous MEPP amplitude and the spacing between histogram peaks are unchanged. Low-Ca²⁺, high-Mg²⁺ saline is used in the first place for this reason, to resolve single quanta.', trap: 'Assuming that less Ca²⁺ shrinks each quantum, when Ca²⁺ changes how many quanta are released rather than how big each one is.' },
   { id: 'l10-calcium', lecture: 10, block: 'Test 2', topic: 'Neurotransmitter release', stem: 'Halving presynaptic calcium influx reduces release about sixteen-fold over a measured range. What follows?', options: ['Exactly four calcium ions bind', 'Four vesicles must fuse', 'Every calcium channel has four subunits', 'The system shows roughly fourth-power effective cooperativity in that range'], answer: 3, explanation: 'A log–log slope near four describes effective system cooperativity over the tested range; it does not establish literal molecular stoichiometry.', trap: 'A phenomenological exponent is not automatically a count of binding sites.' },
   { id: 'l10-sensor', lecture: 10, block: 'Test 2', topic: 'Neurotransmitter release', stem: 'Which pairing best describes fast synchronous vesicle fusion?', options: ['AMPA receptors sense calcium; kinesin forms the pore', 'Clathrin triggers exocytosis; dynein cleaves SNAREs', 'PSD-95 transports vesicles down the axon', 'Synaptotagmin senses calcium; SNAREs provide the fusion machinery'], answer: 3, explanation: 'Calcium binding to synaptotagmin rapidly promotes SNARE-mediated membrane fusion at release-ready vesicles.', trap: 'Endocytic proteins recycle membrane after release; they are not the fast calcium trigger.' },
   { id: 'l10-pools', lecture: 10, block: 'Test 2', topic: 'Neurotransmitter release', stem: 'A brief high-frequency train depresses release, which then recovers over seconds. The most parsimonious presynaptic explanation is:', options: ['Permanent loss of every synaptic vesicle in the terminal', 'Depletion of the readily releasable pool with refilling from reserve vesicles', 'Conversion of the terminal into a postsynaptic density', 'An increase in quantal size during the train'], answer: 1, explanation: 'Sustained activity can exhaust the small readily releasable pool faster than it is replenished, producing short-term depression that recovers as vesicles are recruited and re-primed.', trap: 'Depression can also arise postsynaptically through receptor desensitisation; recovery kinetics and quantal analysis are needed to localise it.' },
+  { id: 'l10-capacitance-decay', lecture: 10, block: 'Test 2', topic: 'Neurotransmitter release', stem: 'A presynaptic terminal is voltage-clamped and briefly depolarised. A calcium current flows and membrane capacitance rises within milliseconds, then falls back to baseline over the next 10–30 seconds. What is the best interpretation of the capacitance record?', options: ['Vesicles docked at the active zone, then undocked as cytosolic calcium was cleared', 'Vesicle membrane was added to the surface by fusion, then retrieved by endocytosis', 'Calcium ions built up on the inner leaflet as stored charge, then were pumped out', 'Postsynaptic receptors opened in response to transmitter, then desensitised'], answer: 1, explanation: 'Capacitance is proportional to membrane area, so the rise shows vesicle membrane becoming continuous with the plasma membrane during calcium-triggered exocytosis. The decline shows that membrane being retrieved by endocytosis. A full return within 10–30 s implies a time constant of only a few seconds, nearer the fast route (τ ≈ 1–10 s) than the slow clathrin-dependent route (τ ≈ 10–50 s) in the slide\'s figure, and capacitance alone cannot identify the retrieval route. The recording measures presynaptic surface area, not transmitter action or ion content.', trap: 'Reading the rise as docking: a docked vesicle sits against the membrane but adds no surface area until it fuses.' },
+  { id: 'l10-botox-snap25', lecture: 10, block: 'Test 2', topic: 'Neurotransmitter release', stem: 'Botulinum toxin light chain enters a motor nerve terminal and cleaves SNAP-25. Action potentials still invade the terminal. What is the predicted effect on acetylcholine release, and why?', options: ['Release rises, because cleaved SNAREs escape NSF disassembly and accumulate at the membrane', 'Release is unchanged, because calcium-bound synaptotagmin can fuse vesicles without SNAREs', 'Evoked release fails, because trans-SNARE complexes cannot fully zipper to force fusion', 'Release fails, because the toxin blocks the presynaptic calcium channels that trigger fusion'], answer: 2, explanation: 'SNAP-25 is a t-SNARE that forms a four-helix bundle with syntaxin and synaptobrevin. Zippering of that bundle pulls the vesicle and plasma membranes close enough to fuse. With SNAP-25 cleaved the complex cannot complete, so calcium entry has no fusion machinery to act on, ACh is not released and the muscle cannot contract. Serotypes differ in target: A, C and E cut SNAP-25; B, D, F and G cut synaptobrevin; C also cuts syntaxin.', trap: 'Treating paralysis as a block of calcium entry or of postsynaptic ACh receptors, when the defect lies in the presynaptic fusion machinery.' },
+  { id: 'l10-ribbon-threshold', lecture: 10, block: 'Test 2', topic: 'Neurotransmitter release', stem: 'Two ribbon synapses on one cochlear inner hair cell differ only in calcium-channel number: ribbon A has many channels and ribbon B has few. As louder sounds depolarise the hair cell further, what does the model on the slides predict?', options: ['Both ribbons drive their fibres identically, because they share one membrane potential', 'Ribbon B is recruited first, because each of its fewer channels carries more current', 'Neither ribbon releases until its vesicle supply is full, so both fibres start together', 'Ribbon A drives its fibre at weak depolarisation and B only at strong, widening the range'], answer: 3, explanation: 'Release at each ribbon depends on the calcium entering through that active zone\'s own channels. A channel-rich ribbon therefore reaches effective release at smaller depolarisations (low threshold), while a channel-poor one needs more (high threshold). Because each ribbon contacts its own afferent fibre, one receptor potential is split across fibres that encode soft and loud sounds. The slides add that differences in fusion mode could do the same job, and mouse recordings (context beyond the slides) found that channel-rich active zones facing the ganglion actually activated at stronger depolarisations, so channel number alone does not set a ribbon\'s threshold.', trap: 'Assuming a shared membrane potential forces identical output, ignoring that release depends on each active zone\'s own calcium entry.' },
   { id: 'l11-ppr', lecture: 11, block: 'Test 2', topic: 'Synaptic plasticity', stem: 'A high paired-pulse ratio most often suggests:', options: ['High initial release probability', 'More postsynaptic AMPA receptors with certainty', 'Low initial release probability with residual-calcium facilitation', 'Long-term depression'], answer: 2, explanation: 'Paired-pulse facilitation often varies inversely with initial release probability because residual calcium boosts the second response.', trap: 'PPR is an index with confounds, not a direct release-probability meter.' },
   { id: 'l11-ltp', lecture: 11, block: 'Test 2', topic: 'Synaptic plasticity', stem: 'In canonical CA1 LTP induction, coincident glutamate binding and postsynaptic depolarisation matter because depolarisation:', options: ['Removes the voltage-dependent Mg²⁺ block of NMDA receptors', 'Closes every AMPA receptor', 'Prevents calcium entry', 'Degrades CaMKII'], answer: 0, explanation: 'Depolarisation relieves NMDA-receptor Mg²⁺ block, allowing calcium entry that activates plasticity signalling when glutamate is present.', trap: 'The NMDA receptor acts as a coincidence detector; glutamate alone is often insufficient at resting voltage.' },
   { id: 'l11-ltd', lecture: 11, block: 'Test 2', topic: 'Synaptic plasticity', stem: 'Why can the same postsynaptic ion produce either LTP or LTD at CA1 synapses?', options: ['Calcium is involved only in LTP', 'LTD requires sodium entry rather than calcium', 'The amplitude and time course of the calcium rise recruit different kinase and phosphatase pathways', 'The direction depends solely on the number of stimuli, independent of signalling'], answer: 2, explanation: 'Large, brief calcium transients favour kinase-dominated potentiation (CaMKII), whereas modest, prolonged rises favour phosphatase-dominated depression. The same ion is read through downstream pathways with different sensitivities.', trap: 'Induction protocol and calcium dynamics are correlated but not interchangeable; measure the signal rather than inferring it from the stimulus pattern.' },
+  { id: 'l11-nmda-ligand-vs-flux', lecture: 11, block: 'Test 2', topic: 'Synaptic plasticity', stem: 'In hippocampal slices, a depressing stimulus is given in either D-APV, which competes with glutamate for its NMDA-receptor binding site, or MK-801, which blocks the open NMDA-receptor channel. In D-APV the depression fades back to baseline; in MK-801 a lasting depression remains. Which conclusion do these results most directly support?', options: ['Glutamate binding to NMDA receptors, without ion flow through the channel, can be enough to trigger this LTD', 'This LTD is independent of NMDA receptors, because one of the two NMDA-receptor drugs failed to block it', 'Calcium entry through the open NMDA-receptor channel is the essential trigger for this form of LTD', 'Both drugs act on AMPA receptors, so the experiment tests how LTD is expressed rather than induced'], answer: 0, explanation: 'D-APV stops glutamate binding and prevented the lasting depression, so NMDA receptors are needed. MK-801 only blocks ion flow through an opened channel, yet LTD survived, so in this preparation receptor binding rather than calcium flux through the pore appears sufficient (Nabavi et al. 2013). A later mouse CA1 study found MK-801 did block LTD, so treat this as contested rather than settled.', trap: 'Reading \'one blocker failed\' as \'NMDA receptors are not involved\', when the two drugs block different steps of receptor function.' },
+  { id: 'l11-bcm-dark-rearing', lecture: 11, block: 'Test 2', topic: 'Synaptic plasticity', stem: 'Visual-cortex slices from dark-reared and light-reared animals receive the same 10 Hz stimulation train. Using the sliding-threshold (BCM) idea from the lecture, what outcome is predicted for the dark-reared slices, and why?', options: ['More LTD, because sensory deprivation raises the modification threshold so 10 Hz falls below it', 'More LTP, because low prior activity lowers the modification threshold so 10 Hz lies further above it', 'The same change as light-reared slices, because the threshold is fixed and only AMPA-receptor number varies', 'No plasticity at all, because deprived synapses lose the NMDA receptors that are needed for induction'], answer: 1, explanation: 'In the BCM model the LTD/LTP crossover (θM) tracks recent postsynaptic activity, so low prior activity shifts it to lower frequencies. On the slide the dark-reared crossover sits near 2 Hz versus about 5–10 Hz for light-reared animals, and a 10 Hz train gives roughly +15% versus +5%. The same input therefore produces more potentiation after deprivation.', trap: 'Reversing the slide\'s direction by assuming deprivation makes synapses harder, not easier, to potentiate.' },
+  { id: 'l11-stdp-post-before-pre', lecture: 11, block: 'Test 2', topic: 'Synaptic plasticity', stem: 'A synapse is repeatedly activated so that the presynaptic spike arrives about 10 ms after the postsynaptic neuron has already fired. Based on the STDP curve shown in the lecture, what change in synaptic strength is expected?', options: ['Potentiation, because the two neurons fire within the same short time window', 'No change, because only exactly simultaneous spikes can alter synaptic strength', 'Depression, because post-before-pre order weakens the synapse despite close timing', 'Potentiation that grows with the delay, because longer gaps allow more calcium entry'], answer: 2, explanation: 'In STDP the order of spikes sets the sign of plasticity. When the postsynaptic cell fires before the presynaptic input arrives (negative timing on the slide\'s curve), the synapse depresses, here to roughly 80% of baseline; pre-before-post at the same interval would instead potentiate. This asymmetry matches Hebb\'s causal wording, because an input that arrives after the cell has fired did not take part in firing it.', trap: 'Treating \'fire together, wire together\' as a symmetric coincidence rule, so that any close timing is assumed to strengthen the synapse.' },
   { id: 'l12-initiation', lecture: 12, block: 'Test 2', topic: 'AIS plasticity', stem: 'Why is the axon initial segment usually the action-potential initiation site?', options: ['Its geometry and high density of voltage-gated sodium channels favour spike initiation', 'It contains no potassium channels', 'It is electrically isolated from the soma', 'It releases trophic factors into blood'], answer: 0, explanation: 'The AIS has specialised scaffolds and high sodium-channel density, making it the lowest-threshold site for regenerative spike initiation in many neurons.', trap: '“Usually” matters: initiation site depends on cell type and state.' },
   { id: 'l12-remodel', lecture: 12, block: 'Test 2', topic: 'AIS plasticity', stem: 'What is the most defensible general claim about structural AIS plasticity?', options: ['AIS movement always increases excitability', 'The AIS cannot remodel after development', 'AIS plasticity changes only neurotransmitter identity', 'Changes in AIS position or length can alter excitability, but direction depends on cellular context'], answer: 3, explanation: 'Activity-dependent changes in AIS geometry and channel organisation can tune excitability, but the functional sign depends on morphology, conductances and measurement conditions.', trap: 'Avoid turning one preparation’s directional effect into a universal rule.' },
+  { id: 'l12-high-k-blockers', lecture: 12, block: 'Test 2', topic: 'AIS plasticity', stem: 'Cultured hippocampal neurons are held in +15 mM K⁺ for 48 h, either with TTX or with nifedipine. Which outcome matches the lecture, and why?', options: ['Both drugs prevent the distal AIS shift, because spiking is needed to open the calcium channels that drive relocation', 'Neither drug prevents the shift, because raised K⁺ moves the ankyrin-G scaffold directly without any channel-mediated signal', 'TTX prevents the shift but nifedipine does not, because sodium action potentials are the activity signal the AIS reads', 'Nifedipine prevents the shift but TTX does not, because Ca²⁺ entry through L-type channels during depolarisation is the signal, not spiking'], answer: 3, explanation: 'In Grubb & Burrone\'s blocker panel, TTX left the K⁺-induced distal shift intact, so sodium spikes are not required. Nifedipine (L-type), mibefradil (L/T) and Ni²⁺ abolished it, whereas R-, P/Q- and N-type blockers did not, identifying L- and T-type Ca²⁺ channels as the activity sensors. Sustained depolarisation opens these channels directly, and the resulting Ca²⁺ signal moves the AIS.', trap: 'Assuming that \'activity-dependent\' means \'action-potential-dependent\', so TTX must block the plasticity.' },
+  { id: 'l12-nmda-threshold-slope', lecture: 12, block: 'Test 2', topic: 'AIS plasticity', stem: 'In hippocampal slices, bath NMDA shortens a CA1 neuron\'s AIS by 6 µm. Using the relationship reported on the slides, what change in action-potential voltage threshold do you predict?', options: ['About +3 mV (more depolarised), so more depolarisation is needed before the cell fires', 'About −3 mV (more hyperpolarised), so the shorter AIS lets the cell fire more easily', 'About +12 mV, because voltage threshold shifts by roughly 2 mV per micrometre lost', 'No change, because AIS length alters current threshold but never voltage threshold'], answer: 0, explanation: 'Fréal et al. found that NMDA-induced LTD shortened the AIS and raised voltage threshold by roughly 0.5 mV per µm of length lost. A 6 µm loss therefore predicts about 0.5 × 6 = +3 mV, a depolarised threshold that reduces output gain alongside the depressed synaptic input. The slope comes from a correlation across cells, and control cells also drifted slightly over the hour, so treat the value as an estimate.', trap: 'Treating a shorter AIS as more excitable, or carrying the enrichment result (voltage threshold unchanged) over to the NMDA experiment.' },
+  { id: 'l12-otocyst-partial', lecture: 12, block: 'Test 2', topic: 'AIS plasticity', stem: 'In chick embryos the otocysts are removed at E2. At E21 the difference in AIS length between high- and low-frequency neurons of nucleus magnocellularis is gone, yet NaV channels still accumulate and NaV1.6 still replaces NaV1.2. What is the most defensible conclusion?', options: ['All AIS maturation in this nucleus is driven by afferent activity arriving after hearing onset', 'Tonotopic length refinement needs afferent input but NaV accumulation and subtype switching do not, so maturation is only partly activity-dependent', 'AIS length is set by an intrinsic genetic programme, because the lesion left sodium-channel maturation intact', 'The switch from NaV1.2 to NaV1.6 is what creates the tonotopic difference in AIS length'], answer: 1, explanation: 'Removing the otocysts deprives the nucleus of auditory afferent input. The lesion abolished the tonotopic length difference, so that refinement step depends on input, but sodium-channel accumulation and the subtype switch proceeded normally and are therefore input-independent. The lecture concludes that developmental AIS plasticity here is only partly activity-dependent.', trap: 'Reading one abolished feature as proof that all AIS maturation is activity-driven, or one spared feature as proof that none of it is.' },
+  { id: 'l12-enrichment-time-course', lecture: 12, block: 'Test 2', topic: 'AIS plasticity', stem: 'P28 mice with one whisker pad trimmed explore a novel enriched cage. In barrel cortex driven by the intact whiskers, the AIS is shorter at 1 h and 3 h but back to control length at 6 h, and c-Fos follows the same time course. A new enriched environment at 6 h shortens the AIS again. What is the best interpretation?', options: ['By 6 h the AIS has become refractory, so it can no longer respond to further changes in sensory activity', 'c-Fos expression is shown to cause AIS shortening, because the two share the same time course', 'AIS length rapidly and reversibly tracks the current level of sensory-driven activity, which falls as novelty fades', 'Enrichment permanently shortens the AIS, and the control-like value at 6 h reflects measurement noise'], answer: 2, explanation: 'Enrichment raises activity in the barrel cortex served by the intact whiskers, indexed by c-Fos, and the AIS shortens within an hour; slices taken after 3 h of enrichment also showed a higher current threshold. As novelty fades, activity and AIS length return to baseline by 6 h, and renewed novelty shortens the AIS again, showing it is still responsive. This fits rapid, bidirectional, homeostatic adjustment to ongoing input.', trap: 'Treating the parallel c-Fos time course as causal evidence, or reading the 6 h recovery as a loss of plasticity.' },
   { id: 'l13-complement', lecture: 13, block: 'Test 2', topic: 'Synaptic pruning', stem: 'Which is the most precise simplified complement-pruning sequence?', options: ['CR3 synthesises C1q inside neurons', 'C1q/classical pathway → C3 deposition → CR3 recognition of complement-opsonised material', 'C4 must always act after C3', 'Complement only affects adult peripheral nerves'], answer: 1, explanation: 'Complement tagging can lead to C3-fragment deposition on selected material and recognition by microglial CR3, supporting engulfment in defined developmental contexts.', trap: 'The pathway is context-specific; do not claim it explains every form of pruning.' },
   { id: 'l13-causality', lecture: 13, block: 'Test 2', topic: 'Synaptic pruning', stem: 'Microglia contain synaptic material after a developmental manipulation. What does this observation alone establish?', options: ['Microglia caused all synapse loss', 'Microglia contacted or engulfed synaptic material, but causal necessity needs intervention', 'The material was never neuronal', 'Complement is certainly required'], answer: 1, explanation: 'Imaging supports association and engulfment. Causal necessity requires perturbing the proposed microglial pathway and measuring synapse or circuit outcomes.', trap: 'Presence inside a cell does not by itself prove that pathway caused the phenotype.' },
   { id: 'l13-deprivation', lecture: 13, block: 'Test 2', topic: 'Synaptic pruning', stem: 'Monocular deprivation during the critical period shifts cortical responses toward the open eye. Which interpretation is best supported?', options: ['Absolute activity level alone determines which inputs are retained', 'Deprivation physically severs the deprived optic nerve', 'The result proves complement is the sole synapse-elimination mechanism', 'Correlated, competitively advantaged inputs are stabilised while less-correlated inputs are weakened and withdrawn'], answer: 3, explanation: 'Competition depends on relative patterned activity between converging inputs, not simply on how active one pathway is in isolation — which is why balanced binocular deprivation gives a different outcome from monocular deprivation.', trap: 'Ocular-dominance shifts demonstrate competitive stabilisation and withdrawal; they do not by themselves name the molecular elimination pathway.' },
+  { id: 'l13-focal-blockade', lecture: 13, block: 'Test 2', topic: 'Synaptic pruning', stem: 'At a mouse neuromuscular junction, α-bungarotoxin blocks the AChRs under one small patch of the endplate, while the rest of the junction keeps transmitting normally. Which outcome best fits the lecture\'s model of synapse elimination?', options: ['The blocked patch is reinforced, because silent receptors are spared the punishment signal that active neighbouring sites generate', 'The whole junction is eliminated, because any local receptor blockade withdraws the maintenance signal from every terminal branch at once', 'Nothing changes structurally, because elimination at the NMJ is triggered by presynaptic protease release rather than by receptor activity', 'Receptors are lost from the blocked patch and its overlying branch then withdraws, because active neighbours destabilise the silent site'], answer: 3, explanation: 'Blocking receptors in a small region mimics natural elimination: AChRs disappear from the blocked site first, and the overlying terminal branch then withdraws. In the competition model, active sites produce local protection and a punishment signal that reaches nearby inactive sites, so a silent patch surrounded by active receptors loses. Context beyond the slides: working on adult junctions in living mice, Balice-Gordon and Lichtman found that blocking the whole junction does not cause elimination, which fits relative rather than absolute activity deciding the outcome.', trap: 'Assuming a synapse is eliminated simply because it is inactive, rather than because active neighbours generate a punishment signal it cannot resist.' },
+  { id: 'l13-direct-muscle-stimulation', lecture: 13, block: 'Test 2', topic: 'Synaptic pruning', stem: 'A muscle is denervated, and its fibres are then stimulated electrically through implanted electrodes in a pattern resembling normal motor activity. What does the lecture predict for AChRs outside the synapse, and why?', options: ['Extrasynaptic AChR expression stays low, because the muscle\'s own electrical activity represses receptor genes in non-synaptic nuclei', 'Extrasynaptic AChRs still rise, because nerve-released acetylcholine is the signal that normally represses receptor genes along the fibre', 'Extrasynaptic AChRs still rise, because only nerve-derived neuregulin acting on ErbB can switch off receptor transcription away from the synapse', 'Extrasynaptic AChRs gather into new endplates, because electrical stimulation activates agrin–MuSK signalling at every point along the fibre'], answer: 0, explanation: 'Paralysis or denervation raises AChR transcription along the whole fibre, but denervation combined with direct electrical stimulation of the muscle prevents that rise. The repressing signal therefore comes from postsynaptic electrical activity itself, not from transmitter. This activity-dependent repression is one of the four routes that confine AChRs to the synapse, alongside anchoring, metabolic stabilisation and synaptic transcription.', trap: 'Assuming nerve-released acetylcholine is needed to suppress extrasynaptic receptors, when the muscle\'s own activity is sufficient.' },
+  { id: 'l13-neuroligin-scaffold', lecture: 13, block: 'Test 2', topic: 'Synaptic pruning', stem: 'In cultured neurons, postsynaptic neuroligin 2 is mutated so that it can no longer bind its scaffold, while neuroligin 1 is left intact. Based on the lecture\'s model of CNS synapse organisation, which change is most expected?', options: ['Loss of PSD-95-dependent clustering of AMPA and NMDA receptors, with GABA-A receptor clustering left intact', 'Weaker gephyrin-dependent clustering of GABA-A receptors, with PSD-95-based glutamate receptor clusters largely spared', 'Failure of transmitter release at every synapse, because neuroligins assemble the SNARE machinery inside the terminal', 'Loss of the synaptic basal lamina from the central cleft, because neuroligin 2 anchors laminin at central synapses'], answer: 1, explanation: 'At CNS synapses, presynaptic neurexins bind postsynaptic neuroligins, and the neuroligin–scaffold pair sets the synapse\'s identity. Neuroligin 2 binds gephyrin to cluster GABA-A receptors at inhibitory synapses, whereas neuroligin 1 binds PSD-95 to cluster AMPA and NMDA receptors at excitatory synapses. Disabling only the neuroligin 2 link should therefore weaken inhibitory receptor clustering and leave excitatory clustering largely spared.', trap: 'Swapping the neuroligin isoforms and crediting PSD-95-based glutamate receptor clustering to neuroligin 2.' },
 
   { id: 'l14-transduction', lecture: 14, block: 'Final', topic: 'Biophysics of transduction', stem: 'A sensory receptor potential differs from an action potential because it is typically:', options: ['Graded with stimulus strength', 'All-or-none and non-decrementing', 'Independent of ion channels', 'Restricted to myelinated axons'], answer: 0, explanation: 'Transduction channels usually generate graded receptor potentials; these are converted into spike timing or transmitter release downstream.', trap: 'Do not collapse stimulus transduction and action-potential generation into one event.' },
   { id: 'l15-pathways', lecture: 15, block: 'Final', topic: 'Somatosensory processing', stem: 'Which pairing of somatosensory pathway and decussation level is correct?', options: ['Both pathways cross in the midbrain', 'Dorsal column–medial lemniscus crosses at segmental level; spinothalamic crosses in the medulla', 'Dorsal column–medial lemniscus crosses in the medulla; spinothalamic crosses near the segmental level of entry', 'Neither pathway crosses the midline'], answer: 2, explanation: 'Fine touch and proprioception ascend ipsilaterally in the dorsal columns and cross in the medulla; pain and temperature cross within a segment or two of entry and ascend contralaterally.', trap: 'The different crossing levels are exactly why a cord hemisection dissociates touch from pain and temperature on opposite sides.' },
@@ -2147,6 +3147,96 @@ const distractorNotes = {
     0: "The slides state that macrophages also remove debris and release protective cytokines, so their effects are not purely destructive.",
     1: "Macrophages arrive by about day 2 and peak at days 5–7, well inside the treatment window.",
     2: "Resident microglia are a separate population that a drug targeting infiltrating macrophages does not remove, and microglia themselves release cytokines that kill oligodendrocytes."
+  },
+  'l8-rebound-na-availability': {
+    1: "Depolarisation, not hyperpolarisation, drives Na⁺ channels into inactivation; the curve shows availability rising toward 100% on the hyperpolarised side.",
+    2: "Availability is a steady-state function of membrane potential, so a sustained 40 mV hyperpolarisation changes it substantially.",
+    3: "The absolute refractory period follows an action potential, when Na⁺ channels are inactivated; withdrawing an inhibitory input does not trigger one."
+  },
+  'l8-a-type-delay-block': {
+    0: "TTX abolishes the spikes themselves, and the A-type current is a K⁺ current that does not need Na⁺ channels to activate.",
+    2: "1-EBIO strengthens Ca²⁺-activated K⁺ channels and adaptation, which would reduce firing rather than remove the A-type delay.",
+    3: "Further hyperpolarisation removes more A-type inactivation, which enlarges the transient outward current and lengthens the delay."
+  },
+  'l8-adaptation-cd-ebio': {
+    0: "Cd²⁺ blocks Ca²⁺ channels, not Na⁺ channel inactivation, and 1-EBIO acts on Ca²⁺-activated K⁺ channels, so neither result tests Na⁺ inactivation.",
+    1: "Neither drug changes intracellular K⁺ stores; their opposite effects map onto Ca²⁺ entry and the gating of Ca²⁺-activated K⁺ channels.",
+    3: "The firing is driven by injected current, which bypasses synaptic input, so presynaptic receptors cannot explain the change."
+  },
+  'l8-slow-epsp-g-protein': {
+    0: "The fast EPSP is carried by an ionotropic receptor that does not use a G-protein, so it survives the drug.",
+    1: "This reverses the classes: the fast EPSP is ionotropic, and the slow EPSP is the metabotropic, G-protein-dependent response.",
+    2: "Ionotropic channels open without any G-protein step, and the slow EPSP would be lost rather than sped up."
+  },
+  'l9-low-calcium-histogram': {
+    1: "Ca²⁺ acts on release probability, not on vesicle filling, so peak positions hold and failures increase rather than staying constant.",
+    2: "Spontaneous MEPP size reflects vesicle content and receptor number, which bath Ca²⁺ does not set, so q is unchanged while m falls.",
+    3: "Lowering Ca²⁺ makes failures more common and keeps responses in discrete quantal steps; it is high Ca²⁺ that releases many quanta per stimulus."
+  },
+  'l10-capacitance-decay': {
+    0: "Docking brings a vesicle into contact without merging membranes, so it adds no surface area and cannot raise capacitance.",
+    2: "Capacitance depends on membrane area and thickness, not on how much calcium is inside the terminal.",
+    3: "The recording is of the presynaptic membrane's area; postsynaptic receptor gating would appear as a conductance change in a different cell."
+  },
+  'l10-botox-snap25': {
+    0: "NSF acts after fusion to recycle cis-SNARE complexes; cleaving a SNARE prevents fusion rather than trapping productive complexes.",
+    1: "Synaptotagmin triggers fusion through the SNARE complex; without intact SNAREs, calcium binding has no machinery to drive fusion.",
+    3: "The light chain is a protease aimed at SNARE proteins; calcium channels and calcium entry are left intact."
+  },
+  'l10-ribbon-threshold': {
+    0: "The same voltage does not mean the same release: calcium influx, and therefore release, scales with each active zone's channel complement.",
+    1: "Fewer channels means less local calcium at a given voltage, so ribbon B needs a larger depolarisation, not a smaller one.",
+    2: "Ribbons tether vesicles ready for release; they do not impose a fill-then-fire step that equalises thresholds."
+  },
+  'l11-nmda-ligand-vs-flux': {
+    1: "D-APV did block the lasting depression, so NMDA receptors are involved; the two drugs differ in which step of receptor function they block.",
+    2: "This is the canonical prediction the panels test, and blocking ion flow with MK-801 left LTD intact, which argues against flux being essential here.",
+    3: "D-APV and MK-801 are both NMDA-receptor antagonists, so the experiment probes induction, not AMPA-receptor expression."
+  },
+  'l11-bcm-dark-rearing': {
+    0: "This reverses BCM: low prior activity lowers θM, which is why the dark-reared crossover sits near 2 Hz rather than higher.",
+    2: "The panel shows different frequency–response curves for the two groups, so the threshold is not fixed.",
+    3: "Dark-reared slices still showed both LTD and LTP on the slide; their curve was shifted, not abolished."
+  },
+  'l11-stdp-post-before-pre': {
+    0: "Close timing is not enough: spike order sets the sign, and post-before-pre gives depression.",
+    1: "The STDP curve shows changes across intervals of up to about ±40 ms, not only at exact coincidence.",
+    3: "Plasticity shrinks toward baseline as the interval lengthens, and this spike order produces depression, not potentiation."
+  },
+  'l12-high-k-blockers': {
+    0: "TTX did not prevent the shift, so spiking is not needed to open the relevant Ca²⁺ channels; depolarisation alone is enough.",
+    1: "L-type and T-type blockers abolished the shift, so it requires Ca²⁺ channel activation rather than a direct effect of K⁺ on the scaffold.",
+    2: "This reverses the result: TTX was ineffective, whereas nifedipine abolished the shift."
+  },
+  'l12-nmda-threshold-slope': {
+    1: "The sign is wrong: NMDA-induced shortening depolarised the threshold, making firing harder, not easier.",
+    2: "This inverts the slope; the slides give about 0.5 mV per µm, not 2 mV per µm.",
+    3: "Voltage threshold was unchanged after enrichment in barrel cortex, but in the NMDA experiment it rose significantly as the AIS shortened."
+  },
+  'l12-otocyst-partial': {
+    0: "NaV accumulation and the subtype switch survived the lesion, so not all maturation depends on afferent activity.",
+    2: "The length difference was lost after the input was removed, so AIS length refinement is not purely intrinsic.",
+    3: "The subtype switch still happened after the lesion although the length difference did not, so the switch cannot be what creates that difference."
+  },
+  'l12-enrichment-time-course': {
+    0: "A new environment at 6 h shortened the AIS again, so it was still able to respond.",
+    1: "c-Fos is an activity readout; a shared time course is only correlation, and the slides never manipulate c-Fos.",
+    3: "Three hours of enrichment followed by three hours in the home cage also showed no difference, so the effect is reversible rather than noise."
+  },
+  'l13-focal-blockade': {
+    0: "Punishment spreads from active sites to nearby inactive ones, so the silent patch is the one destabilised, not the one protected.",
+    1: "Only the blocked patch loses support; the active rest of the junction keeps its local maintenance signal and its terminal branches.",
+    2: "The slides show focal receptor blockade mimicking elimination; proteases are proposed effectors of final retraction, not a trigger that replaces activity."
+  },
+  'l13-direct-muscle-stimulation': {
+    1: "Denervation plus direct muscle stimulation blocks the extrasynaptic rise, so transmitter is not required for the repression.",
+    2: "Neuregulin–ErbB signalling increases AChR transcription in synaptic nuclei; it is not the repressor of extrasynaptic genes.",
+    3: "Agrin is supplied by the nerve and acts through MuSK at the synapse; electrically stimulating the muscle does not provide it."
+  },
+  'l13-neuroligin-scaffold': {
+    0: "PSD-95-based clustering of AMPA and NMDA receptors depends on neuroligin 1, which is left intact here.",
+    2: "Neuroligins are postsynaptic adhesion partners of neurexin; the SNARE-based release machinery is presynaptic and largely shared across synapse types.",
+    3: "Central synapses have no basal lamina or synaptic laminin in the cleft; adhesion molecules such as neurexin and neuroligin organise them instead."
   }
 };
 
@@ -2345,6 +3435,54 @@ const cards = [
   [
     'Why propose "controlled re-injury" in chronic SCI?',
     'Most proven strategies work only in acute or subacute injury. Scraping away or enzymatically digesting the chronic scar aims to recreate an acute-like state where those strategies could act. It remains a proposal, not a therapy.'
+  ],
+  [
+    'T-type Ca²⁺ channels — why does holding potential set the firing mode?',
+    'They are inactivated near rest and become available only after hyperpolarisation to about −75 mV. From there, the same depolarising step triggers a low-threshold Ca²⁺ depolarisation topped by a burst of Na⁺ spikes, instead of a small subthreshold response.'
+  ],
+  [
+    'Zinc vs Mg²⁺ at the NMDA receptor?',
+    'Mg²⁺ plugs the pore at rest and is expelled by depolarisation. Zinc binds a separate modulatory site and inhibits NMDA current largely independently of voltage (context beyond the slides); whether it protects against excitotoxicity is still a hypothesis.'
+  ],
+  [
+    'How is mean quantal content (m) calculated?',
+    'm = mean evoked EPP ÷ mean spontaneous MEPP amplitude: the average number of quanta released per stimulus. It falls when bath Ca²⁺ is lowered, while q stays the same.'
+  ],
+  [
+    'Why use low-Ca²⁺, high-Mg²⁺ saline for quantal analysis?',
+    'It lowers release probability so evoked EPPs stay subthreshold and contain only a few quanta. Failures then appear, confirming Ca²⁺ is low enough to resolve unit and integer-multiple responses.'
+  ],
+  [
+    'Why does capacitance rise on fusion, not docking?',
+    'Capacitance scales with membrane area. A docked vesicle only touches the plasma membrane, whereas fusion makes the vesicle membrane part of the surface; endocytosis later removes it again.'
+  ],
+  [
+    'Kiss-and-run vs full-collapse fusion?',
+    'Full collapse flattens the vesicle into the plasma membrane and empties it, so the membrane must be retrieved later by clathrin-dependent or clathrin-independent routes. Kiss-and-run opens a transient pore and recloses it. Reuse is faster, but the vesicle may not empty fully, which adds to variability in quantal size.'
+  ],
+  [
+    'Induction vs expression of LTP?',
+    'Induction is the trigger: NMDA-receptor activation and the calcium signal it produces. Expression is the lasting change that follows, chiefly more AMPA receptors at the synapse.'
+  ],
+  [
+    'Which way does the BCM threshold slide?',
+    'It follows prior postsynaptic activity: high activity raises θM so LTP is harder, and low activity lowers it so LTP is easier. Dark-reared visual cortex switched from LTD to LTP near 2 Hz, versus about 5–10 Hz after light rearing.'
+  ],
+  [
+    'What senses activity for AIS relocation?',
+    'L- and T-type voltage-gated Ca²⁺ channels. Nifedipine, mibefradil and Ni²⁺ blocked the distal shift caused by high K⁺, whereas TTX and the R-, P/Q- and N-type blockers did not.'
+  ],
+  [
+    'NaV1.6 vs NaV1.2 along the AIS?',
+    'NaV1.6 sits distally, activates at more negative voltages and dominates spike initiation. NaV1.2 sits proximally and matters more for the spike that propagates back into the soma and dendrites.'
+  ],
+  [
+    'Agrin vs neuregulin at the NMJ?',
+    'Agrin, acting through MuSK and rapsyn, anchors AChRs into clusters under the nerve terminal. Neuregulin, acting through ErbB, raises AChR gene transcription in the synaptic nuclei.'
+  ],
+  [
+    'Steps of NMJ synapse elimination?',
+    'Inputs segregate, the winner invades as the loser retracts, AChRs are lost under the loser, and its axon then thins into a retraction bulb. The losing input\'s quantal content falls throughout.'
   ]
 ];
 
