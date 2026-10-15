@@ -22,7 +22,14 @@ const required = [
   'docs/resources/NEUR3301_Test1_Mock_Answers.md',
   'docs/resources/lectures/L05_Cell_Lineage.md',
   'docs/resources/lectures/L06_Adult_Neurogenesis_Stem_Cells.md',
-  'docs/resources/lectures/L07_Glia_II.md'
+  'docs/resources/lectures/L07_Glia_II.md',
+  'docs/resources/lectures/L24_Motor_Cortex_Neurophysiology_Plasticity.md',
+  'docs/resources/lectures/L25_Cerebellar_Networks_Neurophysiology_Plasticity.md',
+  'docs/resources/lectures/L26_Neuroendocrine_Control_of_Energy_Balance.md',
+  'docs/resources/lectures/L27_Neuroendocrine_Control_of_Fertility.md',
+  'docs/resources/lectures/L28_Ageing_Injury_and_Degeneration.md',
+  'docs/resources/lectures/L29_Sensory_Deficits_and_Prostheses.md',
+  'docs/resources/lectures/L30_Spinal_Cord_Injury_and_Regeneration.md'
 ];
 
 for (const file of required) {
@@ -128,7 +135,7 @@ if (!lecture4Brief.includes('Timetable attribution — unconfirmed') || lecture4
 const examLab = readFileSync('docs/app/index.html', 'utf8');
 const examLabScript = readFileSync('docs/app/app.js', 'utf8');
 const examLabStyles = readFileSync('docs/app/styles.css', 'utf8');
-if (!examLab.includes('styles.css?v=13') || !examLab.includes('app.js?v=13')) {
+if (!examLab.includes('styles.css?v=14') || !examLab.includes('app.js?v=14')) {
   throw new Error('Exam Lab HTML and assets must share a cache-busting deployment version');
 }
 const serviceWorker = readFileSync('docs/sw.js', 'utf8');
@@ -204,8 +211,8 @@ if (!examLab.includes('4 of 8–10 long answers') || !examLab.includes('2026-08-
   throw new Error('Exam Lab official assessment facts regressed');
 }
 const questionRows = [...examLabScript.matchAll(/id: '([^']+)', lecture: (\d+), block: '([^']+)'/g)];
-if (questionRows.length !== 92 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
-  throw new Error(`Exam Lab must contain 92 uniquely identified questions; found ${questionRows.length}`);
+if (questionRows.length !== 124 || new Set(questionRows.map(match => match[1])).size !== questionRows.length) {
+  throw new Error(`Exam Lab must contain 124 uniquely identified questions; found ${questionRows.length}`);
 }
 for (const [from, to, block] of [[1, 7, 'Test 1'], [8, 13, 'Test 2']]) {
   for (let lecture = from; lecture <= to; lecture += 1) {
@@ -226,8 +233,8 @@ try {
 } catch (error) {
   throw new Error(`Questions array is not valid literal data: ${error.message}`);
 }
-if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 92) {
-  throw new Error(`Expected 92 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
+if (!Array.isArray(parsedQuestions) || parsedQuestions.length !== 124) {
+  throw new Error(`Expected 124 parsable question objects; found ${Array.isArray(parsedQuestions) ? parsedQuestions.length : 'a non-array'}`);
 }
 // The bank shipped with 62 of 92 answers on B and only 4 on C or D combined, so a
 // letter-only guesser scored 67%. That trains a slot habit instead of the content.
@@ -281,8 +288,8 @@ const cardsStart = examLabScript.indexOf('[', cardsOpen);
 const cardsEnd = examLabScript.indexOf('\n];', cardsOpen);
 if (cardsOpen === -1 || cardsEnd === -1) throw new Error('Could not locate the flashcard array in app.js');
 const parsedCards = Function(`"use strict"; return (${examLabScript.slice(cardsStart, cardsEnd + 2)});`)();
-if (!Array.isArray(parsedCards) || parsedCards.length !== 40) {
-  throw new Error(`Expected 40 mechanism cards; found ${Array.isArray(parsedCards) ? parsedCards.length : 'a non-array'}`);
+if (!Array.isArray(parsedCards) || parsedCards.length !== 54) {
+  throw new Error(`Expected 54 mechanism cards; found ${Array.isArray(parsedCards) ? parsedCards.length : 'a non-array'}`);
 }
 const cardFronts = new Set();
 for (const [index, card] of parsedCards.entries()) {
@@ -336,7 +343,7 @@ for (const control of ['data-view="answers"', 'id="answer-draft"', 'id="answer-t
 for (const control of ['data-view="briefs"', 'id="lecture-brief-list"', 'Evidence boundary']) {
   if (!examLab.includes(control)) throw new Error(`Lecture brief control missing from Exam Lab: ${control}`);
 }
-for (const filter of ['value="Lecture 1"', 'value="Lecture 2"', 'value="Lecture 3"', 'value="Lecture 4"']) {
+for (const filter of [1, 2, 3, 4, 24, 25, 26, 27, 28, 29, 30].map(id => `value="Lecture ${id}"`)) {
   if (!examLab.includes(filter)) throw new Error(`Lecture-specific MCQ filter missing: ${filter}`);
 }
 if (!examLabScript.includes("filter.startsWith('Lecture ')") || !examLabScript.includes('`Lecture ${brief.id}`')) {
@@ -381,8 +388,8 @@ const briefsStart = examLabScript.indexOf('[', briefsOpen);
 const briefsEnd = examLabScript.indexOf('\n];', briefsOpen);
 if (briefsOpen === -1 || briefsEnd === -1) throw new Error('Could not locate the lecture brief array in app.js');
 const parsedBriefs = Function(`"use strict"; return (${examLabScript.slice(briefsStart, briefsEnd + 2)});`)();
-if (!Array.isArray(parsedBriefs) || parsedBriefs.map(brief => brief.id).join(',') !== '1,2,3,4') {
-  throw new Error('Lecture briefs must cover exactly official Lectures 1, 2, 3 and 4');
+if (!Array.isArray(parsedBriefs) || parsedBriefs.map(brief => brief.id).join(',') !== '1,2,3,4,24,25,26,27,28,29,30') {
+  throw new Error('Lecture briefs must cover exactly official Lectures 1-4 and 24-30');
 }
 for (const brief of parsedBriefs) {
   for (const field of ['title', 'date', 'lecturer', 'scope', 'download']) {
@@ -487,6 +494,25 @@ for (const [file, marker] of [
   if (!readFileSync(file, 'utf8').includes(marker)) {
     throw new Error(`${file} must declare its transcript provenance`);
   }
+}
+
+// Lectures 24-30 are slide-derived, and Lecture 30 rests on the 2025 deck. Keep both visible.
+for (const file of [
+  'docs/resources/lectures/L24_Motor_Cortex_Neurophysiology_Plasticity.md',
+  'docs/resources/lectures/L25_Cerebellar_Networks_Neurophysiology_Plasticity.md',
+  'docs/resources/lectures/L26_Neuroendocrine_Control_of_Energy_Balance.md',
+  'docs/resources/lectures/L27_Neuroendocrine_Control_of_Fertility.md',
+  'docs/resources/lectures/L28_Ageing_Injury_and_Degeneration.md',
+  'docs/resources/lectures/L29_Sensory_Deficits_and_Prostheses.md',
+  'docs/resources/lectures/L30_Spinal_Cord_Injury_and_Regeneration.md'
+]) {
+  const note = readFileSync(file, 'utf8');
+  if (!note.includes('released lecture slide PDF') || !note.includes('Timetable attribution — unconfirmed')) {
+    throw new Error(`${file} must declare its slide provenance and unconfirmed timetable attribution`);
+  }
+}
+if (!readFileSync('docs/resources/lectures/L30_Spinal_Cord_Injury_and_Regeneration.md', 'utf8').includes('2025')) {
+  throw new Error('Lecture 30 note must keep its 2025-deck caveat');
 }
 
 // Content gaps closed on 9 Aug 2026 (issue #12). Electrical-synapse rectification

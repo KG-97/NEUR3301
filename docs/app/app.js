@@ -394,6 +394,1169 @@ const lectureBriefs = [
       ['Yong et al. (2019) — p75NTR/DR6 phases of axon degeneration', 'https://pubmed.ncbi.nlm.nih.gov/31628183/'],
       ['Ercin et al. (2026) — non-canonical death in neurodegeneration', 'https://pubmed.ncbi.nlm.nih.gov/41699331/']
     ]
+  },
+  {
+    id: 24,
+    title: 'Motor Cortex: Neurophysiology and Plasticity',
+    date: '29 September 2026',
+    lecturer: 'Tang',
+    scope: 'Released Lecture 24 slide PDF condensed into an exam-safe mechanism brief covering descending pathways, layer 5 output classes, cortical control of reaching, and spine and myelin plasticity in motor learning. Built from all 26 slides without the recording; nearly all causal evidence is from mice, and several slides are figure-only.',
+    outcomes: [
+      'Map the corticobulbar, corticospinal, rubrospinal, tectospinal, reticulospinal and vestibulospinal tracts to their functions, and explain why about 85% CST crossing gives mainly, but not strictly, contralateral control.',
+      'Distinguish layer 5 output classes: bursting versus regular-firing cells, callosal/IT versus pyramidal-tract projections, and thalamus-projecting PT-upper (preparation) versus medulla-projecting PT-lower (initiation and termination) neurons.',
+      'Explain how muscimol and VGAT-optogenetic inactivation in head-fixed reaching mice show that motor cortex is needed both to initiate and to sustain a learned reach within basal ganglia and cerebellar loops.',
+      'Describe how motor learning remodels contralateral motor-cortex spines through rapid formation, selective stabilisation, elimination of pre-existing spines and clustering, and identify which experiment makes the spine–skill link causal.',
+      'Explain the evidence that new oligodendrocytes support motor-skill acquisition, and how interhemispheric inhibition and post-stroke excitability imbalance bear on motor-cortex plasticity.'
+    ],
+    chains: [
+      {
+        name: 'Cortical command to the contralateral limb',
+        steps: [
+          'Layer 5 pyramidal-tract neuron fires',
+          'axon descends through internal capsule and brainstem',
+          'about 85% of fibres cross at the pyramidal decussation',
+          'spinal interneurons and motor neurons on the opposite side are driven',
+          'skilled movement of the contralateral limb'
+        ]
+      },
+      {
+        name: 'Prepare, then move (mouse PT subtypes)',
+        steps: [
+          'Cue and plan shaped by basal ganglia–thalamic loops',
+          'PT-upper neurons signal thalamus during preparation',
+          'thalamocortical loop holds the plan without movement',
+          'PT-lower neurons drive medullary motor nuclei',
+          'movement is initiated and then terminated'
+        ]
+      },
+      {
+        name: 'Learning written into spines',
+        steps: [
+          'Skilled-reach training',
+          'new spines form on contralateral output neurons within about an hour, often in clusters',
+          'continued practice selectively stabilises a subset of new spines',
+          'pre-existing spines are eliminated, returning net density toward baseline',
+          'a durable task-specific synaptic ensemble supports the skill'
+        ]
+      },
+      {
+        name: 'Learning written into white matter',
+        steps: [
+          'Complex motor-skill practice',
+          'oligodendrocyte precursors shift toward differentiation while proliferation and death stay unchanged',
+          'new oligodendrocytes add or remodel myelin',
+          'conduction timing in task circuits is proposed to be adjusted',
+          'faster acquisition, whereas blocking new oligodendrocytes slows learning'
+        ]
+      }
+    ],
+    distinctions: [
+      [
+        'Corticospinal tract',
+        'Cortex to spinal motor circuits for trunk and limbs',
+        'About 85% crosses, so cortical lesions mainly affect the opposite body; the uncrossed minority means control is not strictly unilateral'
+      ],
+      ['Corticobulbar tract', 'Cortex to cranial-nerve motor nuclei for face, head and neck', 'Upper motor neuron route for cranial muscles, separate from the spinal route'],
+      [
+        'Rubrospinal tract',
+        'Red nucleus to mainly cervical cord; voluntary limb movement',
+        'Smaller than the CST; in some primates it can substitute for the CST, making it a candidate recovery route'
+      ],
+      [
+        'Reticulospinal and vestibulospinal tracts',
+        'Posture, spinal stepping programmes, balance and antigravity tone',
+        'Brainstem routes for postural and stereotyped control rather than fine skilled movement'
+      ],
+      [
+        'Bursting versus regular-firing layer 5 cells',
+        'Bursting may amplify and synchronise output; regular firing may serve cortical feedback',
+        'Proposed roles inferred from firing pattern and morphology, not demonstrated causal divisions'
+      ],
+      [
+        'PT-upper versus PT-lower',
+        'Thalamus-projecting and preparation-active versus medulla-projecting and initiation/termination-active',
+        'Projection target predicts activity timing; both are layer 5 pyramidal-tract neurons, shown in mice'
+      ],
+      [
+        'Interhemispheric inhibition',
+        'Callosal motor-to-motor projections that suppress spurious movement of the resting limb',
+        'After stroke the affected hemisphere is depressed and the unaffected one hyperexcitable; excitability shapes plasticity'
+      ],
+      [
+        'VGAT-ChR2 photostimulation',
+        'Drives GABAergic interneurons to silence local cortex',
+        'Here stimulation means inactivation; the result shows necessity, not what cortex computes'
+      ],
+      [
+        'Spine formation, stabilisation and elimination',
+        'Learning adds spines quickly, practice stabilises them, pre-existing spines are pruned',
+        'Net density can return to baseline while the composition of synapses has changed'
+      ],
+      [
+        'AS-PaRac1 optical erasure',
+        'Tags recently potentiated spines and shrinks them with light',
+        'Task-specific loss of the linked skill is a causal test that goes beyond imaging correlation'
+      ]
+    ],
+    experiments: [
+      {
+        name: 'Spine imaging during reach learning (Xu et al.)',
+        design: 'Repeatedly image the same GFP-labelled dendrites through a cranial window in mouse motor cortex before and during skilled forelimb-reach training, with ipsilateral, sensory, off-target and fail-to-learn controls.',
+        result: 'Spine formation rises within an hour of training; new spines are selectively stabilised while pre-existing spines are eliminated, and the change appears only in contralateral forelimb motor cortex of mice that learn.',
+        inference: 'Learning rapidly rewires output-neuron synapses in a region- and learning-specific way; the controls tighten the link, but longitudinal imaging remains correlational.'
+      },
+      {
+        name: 'Optical erasure of potentiated spines (Hayashi-Takagi et al.)',
+        design: 'Tag recently potentiated motor-cortex spines with the light-activated AS-PaRac1 probe after motor learning, shrink them with light, and compare a second task and sham-illuminated controls.',
+        result: 'Tagged spines shrink while untagged spines do not; the linked skill degrades, whereas a skill learned with other spines in the same region and sham controls are preserved.',
+        inference: 'A task-specific ensemble of potentiated spines is required to express a newly acquired skill, which moves the spine–memory link from correlation to causation in mice.'
+      },
+      {
+        name: 'Blocking new oligodendrocytes (Xiao et al.)',
+        design: 'Delete Myrf from adult oligodendrocyte precursors to block new oligodendrocyte production, then train mice on complex-wheel running and compare them with controls.',
+        result: 'Knockout mice run more slowly from within the first few hours and across eight nights, although they still improve.',
+        inference: 'New oligodendrocyte production is required for normal motor-skill acquisition, even early on; the deletion is brain-wide, so it does not localise the effect to motor cortex.'
+      }
+    ],
+    traps: [
+      'About 85% of CST fibres cross, so “each hemisphere controls only the opposite side” overclaims.',
+      'Optogenetically driving VGAT interneurons silences motor cortex; do not read it as exciting motor output.',
+      'Learning does not leave a lasting rise in spine density: new spines are offset by elimination of old ones while synapse identity changes.',
+      'Imaging new spines after training is correlational; the causal step is perturbation such as optical erasure of tagged spines.',
+      'PT-upper (thalamus-projecting) neurons carry preparatory activity; PT-lower (medulla-projecting) neurons are active at initiation and termination, not the reverse.',
+      'Spine, PT-subtype and myelin findings are mouse data, whereas the post-stroke IHI pattern is a human excitability observation, not a mechanism.'
+    ],
+    recall: [
+      [
+        'Roughly what fraction of corticospinal axons cross, and what follows for a unilateral cortical lesion?',
+        'About 85% cross, so the lesion mainly affects the opposite body; the uncrossed minority means control is not strictly contralateral.'
+      ],
+      [
+        'Which PT subtype carries preparatory activity, and where does it project?',
+        'PT-upper neurons carry the preparatory activity; they project to thalamus and avoid medullary motor centres. PT-lower neurons project to the medulla and peak at initiation and termination.'
+      ],
+      [
+        'What does VGAT-ChR2 photostimulation of motor cortex do to a mouse reach?',
+        'It drives inhibitory interneurons and silences cortex, so reaches fail to start and ongoing reaches are disrupted.'
+      ],
+      [
+        'Why can spine density return to baseline after learning even though learning left a structural trace?',
+        'New spines formed during training are stabilised while pre-existing spines are eliminated, so the count normalises but the set of synapses has changed.'
+      ],
+      [
+        'What made the Hayashi-Takagi experiment causal rather than correlational?',
+        'Light shrank tagged potentiated spines and only the linked skill was lost, while a second task and sham controls were preserved.'
+      ],
+      [
+        'What is the evidence that new oligodendrocytes support motor learning?',
+        'Blocking their production by Myrf deletion in precursors slows complex-wheel learning within hours, and learning increases precursor differentiation without changing proliferation or death.'
+      ]
+    ],
+    download: '../resources/lectures/L24_Motor_Cortex_Neurophysiology_Plasticity.md',
+    references: [
+      ['Xu et al. (2009) — reach training rapidly forms and selectively stabilises spines in contralateral motor cortex', 'https://pubmed.ncbi.nlm.nih.gov/19946267/'],
+      ['Hayashi-Takagi et al. (2015) — optical shrinkage of task-specific potentiated spines erases a newly learned motor skill', 'https://pubmed.ncbi.nlm.nih.gov/26352471/'],
+      ['Economo et al. (2018) — thalamus- and medulla-projecting PT neurons carry preparatory and movement signals', 'https://pubmed.ncbi.nlm.nih.gov/30382200/'],
+      ['Galiñanes et al. (2018) — motor-cortex inactivation halts reach initiation and diverts ongoing water reaches in mice', 'https://pubmed.ncbi.nlm.nih.gov/29514103/'],
+      ['Xiao et al. (2016) — new oligodendrocytes are required in the earliest stages of motor-skill learning', 'https://pubmed.ncbi.nlm.nih.gov/27455109/']
+    ]
+  },
+  {
+    id: 25,
+    title: 'Cerebellar Networks: Neurophysiology and Plasticity',
+    date: '30 September 2026',
+    lecturer: 'Tang',
+    scope: 'Released Lecture 25 slide PDF condensed into an exam-safe mechanism brief on the cerebello-thalamo-cortical loop, cortical cell types, climbing- versus parallel-fibre signalling, eyeblink conditioning and parallel fibre–Purkinje plasticity. It is built from the slides only, with no recording. The four figure-only slides were read from their figures, and the cellular evidence comes from rabbit, rat, cat and mouse preparations, not from humans.',
+    outcomes: [
+      'Explain how the cerebellum contributes to motor control through the cerebello-thalamo-cortical loop, and link each classic cerebellar sign to the movement parameter it disrupts (distance, timing, force).',
+      'Describe the three-layer cerebellar cortex, its cell types and their transmitter signs, and trace how mossy-fibre and climbing-fibre input reach the Purkinje cell, the sole cortical output.',
+      'Contrast simple and complex spikes by origin, rate, waveform and proposed role (sensory context or motor plan versus teaching or error signal).',
+      'Map the tone (CS) and air-puff (US) pathways of eyeblink conditioning onto parallel and climbing fibres, and predict the effect of silencing each node.',
+      'State the parallel fibre–Purkinje plasticity rules (parallel fibres alone give LTP; paired climbing- and parallel-fibre input gives LTD), explain why the climbing fibre is a powerful gate, and explain why interneuron signalling makes the rule conditional.'
+    ],
+    chains: [
+      {
+        name: 'Cerebello-thalamo-cortical loop',
+        steps: [
+          'Motor and sensory cortex',
+          'pontine nuclei relay (afferent limb)',
+          'mossy fibres enter the cerebellar cortex',
+          'Purkinje cells inhibit the dentate nucleus',
+          'dentate output to motor thalamus (efferent limb)',
+          'motor cortex, which closes the loop'
+        ]
+      },
+      {
+        name: 'Mossy-fibre context route',
+        steps: [
+          'Mossy-fibre terminal in a Golgi-gated glomerulus',
+          'glutamatergic granule cell excited',
+          'granule-cell axon ascends and bifurcates into a parallel fibre',
+          'many weak synapses on Purkinje dendrites and molecular layer interneurons',
+          'simple-spike rate modulated around an intrinsic 50–100 Hz baseline',
+          'GABAergic output to the cerebellar and vestibular nuclei'
+        ]
+      },
+      {
+        name: 'Climbing-fibre teaching route',
+        steps: [
+          'Error or unconditioned stimulus reaches the inferior olive',
+          'olivary spike leaves the axon as a burst of 1–6 spikes',
+          'a single climbing fibre strongly excites its Purkinje cell',
+          'complex spike, plus glutamate spillover that recruits nearby interneurons',
+          'coincident parallel-fibre synapses undergo LTD (interneuron signalling can switch this to LTP)'
+        ]
+      },
+      {
+        name: 'Conditioned eyeblink',
+        steps: [
+          'Tone CS → pontine nuclei → mossy fibres → parallel fibres',
+          'Air-puff US → trigeminal nucleus → inferior olive → climbing fibres',
+          'repeated pairing depresses CS-carrying parallel fibre–Purkinje synapses',
+          'less Purkinje inhibition of the anterior interpositus at CS time (standard model)',
+          'interpositus → red nucleus → facial nucleus → timed conditioned blink'
+        ]
+      }
+    ],
+    distinctions: [
+      [
+        'Mossy fibres',
+        'Excitatory afferents from pontine, brainstem and spinal nuclei onto granule cells in glomeruli, with collaterals to the cerebellar nuclei',
+        'They reach Purkinje cells only indirectly, through granule cells and parallel fibres, and carry sensory and motor-plan context'
+      ],
+      [
+        'Climbing fibres',
+        'Inferior olive axons; one per Purkinje cell, each reaching about 1–10 Purkinje cells',
+        'One of the strongest synapses in the brain: triggers the complex spike and carries the teaching or error signal'
+      ],
+      [
+        'Granule cells',
+        'Glutamatergic; one of only two excitatory neuron types in the cerebellar cortex',
+        'Billions of small cells whose bifurcating axons become parallel fibres that drive simple spikes'
+      ],
+      [
+        'Purkinje cells',
+        'GABAergic; fire spontaneously at 50–100 Hz; the sole output of the cerebellar cortex',
+        'Firing is intrinsic, and inputs modulate it; the output inhibits the cerebellar and vestibular nuclei with heavy convergence (about 26:1 in cat)'
+      ],
+      [
+        'Basket vs stellate cells',
+        'Inhibitory molecular layer interneurons: basket cells target the Purkinje soma and axon initial segment, stellate cells target the dendrites',
+        'Where the inhibition lands decides whether it vetoes output or shapes dendritic integration'
+      ],
+      [
+        'Ito cells',
+        'Interneuron subclass inhibited by Purkinje-cell feedback; it inhibits basket cells, and the connection runs one way only',
+        'Newly defined in 2026. Purkinje → Ito → basket → Purkinje has three inhibitory links (net negative feedback onto the same Purkinje cell), but the slide\'s diagram also shows Ito cells inhibiting a neighbouring Purkinje cell (net disinhibition there), so the overall effect cannot be read off the wiring'
+      ],
+      [
+        'Simple vs complex spike',
+        'Simple: ordinary action potential at a high tonic rate, driven by parallel fibres on an intrinsic baseline. Complex: climbing-fibre-triggered, at most about 1 Hz, multi-peaked',
+        'What each contributes to motor control is still debated; complex-spike shape reflects the variable olivary burst'
+      ],
+      [
+        'Climbing-fibre glutamate spillover',
+        'Activates AMPA and NMDA receptors on molecular layer interneurons without conventional synapses',
+        'Volume transmission produces feedforward inhibition and disinhibition of neighbouring Purkinje cells'
+      ],
+      [
+        'Parallel fibre–Purkinje plasticity',
+        'Parallel fibres alone give LTP; paired parallel- and climbing-fibre input gives LTD',
+        'The climbing fibre gates the sign, but interneuron signalling can switch the paired outcome to LTP'
+      ]
+    ],
+    experiments: [
+      {
+        name: 'Conjunctive stimulation (Ito and Kano, rabbit)',
+        design: 'Stimulate parallel fibres alone, climbing fibres alone, or both together in rabbit cerebellar cortex, and track the parallel-fibre-evoked Purkinje response over time.',
+        result: 'Only conjunctive parallel- and climbing-fibre stimulation produced a long-lasting depression of parallel-fibre transmission.',
+        inference: 'Climbing-fibre activity that coincides with parallel-fibre input instructs LTD at those synapses, which supports the idea of the climbing fibre as a teaching signal.'
+      },
+      {
+        name: 'Purkinje pacemaking (Häusser and Clark, rat slices)',
+        design: 'Record Purkinje-cell firing in control conditions, after blocking synaptic input, and then in tetrodotoxin.',
+        result: 'Firing continued without synaptic input but stopped in tetrodotoxin.',
+        inference: 'Tonic Purkinje firing is intrinsic and depends on Na⁺ spikes. Synaptic input modulates a baseline rate rather than creating output, so information is coded as changes around that baseline.'
+      },
+      {
+        name: 'Bidirectional Purkinje manipulation and thirst (Mishra et al., mouse)',
+        design: 'Express an excitatory (hM3Dq) or inhibitory (hM4Di) DREADD only in Purkinje cells (Pcp2-Cre), give CNO or saline, and measure Purkinje firing, 24-h water intake, drinking bouts and food intake.',
+        result: 'Excitation depolarised Purkinje cells, raised their firing and increased drinking with food intake unchanged; inhibition reduced water intake with food intake unchanged.',
+        inference: 'Purkinje activity selectively and bidirectionally modulates drinking in mice, a non-motor function. This shows modulation, not a thirst-generating centre, and it does not establish human relevance.'
+      }
+    ],
+    traps: [
+      'Purkinje cells are GABAergic. Cortical output inhibits the cerebellar and vestibular nuclei, and the excitatory onward projection comes from nuclear neurons, not from the cortex.',
+      'Paired parallel- and climbing-fibre input gives LTD, not LTP, and parallel fibres alone give LTP. Interneuron signalling can switch the paired outcome, so state the rule as conditional.',
+      'Do not reverse the convergence. Each Purkinje cell receives one climbing fibre (a fibre reaches about 1–10 Purkinje cells), and many Purkinje cells converge on each nuclear neuron.',
+      'A climbing-fibre rate of at most about 1 Hz does not make it a weak input. The complex spike is not uniform either: burst size (1–6 spikes) varies and shapes it.',
+      'In eyeblink conditioning, silencing the facial nucleus blocks blink expression but does not identify the teaching route. The US teaching signal runs from the olive through climbing fibres.',
+      'The mouse optogenetic and chemogenetic studies show that the cerebellum can modulate dopamine and drinking. They do not make it a thirst centre or explain human disorders.'
+    ],
+    recall: [
+      [
+        'Why is the Purkinje cell the key node of the cerebellar cortex?',
+        'It is the sole cortical output. It is GABAergic and fires tonically at 50–100 Hz, and it integrates parallel-fibre context, climbing-fibre instruction and interneuron inhibition before inhibiting the cerebellar and vestibular nuclei.'
+      ],
+      [
+        'Trace the cerebello-thalamo-cortical loop.',
+        'Motor and sensory cortex → pontine nuclei → mossy fibres to the cerebellar cortex → Purkinje cells → dentate nucleus → motor thalamus → motor cortex. Basal ganglia also converge on the motor thalamus.'
+      ],
+      [
+        'How do climbing-fibre and parallel-fibre inputs differ?',
+        'Climbing fibres: one per Purkinje cell, bursts of 1–6 spikes at most about 1 Hz, a very strong synapse, the complex spike and the teaching signal. Parallel fibres: granule-cell axons, many weak inputs, simple spikes and the context or motor-plan signal.'
+      ],
+      [
+        'Which pathways carry the CS and the US in eyeblink conditioning?',
+        'Tone CS: cochlear nucleus → pontine nuclei → mossy fibres → granule cells → parallel fibres. Air-puff US: trigeminal nucleus → inferior olive → climbing fibres. Output: Purkinje cell → anterior interpositus → red nucleus → facial nucleus.'
+      ],
+      [
+        'State the parallel fibre–Purkinje plasticity rules.',
+        'Parallel-fibre activity alone gives LTP; paired parallel- and climbing-fibre input gives LTD (Ito and Kano, rabbit). Interneuron signalling can convert the paired outcome to LTP, so the rule is conditional.'
+      ],
+      [
+        'What are Ito cells?',
+        'A subclass of molecular layer interneurons that, unlike basket and stellate cells, receives inhibitory feedback from Purkinje cells. They in turn inhibit basket cells, and the connection runs one way only.'
+      ]
+    ],
+    download: '../resources/lectures/L25_Cerebellar_Networks_Neurophysiology_Plasticity.md',
+    references: [
+      [
+        'Ito and Kano (1982) — conjunctive parallel- and climbing-fibre stimulation induces long-lasting depression at the parallel fibre–Purkinje synapse',
+        'https://pubmed.ncbi.nlm.nih.gov/6298664/'
+      ],
+      [
+        'Häusser and Clark (1997) — cerebellar inhibitory neurons, including Purkinje cells, fire spontaneously without synaptic input, and tonic inhibition shapes their output pattern',
+        'https://pubmed.ncbi.nlm.nih.gov/9331356/'
+      ],
+      ['Mathy et al. (2009) — single olivary spikes become axonal bursts that shape the complex spike and parallel-fibre plasticity', 'https://pubmed.ncbi.nlm.nih.gov/19447094/'],
+      ['Kim and Augustine (2026) — a molecular layer interneuron subclass defined by Purkinje-cell feedback inhibition', 'https://pubmed.ncbi.nlm.nih.gov/42536485/'],
+      ['Mishra et al. (2024) — Purkinje-cell manipulation bidirectionally changes water intake in mice without changing food intake', 'https://pubmed.ncbi.nlm.nih.gov/38987435/']
+    ]
+  },
+  {
+    id: 26,
+    title: 'Neuroendocrine Control of Energy Balance',
+    date: '5 October 2026',
+    lecturer: 'Smith',
+    scope: 'Released Lecture 26 slide PDF condensed into an exam-safe mechanism brief centred on the opposing arcuate NPY/AgRP and POMC populations, their hormonal inputs and their convergence on PVN MC4R. Every mechanistic slide rests on rodent data, and several slides are figure-only, so figure details are not reconstructed. Lesion-era \'centres\' and the POMC free-radical route to adult-onset obesity are flagged as models, not settled human mechanisms.',
+    outcomes: [
+      'Name the peripheral energy signals (leptin, insulin, ghrelin and the gut peptides CCK, GLP-1, oxyntomodulin and PYY), and the five hypothalamic nuclei that integrate them.',
+      'Explain how lesion studies produced the VMH-satiety / LH-feeding model, and why the VMH-then-LH double lesion implies that LH drive is needed to express VMH-lesion overeating.',
+      'Contrast NPY/AgRP and POMC neurons by receptor complement (GHSR, leptin and insulin receptors), the energy state in which each is active, PVN receptor targets, and responses to leptin, insulin and ghrelin.',
+      'Use the one-way AgRP-to-POMC GABA connection and AgRP antagonism of MC4R to predict the outcome of co-activation, ablation and receptor-blockade experiments.',
+      'Place VMH and DMH BDNF, DMH NPY, LH orexin and MCH, non-AgRP/POMC leptin-receptor neurons and extra-hypothalamic regions into a distributed circuit beyond the arcuate nucleus.'
+    ],
+    chains: [
+      {
+        name: 'Fasting and ghrelin hunger drive',
+        steps: [
+          'Negative energy balance raises stomach ghrelin while leptin and insulin fall',
+          'ghrelin binds GHSR on arcuate NPY/AgRP neurons (Fos-positive)',
+          'AgRP neurons release GABA onto POMC neurons, which lack GHSR, silencing them',
+          'in the PVN, NPY acts at Y1/Y5 while AgRP antagonises MC4R',
+          'net orexigenic drive increases food intake'
+        ]
+      },
+      {
+        name: 'Leptin satiety drive',
+        steps: [
+          'Larger fat mass raises leptin secretion',
+          'leptin-receptor signalling (pSTAT3) in ARC and VMH neurons',
+          'POMC neurons are excited while NPY/AgRP neurons are inhibited (insulin also inhibits NPY/AgRP)',
+          'α-MSH activates PVN MC4R without AgRP opposition, with VMH leptin/BDNF signalling supporting POMC activity',
+          'food intake falls and body weight is defended'
+        ]
+      },
+      {
+        name: 'Proposed POMC free-radical route to adult-onset obesity',
+        steps: [
+          'POMC neurons are most active in positive energy balance',
+          'they produce more free radicals than AgRP neurons',
+          'oxidative burden may make them prone to degeneration with age',
+          'preferential POMC loss weakens satiety drive and leaves AgRP tone relatively unopposed',
+          'intake and body weight rise, giving adult-onset obesity (hypothesis)'
+        ]
+      },
+      {
+        name: 'From lesion centres to defined cell types',
+        steps: [
+          'Hypothalamic, not pituitary, injury causes obesity',
+          'VMH lesions cause hyperphagic obesity; LH lesions cause starvation',
+          'a later LH lesion reverses VMH-lesion obesity, so LH drive is needed for that overeating',
+          'genetically defined ARC populations replace anatomical \'centres\'',
+          'optogenetics tests sufficiency and cell ablation tests necessity'
+        ]
+      }
+    ],
+    distinctions: [
+      [
+        'Leptin',
+        'Adipose hormone; leptin receptor on POMC, NPY/AgRP, VMH, DMH and LH neurons',
+        'Signals energy sufficiency: excites POMC and inhibits NPY/AgRP. pSTAT3 shows receptor signalling, not the direction of firing'
+      ],
+      ['Ghrelin', 'Stomach hormone; GHSR on NPY/AgRP but not POMC neurons', 'Orexigenic: activates AgRP neurons directly and suppresses POMC only indirectly, through AgRP GABA'],
+      [
+        'Insulin',
+        'Pancreatic hormone; insulin receptor on both NPY/AgRP and POMC neurons',
+        'The slides state that it inhibits NPY/AgRP; they do not specify its direction at POMC'
+      ],
+      ['α-MSH', 'POMC-derived agonist at PVN MC4R', 'The main anorectic melanocortin; MC4R antagonism removes its effect on intake'],
+      ['AgRP peptide', 'MC4R antagonist in the PVN', 'Orexigenic because it blocks the α-MSH brake, not because it activates MC4R'],
+      ['NPY', 'Y1 and Y5 receptors in the PVN', 'Orexigenic. DMH NPY also rises in fasting, lactation and calorie restriction and may promote overeating'],
+      [
+        'AgRP-to-POMC GABA synapse',
+        'One-way local inhibition within the ARC',
+        'Explains why co-activating both populations still increases intake, much like AgRP activation alone'
+      ],
+      [
+        'Fos',
+        'Immediate-early gene product in the nuclei of activated cells',
+        'Shows which cells became active after a stimulus; cannot prove a direct action or detect inhibition'
+      ],
+      [
+        'Orexin vs MCH (LH)',
+        'Orexin: arousal-dominant, acutely orexigenic, chronically anti-obesity; MCH: increases intake',
+        'LH leptin-responsive neurons are a separate third population that influences POMC; MCH is not a melanocortin'
+      ],
+      ['BDNF (VMH and DMH)', 'Leptin-regulated neurotrophin signalling', 'VMH and DMH BDNF restrains hyperphagia and obesity downstream of leptin']
+    ],
+    experiments: [
+      {
+        name: 'Hypothalamic lesion mapping',
+        design: 'Electrolytic lesions of the VMH or LH in rodents, followed by a second LH lesion in animals already obese from a VMH lesion.',
+        result: 'VMH lesions caused obesity, LH lesions caused starvation, and the later LH lesion reversed VMH-lesion obesity and produced starvation.',
+        inference: 'The dual-centre model, in which LH feeding drive is needed to express VMH-lesion overeating. Lesions destroy fibres of passage and mixed cell types, so \'centres\' are anatomical simplifications that cell-type methods later replaced.'
+      },
+      {
+        name: 'Optogenetic sufficiency tests',
+        design: 'Express channelrhodopsin-2 selectively in arcuate AgRP or POMC neurons, then photostimulate each population, or both together, in behaving mice.',
+        result: 'AgRP stimulation rapidly evoked eating, POMC stimulation suppressed intake, and co-activation increased intake about as much as AgRP stimulation alone.',
+        inference: 'Each population is sufficient to shift intake in opposite directions, and the AgRP side dominates through one-way GABAergic inhibition of POMC and MC4R antagonism. Artificial synchronous drive shows sufficiency, not the natural firing pattern.'
+      },
+      {
+        name: 'Adult AgRP-neuron ablation',
+        design: 'Genetically ablate AgRP-expressing neurons in adult mice (Gropp et al. 2005, cited on the slides) and compare with loss of POMC.',
+        result: 'Loss of AgRP neurons collapsed feeding, leading to starvation and death; POMC loss led to obesity.',
+        inference: 'AgRP neurons are necessary for feeding in adults, and POMC neurons are needed for restraint. Ablation removes every co-transmitter, including GABA, so it is not equivalent to deleting the NPY or AgRP peptide genes.'
+      }
+    ],
+    traps: [
+      '\'VMH = satiety centre, LH = feeding centre\' are lesion-era labels; electrolytic lesions hit fibres of passage and mixed cell types, so name cell populations and receptors instead.',
+      'AgRP and POMC are not symmetric opponents: AgRP neurons inhibit POMC neurons by GABA but not vice versa, so co-activation increases intake.',
+      'Ghrelin does not act directly on POMC neurons, which lack GHSR; their suppression is relayed through AgRP neurons.',
+      'AgRP is an MC4R antagonist, not an agonist, and NPY acts through Y1/Y5, not MC4R.',
+      'Fos and pSTAT3 are measurements of activation or receptor signalling, not proof of a direct mechanism; a pSTAT3-positive neuron may have been inhibited (leptin inhibits AgRP neurons).',
+      'The POMC free-radical degeneration route to adult-onset obesity is a hedged, rodent-based hypothesis, not an established human mechanism.'
+    ],
+    recall: [
+      [
+        'What did the VMH-then-LH double-lesion experiment show?',
+        'A later LH lesion reversed VMH-lesion obesity and caused starvation, so LH feeding drive is needed to express the overeating that VMH damage releases.'
+      ],
+      [
+        'Which hormone receptors do NPY/AgRP and POMC neurons carry, and how does each hormone act?',
+        'NPY/AgRP carry GHSR, leptin and insulin receptors: ghrelin activates them, and leptin and insulin inhibit them. POMC carry leptin and insulin receptors but no GHSR: leptin activates them, and ghrelin suppresses them only indirectly.'
+      ],
+      [
+        'What happens at PVN receptors in the fed versus the fasted state?',
+        'Fed: α-MSH from POMC neurons activates MC4R to suppress intake. Fasted: AgRP antagonises MC4R and NPY activates Y1/Y5, increasing intake.'
+      ],
+      [
+        'Why does co-activating AgRP and POMC neurons still increase intake?',
+        'AgRP neurons inhibit POMC neurons by GABA, but POMC neurons do not inhibit AgRP neurons, and AgRP also blocks MC4R. It is foot off the brake plus foot on the accelerator.'
+      ],
+      [
+        'How might POMC free radicals lead to adult-onset obesity?',
+        'POMC neurons produce more free radicals, and the oxidative burden may make them degenerate preferentially. That weakens satiety drive, so intake and body weight rise over time. The slides present this as a possibility.'
+      ],
+      [
+        'What do orexin and MCH neurons in the LH do to intake?',
+        'Orexin acutely increases intake but chronically protects against obesity, and its larger role is arousal. MCH increases intake. LH leptin-responsive neurons are a separate population that influences POMC.'
+      ]
+    ],
+    download: '../resources/lectures/L26_Neuroendocrine_Control_of_Energy_Balance.md',
+    references: [
+      ['Gropp et al. (2005) — ablating AgRP neurons in adult mice acutely reduces feeding (cited on the slides)', 'https://pubmed.ncbi.nlm.nih.gov/16158063/'],
+      [
+        'Aponte et al. (2011) — photostimulating AgRP neurons evokes feeding; POMC stimulation reduces intake via melanocortin receptors',
+        'https://pubmed.ncbi.nlm.nih.gov/21209617/'
+      ],
+      ['Cowley et al. (2001) — leptin excites POMC neurons directly and by reducing NPY/GABA inhibition', 'https://pubmed.ncbi.nlm.nih.gov/11373681/'],
+      ['Atasoy et al. (2012) — inhibitory AgRP output to the PVH accounts for acute AgRP-evoked feeding', 'https://pubmed.ncbi.nlm.nih.gov/22801496/'],
+      ['Dhillon et al. (2006) — leptin action on VMH SF1 neurons is required for normal body-weight homeostasis', 'https://pubmed.ncbi.nlm.nih.gov/16423694/']
+    ]
+  },
+  {
+    id: 27,
+    title: 'Neuroendocrine Control of Fertility',
+    date: '6 October 2026',
+    lecturer: 'Smith',
+    scope: 'Released Lecture 27 slide PDF condensed into an exam-safe mechanism brief on kisspeptin control of the reproductive axis. Several slides are figure-only (Kiss1 in situ panels, optogenetics, the KNDy diagram, metabolic plots), so where the slide text gives no direction of effect it was taken from the cited primary paper. Almost all of the evidence is from rodents and sheep.',
+    outcomes: [
+      'Place kisspeptin in the HPG axis: Kiss1 neurons signal through GPR54/Kiss1r on GnRH neurons, and gonadal steroids feed back onto Kiss1 neurons rather than mainly onto GnRH neurons.',
+      'Explain how oestradiol regulates Kiss1 in opposite directions in the arcuate nucleus and AVPV, and why this maps onto negative-feedback pulses and the positive-feedback surge.',
+      'Describe KNDy co-transmission and the tracer, explant and central-antagonist evidence that arcuate kisspeptin and NKB signalling drive pulsatile GnRH/LH secretion, including action at the median eminence.',
+      'Weigh kisspeptin as a puberty gatekeeper against developmental compensation after early kisspeptin-neuron ablation.',
+      'Interpret Kiss1r-knockout metabolic phenotypes (obesity, reduced energy expenditure, BAT Ucp1, Pomc) without mistaking hypogonadism for a direct metabolic action.'
+    ],
+    chains: [
+      {
+        name: 'Kisspeptin drive of the HPG axis',
+        steps: [
+          'Kiss1 precursor processed to kisspeptin-54 and shorter active fragments',
+          'kisspeptin binds GPR54/Kiss1r, expressed by more than 90% of GnRH neurons',
+          'GnRH neurons are excited and release GnRH into portal blood at the median eminence',
+          'pituitary gonadotrophs secrete LH and FSH',
+          'gonadal sex steroids feed back onto Kiss1 neurons'
+        ]
+      },
+      {
+        name: 'Negative feedback (pulse mode)',
+        steps: [
+          'Gonadal steroid falls, e.g. after ovariectomy',
+          'less ERα-mediated suppression lets ARC Kiss1 expression rise',
+          'KNDy network active (model: NKB excites, dynorphin terminates each bout)',
+          'episodic kisspeptin release onto GnRH terminals in the median-eminence external zone',
+          'GnRH and LH pulses, restrained again when steroid returns'
+        ]
+      },
+      {
+        name: 'Positive feedback (surge mode, females)',
+        steps: [
+          'Sustained high preovulatory oestradiol',
+          'ERα in AVPV Kiss1 neurons increases Kiss1 expression',
+          'AVPV kisspeptin strongly drives GnRH neurons (optogenetic evidence, mouse)',
+          'GnRH surge then LH surge',
+          'ovulation; kisspeptin antagonism attenuates the induced LH surge in ewes'
+        ]
+      },
+      {
+        name: 'Kiss1r loss and body weight',
+        steps: [
+          'Global Kiss1r knockout',
+          'hypogonadism plus loss of any non-reproductive kisspeptin signalling',
+          'reduced energy expenditure and activity, with altered BAT Ucp1',
+          'positive energy balance despite not eating more',
+          'female obesity that persists after ovariectomy'
+        ]
+      }
+    ],
+    distinctions: [
+      [
+        'Kisspeptin',
+        'Kiss1 gene product: kisspeptin-54 (metastin) and the shorter -14, -13 and -10 fragments, all ligands for GPR54/Kiss1r',
+        'A family of potent GnRH secretagogues that act upstream of GnRH, not as pituitary hormones'
+      ],
+      [
+        'GPR54 / Kiss1r',
+        'G-protein-coupled receptor co-expressed by more than 90% of GnRH neurons',
+        'Co-expression shows GnRH neurons can respond directly; receptor expression alone does not prove the endogenous route'
+      ],
+      [
+        'ARC Kiss1 (KNDy) neurons',
+        'Co-express kisspeptin, NKB and dynorphin plus steroid receptors; project to the median-eminence external zone',
+        'Suppressed by oestradiol; drive negative-feedback-regulated GnRH pulses'
+      ],
+      ['AVPV Kiss1 neurons', 'Oestrogen-receptor-positive; Kiss1 increased by oestradiol', 'Drive the positive-feedback GnRH/LH surge in female rodents'],
+      [
+        'Neurokinin B',
+        'Acts via NK3R within the arcuate kisspeptin network',
+        'Central NK3R blockade abolishes LH pulses in OVX ewes, but the oestrogen-induced surge survives it in sheep'
+      ],
+      ['Dynorphin', 'Inhibitory kappa-opioid signal in KNDy neurons', 'Proposed brake that ends each pulse; a model role illustrated on the slides, not directly tested there'],
+      [
+        'ERα on Kiss1 cells',
+        'On virtually all ARC and AVPV Kiss1 neurons; required for oestradiol\'s effects on Kiss1',
+        'Explains how steroid feedback reaches GnRH neurons, which largely lack ERα (context beyond the slides)'
+      ],
+      [
+        'Median-eminence action',
+        'ARC kisspeptin fibres meet GnRH terminals in the external zone; explants release GnRH',
+        'Terminal-level action is possible; this does not rule out action at GnRH somata'
+      ],
+      ['Kiss1 mRNA by in situ hybridisation', 'Measures gene expression', 'Not a measure of peptide release; pair with antagonist, explant or optogenetic tests'],
+      [
+        'Early versus acute kisspeptin-cell ablation',
+        'Developmental versus adult loss of the same cells',
+        'Fertility survives early ablation through compensation but not acute adult ablation, so necessity depends on timing'
+      ]
+    ],
+    experiments: [
+      {
+        name: 'Steroid regulation of Kiss1',
+        design: 'Adult female mice left intact (dioestrus), ovariectomised, or ovariectomised with oestradiol replacement for 7 days; Kiss1 mRNA quantified by in situ hybridisation in the ARC and AVPV.',
+        result: 'ARC Kiss1 rose after ovariectomy and was suppressed by oestradiol; AVPV Kiss1 fell after ovariectomy and was restored by oestradiol.',
+        inference: 'One steroid regulates the two populations with opposite sign, consistent with ARC in negative and AVPV in positive feedback. Near-universal ERα co-expression suggests a direct action on Kiss1 cells.'
+      },
+      {
+        name: 'Central antagonists and LH pulses in OVX ewes',
+        design: 'A kisspeptin antagonist or the NK3R antagonist MRK-08 infused into the brain of ovariectomised ewes, with frequent blood sampling for LH before, during and after infusion.',
+        result: 'Both antagonists suppressed LH pulses during infusion.',
+        inference: 'Kisspeptin and NKB signalling are needed to generate pulses when steroid feedback is removed, supporting the KNDy pulse-generator model. LH is a downstream proxy for GnRH.'
+      },
+      {
+        name: 'Early kisspeptin-cell ablation',
+        design: 'Kiss1-IRES-Cre mice crossed with Cre-activated diphtheria toxin (R26-DTA) mice to remove kisspeptin cells from early development; puberty onset and fertility assessed, and compared with acute ablation in adults.',
+        result: 'Females reached puberty and were fertile but had smaller ovaries; mice lacking GPR54-expressing neurons were also fertile; acute adult ablation impaired fertility.',
+        inference: 'The developing circuit compensates for early loss, so a normal developmental-ablation phenotype does not show that kisspeptin is dispensable in the intact animal.'
+      }
+    ],
+    traps: [
+      'Oestradiol does not simply inhibit kisspeptin: it suppresses ARC Kiss1 but stimulates AVPV Kiss1, so the nucleus sets the sign.',
+      'Do not draw steroid feedback straight onto GnRH neurons; the model relays it through ERα-positive Kiss1 neurons.',
+      'Kiss1 mRNA levels and GPR54 co-expression are measurements of capacity, not proof of mechanism; antagonist, explant and optogenetic experiments test function.',
+      'Normal puberty after early kisspeptin-cell ablation reflects compensation, not dispensability; acute adult ablation impairs fertility, and human KISS1R mutations cause hypogonadism.',
+      'In the KNDy model NKB is the accelerator and dynorphin the brake; swapping them inverts every prediction. NK3R blockade removes pulses but spared the sheep surge.',
+      'Kiss1r-knockout obesity is not just hypogonadism (it persists after ovariectomy), but a global knockout does not show that kisspeptin acts on fat directly.'
+    ],
+    recall: [
+      [
+        'Where are the two main hypothalamic Kiss1 populations, and what does oestradiol do to each?',
+        'ARC: suppressed by oestradiol and raised after ovariectomy (negative feedback, pulses). AVPV: stimulated by oestradiol and lowered after ovariectomy (positive feedback, surge in females).'
+      ],
+      [
+        'What does KNDy mean, and why does it matter?',
+        'Arcuate kisspeptin neurons co-express kisspeptin, neurokinin B and dynorphin; this network is the proposed GnRH pulse generator.'
+      ],
+      [
+        'What evidence says kisspeptin can act at GnRH terminals?',
+        'Anterograde tracing shows ARC kisspeptin fibres in the median-eminence external zone, and kisspeptin raises GnRH release from isolated median-eminence explants that lack GnRH somata.'
+      ],
+      [
+        'What happened to LH pulses in OVX ewes given central kisspeptin or NK3R antagonist?',
+        'Both suppressed the pulses, implicating kisspeptin and NKB signalling in pulse generation.'
+      ],
+      [
+        'Why does fertility survive early ablation of kisspeptin cells?',
+        'The developing network compensates; acute ablation in adults impairs fertility, so necessity depends on when the loss occurs.'
+      ],
+      [
+        'How do we know Kiss1r-knockout obesity is not just hypogonadism?',
+        'Knockout females stay fatter than wild types after both are ovariectomised, and they show reduced energy expenditure despite not overeating.'
+      ]
+    ],
+    download: '../resources/lectures/L27_Neuroendocrine_Control_of_Fertility.md',
+    references: [
+      ['Smith et al. (2005) — oestradiol suppresses arcuate but stimulates AVPV Kiss1 expression via ERα in female mice', 'https://pubmed.ncbi.nlm.nih.gov/15919741/'],
+      [
+        'Smith et al. (2011) — kisspeptin antagonist blunts the ovine LH surge; kisspeptin releases GnRH from the isolated median eminence',
+        'https://pubmed.ncbi.nlm.nih.gov/21239443/'
+      ],
+      ['Li et al. (2015) — central NK3R antagonist abolishes LH pulses in ovariectomised ewes but spares oestrogen positive feedback', 'https://pubmed.ncbi.nlm.nih.gov/25677216/'],
+      ['Mayer and Boehm (2011) — female puberty and fertility survive early ablation of kisspeptin neurons', 'https://pubmed.ncbi.nlm.nih.gov/21516099/'],
+      [
+        'Tolson et al. (2014) — Kiss1r knockout females develop obesity with reduced energy expenditure that persists after ovariectomy',
+        'https://pubmed.ncbi.nlm.nih.gov/24937427/'
+      ]
+    ]
+  },
+  {
+    id: 28,
+    title: 'Ageing, Injury and Degeneration',
+    date: '7 October 2026',
+    lecturer: 'Hodgetts',
+    scope: 'Released Lecture 28 slide PDF condensed into an exam-safe mechanism brief; built from the 50-slide 2026 deck without the recording, so spoken emphasis is not captured, figure-only slides are read cautiously, and the epidemiology and trial-count figures are slide claims rather than independently checked data.',
+    outcomes: [
+      'Separate normal brain ageing (region-selective neuron loss, dendritic and synaptic simplification, reduced blood flow, glial and growth-factor-receptor change) from disease-specific degeneration.',
+      'Explain Alzheimer\'s, Parkinson\'s and Huntington\'s disease by pathology, neurochemistry and genetics, and match each symptomatic drug to the deficit it compensates for.',
+      'Explain multiple sclerosis as immune-mediated demyelination that shifts from inflammation toward neurodegeneration, and predict which phase an immunotherapy can reach.',
+      'Distinguish primary from secondary injury events and explain why PNS axons regenerate while CNS axons largely do not.',
+      'Judge repair strategies (protection, gene therapy, cell replacement, pathway reconstruction and devices) by keeping animal efficacy, human safety and human efficacy separate.'
+    ],
+    chains: [
+      {
+        name: 'Parkinson\'s symptom threshold',
+        steps: [
+          'α-synuclein/Lewy pathology is thought to begin years before motor signs',
+          'SNpc dopaminergic neurons and their striatal axons are lost',
+          'caudate and putamen lose dopaminergic input',
+          'symptoms appear only after ~50–70% of these neurons are gone',
+          'tremor, rigidity, akinesia and postural instability'
+        ]
+      },
+      {
+        name: 'L-DOPA to dyskinesia',
+        steps: [
+          'Oral L-DOPA (dopamine precursor) restores striatal dopamine',
+          'dopaminergic neurons keep dying during treatment',
+          'intermittent doses give fluctuating dopamine availability',
+          'motor fluctuations and dyskinesias in ~80% of patients within 5–8 years'
+        ]
+      },
+      {
+        name: 'MS pathomechanism',
+        steps: [
+          'BBB damage lets immune cells in',
+          'T cells release cytokines and recruit immune cells; B cells make demyelinating antibodies',
+          'demyelination impairs conduction, with symptoms set by lesion site',
+          'early disease: inflammation and repair dominate (relapse and remission)',
+          'later: inflammation wanes and neurodegeneration drives progressive disability'
+        ]
+      },
+      {
+        name: 'Traumatic CNS injury',
+        steps: [
+          'Primary mechanical disruption, necrosis and haemorrhage at impact',
+          'secondary inflammation, excitotoxicity, oxidative stress and mitochondrial damage',
+          'demyelination, cyst formation and transneuronal degeneration',
+          'reactive astrocytes seal the lesion, then scar and matrix inhibit regrowth',
+          'slow myelin-debris clearance plus inhibitory factors suppress CNS regeneration'
+        ]
+      }
+    ],
+    distinctions: [
+      [
+        'Normal-ageing neuron loss',
+        'Region-selective retention after 60: ~50% occipital cortex, ~60% locus coeruleus, ~75% Purkinje cells, ~100% thalamus',
+        'Ageing is not uniform cell death; dendritic/synaptic simplification, reduced blood flow and glial change carry much of the effect'
+      ],
+      [
+        'FGF-2 vs its receptors in ageing',
+        'Ligand stable; neuronal FGFR1 down, glial FGFR2 up (figure data)',
+        'A stable ligand does not guarantee stable signalling; receptor change can alter trophic support'
+      ],
+      [
+        'Amyloid plaques vs neurofibrillary tangles',
+        'Aβ aggregates in senile plaques vs tangles; both with neuron and synapse loss',
+        'Plaque load does not necessarily track dementia, and both lesions also occur in normal ageing'
+      ],
+      [
+        'APP / presenilins vs apoE',
+        'Early-onset (<65) mutations vs the third gene the slide names (context beyond the slides: APOE ε4 is the main late-onset risk allele)',
+        'Deterministic mutations explain only a small, mostly early-onset share; late-onset disease is ~90% of AD, and APOE ε4 raises risk without determining it (context beyond the slides)'
+      ],
+      [
+        'Cholinesterase inhibitors vs memantine',
+        'Slow ACh breakdown vs NMDA-receptor antagonism of excess glutamate',
+        'Both relieve symptoms or slow decline; neither removes the underlying pathology'
+      ],
+      ['Lewy bodies', 'α-synuclein-rich inclusions; PD hallmark', 'Thought to begin years before motor signs; >90% of PD is sporadic, with genetic, age and environmental risk'],
+      [
+        'GDNF / neurturin gene therapy',
+        'Trophic support for dopaminergic neurons via AAV/LV vectors',
+        'Animal efficacy is not human efficacy: AAV2-neurturin was safe but ineffective in 38 patients'
+      ],
+      [
+        'Relapsing–remitting vs progressive MS',
+        'Inflammation- and repair-dominant vs neurodegeneration-dominant',
+        'Immunotherapies such as natalizumab act on the inflammatory phase more than on progressive disability'
+      ],
+      [
+        'PNS vs CNS axon injury',
+        'Macrophages and proliferating Schwann cells clear debris and support regrowth vs slow myelin clearance and astrocyte-associated inhibitory factors',
+        'The regenerative environment, not only the neuron, limits CNS repair'
+      ],
+      [
+        'Primary vs secondary injury',
+        'Mechanical disruption, necrosis, haemorrhage vs inflammation, excitotoxicity, oxidative stress, mitochondrial damage, demyelination, scarring',
+        'Secondary events are the realistic treatment window'
+      ]
+    ],
+    experiments: [
+      {
+        name: 'Walking and grey-matter volume (slide: Erickson et al., 2011)',
+        design: 'Older adults reported their weekly walking, and brain MRI was taken about 9 years later.',
+        result: 'More walking predicted greater prefrontal, temporal and hippocampal grey matter, with the largest effect around 6–9 miles per week.',
+        inference: 'Physical activity is associated with preserved grey matter in humans. The study is observational, so BDNF mediation remains a hypothesis; the supporting evidence on the slides is rodent running data showing exercise raises BDNF and neurogenesis together.'
+      },
+      {
+        name: 'Dendritic spines and cognitive resilience (Boros et al., 2017)',
+        design: 'From the paper (context beyond the slides, which give only the conclusion): dendritic spines on dorsolateral prefrontal pyramidal neurons were compared post mortem across 12 pathology-free controls, 8 cognitively normal people with AD pathology, and 21 people with AD dementia.',
+        result: 'Spine density was preserved in the pathology-without-dementia group and reduced in AD dementia.',
+        inference: 'Dendritic-spine plasticity is a candidate mechanism of cognitive resilience, so pathology burden alone does not decide clinical outcome. Cross-sectional human tissue cannot show that raising spine density would prevent dementia.'
+      },
+      {
+        name: 'AAV2-neurturin translation in Parkinson\'s disease',
+        design: 'A viral vector delivering the trophic factor neurturin was tested in rodent and primate PD models and then in 38 patients.',
+        result: 'It was effective and safe in animals. In patients it was safe but showed no efficacy at 1 or 2 years, and the trial was discontinued.',
+        inference: 'Animal efficacy does not guarantee human efficacy. One likely reason, beyond the slides, is that trophic rescue needs surviving target neurons, and those are scarce by the time PD is diagnosed.'
+      }
+    ],
+    traps: [
+      'Normal ageing is not uniform neuron loss: retention after 60 differs by region (the thalamus is largely spared), and synaptic simplification, blood flow and glial change carry much of the effect.',
+      'Plaques and tangles also occur in normal ageing, and plaque load need not track dementia, so do not equate amyloid with Alzheimer\'s disease.',
+      'The effect of exercise on BDNF and neurogenesis is experimental in rodents. In humans the walking–grey-matter link is correlational, and BDNF mediation is only possible.',
+      'A Parkinson\'s diagnosis comes late in the disease, not early: Lewy pathology and 50–70% nigral loss come before motor signs, so protection started at diagnosis cannot restore what is already gone.',
+      'Animal efficacy is not human efficacy: AAV2-neurturin worked in rodents and primates but not in patients, and the mouse stem-cell results in AD are animal evidence.',
+      'Associations are not causes: near-universal EBV exposure among patients and the coffee–MS link are observational, and the slides flag the chlamydial hypothesis as criticised and question coffee versus caffeine. (Context beyond the slides: the causal case for EBV rests on prospective cohort data, not on its prevalence among patients.)'
+    ],
+    recall: [
+      [
+        'Why is normal ageing not the same as uniform neuron loss?',
+        'Retention after 60 is region-specific (about half in occipital cortex, nearly all in thalamus), and much of the change is dendritic and synaptic simplification, reduced blood flow and glial change.'
+      ],
+      [
+        'Which genes separate early-onset from late-onset Alzheimer\'s disease?',
+        'Early-onset (<65) cases are linked to APP and presenilin mutations. The slide also names apoE, and late-onset disease accounts for about 90% of cases (context beyond the slides: the APOE ε4 allele is the main genetic risk factor for late-onset AD, raising risk rather than determining it).'
+      ],
+      [
+        'Why do Parkinson\'s motor signs appear late?',
+        'About 50–70% of SNpc dopaminergic neurons are lost before symptoms appear, so striatal dopamine deficits only show clinically after extensive deafferentation of caudate and putamen.'
+      ],
+      [
+        'Why does chronic L-DOPA cause dyskinesias?',
+        'Dopaminergic neurons keep dying while the drug is available only intermittently, so striatal dopamine fluctuates. About 80% of patients are affected within 5–8 years.'
+      ],
+      [
+        'How do relapsing–remitting and progressive MS differ mechanistically?',
+        'Inflammation and repair dominate relapsing–remitting disease. As the disease becomes progressive, inflammation wanes and neurodegeneration drives the accumulating disability.'
+      ],
+      [
+        'Why does a PNS axon regenerate when a CNS axon does not?',
+        'In the PNS, macrophages clear myelin debris quickly and proliferating Schwann cells support regrowth. In the CNS, debris clearance is slow and astrocyte-associated inhibitory factors block axon extension.'
+      ]
+    ],
+    download: '../resources/lectures/L28_Ageing_Injury_and_Degeneration.md',
+    references: [
+      [
+        'Erickson et al. (2010) — walking in older adults predicts greater grey-matter volume 9 years later (the study the slide describes, labelled 2011 there)',
+        'https://pubmed.ncbi.nlm.nih.gov/20944075/'
+      ],
+      [
+        'Erickson et al. (2011) — randomised aerobic exercise enlarges the hippocampus, and the volume gain is associated with serum BDNF',
+        'https://pubmed.ncbi.nlm.nih.gov/21282661/'
+      ],
+      ['Boros et al. (2017) — preserved dendritic spines distinguish cognitively normal people with AD pathology from AD dementia', 'https://pubmed.ncbi.nlm.nih.gov/28921611/'],
+      ['Wirdefeldt et al. (2011) — Parkinson\'s disease is mostly sporadic, with genetic, age and environmental risk factors', 'https://pubmed.ncbi.nlm.nih.gov/21626386/'],
+      ['Sofroniew and Vinters (2010) — astrocyte functions, reactive astrogliosis and glial scar formation after CNS injury', 'https://pubmed.ncbi.nlm.nih.gov/20012068/']
+    ]
+  },
+  {
+    id: 29,
+    title: 'Sensory Deficits and Prostheses',
+    date: '12 October 2026',
+    lecturer: 'Beros',
+    scope: 'Released Lecture 29 slide PDF condensed into an exam-safe mechanism brief covering neuroprosthesis design features and labelled-line logic, cochlear implants, retinal implants, optogenetic vision restoration and brain-computer interfaces. It is built from the 33-slide 2026 deck alone, with no recording, so spoken emphasis is not captured and numbers read from figures are approximate.',
+    outcomes: [
+      'Describe the general features of a neuroprosthesis (stimulation/write-in, recording and decoding/read-out, closed-loop neurofeedback) and explain why a device can only replace a stage that sits upstream of an intact pathway.',
+      'Use the labelled-line principle to explain why stimulating a sensory pathway produces a modality-specific percept, and why phantom pain and tinnitus are the maladaptive face of the same principle.',
+      'Explain how a multichannel cochlear implant uses place (tonotopic) and temporal coding to restore hearing in sensorineural loss, and predict where its performance falls short.',
+      'Compare cortical, epiretinal, subretinal and optogenetic approaches to restoring vision, including the cells each one needs to survive and the resolution limit of phosphene-based vision.',
+      'Interpret BCI experiments in monkeys (ensemble decoding driving a robot arm) and in people with paralysis (ECoG decoding of speech and gesture driving an avatar), keeping decoding accuracy separate from causal evidence.'
+    ],
+    chains: [
+      {
+        name: 'Cochlear implant signal path',
+        steps: [
+          'Microphone and sound processor capture sound and split it into frequency channels',
+          'Coded signal crosses the skin to a receiver implanted behind the ear',
+          'Receiver drives intracochlear contacts that excite auditory-nerve fibres at specific places',
+          'Basal contacts signal high frequencies and apical contacts low frequencies (place code)',
+          'Intact cochlear nucleus, superior olive, inferior colliculus, MGB and auditory cortex process the input',
+          'Coarse but usable percept: good in quiet, degraded in noise, learned with training'
+        ]
+      },
+      {
+        name: 'Retinal implant',
+        steps: [
+          'Photoreceptors degenerate while the inner retina, RGCs and optic nerve survive',
+          'Camera or photodiodes capture the scene and a processor builds a stimulation pattern',
+          'Epiretinal (Argus II, 60 electrodes) or subretinal (Alpha AMS, ~1,600 photodiodes) array depolarises surviving retinal neurons',
+          'RGC spikes travel along the optic nerve to LGN and visual cortex',
+          'Patient perceives phosphenes, with resolution capped by the number of electrodes'
+        ]
+      },
+      {
+        name: 'Optogenetic vision restoration',
+        steps: [
+          'Intravitreal AAV2.7m8 delivers ChrimsonR (with tdTomato reporter) to foveal RGCs',
+          'Expression stabilises over roughly 2-6 months',
+          'Goggles convert the scene to monochrome images projected as ~595 nm pulses',
+          'Light opens the cation channel and depolarises transduced RGCs, bypassing lost photoreceptors',
+          'RGC output reaches visual cortex and months of structured training build usable perception'
+        ]
+      },
+      {
+        name: 'Motor BCI read-out loop',
+        steps: [
+          'Implanted microwires or an ECoG grid record cortical activity during attempted movement or speech',
+          'Linear or neural-network decoder is trained on paired activity and behaviour',
+          'Decoder converts new activity into the intended output in real time',
+          'Output drives an external effector such as a robot arm, computer or avatar',
+          'User sees the result and the decoder is retrained over time to follow signal drift'
+        ]
+      }
+    ],
+    distinctions: [
+      [
+        'Labelled line',
+        'Modality-specific relay from receptor to primary sensory cortex',
+        'Activity anywhere along the line is perceived as that modality, which underlies both prosthetic percepts and phantom pain or tinnitus'
+      ],
+      [
+        'Sensorineural hearing loss',
+        'Transduction fails while the auditory nerve and central pathway survive',
+        'The condition a cochlear implant targets; without a surviving nerve the implant has nothing to drive'
+      ],
+      [
+        'Place code',
+        'Frequency mapped along the basilar membrane: high at the base, low at the apex',
+        'Why the implant needs a multichannel array: each contact signals a different frequency by its position'
+      ],
+      [
+        'Temporal code',
+        'Brainstem neurons phase-lock to low-frequency sound (up to ~1.5-3 kHz)',
+        'Cannot carry high frequencies, so stimulating the right place is essential above that range'
+      ],
+      [
+        'Epiretinal implant (Argus II)',
+        '60 independently controlled electrodes tacked to the retinal surface and driven by a camera',
+        'Needs surviving RGCs and optic nerve, and gives low-resolution phosphene vision'
+      ],
+      [
+        'Subretinal implant (Alpha AMS)',
+        'Chip with ~1,600 photodiodes placed within the retinal layers',
+        'More sensing elements, but the result is still phosphene vision through the remaining retina; element count is not perceptual resolution'
+      ],
+      [
+        'Cortical visual prosthesis',
+        'Stimulates occipital cortex directly to evoke phosphenes',
+        'Bypasses the eye and optic nerve; Foerster showed that visual cortex stays excitable after years of blindness'
+      ],
+      [
+        'ChrimsonR optogenetics',
+        'Light-gated cation channel (~590 nm) expressed in foveal RGCs via AAV2.7m8',
+        'Turns surviving ganglion cells into light sensors; depends on goggles projecting ~595 nm pulses and months of training'
+      ],
+      [
+        'Write-in vs read-out',
+        'Sensory implants stimulate; BCIs record and decode',
+        'Closed-loop systems do both, adjusting output from decoded activity in real time (neurofeedback)'
+      ],
+      [
+        'Decoding accuracy',
+        'How well recorded activity predicts behaviour once converted into commands',
+        'Shows the activity carries information and can give practical control, not that the recorded neurons cause the behaviour'
+      ]
+    ],
+    experiments: [
+      {
+        name: 'Ensemble decoding to a robot arm (Wessberg et al., 2000)',
+        design: 'Two owl monkeys had microwire arrays (96 and 32 wires) implanted in premotor and primary motor cortex. They were trained for 12-24 months on a joystick task and a reach-to-food task while ensemble activity was recorded and fed to linear and artificial-neural-network decoders.',
+        result: 'Each neuron was only variably correlated with movement, but the decoders predicted hand trajectory closely enough to drive a robot arm in real time. The networks were updated with new data over the recording period.',
+        inference: 'Movement information is spread across neuronal populations and can be read out to control an external effector. This is correlational read-out in non-human primates, so it does not show that the recorded neurons cause the movement.'
+      },
+      {
+        name: 'Optogenetic partial vision recovery (Sahel et al., 2021)',
+        design: 'A blind patient (retinitis pigmentosa, according to the paper) received an intravitreal AAV2.7m8 vector expressing ChrimsonR-tdTomato in foveal ganglion cells. Once expression had stabilised, goggles turned the scene into monochrome images projected as ~595 nm pulses, followed by about 7 months of graded visual training (the training chart shows visits V1–V19); the slide separately summarises the course as 15 visits over 84 weeks.',
+        result: 'The slides report that the treatment was safe and light perception was retained. Training progressed from eye-movement exercises to daily-life tasks with the goggles, such as finding furniture and doors.',
+        inference: 'Making surviving ganglion cells sensitive to light can bypass lost photoreceptors. Because this is a single-patient case that depends on goggles plus training, it shows feasibility, not general efficacy.'
+      },
+      {
+        name: 'Simultaneous speech and gesture decoding (Brosler et al., 2026)',
+        design: 'Three people with paralysis had a high-density electrocorticography implant over sensorimotor cortex. They attempted speech, gesture or both on cue in copy and conversation tasks, and parallel decoders drove a personalised full-body avatar in real time.',
+        result: 'Speech and gestures were decoded together as well as separately, with roughly 75-100% accuracy. Electrode maps showed substantial overlap between speech-responsive and gesture-responsive sites.',
+        inference: 'A single cortical implant can support multimodal, multi-effector communication rather than one isolated behaviour. The evidence is human but the sample is small, and decoding accuracy measures read-out performance, not the mechanism of motor planning.'
+      }
+    ],
+    traps: [
+      'Cochlear and retinal implants restore useful function, not normal sensation. Implant hearing collapses in noise, implant vision is a pattern of phosphenes, and both need training.',
+      'A retinal implant or RGC optogenetics cannot help once retinal ganglion cells or the optic nerve are lost, because a prosthesis only replaces a stage that sits upstream of an intact pathway.',
+      'Electrode or photodiode count sets a theoretical ceiling on resolution. It is not the number of separate points a patient can actually see.',
+      'Regulatory approval did not make visual prostheses a solved problem: approved devices were later discontinued and some recipients returned to blindness.',
+      'Optogenetic therapy does not regenerate photoreceptors. It makes ganglion cells sensitive to light through a cation channel that depolarises them.',
+      'Successful BCI decoding reads out activity that correlates with behaviour and does not prove causation. Monkey results also need human validation, and decoders must be retrained over time.'
+    ],
+    recall: [
+      [
+        'What three general features can a neuroprosthesis have?',
+        'Stimulation to evoke a response; recording and decoding, which turn activity into commands through algorithms; and closed-loop operation that does both in real time (neurofeedback).'
+      ],
+      [
+        'Why does a cochlear implant need multiple channels?',
+        'Frequency is place-coded along the basilar membrane (high at the base, low at the apex), so separate contacts must drive fibre groups at different positions. Phase-locking covers only low frequencies.'
+      ],
+      [
+        'What must survive for a retinal implant to work?',
+        'Retinal ganglion cells, the optic nerve and the central visual pathway, because the device stimulates retinal cells whose output still has to reach cortex.'
+      ],
+      [
+        'What did Foerster\'s 1931 stimulation show?',
+        'Stimulating the occipital cortex of a patient blind for 8 years evoked phosphenes. Visual cortex stays responsive after long deprivation, which made cortical prostheses plausible.'
+      ],
+      [
+        'How was ChrimsonR delivered and activated in the optogenetic vision case?',
+        'An intravitreal AAV2.7m8 vector expressed ChrimsonR in foveal RGCs. Goggles turned the scene into monochrome images projected as ~595 nm pulses, which open the cation channel.'
+      ],
+      [
+        'What did the 2026 ECoG study add beyond earlier BCIs?',
+        'It decoded speech and gestures simultaneously from one sensorimotor ECoG implant in people with paralysis and used them to drive an avatar, instead of decoding single behaviours in isolation.'
+      ]
+    ],
+    download: '../resources/lectures/L29_Sensory_Deficits_and_Prostheses.md',
+    references: [
+      ['Wessberg et al. (2000) — real-time decoding of cortical ensembles predicts hand trajectory and drives a robot arm in monkeys', 'https://pubmed.ncbi.nlm.nih.gov/11099043/'],
+      [
+        'Sahel et al. (2021) — partial recovery of visual function after ChrimsonR optogenetic therapy combined with stimulating goggles',
+        'https://pubmed.ncbi.nlm.nih.gov/34031601/'
+      ],
+      ['Brosler et al. (2026) — simultaneous speech and gesture decoding from one ECoG implant in paralysis', 'https://pubmed.ncbi.nlm.nih.gov/42736415/'],
+      ['Spahr et al. (2007) — cochlear-implant sound processors differ most in difficult, noisy listening conditions', 'https://pubmed.ncbi.nlm.nih.gov/17496675/'],
+      ['Edwards et al. (2018) — Alpha AMS subretinal implant partially restores vision in end-stage retinitis pigmentosa', 'https://pubmed.ncbi.nlm.nih.gov/29110946/']
+    ]
+  },
+  {
+    id: 30,
+    title: 'Spinal Cord Injury and Regeneration',
+    date: '13 October 2026',
+    lecturer: 'Hodgetts',
+    scope: 'Released Lecture 30 slide PDF condensed into an exam-safe mechanism brief covering biphasic spinal cord injury, secondary-damage cascades, outcome measurement and repair strategies, with the UWA cell and gene therapy examples. The only available deck is labelled 2025, so the 13 October 2026 delivery may differ.',
+    outcomes: [
+      'Explain spinal cord injury as biphasic: a mechanical primary insult followed by a spreading secondary cascade of excitotoxicity, oxidative stress, inflammation, oligodendrocyte loss, cysts and scar, which is the phase therapies can target.',
+      'Trace the timed immune response (microglia, neutrophils, macrophages, T cells) and argue why macrophage activity can damage or repair depending on phenotype and timing.',
+      'Compare human (ASIA and related) and animal (BBB, gait, ladder, forelimb) outcome measures, and identify the species differences that limit translation.',
+      'Match each pathological problem to a repair strategy (drugs, hypothermia or exosomes, growth factors, gene therapy, scaffolds, cell transplantation) and state each strategy\'s main limitation.',
+      'Interpret the UWA hMPC and AAV-CNTF experiments and the iPSC long-distance-growth result, keeping tissue sparing, axon growth and functional recovery separate.'
+    ],
+    chains: [
+      {
+        name: 'Biphasic injury',
+        steps: [
+          'Contusion compresses the cord inside a closed canal; dura usually intact, cord not cut',
+          'Haemorrhage leaves a necrotic epicentre',
+          'Glutamate, ROS/NO and cytokines spread outward and along the cord (mm in rodents, cm in humans)',
+          'Grey-matter loss, oligodendrocyte apoptosis and demyelination of surviving axons',
+          'Chronic cysts in shrunken tissue walled by CSPG-rich glial scar'
+        ]
+      },
+      {
+        name: 'Excitotoxic and oxidative damage',
+        steps: [
+          'Excess extracellular glutamate after injury',
+          'NMDA receptor Ca2+ entry -> calmodulin, kinases and calpain -> apoptosis',
+          'AMPA receptor Na+ entry -> osmotic swelling -> necrosis',
+          'Mitochondrial Ca2+ overload -> ROS beyond superoxide dismutase capacity',
+          'Lipid peroxidation, plus NO + superoxide -> peroxynitrite -> further membrane damage'
+        ]
+      },
+      {
+        name: 'Timed inflammatory response',
+        steps: [
+          'Microglia activate within minutes to hours (peak ~24 h); TNF-α mRNA rises within 1 h',
+          'Neutrophils infiltrate ~4 h and peak at 24–72 h',
+          'Macrophages arrive by day 2, peak at days 5–7 and persist for weeks to months',
+          'Early M1-like bystander damage (TNF-α, IL-1, IL-6, ROS, NO, proteases)',
+          'Later M2-like debris clearance and protective cytokines support repair'
+        ]
+      },
+      {
+        name: 'Transient graft, lasting benefit',
+        steps: [
+          'hMPCs injected into a contused cord in nude rats',
+          'Graft cells are undetectable by about one month',
+          'Proposed early actions: immunosuppression, boosted endogenous repair, remyelination, matrix deposition',
+          'Healthier lesion environment: more spared tissue, smaller cysts',
+          'BBB scores end ~2–3 points above injury-only controls (both groups pass weight support at 9), consistent with environmental rather than replacement effects'
+        ]
+      }
+    ],
+    distinctions: [
+      [
+        'Complete vs incomplete SCI',
+        'All ascending and descending tracts cut vs some tracts spared',
+        'Complete transection is very rare in humans; spared fibres are the substrate for recovery and therapy'
+      ],
+      [
+        'Primary vs secondary injury',
+        'Mechanical contusion and haemorrhage vs delayed biological cascade',
+        'Only the secondary phase is a realistic drug target; it spreads mm in rodents but cm in humans'
+      ],
+      [
+        'NMDA vs AMPA excitotoxicity',
+        'Ca2+ entry -> calmodulin/kinases/calpain vs Na+ entry -> osmotic swelling',
+        'The NMDA route biases toward apoptosis and the AMPA route toward necrosis; blocking one leaves the other'
+      ],
+      [
+        'Superoxide dismutase vs peroxynitrite',
+        'ROS-neutralising enzyme vs toxic product of NO + superoxide',
+        'Antioxidant defences saturate when ROS are in excess; NO from immune cells adds further damage'
+      ],
+      [
+        'M1-like vs M2-like macrophages',
+        'Cytokine, ROS and protease release vs debris clearance and protective cytokines',
+        'One cell type, different states over time; blanket depletion removes repair as well as damage'
+      ],
+      [
+        'Riluzole',
+        'Na+ channel blocker that reduces glutamate release',
+        'Neuroprotective in animals; the human RISCIS trial missed its primary endpoint (context beyond the slides)'
+      ],
+      [
+        'Rho-ROCK inhibitors / anti-Nogo',
+        'Block an inhibitory pathway that stops axon regeneration',
+        'Aimed at regeneration rather than acute neuroprotection; Cethrin/VX-210 reached phase 2b/3 testing, which (context beyond the slides) was stopped early for futility'
+      ],
+      ['ASIA grades A–E', 'Human sensorimotor scale anchored on sacral S4–S5 sparing', 'Coarse: misses small changes and ignores pain, bowel, bladder and sexual function'],
+      ['BBB score 0–21', 'Rat open-field hindlimb locomotor rating', 'Ranked and non-linear; 9 marks weight support, so equal point gains do not mean equal recovery'],
+      [
+        'AAV vs lentiviral vector',
+        'Lasting local expression after one injection vs permanent genome insertion in dividing and non-dividing cells',
+        'AAV spread and dose are hard to control; switchable on/off expression is the flagged next step'
+      ]
+    ],
+    experiments: [
+      {
+        name: 'Human MPC grafts after contusion (UWA)',
+        design: 'Human mesenchymal precursor cells from adult hip-bone (iliac-crest) marrow were purified, labelled and injected into immunodeficient nude rats after a moderate T10 contusion, either acutely (1 week) or chronically (2 months on the design slide, but about 1 month on the tissue-sparing and BBB slides). Outcomes were histology, cyst size and BBB scores, compared with injury-only and medium-injected controls.',
+        result: 'No donor cells were detectable one month after grafting. Treated rats nonetheless had more spared tissue and smaller cysts (significant after acute grafts) and finished about 2–3 BBB points above controls (~15 vs ~12–13 after acute grafts; controls also passed weight support at 9), with consistent coordinated plantar stepping. The slides call acute and chronic outcomes similar, though the chronic-graft gain is smaller and significant only at the last two time points.',
+        inference: 'The benefit outlasts the graft, so lasting cell replacement is unlikely. Early effects on the lesion environment (immunosuppression, endogenous repair, remyelination, matrix deposition) are the candidate mechanisms; none is proven, and the evidence is from rats only.'
+      },
+      {
+        name: 'Cortical AAV-CNTF to the corticospinal tract (UWA)',
+        design: 'AAV encoding CNTF with a fluorescent reporter was injected into motor cortex, so corticospinal neurons expressing CNTF receptor α make the factor, instead of CNTF being applied to the T10 lesion. BDA tracer was injected into the same cortex 2 weeks before tissue collection, and some rats also received rat MPCs.',
+        result: 'By about 6 weeks, CNTF rats had better BBB scores, fewer ladder-walk missteps and near-normal Ratwalk stepping. Labelled CST axons reached about 4 mm beyond the lesion and cysts were smaller. CNTF plus viable MPCs increased tissue sparing.',
+        inference: 'Transducing the parent neurons can enhance corticospinal repair, and the gene plus cell combination supports translation. Effects are shown in rats only, and the published paper gave the AAV before injury, whereas one slide says just after.'
+      },
+      {
+        name: 'Human iPSC-derived neural stem cell grafts (Lu et al. 2014)',
+        design: 'Neural stem cells derived from human induced pluripotent stem cells were grafted into injured spinal cord of immunodeficient rats and examined about 3 months later.',
+        result: 'Surviving grafts extended axons over very long distances above and below the lesion and formed synaptic structures, yet function did not improve.',
+        inference: 'Axon growth and synapse formation are not enough for recovery. Connections must be appropriately targeted and functional, so histological regeneration cannot stand in for behavioural recovery.'
+      }
+    ],
+    traps: [
+      'Do not model typical human SCI as a clean transection: most injuries are contusions inside an intact dura with spared outer white matter, and complete anatomical transection is very rare.',
+      'Secondary damage is not just inflammation: excitotoxicity, oxidative and nitric-oxide-driven stress, oligodendrocyte apoptosis, demyelination, cysts and scar all expand the lesion over days to weeks.',
+      'Macrophages and microglia are not simply harmful; suppressing them across the whole post-injury window can remove debris clearance and reparative signalling.',
+      'Long-distance axon growth or graft survival is not functional recovery, and functional recovery can occur after donor cells have disappeared.',
+      'BBB and ASIA are ranked scales with known blind spots; a statistically significant shift is not necessarily a linear or clinically meaningful gain.',
+      'Success in acute rodent models does not transfer automatically to chronic human injury; lesion structure differs (mice form dense matrix rather than fluid-filled cysts), and riluzole and methylprednisolone are not proven human cures.'
+    ],
+    recall: [
+      [
+        'Why is the secondary phase the main therapeutic target?',
+        'The mechanical primary insult is over before treatment can begin, whereas the secondary cascade of excitotoxicity, oxidative stress, inflammation and demyelination expands the lesion over days to weeks and can be modified.'
+      ],
+      [
+        'How do NMDA and AMPA receptor overactivation kill cells differently?',
+        'NMDA receptors admit Ca2+, which activates calmodulin, kinases and calpain toward apoptosis. AMPA receptors admit Na+, causing osmotic swelling and necrosis.'
+      ],
+      [
+        'When do neutrophils and macrophages arrive and peak after SCI?',
+        'Neutrophils infiltrate by about 4 h and peak at 24–72 h. Macrophages arrive by about day 2, peak at days 5–7 and persist for weeks to months.'
+      ],
+      [
+        'Why is oligodendrocyte loss so damaging?',
+        'Oligodendrocytes undergo apoptosis more readily than neurons, and their loss demyelinates axons that survived the primary injury, adding conduction failure to structural loss.'
+      ],
+      [
+        'What does a BBB score of 9 represent?',
+        'Weight support on the 21-point rat open-field scale. Higher scores reflect stepping and coordination, so crossing 9 is a qualitative change.'
+      ],
+      [
+        'What is "controlled re-injury" meant to achieve?',
+        'Scraping away or enzymatically digesting a chronic glial scar to recreate an acute-like environment, so that strategies proven in acute injury might work. It is a proposal, not an established therapy.'
+      ]
+    ],
+    download: '../resources/lectures/L30_Spinal_Cord_Injury_and_Regeneration.md',
+    references: [
+      ['Basso et al. (1995) — the BBB open-field locomotor rating scale for rats', 'https://pubmed.ncbi.nlm.nih.gov/7783230/'],
+      ['Lu et al. (2014) — long-distance axon growth from human iPSC-derived grafts after SCI', 'https://pubmed.ncbi.nlm.nih.gov/25123310/'],
+      ['Hodgetts et al. (2018) — cortical AAV-CNTF plus MPC transplantation improves outcomes after rat SCI', 'https://pubmed.ncbi.nlm.nih.gov/30245710/'],
+      ['Harvey et al. (2015) — which, where, how and when to deliver neurotrophic factors for spinal repair', 'https://pubmed.ncbi.nlm.nih.gov/25451132/'],
+      ['Fehlings et al. (2023) — RISCIS randomised trial of riluzole in acute cervical SCI', 'https://pubmed.ncbi.nlm.nih.gov/37279301/']
+    ]
   }
 ];
 
@@ -484,14 +1647,46 @@ const questions = [
   { id: 'l22-hpa', lecture: 22, block: 'Final', topic: 'HPA axis', stem: 'Under ordinary negative feedback, rising glucocorticoids tend to:', options: ['Suppress upstream hypothalamic and pituitary drive', 'Increase CRH and ACTH without limit', 'Directly open cochlear hair-cell channels', 'Eliminate circadian regulation'], answer: 0, explanation: 'Glucocorticoid receptor signalling feeds back across hypothalamic, pituitary and higher circuits to restrain further HPA activation.', trap: 'Feedback can be altered by context and chronic stress, but the canonical loop is inhibitory.' },
   { id: 'l24-population', lecture: 24, block: 'Final', topic: 'Motor cortex', stem: 'Individual M1 neurons are broadly tuned to movement direction, yet reach direction can be decoded accurately. What does this support?', options: ['Each neuron encodes exactly one movement with no overlap', 'M1 encodes only muscle length and never direction', 'Accurate decoding requires recording every neuron in the cortex', 'A population code, in which direction is read from the distributed activity of many broadly tuned cells'], answer: 3, explanation: 'Broad, overlapping tuning curves combine across a population so that a vector sum, or a trained decoder, specifies direction far more precisely than any single cell. This principle underpins motor brain–computer interfaces.', trap: 'Broad single-unit tuning is not population-level imprecision; ambiguity per neuron and accuracy per population coexist.' },
   { id: 'l24-tms', lecture: 24, block: 'Final', topic: 'Motor cortex', stem: 'Motor-evoked potentials grow after a period of skill practice. What is the most defensible interpretation?', options: ['The number of corticospinal axons has certainly increased', 'Corticospinal excitability measured by TMS has increased, with the locus not yet specified', 'Muscle fibres have been replaced', 'Learning has been shown to occur entirely within the spinal cord'], answer: 1, explanation: 'A larger MEP indicates greater excitability somewhere along the tested corticospinal route. Cortical, spinal and neuromuscular contributions all sit inside that single measurement and need separate tests to dissociate.', trap: 'The MEP is a compound measure; attributing it to cortex alone silently skips the spinal and peripheral segments of the same path.' },
+  { id: 'l24-vgat-silencing', lecture: 24, block: 'Final', topic: 'Motor cortex', stem: 'In head-fixed mice reaching for water, light activates channelrhodopsin in VGAT-expressing motor-cortex neurons, either before a reach begins or partway through one. Which result and interpretation fit the lecture?', options: ['Reaches fail to start and ongoing reaches are disrupted, because silencing cortical output removes a signal needed throughout execution', 'Reaches become faster and larger, because driving VGAT cells adds excitatory drive onto corticospinal output neurons', 'Only reach initiation is blocked, because once the basal ganglia issue the plan the cortex is no longer required', 'Reaching is unaffected, because mice locate the droplet by smell and brainstem circuits then guide the limb'], answer: 0, explanation: 'VGAT marks GABAergic interneurons, so driving them with light suppresses local pyramidal output: the manipulation is an inactivation. Both muscimol and VGAT photostimulation blocked reach initiation, and photostimulation during a reach disrupted the ongoing movement. Motor cortex is therefore necessary to start and to sustain this learned reach, although necessity does not show what the cortex computes.', trap: 'Reading “optogenetic stimulation” as excitation of motor output when the stimulated cells are inhibitory interneurons that silence the cortex.' },
+  { id: 'l24-pt-subtype-timing', lecture: 24, block: 'Final', topic: 'Motor cortex', stem: 'Layer 5 pyramidal-tract (PT) neurons are recorded while a mouse waits through a delay before making a cued movement. Which activity pattern matches the two PT subtypes described in the lecture?', options: ['Medulla-projecting cells are most active through the delay, while thalamus-projecting cells fire mainly at movement onset', 'Thalamus-projecting cells are most active during preparation, while medulla-projecting cells peak at movement initiation and termination', 'Both subtypes fire identically, because every PT neuron projects to the same thalamic and medullary targets', 'Neither subtype fires before movement, because preparation is computed entirely within the basal ganglia'], answer: 1, explanation: 'Economo et al. split PT neurons by projection target. PT-upper cells project to thalamus, avoid medullary motor centres and are most active during preparation, feeding a thalamocortical loop that can hold a plan without movement. PT-lower cells project to medullary motor nuclei, avoid thalamus and are most active when movement starts and stops, consistent with carrying the motor command. These are mouse recordings, so the link between subtype and phase is correlational.', trap: 'Swapping the subtypes on the assumption that the brainstem-projecting “lower” cells must carry the early plan.' },
+  { id: 'l24-spine-learning-control', lecture: 24, block: 'Final', topic: 'Motor cortex', stem: 'In vivo imaging shows more new dendritic spines in contralateral forelimb motor cortex after skilled-reach training. Which control result most strengthens the claim that the new spines reflect learning rather than simply moving the limb?', options: ['Spine formation rises just as much in the somatosensory cortex of the same trained mice', 'Total spine number stays permanently elevated for weeks after training has ended', 'Mice that trained but failed to learn the task show only control-level spine formation', 'Ipsilateral motor cortex shows a larger rise in spine formation than the contralateral side'], answer: 2, explanation: 'Xu et al. found increased spine formation only in trained contralateral forelimb motor cortex, not in ipsilateral motor cortex, sensory cortex, nearby non-forelimb cortex or mice that practised without improving. The fail-to-learn mice made the movements without acquiring the skill, so their control-level formation separates spine addition from motor activity alone. This strengthens the correlation, but imaging still cannot show causation without a perturbation.', trap: 'Treating a lasting rise in total spine number as the signature of learning, when new spines are offset by elimination of pre-existing ones.' },
+  { id: 'l24-optical-spine-erasure', lecture: 24, block: 'Final', topic: 'Motor cortex', stem: 'A probe tags recently potentiated motor-cortex spines and shrinks them when illuminated. After light, the skill linked to the tagged spines is degraded, a second skill learned with other spines in the same region is retained, and sham-illuminated mice keep both. What is the strongest inference?', options: ['Light damages motor cortex non-specifically, so any skill stored in that region is equally impaired', 'Spines are only correlates of learning, because altering spine size has no measurable effect on behaviour', 'Motor skills are stored in myelin rather than synapses, because spine changes are easily reversed', 'Expressing the newly acquired skill requires the specific ensemble of spines potentiated during its learning'], answer: 3, explanation: 'Hayashi-Takagi et al. used AS-PaRac1: tagged spines shrank after light while untagged neighbours did not. Only the skill linked to the tagged spines was lost, and the other task and sham controls were unaffected, so this is a causal, task-specific test rather than an imaging correlation. The conclusion applies to a recently acquired skill in mice.', trap: 'Stopping at “spines correlate with learning” when the experiment perturbs spines directly to test whether they are necessary.' },
   { id: 'l25-cerebellum', lecture: 25, block: 'Final', topic: 'Cerebellar networks', stem: 'Which statement best distinguishes climbing and mossy fibre input to the cerebellar cortex?', options: ['Mossy fibres arise only from Purkinje cells', 'Climbing fibres strongly contact Purkinje cells; mossy fibres act through granule-cell parallel fibres', 'Climbing fibres never influence plasticity', 'Both inputs bypass the cerebellar cortex'], answer: 1, explanation: 'Inferior-olive climbing fibres provide powerful Purkinje-cell input, while mossy fibres recruit granule cells whose parallel fibres contact Purkinje cells.', trap: 'The two pathways differ in source, convergence and teaching/context roles.' },
+  { id: 'l25-purkinje-pacemaking', lecture: 25, block: 'Final', topic: 'Cerebellar networks', stem: 'Purkinje cells in a cerebellar slice keep firing at a high tonic rate after all fast synaptic transmission is blocked, but fall silent when tetrodotoxin is added. What is the best inference?', options: ['Tonic firing is generated intrinsically by Na⁺-dependent spiking, and synaptic input modulates rather than creates it', 'Tonic firing depends on ongoing parallel-fibre glutamate release, which tetrodotoxin removes at the presynaptic terminal', 'Tetrodotoxin silences Purkinje cells by enhancing GABA-A inhibition arriving from molecular layer interneurons', 'Climbing-fibre complex spikes set the simple-spike rhythm, so removing them in tetrodotoxin stops the firing'], answer: 0, explanation: 'Firing that survives synaptic blockade cannot be driven by parallel-fibre, climbing-fibre or interneuron input, so it must come from intrinsic pacemaking. Tetrodotoxin blocks voltage-gated Na⁺ channels and so abolishes the spikes themselves. Parallel fibres, climbing fibres and interneurons then carry information by modulating this 50–100 Hz baseline.', trap: 'A high resting firing rate tempts you to assume strong ongoing excitatory drive, but the synaptic-blockade result rules that out.' },
+  { id: 'l25-conjunctive-ltd', lecture: 25, block: 'Final', topic: 'Cerebellar networks', stem: 'In a cerebellar preparation, a parallel-fibre bundle is stimulated repeatedly on its own in one condition, and together with its Purkinje cell\'s climbing fibre in another. Which pair of outcomes at the parallel fibre–Purkinje synapse does the lecture predict?', options: ['LTD with parallel fibres alone; LTP when paired with the climbing fibre', 'LTP with parallel fibres alone; LTD when paired with the climbing fibre', 'No change with parallel fibres alone; LTP when paired with the climbing fibre', 'LTP in both conditions, because both inputs release glutamate onto the cell'], answer: 1, explanation: 'Repeated parallel-fibre activity on its own potentiates the synapse, whereas paired parallel- and climbing-fibre activity depresses it. Ito and Kano showed the pairing-induced depression in rabbit; in their study, parallel-fibre stimulation alone did not depress transmission. The climbing fibre therefore acts as a teaching signal that selectively weakens parallel-fibre inputs active at the time of an error. The slide adds that interneuron signalling can switch the paired outcome to LTP, so the rule is conditional.', trap: 'Hebbian intuition says extra coincident excitation should potentiate, which reverses the cerebellar rule.' },
+  { id: 'l25-eyeblink-teaching-route', lecture: 25, block: 'Final', topic: 'Cerebellar networks', stem: 'During rabbit eyeblink conditioning (a tone CS paired with an air-puff US), which single intervention would most selectively remove the cerebellar cortex\'s US teaching signal while leaving the tone\'s route into the cortex intact?', options: ['Lesioning the pontine nuclei that give rise to the CS-carrying mossy fibres', 'Silencing granule cells so their parallel fibres stop firing during the tone', 'Silencing the inferior olive so climbing fibres stop signalling the air puff', 'Silencing the facial motor nucleus that drives the eyelid muscles'], answer: 2, explanation: 'The air-puff US reaches the cerebellar cortex through trigeminal input to the inferior olive and then the climbing fibres, which carry the error or teaching signal. The tone CS travels separately, through the pontine nuclei, mossy fibres, granule cells and parallel fibres. Silencing the olive therefore removes the instruction while sparing the context route. Silencing the facial nucleus blocks the motor output, not the teaching signal.', trap: 'It is easy to confuse the motor output limb, or the mossy- and parallel-fibre context limb, with the climbing-fibre teaching limb.' },
+  { id: 'l25-cf-spillover', lecture: 25, block: 'Final', topic: 'Cerebellar networks', stem: 'Climbing-fibre stimulation evokes AMPA- and NMDA-receptor currents in nearby molecular layer interneurons, yet there are no conventional climbing fibre–interneuron synapses. Which interpretation fits the lecture?', options: ['Electrical coupling spreads the Purkinje cell\'s complex spike into interneurons through gap junctions', 'Purkinje cells co-release glutamate onto interneurons from axon collaterals after each complex spike', 'Climbing fibres excite granule cells, whose parallel fibres then relay the excitation to interneurons', 'Glutamate spilling from climbing-fibre synapses recruits interneurons that inhibit or disinhibit neighbouring Purkinje cells'], answer: 3, explanation: 'Szapiro and Barbour showed that climbing fibres activate AMPA and NMDA receptors on interneurons purely by glutamate spillover, which is volume transmission rather than a dedicated synapse. The recruited interneurons then produce feedforward inhibition of neighbouring Purkinje cells and, by inhibiting other interneurons, disinhibition. This extends one climbing fibre\'s influence beyond the Purkinje cells it contacts directly.', trap: 'Assuming that every receptor current needs a conventional synapse hides volume transmission as a mechanism.' },
+  { id: 'l25-purkinje-thirst', lecture: 25, block: 'Final', topic: 'Cerebellar networks', stem: 'In mice, exciting Purkinje cells chemogenetically raises their firing and increases 24-h water intake without changing food intake, while inhibiting them lowers water intake but not food intake. What is the strongest conclusion?', options: ['Purkinje-cell activity bidirectionally and selectively modulates drinking, a non-motor cerebellar function in mice', 'The cerebellum replaces hypothalamic osmosensing as the brain\'s primary thirst-generating centre in mice', 'The extra drinking is a motor side-effect, since Purkinje cells only coordinate licking movements', 'Human thirst disorders can now be attributed to loss of cerebellar Purkinje-cell activity'], answer: 0, explanation: 'Raising and lowering Purkinje-cell activity moves water intake in opposite directions, which is stronger evidence than either manipulation alone. Unchanged food intake argues against a general change in consummatory movement or appetite, so the effect is selective for drinking. The data show modulation in mice; they do not show that the cerebellum generates thirst or that it explains human disease.', trap: 'A clean bidirectional rodent result tempts overclaiming, such as calling the cerebellum a thirst centre or assuming direct human relevance, beyond what modulation shows.' },
   { id: 'l26-energy', lecture: 26, block: 'Final', topic: 'Energy balance', stem: 'Leptin signalling in the arcuate nucleus generally favours which acute pattern?', options: ['Activate AgRP/NPY and inhibit POMC', 'Silence every hypothalamic neuron', 'Trigger GnRH release only', 'Activate POMC and inhibit AgRP/NPY'], answer: 3, explanation: 'Leptin signals energy sufficiency, tending to promote anorexigenic POMC output and restrain orexigenic AgRP/NPY neurons.', trap: 'Obesity can involve leptin resistance despite high circulating leptin.' },
+  { id: 'l26-agrp-pomc-coactivation', lecture: 26, block: 'Final', topic: 'Energy balance', stem: 'Channelrhodopsin is used to photostimulate arcuate AgRP and POMC neurons simultaneously in fed mice. Based on the circuit in this lecture, what is the predicted effect on food intake?', options: ['Intake falls, because α-MSH released by POMC neurons overrides AgRP signalling at PVN MC4R', 'Intake rises much as with AgRP stimulation alone, because AgRP neurons inhibit POMC neurons but not the reverse', 'Intake is unchanged, because orexigenic and anorexigenic outputs cancel each other at the PVN', 'Intake rises only after days, because both populations signal solely through slow neuropeptide release'], answer: 1, explanation: 'AgRP neurons send GABAergic inhibition to POMC neurons, but POMC neurons do not inhibit AgRP neurons. During co-activation, AgRP output therefore suppresses POMC locally. In the PVN, AgRP also antagonises MC4R and NPY acts at Y1/Y5. The slides report that co-activation increases intake much like AgRP activation alone.', trap: 'Treating the two populations as symmetric opponents that either cancel out or let α-MSH win.' },
+  { id: 'l26-ghrelin-indirect-pomc', lecture: 26, block: 'Final', topic: 'Energy balance', stem: 'Ghrelin normally activates arcuate AgRP neurons and suppresses POMC neurons. If GHSR is deleted selectively from AgRP neurons, how should ghrelin\'s effect on POMC neurons change?', options: ['Suppression is unchanged, because POMC neurons carry their own GHSR and are inhibited directly', 'Suppression is enhanced, because ghrelin now acts unopposed on GHSR expressed by POMC neurons', 'Suppression is largely lost, because POMC neurons lack GHSR and are inhibited via AgRP GABA input', 'POMC neurons gain pSTAT3, because ghrelin is redirected to signal through the leptin receptor'], answer: 2, explanation: 'POMC neurons express leptin and insulin receptors but not GHSR, so ghrelin cannot act on them directly. Ghrelin suppresses POMC only by activating GHSR on NPY/AgRP neurons, whose GABAergic input then inhibits POMC. Removing GHSR from AgRP neurons breaks the first link of that relay, so POMC suppression, and ghrelin-induced feeding, should be largely lost.', trap: 'Assuming every arcuate neuron that responds to ghrelin must express GHSR itself.' },
+  { id: 'l26-double-lesion', lecture: 26, block: 'Final', topic: 'Energy balance', stem: 'A rat made obese by an electrolytic VMH lesion later receives a lateral hypothalamic (LH) lesion. It stops eating and starves. What is the strongest inference?', options: ['The VMH is the true feeding centre, and the LH lesion simply removed compensation for it', 'VMH lesions act by damaging the pituitary, and the second lesion restored pituitary output', 'The two lesions cancel exactly, so intake and body weight return to pre-lesion values', 'The LH is required to express VMH-lesion overeating, so the LH feeding drive is dominant'], answer: 3, explanation: 'VMH lesions release overeating, but the overeating disappears once the LH is destroyed, so it depends on an intact LH. This supports the dual-centre model, in which LH feeding drive sits downstream of, or dominates, VMH satiety signalling. Electrolytic lesions also destroy passing fibres and mixed cell types, so the conclusion concerns regions, not defined neurons.', trap: 'Reading the result as two lesions cancelling out, when the animal actually starved.' },
+  { id: 'l26-mc4r-blockade', lecture: 26, block: 'Final', topic: 'Energy balance', stem: 'Photostimulating arcuate POMC neurons reduces food intake. Which manipulation in the paraventricular nucleus (PVN) should most directly prevent that reduction?', options: ['Antagonising MC4R in the PVN, mimicking the action of AgRP peptide', 'Blocking PVN Y1 and Y5 receptors, removing the action of NPY', 'Blocking GHSR on PVN neurons, removing the action of ghrelin', 'Infusing an α-MSH analogue into the PVN to activate MC4R'], answer: 0, explanation: 'POMC neurons suppress intake largely through α-MSH acting on MC4R in the PVN. Blocking MC4R, which is what AgRP peptide does naturally, removes the receptor that reads the POMC signal, so photostimulation should no longer reduce intake. Y1/Y5 and GHSR belong to the orexigenic side and do not carry the POMC signal.', trap: 'Assuming that blocking any appetite-related receptor will cancel the POMC effect, including receptors on the orexigenic side.' },
+  { id: 'l26-fos-ghrelin-inference', lecture: 26, block: 'Final', topic: 'Energy balance', stem: 'NPY-GFP mice on chow are injected with ghrelin, and many GFP-labelled arcuate neurons then show Fos-positive nuclei. What is the safest conclusion?', options: ['Ghrelin acts directly on every labelled NPY neuron, since Fos identifies which receptor was activated', 'NPY neurons were activated after ghrelin; their GHSR makes direct action plausible, but Fos cannot prove it', 'Ghrelin silenced the NPY neurons, since Fos protein accumulates in nuclei when firing stops', 'Ghrelin raised NPY release in the PVN, since nuclear Fos measures peptide secretion at terminals'], answer: 1, explanation: 'Fos is an immediate-early gene product that accumulates in the nucleus after a cell is activated, so co-labelling shows that NPY neurons became active after ghrelin. Because NPY/AgRP neurons express GHSR, a direct action is plausible, but Fos alone cannot distinguish direct receptor activation from activation through other inputs. Nor does it report peptide release at distant terminals.', trap: 'Treating an activity marker as proof of a direct mechanism.' },
   { id: 'l27-pulses', lecture: 27, block: 'Final', topic: 'Fertility', stem: 'Why does GnRH pulsatility matter?', options: ['Pulse pattern regulates gonadotroph responsiveness; continuous exposure can desensitise the axis', 'Continuous and pulsatile GnRH are always equivalent', 'GnRH acts only on the adrenal gland', 'GnRH is stored in ovarian follicles only'], answer: 0, explanation: 'Pulsatile GnRH sustains and patterns LH/FSH secretion, whereas continuous agonist exposure can downregulate pituitary responsiveness.', trap: 'Frequency is part of the signal, not background noise.' },
+  { id: 'l27-kiss1-steroid-direction', lecture: 27, block: 'Final', topic: 'Fertility', stem: 'Adult female mice are left intact, ovariectomised (OVX), or ovariectomised with oestradiol replacement for 7 days. Arcuate Kiss1 mRNA rises after OVX and is suppressed by oestradiol, whereas AVPV Kiss1 mRNA falls after OVX and is restored by oestradiol. Which interpretation is best supported?', options: ['Oestradiol suppresses Kiss1 transcription everywhere, so both nuclei relay negative feedback', 'Ovariectomy surgery non-specifically disturbs hypothalamic transcription, masking any steroid effect', 'One steroid regulates the two populations in opposite directions, fitting ARC to negative and AVPV to positive feedback', 'The mRNA changes prove AVPV terminals release more kisspeptin onto GnRH neurons in intact mice'], answer: 2, explanation: 'Oestradiol replacement reverses each change, so the steroid, not the surgery, controls Kiss1 in both nuclei, but with opposite sign. ARC Kiss1 being suppressed by oestradiol fits a negative-feedback relay restraining GnRH pulses. AVPV Kiss1 being stimulated by oestradiol fits the positive-feedback drive that builds the preovulatory surge. Near-universal ERα co-expression suggests oestradiol acts directly on the Kiss1 cells.', trap: 'Assuming oestradiol has a single direction of effect on kisspeptin, or reading an mRNA change as proof of altered peptide release.' },
+  { id: 'l27-nkb-antagonist-pulses', lecture: 27, block: 'Final', topic: 'Fertility', stem: 'An NK3R (neurokinin B receptor) antagonist, MRK-08, is infused into the brain of ovariectomised ewes while blood is sampled frequently for LH. Which outcome, with its reason, fits the lecture\'s model?', options: ['LH pulses persist unchanged, because NKB acts as a releasing factor only on pituitary gonadotrophs', 'LH pulse frequency rises, because NKB is the signal that normally terminates each GnRH pulse', 'LH pulses persist, because arcuate kisspeptin neurons make kisspeptin but not neurokinin B', 'LH pulses are suppressed, because NKB signalling within the arcuate KNDy network helps drive the pulse generator'], answer: 3, explanation: 'Arcuate kisspeptin neurons co-express NKB and dynorphin (KNDy) and are proposed to generate GnRH pulses, with NKB as the stimulatory, synchronising signal. Central NK3R blockade removes that drive, and the slide shows LH pulses suppressed in OVX ewes, in parallel with central kisspeptin antagonism. LH pulses serve as the read-out of GnRH pulses.', trap: 'Confusing NKB with dynorphin: in the KNDy model dynorphin, not NKB, is the inhibitory signal that ends a pulse.' },
+  { id: 'l27-ablation-compensation', lecture: 27, block: 'Final', topic: 'Fertility', stem: 'Kiss1-Cre mice are crossed with Cre-activated diphtheria-toxin mice, killing kisspeptin cells from early development. Females still enter puberty and are fertile, with smaller ovaries, whereas acute ablation of kisspeptin neurons in adults impairs fertility. Which conclusion is best supported?', options: ['The developing circuit compensates for early loss, so the result does not show kisspeptin is unnecessary in normal animals', 'Kisspeptin has no physiological role in GnRH secretion, because puberty proceeds without kisspeptin cells', 'The toxin must have failed to kill most kisspeptin cells, because fertility was preserved after ablation', 'Puberty is timed by the ovaries rather than the brain, because ovaries still matured without kisspeptin'], answer: 0, explanation: 'Removing a cell type before the network matures lets other inputs reorganise to support GnRH output, so a developmental ablation tests the adapted system, not the normal one. Acute adult ablation impairs fertility, which shows that necessity depends on when the loss occurs. The smaller ovaries suggest the compensation is incomplete.', trap: 'Reading a normal phenotype after developmental ablation as proof that the ablated cells are dispensable.' },
+  { id: 'l27-kiss1r-ko-ovx-obesity', lecture: 27, block: 'Final', topic: 'Fertility', stem: 'Female Kiss1r knockout mice are obese, but they are also hypogonadal. Both knockout and wild-type females are ovariectomised, and the knockouts still carry more fat mass. What does this ovariectomy comparison add?', options: ['It proves kisspeptin acts directly on adipocytes to limit fat storage in females', 'It shows the obesity is not explained solely by missing ovarian oestradiol, since both groups lack ovaries', 'It shows that residual ovarian oestradiol is what causes the knockout\'s weight gain', 'It shows the knockouts become obese mainly because they eat more than control mice'], answer: 1, explanation: 'Ovariectomy equalises gonadal oestradiol across genotypes, removing the hypogonadism confound. A persisting difference in fat mass means kisspeptin signalling affects energy balance at least partly independently of ovarian steroids. The slides point to reduced energy expenditure, especially in the dark phase, together with altered BAT Ucp1. A global knockout still cannot show whether Kiss1r acts in the brain or the periphery.', trap: 'Jumping from \'not explained by oestradiol loss\' to a specific site of action, or assuming the obesity must come from overeating.' },
+  { id: 'l27-median-eminence-terminals', lecture: 27, block: 'Final', topic: 'Fertility', stem: 'An anterograde tracer shows arcuate kisspeptin fibres reaching the external zone of the ovine median eminence, and kisspeptin increases GnRH release from isolated median-eminence explants. Which conclusion does this pair of results best support?', options: ['Kisspeptin acts only on GnRH cell bodies in the preoptic area and never at the median eminence', 'Kisspeptin stimulates gonadotrophs directly, so GnRH is bypassed in the pituitary response', 'Kisspeptin can stimulate GnRH release at nerve terminals in the median eminence, without the GnRH cell bodies', 'Terminal action shows that GPR54 on GnRH cell bodies plays no part in controlling GnRH secretion'], answer: 2, explanation: 'The median-eminence explant contains GnRH axon terminals but no GnRH somata, so increased GnRH release there means kisspeptin can act at or near the terminals. The tracer data provide the anatomical route from arcuate kisspeptin cells to the external zone. This shows sufficiency at one site, alongside evidence that more than 90% of GnRH somata express GPR54.', trap: 'Turning \'can act at terminals\' into \'acts only at terminals\', or only at somata.' },
   { id: 'l28-proteostasis', lecture: 28, block: 'Final', topic: 'Ageing and degeneration', stem: 'Which combination best characterises the ageing brain relative to a young one?', options: ['Massive neuronal loss across all cortical regions as the primary feature', 'Complete failure of synaptic transmission', 'Declining proteostasis and mitochondrial function with synaptic and dendritic change, often without large-scale neuron loss', 'Loss of the ability to form any new memories in every individual'], answer: 2, explanation: 'Normal ageing is dominated by subcellular and synaptic change — impaired protein quality control, mitochondrial dysfunction, oxidative and inflammatory load, white-matter alteration — rather than by widespread neuronal death.', trap: 'The old picture of steady neuron loss from early adulthood overstates it; synaptic and connectivity change carries more of the functional effect.' },
   { id: 'l28-vs-disease', lecture: 28, block: 'Final', topic: 'Ageing and degeneration', stem: 'What most usefully distinguishes neurodegenerative disease from normal ageing?', options: ['Disease shows selective vulnerability of particular cell populations with progression beyond the age-typical range', 'Only disease involves any protein aggregation', 'Ageing is reversible whereas disease is not', 'Ageing spares the brain entirely'], answer: 0, explanation: 'Neurodegenerative disorders target specific networks and cell types and progress beyond what age alone predicts. Age is the strongest risk factor, so the two overlap and are separated by pattern, selectivity and rate.', trap: 'Age-related change and disease lie on overlapping distributions; the boundary is quantitative and regional, not a clean binary.' },
+  { id: 'l28-pd-presymptomatic-loss', lecture: 28, block: 'Final', topic: 'Ageing and degeneration', stem: 'A drug that completely halts further loss of substantia nigra dopaminergic neurons is started on the day Parkinson\'s disease is diagnosed from motor signs. Which outcome is most likely?', options: ['Motor signs resolve because surviving neurons regrow their lost striatal projections once degeneration stops', 'Motor signs are unaffected because they arise from Lewy bodies in striatal neurons rather than from dopamine loss', 'Motor signs resolve fully because diagnosis normally occurs when only a small fraction of nigral neurons are lost', 'Further decline may slow, but existing deficits largely persist because half or more of the nigral neurons were already lost'], answer: 3, explanation: 'Motor signs appear only after about 50–70% of SNpc dopaminergic neurons and their striatal projections have been lost, so caudate and putamen are already heavily deafferented at diagnosis. Halting further loss protects what remains but does not replace the dopaminergic input that is gone, so dopamine replacement would still be needed. Lewy pathology and depression often come before motor signs, which is why disease modification would ideally start earlier.', trap: 'Treating the moment of motor diagnosis as the start of the disease, when most of the nigrostriatal loss has already happened.' },
+  { id: 'l28-ldopa-dyskinesia', lecture: 28, block: 'Final', topic: 'Ageing and degeneration', stem: 'After 5–8 years of oral L-DOPA, most patients with Parkinson\'s disease develop motor fluctuations and dyskinesias. Which explanation best fits the lecture?', options: ['Ongoing loss of dopaminergic neurons plus intermittent dosing makes striatal dopamine availability swing between doses', 'L-DOPA cannot cross the blood–brain barrier, so escalating doses eventually cause abnormal movements peripherally', 'L-DOPA is converted to acetylcholine in the striatum, creating a cholinergic excess that drives involuntary movement', 'Lewy-body spread into motor cortex causes the dyskinesias, independent of how dopamine is replaced'], answer: 0, explanation: 'L-DOPA is a dopamine precursor that restores striatal dopamine. The slides blame the late complications on two things acting together: continued loss of dopaminergic neurons and intermittent availability of the drug. With fewer neurons left to buffer each dose (context beyond the slides), oral dosing produces peaks and troughs in striatal dopamine, which show up as fluctuations and dyskinesias.', trap: 'Blaming simple drug toxicity or tolerance instead of the interaction between ongoing degeneration and pulsatile replacement.' },
+  { id: 'l28-spine-resilience', lecture: 28, block: 'Final', topic: 'Ageing and degeneration', stem: 'Post-mortem prefrontal tissue is compared across pathology-free controls, cognitively normal people whose brains contain Alzheimer pathology, and people with Alzheimer dementia. Spine density is preserved in the cognitively normal pathology group but reduced in dementia. What is the strongest inference?', options: ['Amyloid plaques play no role in Alzheimer\'s disease and should be abandoned as a therapeutic target', 'Preserved dendritic spines may confer cognitive resilience, so pathology burden alone does not decide dementia', 'Plaques directly cause spine loss, because spine density falls in proportion to plaque burden in every group', 'The data prove that drugs raising spine density will prevent dementia in people with Alzheimer pathology'], answer: 1, explanation: 'The design compares two groups with Alzheimer pathology but different clinical outcomes, and dendritic spine density is the structural variable that separates them. That supports spine plasticity as a candidate resilience mechanism, consistent with the slide\'s warning that plaque load does not necessarily track disease. Because the data are cross-sectional post-mortem human tissue, they show an association, not that raising spines would prevent dementia.', trap: 'Turning a post-mortem association into a guarantee that an intervention will work, or swinging to the opposite claim that plaques are irrelevant.' },
+  { id: 'l28-ms-inflammation-vs-degeneration', lecture: 28, block: 'Final', topic: 'Ageing and degeneration', stem: 'A drug that blocks immune-cell migration across the blood–brain barrier is tested in relapsing–remitting and in primary progressive multiple sclerosis. Based on the lecture\'s pathomechanism model, which prediction is best?', options: ['Equal benefit in both forms, because all MS disability is caused directly by T-cell cytokine release', 'Greater benefit in primary progressive MS, because inflammation grows steadily as disability accumulates', 'Greater benefit in relapsing–remitting MS, because inflammation dominates early while later disability tracks neurodegeneration', 'No benefit in either form, because MS lesions sit in grey matter beyond the reach of circulating immune cells'], answer: 2, explanation: 'In the slide\'s model, inflammation and repair capacity are highest in relapsing–remitting disease and taper as the disease becomes progressive, while neurodegeneration rises and drives accumulating disability. Blocking lymphocyte entry, as natalizumab does, targets the inflammatory phase in which immune cells cross a damaged barrier. It should therefore reduce relapses more than it slows progressive neurodegeneration.', trap: 'Assuming an immune-mediated disease is equally immune-driven at every stage, so any anti-inflammatory drug should slow all disability.' },
   { id: 'l29-cochlear', lecture: 29, block: 'Final', topic: 'Sensory prostheses', stem: 'Why does a cochlear implant help a patient with severe hair-cell loss when a hearing aid does not?', options: ['It amplifies sound more powerfully than a hearing aid', 'It regenerates inner hair cells', 'It bypasses hair-cell transduction and stimulates surviving spiral ganglion neurons directly', 'It restores middle-ear conduction'], answer: 2, explanation: 'A hearing aid amplifies acoustic input, which still requires working transduction. An implant converts sound into patterned electrical stimulation of the auditory nerve, so it depends on surviving spiral ganglion neurons rather than on hair cells.', trap: 'The implant substitutes for transduction, not for the nerve — outcomes fall when the spiral ganglion population is depleted.' },
   { id: 'l29-limits', lecture: 29, block: 'Final', topic: 'Sensory prostheses', stem: 'Cochlear-implant users typically understand speech in quiet far better than they perceive music. The best mechanistic explanation is:', options: ['Music is processed outside the auditory system', 'A limited electrode count and current spread give coarse spectral resolution, which speech tolerates better than pitch perception does', 'Implants deliberately filter out musical frequencies', 'Speech conveys no temporal information'], answer: 1, explanation: 'Channel interaction and few effective electrodes blur the tonotopic detail needed for fine pitch, while speech in quiet stays intelligible from a coarse spectral envelope plus temporal cues.', trap: 'Good speech scores in quiet do not generalise to music, background noise or talker separation — those failure modes are different.' },
-  { id: 'l30-scar', lecture: 30, block: 'Final', topic: 'Spinal cord repair', stem: 'Why is “the glial scar only blocks repair” inaccurate?', options: ['CSPGs never inhibit axons', 'Astrocytes disappear after injury', 'Only microglia respond to injury', 'Reactive astrocyte borders can also contain inflammation and preserve tissue'], answer: 3, explanation: 'Scar-associated signals can inhibit axon growth, while reactive borders can limit inflammatory spread and protect surviving tissue. Function depends on time, state and intervention.', trap: 'A structure can have both protective and inhibitory effects.' }
+  { id: 'l29-retinal-implant-candidate', lecture: 29, block: 'Final', topic: 'Sensory prostheses', stem: 'Two blind patients are assessed for an Argus II-style epiretinal implant. Patient A has lost photoreceptors but retains retinal ganglion cells; Patient B has lost most retinal ganglion cells and optic-nerve axons. Which prediction is best supported?', options: ['Both benefit equally, because the implant supplies its own camera and image processor', 'Patient B benefits more, because the array can substitute for lost ganglion-cell output', 'Neither benefits, because visual cortex stops responding after several years of blindness', 'Patient A benefits more, because evoked activity must still exit through ganglion cells and optic nerve'], answer: 3, explanation: 'A retinal implant stimulates retinal neurons, and their output still has to travel along ganglion-cell axons in the optic nerve to the LGN and visual cortex. Patient A has lost only the transduction stage, so the downstream route is intact; Patient B has lost that route, so the device has nothing to drive. A prosthesis can only replace a stage that sits upstream of an intact pathway.', trap: 'Assuming the device\'s camera and processor make the patient\'s own retinal output pathway unnecessary, when the implant replaces only the transduction stage.' },
+  { id: 'l29-chrimsonr-depolarisation', lecture: 29, block: 'Final', topic: 'Sensory prostheses', stem: 'In the optogenetic vision case, an AAV vector expressed ChrimsonR in foveal retinal ganglion cells of a patient whose photoreceptors had degenerated, and goggles projected ~595 nm pulses onto the retina. What is the immediate effect of a pulse on a transduced ganglion cell?', options: ['The light-gated cation channel opens and the ganglion cell depolarises toward firing', 'Rod and cone opsins are regenerated, restoring the normal phototransduction cascade', 'The channel hyperpolarises the ganglion cell, copying the photoreceptor light response', 'Bipolar cells detect the pulse and release glutamate onto the ganglion cell'], answer: 0, explanation: 'ChrimsonR is a light-gated cation channel activated by amber light (~590 nm). When the pulse opens it, cations flow in and the ganglion cell depolarises and fires. Because the light sensor now sits in the ganglion cell itself, the therapy bypasses the lost photoreceptors, and the resulting spikes travel along the optic nerve as ordinary RGC output.', trap: 'Assuming the gene therapy repairs photoreceptors, or carrying over the photoreceptor\'s hyperpolarising light response, instead of recognising that a downstream cell has been made into the light sensor.' },
+  { id: 'l29-short-basal-array', lecture: 29, block: 'Final', topic: 'Sensory prostheses', stem: 'A patient has severe high-frequency hearing loss but useful low-frequency hearing. Surgeons choose a short electrode array that occupies only the basal part of the cochlea. What is the mechanistic rationale?', options: ['Low frequencies are mapped to the base, so a short basal array restores bass sounds', 'High frequencies are mapped to the base, so the array supplies them and spares the apex', 'Above about 3 kHz hearing relies on phase-locking, so electrode position no longer matters', 'A short array bypasses the auditory nerve and drives the cochlear nucleus directly'], answer: 1, explanation: 'The cochlea is tonotopic: high frequencies are coded near the base and low frequencies near the apex. A short basal array can supply the missing high-frequency place information while leaving the apical region, which still supports the patient\'s low-frequency hearing, undisturbed. Phase-locking carries only low frequencies, so high-frequency hearing depends on stimulating the correct place.', trap: 'Reversing the tonotopic map, or assuming temporal coding can stand in for place coding at high frequencies.' },
+  { id: 'l29-ensemble-decoding-inference', lecture: 29, block: 'Final', topic: 'Sensory prostheses', stem: 'Owl monkeys performed reaching tasks while ensembles of premotor and primary motor cortex neurons were recorded. Linear and neural-network decoders predicted hand trajectory well enough to drive a robot arm in real time. What does this result most directly establish?', options: ['Each recorded neuron alone encodes the complete trajectory of the reach', 'The recorded neurons are proven to cause the monkey\'s arm movements', 'Population activity carries enough movement information to drive an external device', 'A decoder trained once at the start stays accurate across the whole two years'], answer: 2, explanation: 'Each neuron\'s activity was only variably correlated with movement, but combining many neurons allowed accurate real-time prediction of hand position. That shows the ensemble signal can be decoded and used for control, which is the principle behind motor BCIs. Decoding is a read-out, so it does not show that these neurons cause the movement, and the networks were retrained during the recording period.', trap: 'Treating successful decoding, which is a correlation between activity and movement, as proof that the recorded cells cause the movement.' },
+  { id: 'l30-scar', lecture: 30, block: 'Final', topic: 'Spinal cord repair', stem: 'Why is “the glial scar only blocks repair” inaccurate?', options: ['CSPGs never inhibit axons', 'Astrocytes disappear after injury', 'Only microglia respond to injury', 'Reactive astrocyte borders can also contain inflammation and preserve tissue'], answer: 3, explanation: 'Scar-associated signals can inhibit axon growth, while reactive borders can limit inflammatory spread and protect surviving tissue. Function depends on time, state and intervention.', trap: 'A structure can have both protective and inhibitory effects.' },
+  { id: 'l30-hmpc-graft-gone', lecture: 30, block: 'Final', topic: 'Spinal cord repair', stem: 'Human mesenchymal precursor cells grafted into contused nude-rat spinal cord are undetectable one month later. Yet treated rats keep higher BBB scores, more spared tissue and smaller cysts than injury-only controls. Which interpretation is best supported?', options: ['Graft cells became neurons that rebuilt the hindlimb locomotor circuitry before disappearing', 'The BBB gain is probably a scoring artefact, because no graft cells remain to explain it', 'Immune rejection of the human cells caused inflammation that happened to benefit recovery', 'Early graft effects on the lesion environment spared tissue, so lasting cell replacement was not required'], answer: 3, explanation: 'A benefit that outlasts the graft argues against cell replacement. The slides propose that the cells act while they are present, by suppressing immune damage, boosting endogenous repair, supporting remyelination and depositing matrix that offsets the inhibitory scar. This fits the increased tissue sparing and smaller cysts. The mechanism is still unresolved, and the evidence is from rats.', trap: 'Assuming that functional benefit from a stem-like cell graft means the graft turned into new neurons.' },
+  { id: 'l30-ampa-only-blockade', lecture: 30, block: 'Final', topic: 'Spinal cord repair', stem: 'After a spinal contusion, a drug selectively blocks AMPA receptors at the lesion but leaves NMDA receptors untouched. Based on the excitotoxic chain in the lecture, what is the most likely outcome?', options: ['Less Na⁺-driven swelling and necrosis, while NMDA-mediated Ca²⁺ entry can still drive calpain-linked apoptosis', 'Complete neuroprotection, because all glutamate-triggered cell death runs through AMPA receptors', 'Less calpain-linked apoptosis, but more osmotic swelling because Na⁺ entry is redirected through NMDA receptors', 'Prevention of mitochondrial ROS production, because AMPA receptors are the main route of Ca²⁺ entry'], answer: 0, explanation: 'The slides split glutamate excitotoxicity into two arms. AMPA receptors let Na⁺ in, causing osmotic imbalance, swelling and necrosis. NMDA receptors let Ca²⁺ in, activating calmodulin, kinases and calpain toward apoptosis, and Ca²⁺ overload in mitochondria generates ROS. Blocking only AMPA receptors should blunt the necrotic arm while the Ca²⁺-driven apoptotic and oxidative arms continue.', trap: 'Treating glutamate excitotoxicity as one pathway, so that blocking one receptor class is assumed to block all of it.' },
+  { id: 'l30-ipsc-growth-no-function', lecture: 30, block: 'Final', topic: 'Spinal cord repair', stem: 'Human iPSC-derived neural stem cells grafted into injured rat spinal cord survive for months. They extend axons over very long distances above and below the lesion and form synaptic structures, yet locomotor function does not improve. What is the strongest conclusion?', options: ['The graft-derived axons must have stalled at the lesion border instead of growing beyond it', 'Axon growth and synapse formation are not sufficient; recovery also needs correctly targeted, functional circuits', 'Human iPSC-derived cells cannot survive long enough in the injured adult spinal cord to matter', 'The result shows the glial scar blocks all graft-derived axons from reaching host targets'], answer: 1, explanation: 'The anatomical outcome was striking: surviving grafts sent axons over long distances and made synaptic contacts. The lack of functional gain shows that growth alone is not enough. Axons must reach appropriate targets and form working circuits, without harmful miswiring, before behaviour changes.', trap: 'Equating regeneration measured in tissue sections with recovery measured in behaviour.' },
+  { id: 'l30-cntf-cortical-targeting', lecture: 30, block: 'Final', topic: 'Spinal cord repair', stem: 'UWA researchers delivered CNTF by injecting an AAV vector into motor cortex, rather than applying CNTF protein to the spinal lesion. What is the main mechanistic rationale for this design?', options: ['The fluorescent CNTF reporter removes the need for separate anterograde tracing of corticospinal axons', 'Cortical injection keeps CNTF away from the spinal cord, so only neurons in the brain are affected', 'CST neurons express CNTF receptor α, so transducing their cell bodies gives sustained, tract-specific support', 'The vector converts reactive astrocytes at the lesion into new corticospinal projection neurons'], answer: 2, explanation: 'CST neurons carry CNTF receptor α, and CNTF supports the survival and long-distance regrowth of injured corticospinal neurons. Transducing the parent neurons means the injured population itself makes the factor for a long time after one injection. This targets the CST rather than bathing the whole lesion. Treated rats had better BBB, ladder and gait scores, with labelled CST axons extending beyond the lesion.', trap: 'Assuming a growth factor must be delivered where the axons are damaged, rather than to the neurons whose growth programme it needs to switch on.' },
+  { id: 'l30-macrophage-depletion-timing', lecture: 30, block: 'Final', topic: 'Spinal cord repair', stem: 'A drug that depletes infiltrating macrophages is given continuously from day 2 to week 8 after a rat spinal contusion. Based on the lecture\'s account of the immune response, which prediction is most defensible?', options: ['Uniform benefit, because infiltrating macrophages only release TNF-α, ROS, NO and proteases', 'No effect, because macrophages do not enter the injured cord until months after injury', 'Full oligodendrocyte protection, because resident microglia are removed along with the macrophages', 'Less early bystander damage, offset by poorer debris clearance and loss of later reparative signalling'], answer: 3, explanation: 'Macrophages arrive by day 2, peak at days 5–7 and persist for weeks to months. Early on they cause collateral damage through TNF-α, IL-1, IL-6, ROS, NO and proteases. They also clear debris and release protective cytokines that support wound healing and repair (the M1-to-M2 shift). Depleting them across the whole window trades one effect for the other, which is why the slides stress that timing is critical.', trap: 'Labelling an immune cell type as simply good or bad instead of reasoning about its state and timing.' }
 ];
 
 // Optional per-question notes on why each distractor is wrong, keyed by
@@ -792,6 +1987,166 @@ const distractorNotes = {
     0: "Amplification cannot help when the transduction step itself has failed; the implant works by bypassing it.",
     1: "Mammalian inner hair cells do not regenerate; the implant substitutes for them rather than restoring them.",
     3: "Middle-ear conduction problems are treated surgically or with amplification, not by cochlear implantation."
+  },
+  'l24-vgat-silencing': {
+    1: "VGAT marks GABAergic interneurons, so activating them inhibits rather than excites corticospinal output.",
+    2: "The slides report that inactivation also disrupted ongoing movement, so cortex is needed beyond the initiation step.",
+    3: "Chemosensation tells the mouse where the water is; it does not replace the cortical command that silencing removes."
+  },
+  'l24-pt-subtype-timing': {
+    0: "This reverses the finding: thalamus-projecting cells carry preparatory activity and medulla-projecting cells carry movement-related activity.",
+    2: "The two subtypes are defined by different targets; each avoids the other's thalamic or medullary destination.",
+    3: "Preparatory activity is recorded in PT-upper neurons in motor cortex itself, so cortex is active before movement."
+  },
+  'l24-spine-learning-control': {
+    0: "A matching rise in sensory cortex would point to a non-specific effect of training and weaken the learning-specific claim.",
+    1: "Total spine number actually returns toward baseline as pre-existing spines are eliminated; the lasting change is in which spines survive.",
+    3: "The changes were confined to contralateral cortex, and a larger ipsilateral rise would conflict with crossed control of the trained limb."
+  },
+  'l24-optical-spine-erasure': {
+    0: "The second skill, encoded in the same region, survived, which rules out non-specific damage.",
+    1: "Behaviour did change, because the linked skill degraded, and that change is what takes the evidence beyond correlation.",
+    2: "Myelin plasticity also contributes to learning, but this experiment manipulated spines and selectively removed one skill."
+  },
+  'l25-purkinje-pacemaking': {
+    1: "Firing continued after synaptic transmission was blocked, so parallel-fibre glutamate release cannot be what sustains it.",
+    2: "Tetrodotoxin blocks voltage-gated Na⁺ channels; it does not enhance GABA-A inhibition, and inhibitory input had already been blocked.",
+    3: "Climbing-fibre input is synaptic and was already blocked, and an input of at most about 1 Hz could not pace firing at 50–100 Hz."
+  },
+  'l25-conjunctive-ltd': {
+    0: "This reverses both rules: parallel-fibre activity alone gives LTP, and pairing with the climbing fibre gives LTD.",
+    2: "Repeated parallel-fibre activity alone does produce LTP, and pairing with the climbing fibre depresses the synapse rather than potentiating it.",
+    3: "Both inputs being glutamatergic does not make the outcomes the same; climbing-fibre coincidence switches the outcome to LTD."
+  },
+  'l25-eyeblink-teaching-route': {
+    0: "The pontine nuclei relay the tone CS as mossy fibres, so lesioning them removes the context route, not the US teaching signal.",
+    1: "Granule cells and parallel fibres carry the CS and context signal; silencing them removes the tone's route, not the US instruction.",
+    3: "The facial nucleus is the final motor output for both blinks; silencing it blocks blink expression, not the climbing-fibre teaching signal."
+  },
+  'l25-cf-spillover': {
+    0: "The currents pass through AMPA and NMDA glutamate receptors, which gap-junction coupling would not activate.",
+    1: "Purkinje cells are GABAergic, so they cannot be the source of a glutamate-receptor current in interneurons.",
+    2: "Granule cells are driven by mossy fibres. The lecture describes climbing fibres reaching interneurons by spillover, not through the granule-cell pathway."
+  },
+  'l25-purkinje-thirst': {
+    1: "The experiment shows that the cerebellum can modulate drinking; it does not show that it generates thirst or replaces hypothalamic osmosensing.",
+    2: "Food intake, which also needs coordinated mouth movements, was unchanged, so a general motor side-effect does not fit the selective change in drinking.",
+    3: "These are mouse chemogenetic results; they do not establish the cause of any human thirst disorder."
+  },
+  'l26-agrp-pomc-coactivation': {
+    0: "α-MSH cannot dominate: AgRP GABA silences POMC output, and the AgRP peptide antagonises the very MC4R that α-MSH needs.",
+    2: "The circuit is asymmetric, so the outputs do not cancel; the slides report increased intake on co-activation.",
+    3: "Photostimulating AgRP neurons evokes eating within minutes, so the effect does not wait for slow neuropeptide release over days."
+  },
+  'l26-ghrelin-indirect-pomc': {
+    0: "POMC neurons do not express GHSR, so no direct inhibitory route remains to keep suppression unchanged.",
+    1: "POMC neurons have no GHSR for ghrelin to act on, unopposed or otherwise.",
+    3: "Ghrelin signals through GHSR, not the leptin receptor; pSTAT3 is the slides' marker of leptin-responsive neurons."
+  },
+  'l26-double-lesion': {
+    0: "VMH lesions cause obesity, which marks the VMH as a satiety region; LH loss is what causes starvation.",
+    1: "The early work showed that hypothalamic, not pituitary, injury causes obesity, and an LH lesion does not repair the pituitary.",
+    2: "The animal did not return to normal: the LH lesion reversed obesity and produced starvation."
+  },
+  'l26-mc4r-blockade': {
+    1: "Y1/Y5 carry NPY's orexigenic signal; blocking them would lower intake further, not prevent the POMC-driven reduction.",
+    2: "The slides place GHSR on arcuate NPY/AgRP neurons, and ghrelin is not part of the POMC-to-PVN anorectic pathway.",
+    3: "Activating MC4R mimics α-MSH and would add to the reduction in intake, not prevent it."
+  },
+  'l26-fos-ghrelin-inference': {
+    0: "Fos reports that a cell was activated, not which receptor or input activated it.",
+    2: "Fos is induced by activation, not silencing, so Fos-positive nuclei indicate increased activity.",
+    3: "Fos is a nuclear transcription factor in the cell body; it does not measure peptide secretion at PVN terminals."
+  },
+  'l27-kiss1-steroid-direction': {
+    0: "Uniform suppression would predict AVPV Kiss1 falling with oestradiol, but AVPV expression fell after OVX and was restored by oestradiol.",
+    1: "The OVX-plus-oestradiol group had the same surgery yet reversed the changes, so the effect can be attributed to the steroid.",
+    3: "In situ hybridisation measures gene expression, not peptide release at GnRH neurons; release needs functional evidence such as antagonist or release assays."
+  },
+  'l27-nkb-antagonist-pulses': {
+    0: "The antagonist was given centrally and suppressed LH pulses; NKB is placed within arcuate kisspeptin neurons upstream of GnRH, not as a pituitary releasing factor.",
+    1: "Ending each pulse is the proposed role of dynorphin; NKB is stimulatory, so blocking it should reduce pulses, not increase them.",
+    2: "Arcuate kisspeptin neurons co-express NKB and dynorphin, which is why they are called KNDy neurons."
+  },
+  'l27-ablation-compensation': {
+    1: "Acute adult ablation impairs fertility and kisspeptin potently drives GnRH, so a compensated developmental phenotype cannot erase its role.",
+    2: "Nothing suggests failed ablation; the authors interpret preserved fertility as compensation, and the smaller ovaries show the manipulation had an effect.",
+    3: "Puberty onset is initiated centrally by reactivation of GnRH secretion; ovarian maturation is downstream of that drive."
+  },
+  'l27-kiss1r-ko-ovx-obesity': {
+    0: "Removing a confound does not localise the action; a global knockout leaves central, peripheral (e.g. brown fat) and developmental routes open.",
+    2: "Ovariectomised animals have no ovarian oestradiol, and the fat difference persisted, which argues against oestradiol as the explanation.",
+    3: "The slides frame the deficit as reduced energy expenditure, and the source study found that knockout females actually ate less."
+  },
+  'l27-median-eminence-terminals': {
+    0: "Explants without GnRH cell bodies still released more GnRH, so kisspeptin's action is not confined to somata.",
+    1: "The measured output was GnRH released from median-eminence tissue, which places the effect upstream of the pituitary.",
+    3: "An explant shows what is possible at one site; it cannot exclude somatic action, and nearly all GnRH neurons express GPR54 at the soma."
+  },
+  'l28-pd-presymptomatic-loss': {
+    0: "Nothing on the slides suggests lost nigral projections regrow once degeneration stops; protecting neurons does not restore them.",
+    1: "Lewy bodies are the pathological hallmark, but the slides attribute the motor signs to reduced striatal dopamine after nigrostriatal deafferentation.",
+    2: "Diagnosis comes late, after about 50–70% of these neurons are already gone, not after a small fraction."
+  },
+  'l28-ldopa-dyskinesia': {
+    1: "L-DOPA is used because, unlike dopamine, it reaches the brain; the problem is the pattern of delivery, not access.",
+    2: "L-DOPA is converted to dopamine, not acetylcholine; raising acetylcholine is how the Alzheimer's cholinesterase inhibitors work.",
+    3: "The slides link these complications directly to chronic L-DOPA use and its intermittent availability, not to cortical Lewy-body spread."
+  },
+  'l28-spine-resilience': {
+    0: "The result shows pathology is not sufficient for dementia, not that it is irrelevant; anti-amyloid antibodies stay on the slides as a strategy to slow decline.",
+    2: "The cognitively normal group had pathology yet preserved spines, so spine density does not simply follow plaque burden.",
+    3: "Cross-sectional post-mortem data cannot show that experimentally raising spine density would prevent dementia."
+  },
+  'l28-ms-inflammation-vs-degeneration': {
+    0: "Later disability is increasingly driven by neurodegeneration, which an anti-migration drug does not directly target.",
+    1: "The model shows inflammation declining, not growing, as the disease becomes progressive.",
+    3: "MS lesions are mainly in white matter (grey matter is also affected), and immune cells reach them through a damaged blood–brain barrier."
+  },
+  'l29-retinal-implant-candidate': {
+    0: "The camera and processor replace light capture only; the encoded signal still has to travel through the patient's own ganglion cells and optic nerve.",
+    1: "Electrodes on the retina drive retinal cells but cannot create new optic-nerve axons, so ganglion-cell loss removes the output route.",
+    2: "Foerster evoked phosphenes by stimulating the occipital cortex of a patient blind for eight years, so long blindness does not silence visual cortex."
+  },
+  'l29-chrimsonr-depolarisation': {
+    1: "The vector delivers a light-gated channel to ganglion cells; it does not rebuild degenerated rods and cones or their transduction cascade.",
+    2: "ChrimsonR lets cations flow inward, so it depolarises the cell that expresses it rather than hyperpolarising it.",
+    3: "The opsin is expressed in the ganglion cells themselves, so the response does not depend on bipolar cells detecting the light."
+  },
+  'l29-short-basal-array': {
+    0: "This reverses the map: the base codes high frequencies and the apex codes low frequencies.",
+    2: "Phase-locking fails above roughly 1.5-3 kHz, so high frequencies depend most on place, which makes electrode position critical.",
+    3: "Intracochlear electrodes stimulate auditory-nerve fibres; the implant depends on that nerve rather than bypassing it."
+  },
+  'l29-ensemble-decoding-inference': {
+    0: "Single neurons were only variably related to movement; accurate prediction came from combining the ensemble.",
+    1: "Recording and decoding show that activity predicts movement, not that it causes it; a causal claim would need a perturbation.",
+    3: "The neural networks were updated over time with data from the 1-2 years of recording, so the decoder was not fixed."
+  },
+  'l30-hmpc-graft-gone': {
+    0: "With no donor cells left at one month they cannot be the replacement circuitry, and the slides list neuron formation by marrow stromal cells as controversial.",
+    1: "Independent histology (more spared tissue, smaller cysts) backs up the behavioural gain, so it is not a scoring artefact.",
+    2: "Nude rats are immunodeficient hosts chosen to limit rejection, and the slides list immune suppression, not rejection-driven inflammation, as a candidate mechanism."
+  },
+  'l30-ampa-only-blockade': {
+    1: "Ca²⁺ entry through NMDA receptors is a separate route to apoptosis and mitochondrial ROS, so AMPA blockade alone cannot fully protect.",
+    2: "This reverses the two arms: AMPA blockade should reduce Na⁺-driven swelling, and the calpain-apoptosis arm belongs to the untouched NMDA receptors.",
+    3: "In the lecture's chain Ca²⁺ enters mainly through NMDA receptors, which stay open, so mitochondrial overload and ROS are not prevented."
+  },
+  'l30-ipsc-growth-no-function': {
+    0: "The defining result is that axons extended very long distances both above and below the lesion.",
+    2: "The grafts survived for about three months and produced the long axons, so survival was not the limiting step.",
+    3: "Axons travelled far beyond the lesion, so the scar did not block them; the failure was in function, not growth."
+  },
+  'l30-cntf-cortical-targeting': {
+    0: "The study still injected BDA tracer into the same cortical regions two weeks before tissue collection to trace CST axons.",
+    1: "The aim is the opposite: transduced corticospinal neurons carry the benefit into their spinal axons, which were traced beyond the lesion.",
+    3: "Converting astrocytes into neurons is a separate AAV approach mentioned for a clinical programme; the CNTF vector targeted existing cortical neurons."
+  },
+  'l30-macrophage-depletion-timing': {
+    0: "The slides state that macrophages also remove debris and release protective cytokines, so their effects are not purely destructive.",
+    1: "Macrophages arrive by about day 2 and peak at days 5–7, well inside the treatment window.",
+    2: "Resident microglia are a separate population that a drug targeting infiltrating macrophages does not remove, and microglia themselves release cytokines that kill oligodendrocytes."
   }
 };
 
@@ -934,7 +2289,63 @@ const cards = [
   ['Duplex theory — ITD vs ILD?', 'Low frequencies: interaural time/phase differences, unambiguous because wavelength exceeds head width. High frequencies: interaural level differences from the head shadow. Both cues exist; reliability differs.'],
   ['Unmasking vs sprouting?', 'Hours-to-days remapping = unmasking of latent connections via reduced local inhibition. Weeks-to-months, larger-scale change can add structural sprouting. Timescale is the discriminating evidence.'],
   ['M1 population coding?', 'Single neurons are broadly tuned to movement direction; the distributed population specifies it accurately via vector sum or a trained decoder. This is the basis of motor BCIs.'],
-  ['Cochlear implant vs hearing aid?', 'A hearing aid amplifies and still needs working transduction. An implant bypasses hair cells and stimulates surviving spiral ganglion neurons — so it depends on the auditory nerve, not on hair cells.']
+  ['Cochlear implant vs hearing aid?', 'A hearing aid amplifies and still needs working transduction. An implant bypasses hair cells and stimulates surviving spiral ganglion neurons — so it depends on the auditory nerve, not on hair cells.'],
+  [
+    'Interhemispheric inhibition after stroke?',
+    'Callosal motor-to-motor inhibition normally suppresses spurious movement of the resting limb. After stroke, the affected hemisphere is depressed and the unaffected one is hyperexcitable. This matters because cortical excitability shapes plasticity during recovery.'
+  ],
+  [
+    'New oligodendrocytes in motor learning?',
+    'Blocking their production by deleting Myrf in precursors slowed complex-wheel learning within hours (mouse). Learning also raised precursor differentiation without changing proliferation or death.'
+  ],
+  [
+    'Simple vs complex spike?',
+    'Simple spikes are ordinary Purkinje action potentials at high tonic rates: intrinsic pacemaking modulated by parallel fibres. Complex spikes are rare (at most about 1 Hz), multi-peaked events triggered by the single climbing fibre, and their spikelets reflect the olivary axonal burst.'
+  ],
+  [
+    'PF–Purkinje LTP vs LTD rule?',
+    'Repeated parallel-fibre activity alone gives LTP; parallel-fibre activity paired with climbing-fibre input gives LTD. The climbing fibre is the teaching gate, but interneuron signalling can switch the paired outcome to LTP.'
+  ],
+  [
+    'Why does AgRP activity override POMC?',
+    'AgRP neurons inhibit POMC neurons by GABA, but POMC neurons do not inhibit AgRP neurons, and AgRP also antagonises MC4R in the PVN. Co-activating both populations therefore increases intake much like AgRP activation alone.'
+  ],
+  [
+    'PVN receptors for α-MSH, AgRP and NPY?',
+    'α-MSH activates MC4R to suppress intake. AgRP antagonises MC4R, blocking that brake. NPY acts on Y1 and Y5 receptors to increase intake.'
+  ],
+  [
+    'ARC vs AVPV Kiss1 — which feedback?',
+    'ARC Kiss1 (KNDy) neurons are suppressed by oestradiol and drive negative-feedback-regulated GnRH pulses. AVPV Kiss1 neurons are stimulated by oestradiol and drive the preovulatory GnRH/LH surge in females.'
+  ],
+  [
+    'What are KNDy neurons?',
+    'Arcuate kisspeptin neurons that co-express neurokinin B and dynorphin, proposed as the GnRH pulse generator. Central kisspeptin or NK3R antagonists suppress LH pulses in ovariectomised ewes.'
+  ],
+  [
+    'Primary vs secondary injury events?',
+    'Primary events (mechanical disruption, necrosis, haemorrhage) happen at impact. Secondary events (inflammation, excitotoxicity, oxidative stress, mitochondrial damage, demyelination, cysts, glial scarring) unfold afterwards and are the realistic treatment window.'
+  ],
+  [
+    'What did the AAV2-neurturin Parkinson\'s trial show?',
+    'Neurturin gene therapy was effective and safe in rodent and primate PD models. In 38 patients it was safe but showed no efficacy at 1 or 2 years, and the trial was discontinued: animal efficacy did not carry over to patients.'
+  ],
+  [
+    'Labelled lines and prosthetic percepts?',
+    'Each modality has a dedicated relay from receptor to primary sensory cortex, and activity anywhere along it is perceived as that modality. Prostheses use this to evoke sound or phosphenes; phantom pain and tinnitus are the maladaptive version.'
+  ],
+  [
+    'Epiretinal vs subretinal implant?',
+    'Epiretinal arrays sit on the inner retinal surface (Argus II: 60 electrodes held by a tack). Subretinal devices sit within the retinal layers (Alpha AMS: ~1,600 photodiodes). Both need surviving ganglion cells and an intact optic nerve.'
+  ],
+  [
+    'Primary vs secondary SCI?',
+    'Primary injury is the mechanical contusion, haemorrhage and dead tissue core at impact. Secondary injury is the delayed, spreading cascade of excitotoxicity, oxidative stress, inflammation, oligodendrocyte loss, demyelination, cysts and scar, and it is the phase therapies can target.'
+  ],
+  [
+    'Why propose "controlled re-injury" in chronic SCI?',
+    'Most proven strategies work only in acute or subacute injury. Scraping away or enzymatically digesting the chronic scar aims to recreate an acute-like state where those strategies could act. It remains a proposal, not a therapy.'
+  ]
 ];
 
 const DAY_MS = 86400000;
@@ -1467,6 +2878,11 @@ function textList(items, ordered = false) {
   return list;
 }
 
+function lectureBlock(id) {
+  const group = lectureGroups.find(candidate => candidate.lectures.some(([lectureId]) => lectureId === id));
+  return group ? (group.block === 'Final' ? 'Final exam' : group.block) : '';
+}
+
 function renderLectureBriefs() {
   const root = document.querySelector('#lecture-brief-list');
   root.replaceChildren(...lectureBriefs.map(brief => {
@@ -1477,7 +2893,7 @@ function renderLectureBriefs() {
     head.className = 'brief-head';
     const eyebrow = document.createElement('p');
     eyebrow.className = 'eyebrow';
-    eyebrow.textContent = `Lecture ${brief.id} · ${brief.date} · ${brief.lecturer} · Test 1`;
+    eyebrow.textContent = `Lecture ${brief.id} · ${brief.date} · ${brief.lecturer} · ${lectureBlock(brief.id)}`;
     const title = document.createElement('h3');
     title.textContent = brief.title;
     const scope = document.createElement('p');
